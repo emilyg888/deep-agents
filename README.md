@@ -36,7 +36,7 @@ network access or paid APIs.
 - `deep_agents/memory.py`: paper memory and theme memory
 - `deep_agents/heuristics.py`: synthesis, debate filter, position builder, post generation
 - `deep_agents/pipeline.py`: end-to-end orchestration
-- `deep_agents/storage.py`: research note persistence under `research/`
+- `deep_agents/storage.py`: research note persistence under your Obsidian research folder
 - `deep_agents/delivery.py`: local email and Discord delivery artifacts
 - `deep_agents/samples.py`: built-in sample source catalog
 - `main.py`: runnable entrypoint
@@ -60,7 +60,7 @@ Outputs are written to:
 
 - `memory/paper_memory.json`
 - `memory/theme_memory.json`
-- `research/YYYY-MM-DD-theme.md`
+- `/Users/emilygao/LocalDocuments/Obsidian/research/YYYY-MM-DD-theme.md`
 - `delivery/email/YYYY-MM-DD-linkedin-draft.md`
 - `delivery/discord/YYYY-MM-DD-linkedin-draft.md`
 

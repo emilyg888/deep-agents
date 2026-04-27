@@ -18,6 +18,8 @@ from .samples import sample_source_catalog
 from .sources import SourceCatalog
 from .storage import ResearchStore
 
+DEFAULT_RESEARCH_DIR = Path("/Users/emilygao/LocalDocuments/Obsidian/research")
+
 
 def evaluate_candidate(
     *,
@@ -64,11 +66,12 @@ def summarize_paper(paper: Paper) -> PaperSummary:
 class PipelineRunner:
     root_dir: Path
     source_catalog: SourceCatalog = field(default_factory=sample_source_catalog)
+    research_dir: Path = DEFAULT_RESEARCH_DIR
 
     def __post_init__(self) -> None:
         self.paper_memory = PaperMemoryStore(self.root_dir / "memory" / "paper_memory.json")
         self.theme_memory = ThemeMemoryStore(self.root_dir / "memory" / "theme_memory.json")
-        self.research_store = ResearchStore(self.root_dir / "research")
+        self.research_store = ResearchStore(self.research_dir)
         self.delivery_manager = DeliveryManager(self.root_dir / "delivery")
 
     def run(

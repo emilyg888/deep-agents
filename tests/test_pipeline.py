@@ -76,7 +76,10 @@ class SourceCatalogTests(unittest.TestCase):
 class PipelineRunnerTests(unittest.TestCase):
     def test_pipeline_generates_research_and_delivery_artifacts(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
-            runner = PipelineRunner(root_dir=Path(tmpdir))
+            runner = PipelineRunner(
+                root_dir=Path(tmpdir),
+                research_dir=Path(tmpdir) / "research",
+            )
             result = runner.run(used_on=date(2026, 4, 27))
 
             self.assertTrue(result.position_strength.passed)
@@ -105,7 +108,10 @@ class PipelineRunnerTests(unittest.TestCase):
 
     def test_pipeline_rejects_when_all_papers_are_already_seen(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
-            runner = PipelineRunner(root_dir=Path(tmpdir))
+            runner = PipelineRunner(
+                root_dir=Path(tmpdir),
+                research_dir=Path(tmpdir) / "research",
+            )
             initial_pool = runner.source_catalog.fetch_all()
             runner.paper_memory.remember(initial_pool)
             with self.assertRaisesRegex(ValueError, "No new papers available"):
@@ -168,7 +174,11 @@ class PipelineRunnerTests(unittest.TestCase):
             ]
         )
         with tempfile.TemporaryDirectory() as tmpdir:
-            runner = PipelineRunner(root_dir=Path(tmpdir), source_catalog=custom_catalog)
+            runner = PipelineRunner(
+                root_dir=Path(tmpdir),
+                source_catalog=custom_catalog,
+                research_dir=Path(tmpdir) / "research",
+            )
             result = runner.run(used_on=date(2026, 4, 27))
             self.assertIn("agent", result.selected_theme.theme.lower())
 
