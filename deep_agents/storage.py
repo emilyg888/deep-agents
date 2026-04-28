@@ -1,16 +1,18 @@
 from __future__ import annotations
 
+import json
 from datetime import date
 from pathlib import Path
 
 from .models import (
     DeliveryArtifact,
     EvaluationResult,
-    PaperSummary,
     PaperPool,
+    PaperSummary,
     Position,
     PositionStrengthResult,
     PostDraft,
+    RunState,
     ThemeCandidate,
 )
 
@@ -103,6 +105,7 @@ theme: "{theme.theme}"
 
 ## Position Strength
 - Contrarian: {position_strength.contrarian}/5
+- Decisiveness: {position_strength.decisiveness}/5
 - Tension: {position_strength.tension}/5
 - Specificity: {position_strength.specificity}/5
 - Passed: {position_strength.passed}
@@ -125,4 +128,17 @@ theme: "{theme.theme}"
 {delivery_lines}
 """
         path.write_text(content, encoding="utf-8")
+        return path
+
+
+class RunLogStore:
+    def __init__(self, base_dir: Path) -> None:
+        self.base_dir = base_dir
+
+    def save(self, state: RunState, deliveries: list[DeliveryArtifact]) -> Path:
+        self.base_dir.mkdir(parents=True, exist_ok=True)
+        path = self.base_dir / f"run_{state.used_on.isoformat()}.json"
+        payload = state.as_dict()
+        payload["deliveries"] = [delivery.as_dict() for delivery in deliveries]
+        path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
         return path

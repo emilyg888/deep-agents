@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import json
+from calendar import monthrange
 from dataclasses import dataclass
 from datetime import date
 from difflib import SequenceMatcher
 from pathlib import Path
+from typing import Any
 
-from .models import Paper, PaperPool
+from .models import EvaluationResult, Paper, PaperPool, PositionStrengthResult, ThemeCandidate
 
 
 def _normalize_theme(theme: str) -> str:
@@ -17,6 +19,14 @@ def _normalize_title(title: str) -> str:
     return " ".join(
         "".join(char.lower() if char.isalnum() else " " for char in title).split()
     )
+
+
+def _subtract_months(value: date, months: int) -> date:
+    month_index = value.month - 1 - months
+    year = value.year + month_index // 12
+    month = month_index % 12 + 1
+    day = min(value.day, monthrange(year, month)[1])
+    return date(year, month, day)
 
 
 @dataclass
@@ -115,15 +125,88 @@ class ThemeMemoryStore:
         ]
         self.path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    def recent_themes(self, limit: int = 3) -> list[str]:
+    def recent_themes(
+        self,
+        *,
+        as_of: date | None = None,
+        months: int = 6,
+    ) -> list[str]:
+        reference_date = as_of or date.today()
+        cutoff = _subtract_months(reference_date, months)
         entries = self._load()
-        recent = entries[-limit:]
+        recent = [
+            entry
+            for entry in entries
+            if date.fromisoformat(entry.last_used) >= cutoff
+        ]
         return [_normalize_theme(entry.theme) for entry in recent]
 
-    def was_used_recently(self, theme: str, limit: int = 3) -> bool:
-        return _normalize_theme(theme) in self.recent_themes(limit=limit)
+    def was_used_recently(
+        self,
+        theme: str,
+        *,
+        as_of: date | None = None,
+        months: int = 6,
+    ) -> bool:
+        return _normalize_theme(theme) in self.recent_themes(
+            as_of=as_of,
+            months=months,
+        )
 
     def remember(self, theme: str, used_on: date) -> None:
         entries = self._load()
         entries.append(ThemeMemoryEntry(theme=theme, last_used=used_on.isoformat()))
+        self._save(entries)
+
+
+class ReasoningMemoryStore:
+    def __init__(self, path: Path) -> None:
+        self.path = path
+
+    def _load(self) -> list[dict[str, Any]]:
+        if not self.path.exists():
+            return []
+        payload = json.loads(self.path.read_text(encoding="utf-8"))
+        return payload if isinstance(payload, list) else []
+
+    def _save(self, entries: list[dict[str, Any]]) -> None:
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
+
+    def remember(
+        self,
+        *,
+        used_on: date,
+        selected_theme: ThemeCandidate,
+        rejected_themes: list[ThemeCandidate],
+        evaluation: EvaluationResult,
+        position_strength: PositionStrengthResult,
+        storage_path: str,
+        run_log_path: str,
+    ) -> None:
+        entries = self._load()
+        candidate_themes = [
+            {
+                **selected_theme.as_dict(),
+                "status": "selected",
+            },
+            *[
+                {
+                    **candidate.as_dict(),
+                    "status": "rejected",
+                }
+                for candidate in rejected_themes
+            ],
+        ]
+        entries.append(
+            {
+                "used_on": used_on.isoformat(),
+                "selected_theme": selected_theme.theme,
+                "candidate_themes": candidate_themes,
+                "position_strength": position_strength.as_dict(),
+                "evaluation": evaluation.as_dict(),
+                "storage_path": storage_path,
+                "run_log_path": run_log_path,
+            }
+        )
         self._save(entries)

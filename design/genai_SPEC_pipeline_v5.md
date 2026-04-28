@@ -49,7 +49,7 @@ Storage (Obsidian) + Delivery
 Tier 1 — Core Research:
 - arXiv
 - Semantic Scholar
-- Google Scholar
+- OpenAlex
 
 Tier 2 — Enterprise Interpretation:
 - MIT Sloan Management Review
@@ -82,7 +82,7 @@ Rules:
 ]
 
 Rule:
-IF theme used in last 3 posts → REJECT
+IF theme used in last 6 months → REJECT
 
 ---
 
@@ -181,6 +181,13 @@ Score:
 # 🗂 Storage
 
 /research/YYYY-MM-DD-theme.md
+/runs/run_YYYY-MM-DD.json
+
+Reasoning memory should also retain:
+- candidate themes
+- rejected themes
+- why they were rejected
+- scoring rationale
 
 ---
 

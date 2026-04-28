@@ -5,49 +5,15 @@ from datetime import date
 from pathlib import Path
 
 from .delivery import DeliveryManager
-from .heuristics import (
-    assess_position_strength,
-    build_position,
-    build_post,
-    build_theme_candidates,
-    select_theme,
-)
-from .memory import PaperMemoryStore, ThemeMemoryStore
-from .models import EvaluationResult, Paper, PaperSummary, PipelineResult
-from .samples import sample_source_catalog
+from .evaluation import EvaluationEngine, build_default_evaluation_engine
+from .memory import PaperMemoryStore, ReasoningMemoryStore, ThemeMemoryStore
+from .models import Paper, PaperSummary, PipelineResult, RunState
+from .samples import build_default_source_catalog
 from .sources import SourceCatalog
-from .storage import ResearchStore
+from .storage import ResearchStore, RunLogStore
+from .synthesis import SynthesisEngine, build_default_synthesis_engine
 
 DEFAULT_RESEARCH_DIR = Path("/Users/emilygao/LocalDocuments/Obsidian/research")
-
-
-def evaluate_candidate(
-    *,
-    novelty_score: int,
-    relevance_score: int,
-    position_strength_score: int,
-    word_count: int,
-) -> EvaluationResult:
-    clarity = 5 if 150 <= word_count <= 180 else 4 if word_count < 150 else 3
-    insight = min(5, max(3, position_strength_score))
-    reasons: list[str] = []
-    if novelty_score < 3:
-        reasons.append("Novelty below threshold.")
-    if position_strength_score < 3:
-        reasons.append("Position strength below threshold.")
-    if word_count > 180:
-        reasons.append("Draft exceeds target post length.")
-
-    return EvaluationResult(
-        novelty=novelty_score,
-        relevance=relevance_score,
-        insight=insight,
-        position_strength=position_strength_score,
-        clarity=clarity,
-        passed=not reasons,
-        reasons=reasons,
-    )
-
 
 def summarize_paper(paper: Paper) -> PaperSummary:
     abstract = " ".join(paper.abstract.split())
@@ -65,13 +31,19 @@ def summarize_paper(paper: Paper) -> PaperSummary:
 @dataclass
 class PipelineRunner:
     root_dir: Path
-    source_catalog: SourceCatalog = field(default_factory=sample_source_catalog)
+    source_catalog: SourceCatalog = field(default_factory=build_default_source_catalog)
+    synthesis_engine: SynthesisEngine = field(default_factory=build_default_synthesis_engine)
+    evaluation_engine: EvaluationEngine = field(default_factory=build_default_evaluation_engine)
     research_dir: Path = DEFAULT_RESEARCH_DIR
 
     def __post_init__(self) -> None:
         self.paper_memory = PaperMemoryStore(self.root_dir / "memory" / "paper_memory.json")
         self.theme_memory = ThemeMemoryStore(self.root_dir / "memory" / "theme_memory.json")
+        self.reasoning_memory = ReasoningMemoryStore(
+            self.root_dir / "memory" / "reasoning_memory.json"
+        )
         self.research_store = ResearchStore(self.research_dir)
+        self.run_log_store = RunLogStore(self.root_dir / "runs")
         self.delivery_manager = DeliveryManager(self.root_dir / "delivery")
 
     def run(
@@ -84,43 +56,45 @@ class PipelineRunner:
         send_live_discord: bool = False,
     ) -> PipelineResult:
         run_date = used_on or date.today()
+        state = RunState(used_on=run_date)
         fetched_papers = papers if papers is not None else self.source_catalog.fetch_all()
         paper_pool = self.paper_memory.build_paper_pool(
             fetched_papers,
             ignore_memory=not respect_memory,
         )
+        state.paper_pool = paper_pool
         if not paper_pool.deduped:
             raise ValueError("No new papers available after deduplication.")
 
-        recent_themes = self.theme_memory.recent_themes(limit=3) if respect_memory else []
-        candidates = build_theme_candidates(paper_pool.deduped, recent_themes)
-        if len(candidates) < 3:
-            raise ValueError("Could not extract 3 to 5 viable themes from the paper pool.")
-
-        selected, rejected = select_theme(candidates)
-        lead_paper_summary = summarize_paper(selected.supporting_papers[0])
-        position = build_position(selected)
-        position_strength = assess_position_strength(selected)
-        if not position_strength.passed:
-            raise ValueError("; ".join(position_strength.reasons))
-
-        post = build_post(selected, position)
-        evaluation = evaluate_candidate(
-            novelty_score=selected.novelty_score,
-            relevance_score=selected.relevance_score,
-            position_strength_score=min(
-                5,
-                round(
-                    (
-                        position_strength.contrarian
-                        + position_strength.tension
-                        + position_strength.specificity
-                    )
-                    / 3
-                ),
-            ),
-            word_count=post.word_count,
+        state.recent_themes = (
+            self.theme_memory.recent_themes(as_of=run_date, months=6)
+            if respect_memory
+            else []
         )
+        synthesis = self.synthesis_engine.synthesize(
+            paper_pool.deduped,
+            state.recent_themes,
+        )
+        selected = synthesis.selected_theme
+        rejected = synthesis.rejected_themes
+        lead_paper_summary = summarize_paper(selected.supporting_papers[0])
+        position = synthesis.position
+        position_strength = synthesis.position_strength
+        post = synthesis.post
+        state.lead_paper_summary = lead_paper_summary
+        state.selected_theme = selected
+        state.rejected_themes = rejected
+        state.candidate_themes = [selected, *rejected]
+        state.position = position
+        state.position_strength = position_strength
+        state.post = post
+        evaluation = self.evaluation_engine.evaluate(
+            theme=selected,
+            position=position,
+            position_strength=position_strength,
+            post=post,
+        )
+        state.evaluation = evaluation
         if not evaluation.passed:
             raise ValueError("; ".join(evaluation.reasons))
 
@@ -145,11 +119,26 @@ class PipelineRunner:
             evaluation=evaluation,
             deliveries=deliveries,
         )
+        state.storage_path = str(storage_path)
+        state.run_log_path = str(
+            self.run_log_store.base_dir / f"run_{run_date.isoformat()}.json"
+        )
+        run_log_path = self.run_log_store.save(state, deliveries)
 
         if respect_memory:
             self.paper_memory.remember(paper_pool.deduped)
             self.theme_memory.remember(selected.theme, run_date)
+            self.reasoning_memory.remember(
+                used_on=run_date,
+                selected_theme=selected,
+                rejected_themes=rejected,
+                evaluation=evaluation,
+                position_strength=position_strength,
+                storage_path=str(storage_path),
+                run_log_path=str(run_log_path),
+            )
         return PipelineResult(
+            state=state,
             paper_pool=paper_pool,
             lead_paper_summary=lead_paper_summary,
             selected_theme=selected,
@@ -160,4 +149,5 @@ class PipelineRunner:
             evaluation=evaluation,
             storage_path=str(storage_path),
             deliveries=deliveries,
+            run_log_path=str(run_log_path),
         )
