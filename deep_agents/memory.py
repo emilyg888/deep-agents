@@ -178,6 +178,7 @@ class ReasoningMemoryStore:
         *,
         used_on: date,
         selected_theme: ThemeCandidate,
+        alternative_themes: list[ThemeCandidate],
         rejected_themes: list[ThemeCandidate],
         evaluation: EvaluationResult,
         position_strength: PositionStrengthResult,
@@ -190,6 +191,13 @@ class ReasoningMemoryStore:
                 **selected_theme.as_dict(),
                 "status": "selected",
             },
+            *[
+                {
+                    **candidate.as_dict(),
+                    "status": "alternative",
+                }
+                for candidate in alternative_themes
+            ],
             *[
                 {
                     **candidate.as_dict(),

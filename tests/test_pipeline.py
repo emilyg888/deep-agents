@@ -6,9 +6,10 @@ from datetime import date
 from pathlib import Path
 from unittest.mock import patch
 
+import main as cli_main
 from deep_agents.memory import PaperMemoryStore, ThemeMemoryStore
-from deep_agents.models import Paper
-from deep_agents.pipeline import PipelineRunner
+from deep_agents.models import Paper, Position, PositionStrengthResult, PostDraft, ThemeCandidate
+from deep_agents.pipeline import PipelineRunner, rank_papers
 from deep_agents.samples import sample_source_catalog
 from deep_agents.sources import (
     FallbackPaperSource,
@@ -21,13 +22,17 @@ from deep_agents.evaluation import (
     DeterministicEvaluationEngine,
     FallbackEvaluationEngine,
 )
+from deep_agents.heuristics import (
+    assess_position_strength,
+    build_theme_candidates,
+    theme_debate_filter_reasons,
+)
 from deep_agents.synthesis import (
     DeterministicSynthesisEngine,
     FallbackSynthesisEngine,
     OpenAISynthesisEngine,
     SynthesisResult,
 )
-
 
 class MemoryStoreTests(unittest.TestCase):
     def test_paper_memory_deduplicates_exact_fingerprints(self) -> None:
@@ -184,6 +189,219 @@ class SynthesisEngineTests(unittest.TestCase):
         result = engine.synthesize(sample_source_catalog().fetch_all(), [])
         self.assertTrue(result.position_strength.passed)
         self.assertGreater(len(result.post.body), 0)
+        self.assertEqual(result.provenance.engine_used, "deterministic")
+        self.assertTrue(result.provenance.fallback_used)
+        self.assertEqual(result.provenance.primary_engine, "FailingEngine")
+        self.assertEqual(result.provenance.fallback_reason, "RuntimeError: llm unavailable")
+
+    def test_deterministic_theme_matching_prefers_relevant_supporting_papers(self) -> None:
+        papers = [
+            Paper(
+                title="Optimal consumption and control with energy efficiency adoption",
+                authors=["A. Economist"],
+                abstract="A paper about energy investment and control under uncertainty.",
+                source="arXiv",
+                url="https://example.org/energy-control",
+                published_on=date(2026, 5, 1),
+                tier=1,
+            ),
+            Paper(
+                title="Agent workflow approvals need deterministic boundaries",
+                authors=["B. Architect"],
+                abstract="Enterprise agent workflow reliability depends on approvals, control points, and bounded handoffs.",
+                source="Semantic Scholar",
+                url="https://example.org/agent-boundaries",
+                published_on=date(2026, 5, 1),
+                tier=1,
+            ),
+        ]
+
+        candidates = build_theme_candidates(papers, [])
+        selected = next(
+            candidate
+            for candidate in candidates
+            if candidate.theme == "Agents need deterministic boundaries, not more autonomy"
+        )
+
+        supporting_titles = [paper.title for paper in selected.supporting_papers]
+        self.assertEqual(
+            supporting_titles[0],
+            "Agent workflow approvals need deterministic boundaries",
+        )
+        self.assertNotIn(
+            "Optimal consumption and control with energy efficiency adoption",
+            supporting_titles,
+        )
+
+    def test_theme_without_explicit_tradeoff_is_not_hard_rejected(self) -> None:
+        candidate = ThemeCandidate(
+            theme="Control surfaces matter more than explanations",
+            why_selected="This theme challenges how enterprises justify AI behavior.",
+            why_debatable="Architects disagree on whether explanation or control is the more important design surface.",
+            supporting_papers=[
+                Paper(
+                    title="Control surfaces for enterprise AI operations",
+                    authors=["A. Researcher"],
+                    abstract="A paper about operational control surfaces for AI systems.",
+                    source="OpenAlex",
+                    url="https://example.org/control-surfaces",
+                    published_on=date(2026, 5, 1),
+                    tier=1,
+                )
+            ],
+            common_belief="Explainability is the main path to trustworthy AI.",
+            contrarian_view="Treat trust as an operating control problem with enforceable system boundaries.",
+            why_wrong="That is wrong because explanations do not reliably constrain system behavior.",
+            recommendation="Treat trust as an operating control surface with explicit boundaries and audit paths.",
+            enterprise_implication="This gives architects a different mental model for governable AI operations.",
+            novelty_score=5,
+            relevance_score=4,
+            debate_score=4,
+            contrarian_score=4,
+            decisiveness_score=4,
+            tension_score=4,
+            specificity_score=4,
+            typical_architect_agrees=False,
+            strong_architect_debates=True,
+            rejection_reason=None,
+        )
+
+        reasons = theme_debate_filter_reasons(candidate)
+        self.assertNotIn("Theme does not force a trade-off or rethinking.", reasons)
+
+    def test_missing_paradigm_signal_is_not_a_hard_theme_filter(self) -> None:
+        candidate = ThemeCandidate(
+            theme="Evaluation discipline matters in enterprise delivery",
+            why_selected="This theme challenges scale-first rollout habits.",
+            why_debatable="Architects still disagree on how early evaluation should shape release decisions.",
+            supporting_papers=[
+                Paper(
+                    title="Evaluation discipline for enterprise AI delivery",
+                    authors=["A. Researcher"],
+                    abstract="A paper about evaluation discipline and delivery sequencing for enterprise AI.",
+                    source="OpenAlex",
+                    url="https://example.org/evaluation-discipline",
+                    published_on=date(2026, 5, 1),
+                    tier=1,
+                )
+            ],
+            common_belief="Teams can expand usage before they formalize evaluation.",
+            contrarian_view="Evaluation discipline should shape release decisions early.",
+            why_wrong="That is wrong because usage growth is not evidence of dependable quality.",
+            recommendation="Define release criteria and apply them early in delivery.",
+            enterprise_implication="This improves delivery quality and operational confidence.",
+            novelty_score=5,
+            relevance_score=4,
+            debate_score=4,
+            contrarian_score=4,
+            decisiveness_score=4,
+            tension_score=4,
+            specificity_score=4,
+            typical_architect_agrees=False,
+            strong_architect_debates=True,
+            rejection_reason=None,
+        )
+
+        reasons = theme_debate_filter_reasons(candidate)
+        self.assertNotIn(
+            "Theme does not introduce a structural shift, problem reframe, or different mental model.",
+            reasons,
+        )
+
+    def test_missing_different_mental_model_is_not_a_hard_position_filter(self) -> None:
+        candidate = ThemeCandidate(
+            theme="Evaluation discipline matters in enterprise delivery",
+            why_selected="This theme challenges scale-first rollout habits.",
+            why_debatable="Architects still disagree on how early evaluation should shape release decisions.",
+            supporting_papers=[
+                Paper(
+                    title="Evaluation discipline for enterprise AI delivery",
+                    authors=["A. Researcher"],
+                    abstract="A paper about evaluation discipline and delivery sequencing for enterprise AI.",
+                    source="OpenAlex",
+                    url="https://example.org/evaluation-discipline",
+                    published_on=date(2026, 5, 1),
+                    tier=1,
+                )
+            ],
+            common_belief="Teams can expand usage before they formalize evaluation.",
+            contrarian_view="Evaluation discipline should shape release decisions early.",
+            why_wrong="That is wrong because usage growth is not evidence of dependable quality.",
+            recommendation="Define release criteria and apply them early in delivery.",
+            enterprise_implication="This improves delivery quality and operational confidence.",
+            novelty_score=5,
+            relevance_score=4,
+            debate_score=4,
+            contrarian_score=4,
+            decisiveness_score=4,
+            tension_score=4,
+            specificity_score=4,
+            typical_architect_agrees=False,
+            strong_architect_debates=True,
+            rejection_reason=None,
+        )
+
+        strength = assess_position_strength(candidate)
+        self.assertNotIn(
+            "Position did not introduce a different mental model.",
+            strength.reasons,
+        )
+
+    def test_rank_papers_excludes_unrelated_remainder_items(self) -> None:
+        selected = ThemeCandidate(
+            theme="Shift from deterministic language model outputs to understanding refusal mechanisms",
+            why_selected="Refusal behavior is the relevant enterprise signal.",
+            why_debatable="Architects debate whether refusal is alignment noise or a controllable behavior surface.",
+            supporting_papers=[
+                Paper(
+                    title="Refusal in Language Models Is Mediated by a Single Direction",
+                    authors=["A. Researcher"],
+                    abstract="A paper about refusal behavior in language models.",
+                    source="Hacker News",
+                    url="https://example.org/refusal",
+                    published_on=date(2026, 5, 2),
+                    tier=3,
+                )
+            ],
+            common_belief="Model outputs are mostly deterministic if prompts are stable.",
+            contrarian_view="Refusal behavior is a separate control surface that needs to be understood directly.",
+            why_wrong="That is wrong because refusals emerge through distinct mechanisms that operators can misread.",
+            recommendation="Treat refusal as a governed behavioral signal instead of a prompt accident.",
+            enterprise_implication="This improves how enterprises reason about safety and control.",
+            novelty_score=5,
+            relevance_score=5,
+            debate_score=4,
+            contrarian_score=4,
+            decisiveness_score=4,
+            tension_score=4,
+            specificity_score=4,
+            typical_architect_agrees=False,
+            strong_architect_debates=True,
+            rejection_reason=None,
+        )
+        unrelated = Paper(
+            title="Barman – Backup and Recovery Manager for PostgreSQL",
+            authors=["HN Discussion"],
+            abstract="A discussion about PostgreSQL backup tooling.",
+            source="Hacker News",
+            url="https://example.org/barman",
+            published_on=date(2026, 4, 29),
+            tier=3,
+        )
+        ranked = rank_papers(
+            [selected.supporting_papers[0], unrelated],
+            selected_theme=selected,
+            alternative_themes=[],
+        )
+        ranked_titles = [paper.title for paper in ranked]
+        self.assertIn(
+            "Refusal in Language Models Is Mediated by a Single Direction",
+            ranked_titles,
+        )
+        self.assertNotIn(
+            "Barman – Backup and Recovery Manager for PostgreSQL",
+            ranked_titles,
+        )
 
     def test_fallback_synthesis_fails_closed_on_validation_errors(self) -> None:
         class InvalidEngine:
@@ -610,7 +828,7 @@ class SynthesisEngineTests(unittest.TestCase):
                         }
                         """
                     )
-                if self.calls == 3:
+                if self.calls == 2:
                     return FakeResponse(
                         """
                         {
@@ -641,8 +859,121 @@ class SynthesisEngineTests(unittest.TestCase):
         engine = OpenAISynthesisEngine()
         engine.model = FakeModel()
         engine.max_theme_attempts = 2
+        engine.max_position_attempts = 1
         result = engine.synthesize(sample_source_catalog().fetch_all(), [])
-        self.assertEqual(result.selected_theme.theme, "Agents need deterministic boundaries")
+        self.assertEqual(result.selected_theme.theme, "Theme A")
+
+    @patch.dict("os.environ", {"OPENAI_API_KEY": "test-key"})
+    def test_openai_synthesis_retries_with_paradigm_elevation_guidance(self) -> None:
+        class FakeResponse:
+            def __init__(self, content: str) -> None:
+                self.content = content
+
+        class FakeModel:
+            def __init__(self) -> None:
+                self.calls = 0
+                self.prompts: list[str] = []
+
+            def invoke(self, prompt: str) -> FakeResponse:
+                self.prompts.append(prompt)
+                self.calls += 1
+                if self.calls == 1:
+                    return FakeResponse(
+                        """
+                        {
+                          "themes": [
+                            {
+                              "theme": "Clinical AI evaluation methods",
+                              "why_selected": "This paper is about evaluation methods.",
+                              "why_debatable": "Some teams prefer different metrics.",
+                              "common_belief": "Better evaluation methods improve clinical AI.",
+                              "contrarian_view": "Case-specific evaluation is helpful.",
+                              "why_wrong": "Generic metrics miss some context.",
+                              "recommendation": "Use more specific metrics.",
+                              "enterprise_implication": "This improves evaluation quality.",
+                              "novelty_score": 3,
+                              "relevance_score": 5,
+                              "debate_score": 2,
+                              "contrarian_score": 2,
+                              "decisiveness_score": 2,
+                              "tension_score": 2,
+                              "specificity_score": 3,
+                              "typical_architect_agrees": true,
+                              "strong_architect_debates": false,
+                              "rejection_reason": "incremental",
+                              "supporting_paper_urls": ["https://example.org/papers/agent-reliability"]
+                            }
+                          ]
+                        }
+                        """
+                    )
+                if self.calls == 2:
+                    return FakeResponse(
+                        """
+                        {
+                          "common_belief": "Most enterprises still evaluate clinical AI as if model scores are the main unit of quality.",
+                          "why_wrong": "That is the wrong problem framing because workflow behavior, escalation, and control points determine real clinical failure.",
+                          "contrarian_view": "The real issue is system behavior across workflow context, not isolated model quality.",
+                          "recommendation": "Design evaluation around workflow control gates and escalation behavior.",
+                          "enterprise_implication": "This reframes clinical AI evaluation into a system control problem.",
+                          "contrarian_score": 5,
+                          "decisiveness_score": 5,
+                          "tension_score": 4,
+                          "specificity_score": 5
+                        }
+                        """
+                    )
+                return FakeResponse(
+                    """
+                    {
+                      "post_paragraphs": [
+                        "Clinical AI is solving the wrong evaluation problem.",
+                        "Most enterprises measure model quality when the real failure sits in workflow behavior and control.",
+                        "Evaluation should gate system behavior, not just score outputs."
+                      ]
+                    }
+                    """
+                )
+
+        papers = [
+            Paper(
+                title="Case-specific evaluation improves clinical AI assessment",
+                authors=["A. Researcher"],
+                abstract="Clinical AI teams are shifting toward case-specific evaluation.",
+                source="Scenario",
+                url="https://example.org/papers/agent-reliability",
+                published_on=date(2026, 4, 20),
+                tier=1,
+            ),
+            Paper(
+                title="Clinical AI metrics need clinician-authored scoring",
+                authors=["B. Researcher"],
+                abstract="Researchers propose richer clinician-authored metrics.",
+                source="Scenario",
+                url="https://example.org/papers/evaluation-gates",
+                published_on=date(2026, 4, 21),
+                tier=1,
+            ),
+            Paper(
+                title="Case-level clinical evaluation exposes hidden model failures",
+                authors=["C. Researcher"],
+                abstract="Case-level evaluation identifies workflow-specific failures.",
+                source="Scenario",
+                url="https://example.org/papers/memory-governance",
+                published_on=date(2026, 4, 22),
+                tier=1,
+            ),
+        ]
+
+        engine = OpenAISynthesisEngine()
+        engine.model = FakeModel()
+        engine.max_theme_attempts = 2
+        result = engine.synthesize(papers, [])
+        self.assertEqual(
+            result.selected_theme.theme,
+            "Clinical AI evaluation methods",
+        )
+        self.assertEqual(engine.model.calls, 3)
 
     @patch.dict("os.environ", {"OPENAI_API_KEY": "test-key"})
     def test_openai_synthesis_ranks_multiple_valid_candidates(self) -> None:
@@ -762,7 +1093,12 @@ class SynthesisEngineTests(unittest.TestCase):
         result = engine.synthesize(sample_source_catalog().fetch_all(), [])
         self.assertEqual(result.selected_theme.theme, "Evaluation before scale")
         self.assertIsNone(result.selected_theme.rejection_reason)
+        self.assertGreaterEqual(len(result.alternative_themes), 1)
         self.assertIn(
+            "Agents need deterministic boundaries",
+            {candidate.theme for candidate in result.alternative_themes},
+        )
+        self.assertNotIn(
             "Another theme had a stronger weighted selection score.",
             {candidate.rejection_reason for candidate in result.rejected_themes},
         )
@@ -929,8 +1265,14 @@ class PipelineRunnerTests(unittest.TestCase):
             result = runner.run(used_on=date(2026, 4, 27))
 
             self.assertTrue(result.position_strength.passed)
-            self.assertTrue(result.evaluation.passed)
-            self.assertGreaterEqual(len(result.rejected_themes), 2)
+            self.assertGreaterEqual(result.evaluation.position_strength, 3)
+            self.assertGreaterEqual(len(result.top_papers), 1)
+            self.assertGreaterEqual(len(result.rejected_themes), 1)
+            self.assertIn(
+                "Enterprise relevance below threshold.",
+                {candidate.rejection_reason for candidate in result.rejected_themes},
+            )
+            self.assertGreaterEqual(len(result.alternative_themes), 1)
             self.assertTrue(Path(result.storage_path).exists())
             self.assertIsNotNone(result.run_log_path)
             self.assertTrue(Path(result.run_log_path).exists())
@@ -938,14 +1280,18 @@ class PipelineRunnerTests(unittest.TestCase):
             self.assertEqual(result.state.run_log_path, result.run_log_path)
             self.assertEqual(result.state.storage_path, result.storage_path)
             self.assertEqual(result.state.selected_theme.theme, result.selected_theme.theme)
-            self.assertGreaterEqual(len(result.state.rejected_themes), 2)
+            self.assertEqual(len(result.state.top_papers), len(result.top_papers))
+            self.assertGreaterEqual(len(result.state.alternative_themes), 1)
+            self.assertGreaterEqual(len(result.state.rejected_themes), 1)
             state_payload = result.state.as_dict()
             self.assertEqual(
                 set(state_payload.keys()),
                 {
                     "paper_pool",
+                    "top_papers",
                     "candidate_themes",
                     "selected_theme",
+                    "alternative_themes",
                     "rejected_themes",
                     "position",
                     "post",
@@ -962,6 +1308,11 @@ class PipelineRunnerTests(unittest.TestCase):
             self.assertTrue(result.lead_paper_summary.url.startswith("https://"))
 
             research_note = Path(result.storage_path).read_text()
+            self.assertIn("## Top 5 Papers", research_note)
+            self.assertIn("- Citation: [", research_note)
+            self.assertIn("- Summary: ", research_note)
+            self.assertIn("\n---\n", research_note)
+            self.assertIn("## Other Viable Themes", research_note)
             self.assertIn("## Lead Paper Summary", research_note)
             self.assertIn("## Reference Links", research_note)
             self.assertIn("](", research_note)
@@ -974,11 +1325,110 @@ class PipelineRunnerTests(unittest.TestCase):
             self.assertFalse(discord_delivery.sent)
             self.assertEqual(email_delivery.status, "draft only")
             self.assertEqual(discord_delivery.status, "draft only")
-            self.assertIn("To: emsyd888@gmail.com", Path(email_delivery.path).read_text())
-            self.assertIn("Channel: Weekflow", Path(discord_delivery.path).read_text())
+            email_text = Path(email_delivery.path).read_text()
+            discord_text = Path(discord_delivery.path).read_text()
+            self.assertIn("To: emsyd888@gmail.com", email_text)
+            self.assertIn("Citation: https://", email_text)
+            self.assertIn("Summary: ", email_text)
+            self.assertIn("\n---\n", email_text)
+            self.assertIn("Channel: Weekflow", discord_text)
+            self.assertIn("Citation: https://", discord_text)
+            self.assertIn("Summary: ", discord_text)
+            self.assertIn("\n---\n", discord_text)
             reasoning_memory_path = Path(tmpdir) / "memory" / "reasoning_memory.json"
             self.assertTrue(reasoning_memory_path.exists())
             self.assertIn('"candidate_themes"', reasoning_memory_path.read_text())
+            self.assertIn('"status": "alternative"', reasoning_memory_path.read_text())
+
+    def test_pipeline_logs_synthesis_fallback_provenance(self) -> None:
+        class FailingEngine:
+            def synthesize(self, papers: list[Paper], recent_themes: list[str]) -> SynthesisResult:
+                raise RuntimeError("llm unavailable")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            runner = PipelineRunner(
+                root_dir=Path(tmpdir),
+                source_catalog=sample_source_catalog(),
+                synthesis_engine=FallbackSynthesisEngine(
+                    FailingEngine(),
+                    DeterministicSynthesisEngine(),
+                ),
+                research_dir=Path(tmpdir) / "research",
+            )
+            result = runner.run(used_on=date(2026, 5, 1))
+
+            self.assertIsNotNone(result.state.synthesis_provenance)
+            assert result.state.synthesis_provenance is not None
+            self.assertTrue(result.state.synthesis_provenance.fallback_used)
+            self.assertEqual(result.state.synthesis_provenance.engine_used, "deterministic")
+            self.assertEqual(result.state.synthesis_provenance.primary_engine, "FailingEngine")
+            self.assertEqual(
+                result.state.synthesis_provenance.fallback_reason,
+                "RuntimeError: llm unavailable",
+            )
+
+            run_log_text = Path(result.run_log_path).read_text()
+            self.assertIn('"synthesis_provenance"', run_log_text)
+            self.assertIn('"fallback_used": true', run_log_text)
+            self.assertIn('"fallback_reason": "RuntimeError: llm unavailable"', run_log_text)
+
+            research_note = Path(result.storage_path).read_text()
+            self.assertIn("## Synthesis Provenance", research_note)
+            self.assertIn("- Fallback used: True", research_note)
+            self.assertIn("- Fallback reason: RuntimeError: llm unavailable", research_note)
+
+    def test_pipeline_blocks_live_delivery_when_synthesis_falls_back(self) -> None:
+        class FailingEngine:
+            def synthesize(self, papers: list[Paper], recent_themes: list[str]) -> SynthesisResult:
+                raise RuntimeError("llm unavailable")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            runner = PipelineRunner(
+                root_dir=Path(tmpdir),
+                source_catalog=sample_source_catalog(),
+                synthesis_engine=FallbackSynthesisEngine(
+                    FailingEngine(),
+                    DeterministicSynthesisEngine(),
+                ),
+                research_dir=Path(tmpdir) / "research",
+            )
+            result = runner.run(
+                used_on=date(2026, 5, 1),
+                send_live_email=True,
+                send_live_discord=True,
+            )
+
+            email_delivery = next(delivery for delivery in result.deliveries if delivery.channel == "email")
+            discord_delivery = next(delivery for delivery in result.deliveries if delivery.channel == "discord")
+            self.assertFalse(email_delivery.sent)
+            self.assertFalse(discord_delivery.sent)
+            self.assertEqual(email_delivery.status, "blocked: synthesis fallback used")
+            self.assertEqual(discord_delivery.status, "blocked: synthesis fallback used")
+
+
+class MainOutputTests(unittest.TestCase):
+    def test_render_result_output_uses_sections_without_duplicate_post_dump(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            runner = PipelineRunner(
+                root_dir=Path(tmpdir),
+                source_catalog=sample_source_catalog(),
+                synthesis_engine=DeterministicSynthesisEngine(),
+                research_dir=Path(tmpdir) / "research",
+            )
+            result = runner.run(used_on=date(2026, 4, 27))
+            rendered = cli_main._render_result_output(result)
+
+            self.assertIn("Run Summary", rendered)
+            self.assertIn("Top 5 Papers", rendered)
+            self.assertIn("LinkedIn Draft", rendered)
+            self.assertIn("Delivery", rendered)
+            self.assertIn("Citation: https://", rendered)
+            self.assertIn("Summary: ", rendered)
+            self.assertIn("-" * 72, rendered)
+            self.assertEqual(rendered.count(result.post.body), 1)
+            self.assertEqual(rendered.count(result.storage_path), 1)
+            self.assertNotIn('"state"', rendered)
+            self.assertIn("=" * 72, rendered)
 
     def test_pipeline_rejects_when_all_papers_are_already_seen(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

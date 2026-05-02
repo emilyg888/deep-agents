@@ -223,6 +223,29 @@ def _paper_text(paper: Paper) -> str:
     return f"{paper.title} {paper.abstract}".lower()
 
 
+def _paper_match_metrics(blueprint: ThemeBlueprint, paper: Paper) -> tuple[int, int, int, int]:
+    title_text = paper.title.lower()
+    abstract_text = paper.abstract.lower()
+    title_matches = sum(1 for keyword in blueprint.keywords if keyword in title_text)
+    abstract_matches = sum(1 for keyword in blueprint.keywords if keyword in abstract_text)
+    distinct_matches = sum(
+        1
+        for keyword in blueprint.keywords
+        if keyword in title_text or keyword in abstract_text
+    )
+    match_score = 3 * title_matches + abstract_matches
+    return title_matches, abstract_matches, distinct_matches, match_score
+
+
+def _paper_is_relevant_to_blueprint(blueprint: ThemeBlueprint, paper: Paper) -> tuple[bool, int]:
+    title_matches, abstract_matches, distinct_matches, match_score = _paper_match_metrics(
+        blueprint,
+        paper,
+    )
+    is_relevant = distinct_matches >= 2 and (title_matches >= 1 or abstract_matches >= 2)
+    return is_relevant, match_score
+
+
 def _has_pattern(text: str, patterns: tuple[str, ...]) -> bool:
     normalized = text.lower()
     return any(pattern in normalized for pattern in patterns)
@@ -256,10 +279,6 @@ def _position_prefilter_reasons(candidate: ThemeCandidate) -> list[str]:
         reasons.append("Position aligns with current enterprise direction.")
     if not position_reframes_problem(candidate):
         reasons.append("Position did not reframe the problem.")
-    if not position_introduces_different_mental_model(candidate):
-        reasons.append("Position did not introduce a different mental model.")
-    if not theme_would_make_senior_architect_uncomfortable(candidate):
-        reasons.append("Position would not make a senior architect uncomfortable.")
     return reasons
 
 
@@ -339,22 +358,54 @@ def theme_would_make_senior_architect_uncomfortable(candidate: ThemeCandidate) -
     )
 
 
+def theme_has_paradigm_signal(candidate: ThemeCandidate) -> bool:
+    """Return True when the theme is more than a topic label."""
+    return (
+        theme_has_structural_shift(candidate)
+        or position_reframes_problem(candidate)
+        or position_introduces_different_mental_model(candidate)
+    )
+
+
+def theme_is_debatable_enough(candidate: ThemeCandidate) -> bool:
+    # Separate the minimum debate threshold from the stronger editorial
+    # preference for discomfort so narrow paper pools do not always collapse.
+    return (
+        candidate.debate_score >= 3
+        and candidate.contrarian_score >= 3
+        and candidate.tension_score >= 3
+        and candidate.strong_architect_debates
+    )
+
+
+def theme_has_debate_potential(candidate: ThemeCandidate) -> bool:
+    """Relaxed acceptance gate for LLM-generated themes."""
+    return (
+        candidate.debate_score >= 3
+        and candidate.relevance_score >= 3
+        and candidate.specificity_score >= 3
+        and (
+            candidate.strong_architect_debates
+            or candidate.contrarian_score >= 3
+            or candidate.tension_score >= 3
+        )
+    )
+
+
 def theme_debate_filter_reasons(candidate: ThemeCandidate) -> list[str]:
     reasons: list[str] = []
     if candidate.debate_score < 3:
         reasons.append("Debate score below threshold.")
-    if candidate.typical_architect_agrees:
-        reasons.append("Theme aligns with current enterprise practice.")
+    if candidate.relevance_score < 3:
+        reasons.append("Enterprise relevance below threshold.")
+    if candidate.specificity_score < 3:
+        reasons.append("Specificity below threshold.")
     if theme_aligns_with_current_enterprise_trends(candidate):
         reasons.append("Theme aligns with current industry direction.")
     if theme_is_generic_importance_claim(candidate):
         reasons.append('Theme reduces to "X is important and should be done more."')
-    if not theme_has_structural_shift(candidate):
-        reasons.append("Theme does not introduce a structural shift.")
-    if not theme_forces_tradeoff(candidate):
-        reasons.append("Theme does not force a trade-off or rethinking.")
-    if not theme_would_make_senior_architect_uncomfortable(candidate):
-        reasons.append("Theme would not make a senior architect uncomfortable.")
+    if not theme_has_debate_potential(candidate):
+        reasons.append("Theme does not have enough debate potential for a senior architect audience.")
     return list(dict.fromkeys(reasons))
 
 
@@ -403,30 +454,34 @@ def build_theme_candidates(
     ranked_candidates: list[tuple[int, ThemeCandidate]] = []
 
     for blueprint in THEME_LIBRARY:
-        matched_papers: list[Paper] = []
+        matched_papers_with_scores: list[tuple[int, Paper]] = []
         weighted_score = 0
         covered_sources: set[str] = set()
         for paper in papers:
-            text = _paper_text(paper)
-            matches = sum(1 for keyword in blueprint.keywords if keyword in text)
-            if matches <= 0:
+            is_relevant, match_score = _paper_is_relevant_to_blueprint(blueprint, paper)
+            if not is_relevant:
                 continue
-            matched_papers.append(paper)
+            matched_papers_with_scores.append((match_score, paper))
             covered_sources.add(paper.source)
-            weighted_score += matches + max(1, 4 - paper.tier)
+            weighted_score += match_score + max(1, 4 - paper.tier)
 
-        if not matched_papers:
+        if not matched_papers_with_scores:
             continue
 
+        matched_papers_with_scores.sort(
+            key=lambda item: (item[0], -item[1].tier, item[1].published_on.toordinal()),
+            reverse=True,
+        )
+        matched_papers = [paper for _, paper in matched_papers_with_scores]
         weighted_score += len(covered_sources)
         novelty_score = 5 if blueprint.theme.lower() not in recent_normalized else 1
-        relevance_score = min(5, max(2, len(matched_papers) + len(covered_sources) - 1))
+        relevance_floor = 3 if matched_papers_with_scores[0][0] >= 6 else 2
+        relevance_score = min(
+            5,
+            max(relevance_floor, len(matched_papers) + len(covered_sources) - 1),
+        )
         typical_architect_agrees = blueprint.debate_score <= 2
         strong_architect_debates = blueprint.debate_score >= 4
-
-        rejection_reason = None
-        if blueprint.theme.lower() in recent_normalized:
-            rejection_reason = "Theme used in the last 6 months."
 
         candidate = ThemeCandidate(
             theme=blueprint.theme,
@@ -447,28 +502,33 @@ def build_theme_candidates(
             specificity_score=blueprint.specificity_score,
             typical_architect_agrees=typical_architect_agrees,
             strong_architect_debates=strong_architect_debates,
-            rejection_reason=rejection_reason,
+            rejection_reason=None,
         )
-        if candidate.rejection_reason is None:
-            debate_filter_reasons = theme_debate_filter_reasons(candidate)
-            if debate_filter_reasons:
-                candidate = replace(candidate, rejection_reason=debate_filter_reasons[0])
         ranked_candidates.append((weighted_score, candidate))
 
     ranked_candidates.sort(key=lambda item: item[0], reverse=True)
     return [candidate for _, candidate in ranked_candidates[:max_candidates]]
 
 
-def select_theme(candidates: list[ThemeCandidate]) -> tuple[ThemeCandidate, list[ThemeCandidate]]:
-    accepted = [
-        candidate
-        for candidate in candidates
-        if candidate.rejection_reason is None and not theme_debate_filter_reasons(candidate)
-    ]
-    if not accepted:
-        raise ValueError("No debatable theme survived novelty and debate filtering.")
+def select_theme(
+    candidates: list[ThemeCandidate],
+) -> tuple[ThemeCandidate, list[ThemeCandidate], list[ThemeCandidate]]:
+    if not candidates:
+        raise ValueError("No candidate themes were available for ranking.")
 
-    accepted.sort(
+    eligible = [
+        replace(candidate, rejection_reason=None)
+        for candidate in candidates
+        if candidate.relevance_score >= 3
+    ]
+    if not eligible:
+        raise ValueError("No enterprise-relevant theme was available for ranking.")
+
+    ranked = [
+        replace(candidate, rejection_reason=None)
+        for candidate in eligible
+    ]
+    ranked.sort(
         key=lambda candidate: (
             candidate.debate_score,
             candidate.novelty_score,
@@ -477,24 +537,18 @@ def select_theme(candidates: list[ThemeCandidate]) -> tuple[ThemeCandidate, list
         ),
         reverse=True,
     )
-    selected = accepted[0]
-    rejected: list[ThemeCandidate] = []
-    for candidate in candidates:
-        if candidate.theme == selected.theme:
-            continue
-        if candidate.rejection_reason is not None:
-            rejected.append(candidate)
-        else:
-            reasons = theme_debate_filter_reasons(candidate)
-            rejected.append(
-                replace(
-                    candidate,
-                    rejection_reason=(
-                        reasons[0] if reasons else "Another theme had stronger debate and novelty scores."
-                    ),
-                )
-            )
-    return selected, rejected
+    selected = ranked[0]
+    alternatives = [
+        replace(candidate, rejection_reason=None)
+        for candidate in ranked
+        if candidate.theme != selected.theme
+    ]
+    rejected = [
+        replace(candidate, rejection_reason="Enterprise relevance below threshold.")
+        for candidate in candidates
+        if candidate.relevance_score < 3
+    ]
+    return selected, alternatives, rejected
 
 
 def build_position(candidate: ThemeCandidate) -> Position:

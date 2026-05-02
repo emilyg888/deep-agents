@@ -13,10 +13,10 @@ from .heuristics import (
     position_is_incremental,
     position_reframes_problem,
     theme_aligns_with_current_enterprise_trends,
+    theme_has_debate_potential,
+    theme_has_paradigm_signal,
     theme_debate_filter_reasons,
-    theme_forces_tradeoff,
     theme_is_generic_importance_claim,
-    theme_would_make_senior_architect_uncomfortable,
 )
 from .models import EvaluationResult, Position, PositionStrengthResult, PostDraft, ThemeCandidate
 
@@ -101,12 +101,12 @@ class DeterministicEvaluationEngine:
             position_strength_score = min(position_strength_score, 2)
             insight = min(insight, 2)
             reasons.append('Theme reduces to "X is important and should be done more."')
-        if not theme_would_make_senior_architect_uncomfortable(theme):
+        if not theme_has_debate_potential(theme):
             position_strength_score = min(position_strength_score, 2)
-            reasons.append("Theme would not make a senior architect uncomfortable.")
-        if not theme_forces_tradeoff(theme):
-            position_strength_score = min(position_strength_score, 2)
-            reasons.append("Theme does not force a trade-off or rethinking.")
+            reasons.append("Theme does not have enough debate potential.")
+        if not theme_has_paradigm_signal(theme):
+            position_strength_score = min(position_strength_score, 3)
+            insight = min(insight, 3)
         if not position_reframes_problem(theme):
             position_strength_score = min(position_strength_score, 3)
             insight = min(insight, 3)
@@ -116,7 +116,6 @@ class DeterministicEvaluationEngine:
             insight = max(insight, 4)
         if not position_introduces_different_mental_model(theme):
             position_strength_score = min(position_strength_score, 3)
-            reasons.append("Position does not introduce a different mental model.")
         debate_filter_reasons = theme_debate_filter_reasons(theme)
         if debate_filter_reasons:
             reasons.extend(debate_filter_reasons)
@@ -193,7 +192,7 @@ Rules:
 - Use this position-strength rubric:
   1. Contrarian strength: does it clearly challenge current practice?
   2. Decisiveness: is a clear stance taken?
-  3. Tension: would a strong architect disagree?
+  3. Tension: would a strong architect debate the implication or trade-off?
   4. Specificity: is it tied to system or architecture, not generic AI?
 - Reject if:
   - the position improves an existing approach instead of challenging it
@@ -206,10 +205,9 @@ Rules:
 - Hard rules:
   - if there is no explicit "current practice is wrong" idea, position_strength must be 1
   - if the tone is neutral, position_strength must be 2 or lower
-  - if there is no disagreement potential, position_strength must be 2 or lower
+  - if there is no debate potential, position_strength must be 2 or lower
   - if the idea aligns with current enterprise trends, position_strength must be 3 or lower and insight must be 3 or lower
   - if the theme can be summarized as "X is important and should be done more", position_strength must be 2 or lower and insight must be 2 or lower
-  - if a senior architect would not feel discomfort, position_strength must be 2 or lower
   - if the position is incremental, position_strength must be 3 or lower
   - if the position reframes the problem, position_strength must be 4 or higher
 

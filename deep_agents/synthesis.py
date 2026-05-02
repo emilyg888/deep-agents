@@ -15,17 +15,27 @@ from .heuristics import (
     post_has_clear_wrong_statement,
     select_theme,
     theme_debate_filter_reasons,
+    theme_would_make_senior_architect_uncomfortable,
 )
-from .models import Paper, Position, PositionStrengthResult, PostDraft, ThemeCandidate
+from .models import (
+    Paper,
+    Position,
+    PositionStrengthResult,
+    PostDraft,
+    SynthesisProvenance,
+    ThemeCandidate,
+)
 
 
 @dataclass(frozen=True)
 class SynthesisResult:
     selected_theme: ThemeCandidate
+    alternative_themes: list[ThemeCandidate]
     rejected_themes: list[ThemeCandidate]
     position: Position
     position_strength: PositionStrengthResult
     post: PostDraft
+    provenance: SynthesisProvenance
 
 
 class SynthesisEngine(Protocol):
@@ -36,22 +46,21 @@ class SynthesisEngine(Protocol):
 class DeterministicSynthesisEngine:
     def synthesize(self, papers: list[Paper], recent_themes: list[str]) -> SynthesisResult:
         candidates = build_theme_candidates(papers, recent_themes)
-        if len(candidates) < 3:
-            raise ValueError("Could not extract 3 to 5 viable themes from the paper pool.")
+        if not candidates:
+            raise ValueError("Could not extract any viable themes from the paper pool.")
 
-        selected, rejected = select_theme(candidates)
+        selected, alternatives, rejected = select_theme(candidates)
         position = build_position(selected)
         position_strength = assess_position_strength(selected)
-        if not position_strength.passed:
-            raise ValueError("; ".join(position_strength.reasons))
-
         post = build_post(selected, position)
         return SynthesisResult(
             selected_theme=selected,
+            alternative_themes=alternatives,
             rejected_themes=rejected,
             position=position,
             position_strength=position_strength,
             post=post,
+            provenance=SynthesisProvenance(engine_used="deterministic"),
         )
 
 
@@ -99,8 +108,21 @@ def _selection_sort_key(candidate: ThemeCandidate) -> tuple[int, int, int, int, 
     )
 
 
-def _theme_is_valid(candidate: ThemeCandidate) -> bool:
-    return not theme_debate_filter_reasons(candidate)
+class ThemeGenerationRejected(ValueError):
+    """Raised when the LLM returns themes, but none pass deterministic gates."""
+
+
+def _candidate_rejection_report(candidates: list[ThemeCandidate]) -> str:
+    if not candidates:
+        return "No candidate themes returned."
+    lines: list[str] = []
+    for candidate in candidates:
+        reasons = theme_debate_filter_reasons(candidate)
+        if candidate.rejection_reason:
+            reasons.insert(0, candidate.rejection_reason)
+        reason_text = "; ".join(dict.fromkeys(reasons)) or "accepted"
+        lines.append(f"- {candidate.theme}: {reason_text}")
+    return "\n".join(lines)
 
 
 def _theme_selection_score(candidate: ThemeCandidate) -> int:
@@ -109,13 +131,33 @@ def _theme_selection_score(candidate: ThemeCandidate) -> int:
         + 3 * candidate.relevance_score
         + 2 * candidate.novelty_score
         + candidate.specificity_score
+        + (2 if theme_would_make_senior_architect_uncomfortable(candidate) else 0)
     )
 
 
-def _theme_count_bounds(paper_count: int) -> tuple[int, int]:
-    if paper_count <= 5:
-        return 2, 3
-    return 3, 5
+def _engine_name(engine: object) -> str:
+    if isinstance(engine, OpenAISynthesisEngine):
+        return "openai"
+    if isinstance(engine, DeterministicSynthesisEngine):
+        return "deterministic"
+    return engine.__class__.__name__
+
+
+THEME_ELEVATION_GUIDANCE = """
+Abstraction guidance:
+- Focus on shifts in thinking, not paper topics.
+- Prefer themes in the form: "Shift from X to Y" or "We are solving X, but the real issue is Y".
+
+Bad theme examples:
+- "Clinical AI evaluation methods"
+- "Explainable AI and user trust"
+- "RAG retrieval quality"
+
+Good theme examples:
+- "Shift from model-centric evaluation to system-behavior evaluation"
+- "Explainability is solving the wrong problem; control matters more than explanation"
+- "Retrieval is compensating for missing system structure"
+""".strip()
 
 
 class OpenAISynthesisEngine:
@@ -154,7 +196,10 @@ class OpenAISynthesisEngine:
             paper_context,
             recent_themes,
         )
-        selected, rejected = self._resolve_theme_selection(parsed_candidates, paper_context)
+        selected, alternatives, rejected = self._resolve_theme_selection(
+            parsed_candidates,
+            paper_context,
+        )
         selected, position_strength = self._build_position_with_retries(
             selected,
             paper_context,
@@ -163,10 +208,12 @@ class OpenAISynthesisEngine:
         post = self._build_post_with_retries(selected, paper_context)
         return SynthesisResult(
             selected_theme=selected,
+            alternative_themes=alternatives,
             rejected_themes=rejected,
             position=position,
             position_strength=position_strength,
             post=post,
+            provenance=SynthesisProvenance(engine_used="openai"),
         )
 
     def _generate_theme_candidates_with_retries(
@@ -175,7 +222,6 @@ class OpenAISynthesisEngine:
         paper_context: list[dict[str, object]],
         recent_themes: list[str],
     ) -> list[ThemeCandidate]:
-        min_themes, max_themes = _theme_count_bounds(len(paper_context))
         feedback: list[str] = []
         last_error: ValueError | None = None
         for attempt in range(1, self.max_theme_attempts + 1):
@@ -186,31 +232,42 @@ class OpenAISynthesisEngine:
                     recent_themes,
                     feedback=feedback,
                     attempt=attempt,
-                    min_themes=min_themes,
-                    max_themes=max_themes,
                 )
             except ValueError as exc:
                 feedback = [
                     str(exc),
-                    (
-                        f"If the topic is narrow, return {min_themes} strong paradigm themes "
-                        f"instead of forcing weak filler themes."
-                    ),
+                    "If the topic is narrow, return fewer themes instead of weak filler themes.",
+                    "Elevate the themes to paradigm-level insights. Focus on shifts in thinking, not topics. Use the form: 'Shift from X to Y'.",
                 ]
                 last_error = exc
                 continue
-            valid = [candidate for candidate in candidates if _theme_is_valid(candidate)]
-            if valid:
+            if not candidates:
+                feedback = [
+                    "No usable themes were returned.",
+                    "Extract broader patterns across the papers, but do not invent filler themes.",
+                    "Elevate the themes to paradigm-level insights. Focus on shifts in thinking, not topics. Use the form: 'Shift from X to Y'.",
+                ]
+                last_error = ValueError("No usable themes.")
+                continue
+            if candidates:
                 return candidates
-            feedback = [
-                "No candidate survived the deterministic filter.",
-                "At least one theme must challenge current enterprise practice, introduce a structural shift, and force architectural discomfort.",
-                (
-                    f"If the topic is narrow, return {min_themes} strong paradigm themes "
-                    f"instead of forcing weak filler themes."
-                ),
-            ]
-            last_error = ValueError("No theme survived deterministic filter.")
+            rejection_report = _candidate_rejection_report(candidates)
+            if len(candidates) < 2:
+                feedback = [
+                    "No paradigm-level themes survived and too few themes were returned.",
+                    "Extract broader patterns across the papers, but keep the themes paradigm-level.",
+                    "Elevate the themes to paradigm-level insights. Focus on shifts in thinking, not topics. Use the form: 'Shift from X to Y'.",
+                ]
+            else:
+                feedback = [
+                    "No themes survived the deterministic filter.",
+                    "At least one theme must challenge current practice enough to create debate, introduce a structural shift, problem reframe, or different mental model, and avoid generic importance claims.",
+                    "Elevate the themes to paradigm-level insights. Focus on shifts in thinking, not topics. Use the form: 'Shift from X to Y'.",
+                ]
+            last_error = ThemeGenerationRejected(
+                "No paradigm-level themes survived deterministic filtering.\n"
+                f"{rejection_report}"
+            )
         if last_error is not None:
             raise last_error
         raise ValueError("Theme generation rejected.")
@@ -223,8 +280,6 @@ class OpenAISynthesisEngine:
         *,
         feedback: list[str],
         attempt: int,
-        min_themes: int,
-        max_themes: int,
     ) -> list[ThemeCandidate]:
         revision_feedback = ""
         if feedback:
@@ -238,7 +293,7 @@ Revise the theme list to fix every listed failure. Output only corrected JSON.
 You are a senior enterprise AI architect.
 
 Given these papers:
-- extract {min_themes} to {max_themes} themes
+- identify UP TO 5 themes
 - classify each theme as either:
   A) Incremental improvement
      - improves current practice
@@ -247,7 +302,7 @@ Given these papers:
   B) Paradigm challenge
      - questions the underlying approach
      - reframes the problem
-     - would make experienced architects uncomfortable
+     - creates real architectural debate
 
 Reject all Incremental themes.
 Do NOT select a winner in code terms. Code will do the final selection.
@@ -277,22 +332,25 @@ Each themes item must contain:
 - supporting_paper_urls
 
 Rules:
-- Produce between {min_themes} and {max_themes} themes.
+- Produce between 1 and 5 themes when meaningful.
+- It is acceptable to return fewer themes if only a small number are meaningful.
+- Do NOT invent weak or filler themes to meet a quota.
 - rejection_reason is optional metadata. Code will not use it for final selection.
 - It is acceptable if your theme list is not fully self-consistent; code will enforce invariants downstream.
 - All score fields must be integers on a 1 to 5 scale.
 - Boolean fields must be JSON booleans when possible.
 - supporting_paper_urls must reference the supplied papers exactly by URL.
 - Return JSON only. No markdown.
-- Reject the theme if it aligns with current industry direction.
-- Reject the theme if it is regulator-consistent but not architecturally challenging.
-- Reject the theme if a senior architect could agree with it without discomfort.
-- Select only themes that challenge current enterprise practice, introduce a structural shift, and force a trade-off or rethinking.
-- Ask yourself: "Would this make a senior architect uncomfortable?" If no, set debate_score to 2 or lower and include a rejection_reason.
+- Reject the theme if it is only a generic importance claim, for example: "X is important and should be improved."
+- Reject the theme if it is regulator-consistent but has no architectural consequence.
+- Select themes that challenge current practice enough to create debate, introduce a structural shift, problem reframe, or different mental model.
+- Architectural discomfort is useful but not mandatory. If a strong architect may agree but would still debate the implementation trade-off, keep the theme and set strong_architect_debates=true.
 - Reject any theme that can be summarized as: "X is important and should be done more."
 - For paradigm themes, why_debatable must explain why the theme is a paradigm challenge.
 - For rejected themes, rejection_reason must explicitly label the theme as incremental or weak.
-- If the topic is narrow, it is better to return {min_themes} strong paradigm themes than {max_themes} weak ones.
+- If the topic is narrow, it is better to return 1 or 2 strong paradigm themes than weak filler themes.
+
+{THEME_ELEVATION_GUIDANCE}
 
 Recent themes:
 {json.dumps(recent_themes, indent=2)}
@@ -309,10 +367,12 @@ Attempt: {attempt} of {self.max_theme_attempts}
         )
 
         raw_candidates = payload.get("themes", payload.get("candidate_themes", []))
-        if not isinstance(raw_candidates, list) or not min_themes <= len(raw_candidates) <= max_themes:
-            raise ValueError(
-                f"LLM did not return {min_themes} to {max_themes} candidate themes."
-            )
+        if not isinstance(raw_candidates, list):
+            raise ValueError("LLM did not return a theme list.")
+        if len(raw_candidates) == 0:
+            raise ValueError("No usable themes.")
+        if len(raw_candidates) > 5:
+            raise ValueError("LLM returned too many themes.")
 
         paper_lookup = {paper.url: paper for paper in papers}
         parsed_candidates: list[ThemeCandidate] = []
@@ -392,34 +452,37 @@ Attempt: {attempt} of {self.max_theme_attempts}
         self,
         candidates: list[ThemeCandidate],
         paper_context: list[dict[str, object]],
-    ) -> tuple[ThemeCandidate, list[ThemeCandidate]]:
+    ) -> tuple[ThemeCandidate, list[ThemeCandidate], list[ThemeCandidate]]:
         del paper_context
-        valid = [candidate for candidate in candidates if _theme_is_valid(candidate)]
-        if not valid:
-            raise ValueError("No theme survived deterministic filter.")
+        eligible = [
+            replace(candidate, rejection_reason=None)
+            for candidate in candidates
+            if candidate.relevance_score >= 3
+        ]
+        if not eligible:
+            raise ValueError("No enterprise-relevant theme was available for ranking.")
+
+        ranked = [
+            replace(candidate, rejection_reason=None)
+            for candidate in eligible
+        ]
         selected = sorted(
-            valid,
+            ranked,
             key=lambda candidate: (_theme_selection_score(candidate), _selection_sort_key(candidate)),
             reverse=True,
         )[0]
         selected = replace(selected, rejection_reason=None)
-
-        rejected: list[ThemeCandidate] = []
-        for candidate in candidates:
-            if candidate.theme == selected.theme:
-                continue
-            debate_filter_reasons = theme_debate_filter_reasons(candidate)
-            if not _theme_is_valid(candidate):
-                reason = candidate.rejection_reason or debate_filter_reasons[0]
-            else:
-                reason = candidate.rejection_reason or "Another theme had a stronger weighted selection score."
-            rejected.append(
-                replace(
-                    candidate,
-                    rejection_reason=reason,
-                )
-            )
-        return selected, rejected
+        alternatives = [
+            replace(candidate, rejection_reason=None)
+            for candidate in ranked
+            if candidate.theme != selected.theme
+        ]
+        rejected = [
+            replace(candidate, rejection_reason="Enterprise relevance below threshold.")
+            for candidate in candidates
+            if candidate.relevance_score < 3
+        ]
+        return selected, alternatives, rejected
 
     def _build_position_with_retries(
         self,
@@ -429,21 +492,26 @@ Attempt: {attempt} of {self.max_theme_attempts}
         feedback: list[str] = []
         last_error: ValueError | None = None
         current = candidate
+        last_strength = assess_position_strength(current)
         for attempt in range(1, self.max_position_attempts + 1):
-            current = self._build_position(
-                current,
-                paper_context,
-                feedback=feedback,
-                attempt=attempt,
-            )
+            try:
+                current = self._build_position(
+                    current,
+                    paper_context,
+                    feedback=feedback,
+                    attempt=attempt,
+                )
+            except Exception as exc:
+                feedback = [str(exc)]
+                last_error = ValueError(str(exc))
+                continue
             position_strength = assess_position_strength(current)
+            last_strength = position_strength
             if position_strength.passed:
                 return current, position_strength
             feedback = position_strength.reasons
             last_error = ValueError("; ".join(position_strength.reasons))
-        if last_error is not None:
-            raise last_error
-        raise ValueError("Position rejected.")
+        return current, last_strength
 
     def _build_position(
         self,
@@ -550,12 +618,10 @@ Interpretation:
                     feedback=feedback,
                     attempt=attempt,
                 )
-            except ValueError as exc:
+            except Exception as exc:
                 feedback = [str(exc)]
-                last_error = exc
-        if last_error is not None:
-            raise last_error
-        raise ValueError("Post rejected.")
+                last_error = ValueError(str(exc))
+        return build_post(candidate, build_position(candidate))
 
     def _build_post(
         self,
@@ -638,10 +704,30 @@ class FallbackSynthesisEngine:
     def synthesize(self, papers: list[Paper], recent_themes: list[str]) -> SynthesisResult:
         try:
             return self.primary.synthesize(papers, recent_themes)
+        except ThemeGenerationRejected as exc:
+            fallback_result = self.fallback.synthesize(papers, recent_themes)
+            return replace(
+                fallback_result,
+                provenance=SynthesisProvenance(
+                    engine_used=_engine_name(self.fallback),
+                    fallback_used=True,
+                    primary_engine=_engine_name(self.primary),
+                    fallback_reason=str(exc),
+                ),
+            )
         except ValueError:
             raise
-        except Exception:
-            return self.fallback.synthesize(papers, recent_themes)
+        except Exception as exc:
+            fallback_result = self.fallback.synthesize(papers, recent_themes)
+            return replace(
+                fallback_result,
+                provenance=SynthesisProvenance(
+                    engine_used=_engine_name(self.fallback),
+                    fallback_used=True,
+                    primary_engine=_engine_name(self.primary),
+                    fallback_reason=f"{type(exc).__name__}: {exc}",
+                ),
+            )
 
 
 def build_default_synthesis_engine() -> SynthesisEngine:

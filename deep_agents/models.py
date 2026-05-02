@@ -156,6 +156,17 @@ class EvaluationResult:
 
 
 @dataclass(frozen=True)
+class SynthesisProvenance:
+    engine_used: str
+    fallback_used: bool = False
+    primary_engine: str | None = None
+    fallback_reason: str | None = None
+
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(frozen=True)
 class DeliveryArtifact:
     channel: str
     path: str
@@ -173,9 +184,12 @@ class RunState:
     used_on: date
     recent_themes: list[str] = field(default_factory=list)
     paper_pool: PaperPool | None = None
+    top_papers: list[Paper] = field(default_factory=list)
     lead_paper_summary: PaperSummary | None = None
+    synthesis_provenance: SynthesisProvenance | None = None
     candidate_themes: list[ThemeCandidate] = field(default_factory=list)
     selected_theme: ThemeCandidate | None = None
+    alternative_themes: list[ThemeCandidate] = field(default_factory=list)
     rejected_themes: list[ThemeCandidate] = field(default_factory=list)
     position: Position | None = None
     position_strength: PositionStrengthResult | None = None
@@ -198,8 +212,10 @@ class RunState:
             "paper_pool": [paper.as_dict() for paper in self.paper_pool.deduped]
             if self.paper_pool
             else [],
+            "top_papers": [paper.as_dict() for paper in self.top_papers],
             "candidate_themes": [candidate.as_dict() for candidate in self.candidate_themes],
             "selected_theme": self.selected_theme.theme if self.selected_theme else None,
+            "alternative_themes": [candidate.as_dict() for candidate in self.alternative_themes],
             "rejected_themes": [candidate.as_dict() for candidate in self.rejected_themes],
             "position": self.position.as_dict() if self.position else None,
             "post": self.post.body if self.post else None,
@@ -209,6 +225,9 @@ class RunState:
                 "recent_themes": list(self.recent_themes),
                 "lead_paper_summary": self.lead_paper_summary.as_dict()
                 if self.lead_paper_summary
+                else None,
+                "synthesis_provenance": self.synthesis_provenance.as_dict()
+                if self.synthesis_provenance
                 else None,
                 "storage_path": self.storage_path,
                 "run_log_path": self.run_log_path,
@@ -220,8 +239,10 @@ class RunState:
 class PipelineResult:
     state: RunState
     paper_pool: PaperPool
+    top_papers: list[Paper]
     lead_paper_summary: PaperSummary
     selected_theme: ThemeCandidate
+    alternative_themes: list[ThemeCandidate]
     rejected_themes: list[ThemeCandidate]
     position: Position
     position_strength: PositionStrengthResult
@@ -243,10 +264,12 @@ class PipelineResult:
                 ),
                 "sources": [paper.source for paper in self.paper_pool.deduped],
             },
+            "top_papers": [paper.as_dict() for paper in self.top_papers],
             "selected_theme": self.selected_theme.theme,
             "lead_paper_summary": self.lead_paper_summary.as_dict(),
             "why_selected": self.selected_theme.why_selected,
             "why_debatable": self.selected_theme.why_debatable,
+            "alternative_themes": [candidate.as_dict() for candidate in self.alternative_themes],
             "rejected_themes": [candidate.as_dict() for candidate in self.rejected_themes],
             "position": self.position.as_dict(),
             "position_strength": self.position_strength.as_dict(),

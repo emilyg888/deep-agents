@@ -14,6 +14,40 @@ from .storage import ResearchStore, RunLogStore
 from .synthesis import SynthesisEngine, build_default_synthesis_engine
 
 DEFAULT_RESEARCH_DIR = Path("/Users/emilygao/LocalDocuments/Obsidian/research")
+SEMANTIC_STOPWORDS = {
+    "about",
+    "across",
+    "after",
+    "agent",
+    "agents",
+    "architecture",
+    "because",
+    "before",
+    "between",
+    "build",
+    "design",
+    "enterprise",
+    "enterprises",
+    "into",
+    "language",
+    "models",
+    "paper",
+    "papers",
+    "problem",
+    "should",
+    "system",
+    "systems",
+    "their",
+    "there",
+    "these",
+    "this",
+    "through",
+    "understanding",
+    "using",
+    "with",
+    "workflow",
+    "workflows",
+}
 
 def summarize_paper(paper: Paper) -> PaperSummary:
     abstract = " ".join(paper.abstract.split())
@@ -26,6 +60,93 @@ def summarize_paper(paper: Paper) -> PaperSummary:
         url=paper.url,
         summary=summary,
     )
+
+
+def _semantic_tokens(text: str) -> set[str]:
+    normalized = "".join(char.lower() if char.isalnum() else " " for char in text)
+    return {
+        token
+        for token in normalized.split()
+        if len(token) >= 4 and token not in SEMANTIC_STOPWORDS
+    }
+
+
+def _paper_semantic_match_score(paper: Paper, candidate) -> int:
+    paper_title_tokens = _semantic_tokens(paper.title)
+    paper_abstract_tokens = _semantic_tokens(paper.abstract)
+    candidate_tokens = _semantic_tokens(
+        " ".join(
+            [
+                candidate.theme,
+                candidate.why_selected,
+                candidate.why_debatable,
+                candidate.common_belief,
+                candidate.contrarian_view,
+                candidate.why_wrong,
+                candidate.recommendation,
+                candidate.enterprise_implication,
+            ]
+        )
+    )
+    title_overlap = len(paper_title_tokens & candidate_tokens)
+    abstract_overlap = len(paper_abstract_tokens & candidate_tokens)
+    return 3 * title_overlap + abstract_overlap
+
+
+def rank_papers(
+    papers: list[Paper],
+    *,
+    selected_theme,
+    alternative_themes,
+    limit: int = 5,
+) -> list[Paper]:
+    score_by_fingerprint: dict[str, int] = {}
+    candidate_weights = [(selected_theme, 5), *[(candidate, 3) for candidate in alternative_themes]]
+    supporting_fingerprints = {
+        paper.fingerprint
+        for candidate, _ in candidate_weights
+        for paper in candidate.supporting_papers
+    }
+    minimum_semantic_match = 4
+
+    for paper in papers:
+        total_score = 0
+        matched = paper.fingerprint in supporting_fingerprints
+        for candidate, weight in candidate_weights:
+            match_score = _paper_semantic_match_score(paper, candidate)
+            if match_score >= minimum_semantic_match:
+                matched = True
+                total_score += weight * match_score
+            if any(paper.fingerprint == supported.fingerprint for supported in candidate.supporting_papers):
+                candidate_score = (
+                    candidate.debate_score
+                    + candidate.relevance_score
+                    + candidate.novelty_score
+                    + candidate.specificity_score
+                )
+                total_score += weight * candidate_score
+        if matched:
+            score_by_fingerprint[paper.fingerprint] = total_score + max(1, 4 - paper.tier)
+
+    ranked = sorted(
+        [paper for paper in papers if paper.fingerprint in score_by_fingerprint],
+        key=lambda paper: (
+            score_by_fingerprint.get(paper.fingerprint, 0),
+            -paper.tier,
+            paper.published_on.toordinal(),
+        ),
+        reverse=True,
+    )
+    deduped: list[Paper] = []
+    seen: set[str] = set()
+    for paper in ranked:
+        if paper.fingerprint in seen:
+            continue
+        seen.add(paper.fingerprint)
+        deduped.append(paper)
+        if len(deduped) >= limit:
+            break
+    return deduped
 
 
 @dataclass
@@ -76,15 +197,24 @@ class PipelineRunner:
             state.recent_themes,
         )
         selected = synthesis.selected_theme
+        alternatives = synthesis.alternative_themes
         rejected = synthesis.rejected_themes
-        lead_paper_summary = summarize_paper(selected.supporting_papers[0])
+        top_papers = rank_papers(
+            paper_pool.deduped,
+            selected_theme=selected,
+            alternative_themes=alternatives,
+        )
+        lead_paper_summary = summarize_paper(top_papers[0] if top_papers else selected.supporting_papers[0])
         position = synthesis.position
         position_strength = synthesis.position_strength
         post = synthesis.post
+        state.top_papers = top_papers
         state.lead_paper_summary = lead_paper_summary
+        state.synthesis_provenance = synthesis.provenance
         state.selected_theme = selected
+        state.alternative_themes = alternatives
         state.rejected_themes = rejected
-        state.candidate_themes = [selected, *rejected]
+        state.candidate_themes = [selected, *alternatives, *rejected]
         state.position = position
         state.position_strength = position_strength
         state.post = post
@@ -95,12 +225,11 @@ class PipelineRunner:
             post=post,
         )
         state.evaluation = evaluation
-        if not evaluation.passed:
-            raise ValueError("; ".join(evaluation.reasons))
-
         deliveries = self.delivery_manager.deliver(
             used_on=run_date,
+            top_papers=top_papers,
             lead_paper_summary=lead_paper_summary,
+            synthesis_provenance=synthesis.provenance,
             theme=selected,
             position=position,
             post=post,
@@ -110,8 +239,11 @@ class PipelineRunner:
         storage_path = self.research_store.save(
             used_on=run_date,
             paper_pool=paper_pool,
+            top_papers=top_papers,
             lead_paper_summary=lead_paper_summary,
+            synthesis_provenance=synthesis.provenance,
             theme=selected,
+            alternative_themes=alternatives,
             rejected_themes=rejected,
             position=position,
             position_strength=position_strength,
@@ -126,11 +258,12 @@ class PipelineRunner:
         run_log_path = self.run_log_store.save(state, deliveries)
 
         if respect_memory:
-            self.paper_memory.remember(paper_pool.deduped)
+            self.paper_memory.remember(top_papers)
             self.theme_memory.remember(selected.theme, run_date)
             self.reasoning_memory.remember(
                 used_on=run_date,
                 selected_theme=selected,
+                alternative_themes=alternatives,
                 rejected_themes=rejected,
                 evaluation=evaluation,
                 position_strength=position_strength,
@@ -140,8 +273,10 @@ class PipelineRunner:
         return PipelineResult(
             state=state,
             paper_pool=paper_pool,
+            top_papers=top_papers,
             lead_paper_summary=lead_paper_summary,
             selected_theme=selected,
+            alternative_themes=alternatives,
             rejected_themes=rejected,
             position=position,
             position_strength=position_strength,

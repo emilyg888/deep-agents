@@ -12,7 +12,15 @@ from datetime import date
 from email.message import EmailMessage
 from pathlib import Path
 
-from .models import DeliveryArtifact, PaperSummary, Position, PostDraft, ThemeCandidate
+from .models import (
+    DeliveryArtifact,
+    Paper,
+    PaperSummary,
+    Position,
+    PostDraft,
+    SynthesisProvenance,
+    ThemeCandidate,
+)
 
 DEFAULT_EMAIL_RECIPIENT = "emsyd888@gmail.com"
 DEFAULT_DISCORD_CHANNEL = "Weekflow"
@@ -83,15 +91,40 @@ def _reference_lines(theme: ThemeCandidate) -> list[str]:
     return [f"- [{paper.title}]({paper.url}) — {paper.source}" for paper in theme.supporting_papers]
 
 
+def _paper_summary_text(paper: Paper) -> str:
+    abstract = " ".join(paper.abstract.split())
+    first_sentence = abstract.split(". ", 1)[0].strip()
+    return first_sentence if first_sentence.endswith(".") else f"{first_sentence}."
+
+
+def _top_paper_sections(papers: list[Paper]) -> list[str]:
+    if not papers:
+        return ["- None"]
+    lines: list[str] = []
+    for index, paper in enumerate(papers, start=1):
+        if lines:
+            lines.extend(["", "---", ""])
+        lines.extend(
+            [
+                f"{index}. {paper.title}",
+                f"Citation: {paper.url}",
+                f"Source: {paper.source}",
+                f"Summary: {_paper_summary_text(paper)}",
+            ]
+        )
+    return lines
+
+
 def _build_email_text(
     *,
     recipient: str,
+    top_papers: list[Paper],
     lead_paper_summary: PaperSummary,
     theme: ThemeCandidate,
     position: Position,
     post: PostDraft,
 ) -> str:
-    references = _reference_lines(theme)
+    references = _top_paper_sections(top_papers)
     return "\n".join(
         [
             f"To: {recipient}",
@@ -110,7 +143,7 @@ def _build_email_text(
             "Why it matters:",
             position.enterprise_implication,
             "",
-            "Reference links:",
+            "Top 5 papers:",
             *references,
         ]
     )
@@ -121,11 +154,12 @@ def _build_discord_text(
     channel: str,
     webhook_path: Path,
     webhook_configured: bool,
+    top_papers: list[Paper],
     lead_paper_summary: PaperSummary,
     theme: ThemeCandidate,
     post: PostDraft,
 ) -> str:
-    references = _reference_lines(theme)
+    references = _top_paper_sections(top_papers)
     webhook_status = "configured" if webhook_configured else "missing"
     return "\n".join(
         [
@@ -144,7 +178,7 @@ def _build_discord_text(
             "**Debate angle**",
             theme.why_debatable,
             "",
-            "**Reference links**",
+            "**Top 5 papers**",
             *references,
         ]
     )
@@ -215,7 +249,9 @@ class DeliveryManager:
         self,
         *,
         used_on: date,
+        top_papers: list[Paper],
         lead_paper_summary: PaperSummary,
+        synthesis_provenance: SynthesisProvenance,
         theme: ThemeCandidate,
         position: Position,
         post: PostDraft,
@@ -229,6 +265,7 @@ class DeliveryManager:
 
         email_text = _build_email_text(
             recipient=self.email_recipient,
+            top_papers=top_papers,
             lead_paper_summary=lead_paper_summary,
             theme=theme,
             position=position,
@@ -242,6 +279,7 @@ class DeliveryManager:
             channel=self.discord_channel,
             webhook_path=self.weekflow_config_path,
             webhook_configured=bool(webhook_url),
+            top_papers=top_papers,
             lead_paper_summary=lead_paper_summary,
             theme=theme,
             post=post,
@@ -251,7 +289,9 @@ class DeliveryManager:
 
         email_sent = False
         email_status = "draft only"
-        if send_live_email:
+        if send_live_email and synthesis_provenance.fallback_used:
+            email_status = "blocked: synthesis fallback used"
+        elif send_live_email:
             settings = _load_smtp_settings()
             if settings is None:
                 email_status = (
@@ -272,7 +312,9 @@ class DeliveryManager:
 
         discord_sent = False
         discord_status = "draft only"
-        if send_live_discord:
+        if send_live_discord and synthesis_provenance.fallback_used:
+            discord_status = "blocked: synthesis fallback used"
+        elif send_live_discord:
             if not webhook_url:
                 discord_status = "missing Weekflow webhook configuration"
             else:
