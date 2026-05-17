@@ -1,0 +1,443 @@
+{
+  "paper_pool": [
+    {
+      "title": "Prop-Chromeleon: Adaptive Haptic Props in Mixed Reality through Generative Artificial Intelligence",
+      "authors": [
+        "Haoyu Wang",
+        "Fengyuan Zhu",
+        "Bingjian Huang",
+        "Zhecheng Wang",
+        "Ludwig Sidenmark"
+      ],
+      "abstract": "Mixed Reality (MR) aims to blend digital and physical worlds, but the absence of haptic feedback often breaks visual-tactile consistency. We introduce Prop-Chromeleon, a MR system based on generative artificial intelligence (AI) that dynamically transforms everyday objects into adaptive passive haptic props through user-provided text prompts. Our AI pipeline performs generation and anchoring of virtual assets that align with the shape of physical props, allowing us to study how virtual content generation behaves under geometric and prompt-based constraints. We evaluate Prop-Chromeleon's effectiveness through a generation study using varied object shapes and user prompts, combining quantitative shape similarity metrics with qualitative prompt fidelity analysis. Our user study further showcases Prop-Chromeleon's improvements in perceived realism, immersion, and enjoyment compared to static baselines. These results show that shape-aware generation can support both believable haptic interaction and creative engagement in MR.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00804v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "a0b95e6888c3a40db0d03d37cb09baa3"
+    },
+    {
+      "title": "RunAgent: Interpreting Natural-Language Plans with Constraint-Guided Execution",
+      "authors": [
+        "Arunabh Srivastava",
+        "Mohammad A.",
+        "Khojastepour",
+        "Srimat Chakradhar",
+        "Sennur Ulukus"
+      ],
+      "abstract": "Humans solve problems by executing targeted plans, yet large language models (LLMs) remain unreliable for structured workflow execution. We propose RunAgent, a multi-agent plan execution platform that interprets natural-language plans while enforcing stepwise execution through constraints and rubrics. RunAgent bridges the expressiveness of natural language with the determinism of programming via an agentic language with explicit control constructs (e.g., \\texttt{IF}, \\texttt{GOTO}, \\texttt{FORALL}). Beyond verifying syntactic and semantic verification of the step output, which is performed based on the specific instruction of each step, RunAgent autonomously derives and validates constraints based on the description of the task and its instance at each step. RunAgent also dynamically selects among LLM-based reasoning, tool usage, and code generation and execution (e.g., in Python), and incorporates error correction mechanisms to ensure correctness. Finally, RunAgent filters the context history by retaining only relevant information during the execution of each step. Evaluations on Natural-plan and SciBench Datasets demonstrate that RunAgent outperforms baseline LLMs and state-of-the-art PlanGEN methods.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00798v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "babc08db9460388c52f5f5b656453b26"
+    },
+    {
+      "title": "When RAG Chatbots Expose Their Backend: An Anonymized Case Study of Privacy and Security Risks in Patient-Facing Medical AI",
+      "authors": [
+        "Alfredo Madrid-Garc\u00eda",
+        "Miguel Rujas"
+      ],
+      "abstract": "Background: Patient-facing medical chatbots based on retrieval-augmented generation (RAG) are increasingly promoted to deliver accessible, grounded health information. AI-assisted development lowers the barrier to building them, but they still demand rigorous security, privacy, and governance controls. Objective: To report an anonymized, non-destructive security assessment of a publicly accessible patient-facing medical RAG chatbot and identify governance lessons for safe deployment of generative AI in health. Methods: We used a two-stage strategy. First, Claude Opus 4.6 supported exploratory prompt-based testing and structured vulnerability hypotheses. Second, candidate findings were manually verified using Chrome Developer Tools, inspecting browser-visible network traffic, payloads, API schemas, configuration objects, and stored interaction data. Results: The LLM-assisted phase identified a critical vulnerability: sensitive system and RAG configuration appeared exposed through client-server communication rather than restricted server-side. Manual verification confirmed that ordinary browser inspection allowed collection of the system prompt, model and embedding configuration, retrieval parameters, backend endpoints, API schema, document and chunk metadata, knowledge-base content, and the 1,000 most recent patient-chatbot conversations. The deployment also contradicted its privacy assurances: full conversation records, including health-related queries, were retrievable without authentication. Conclusions: Serious privacy and security failures in patient-facing RAG chatbots can be identified with standard browser tools, without specialist skills or authentication; independent review should be a prerequisite for deployment. Commercial LLMs accelerated this assessment, including under a false developer persona; assistance available to auditors is equally available to adversaries.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00796v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "c829214174f0e783408346e5a234a368"
+    },
+    {
+      "title": "Simpson's paradox explains the ubiquity of nonlinear, threshold, and complex contagions",
+      "authors": [
+        "Laurent H\u00e9bert-Dufresne",
+        "Antoine Allard",
+        "Jean-Gabriel Young",
+        "William H. W. Thompson",
+        "Guillaume St-Onge"
+      ],
+      "abstract": "Complex contagions describe systems where the probability or rate of contagious transmission is a nonlinear function of the exposure to contagious agents. These models were first studied theoretically but have since been used to capture effects such as nonconformism, social reinforcement or peer pressure in empirical data. However, recent studies have shown that local correlations (e.g., group structure or temporal burstiness) and heterogeneity (e.g., diversity of parameters or covariates) can give the illusion of nonlinear effects even when the dynamics is actually linear. We briefly review these studies to inform a new model and explanation for these effective models of complex contagions. We find global threshold dynamics and superlinear complex contagions even in populations where agents are distributed across social groups described solely by linear or even sublinear contagions. This effect can be understood as a manifestation of Simpson's paradox. Incidence data from heterogeneous groups can look superlinear once averaged over all groups, since the sampling of groups represented at high incidence is biased towards those with stronger local transmission. We then define what we call a Simpson's contagion: a contagion process that looks superlinear when observed over an entire population, but is mechanistically linear or even sublinear in all of its subgroups. By exploring these Simpson's contagions over mathematical case studies, our work contributes to the growing body of literature on the ubiquity of threshold and complex contagions as effective models, and our results stress the pitfall of model selection that ignores correlations and heterogeneity in populations.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00791v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "d6506cd83f85660b1451814588acdc0a"
+    },
+    {
+      "title": "ObjectGraph: From Document Injection to Knowledge Traversal -- A Native File Format for the Agentic Era",
+      "authors": [
+        "Mohit Dubey",
+        "Open Gigantic"
+      ],
+      "abstract": "Every document format in existence was designed for a human reader moving linearly through text. Autonomous LLM agents do not read - they retrieve. This fundamental mismatch forces agents to inject entire documents into their context window, wasting tokens on irrelevant content, compounding state across multi-turn loops, and broadcasting information indiscriminately across agent roles. We argue this is not a prompt engineering problem, not a retrieval problem, and not a compression problem: it is a format problem. We introduce OBJECTGRAPH (.og), a file format that reconceives the document as a typed, directed knowledge graph to be traversed rather than a string to be injected. OBJECTGRAPH is a strict superset of Markdown - every .md file is a valid .og file - requires no infrastructure beyond a two-primitive query protocol, and is readable by both humans and agents without tooling. We formalize the Document Consumption Problem, characterise six structural properties no existing format satisfies simultaneously, and prove OBJECTGRAPH satisfies all six. We further introduce the Progressive Disclosure Model, the Role-Scoped Access Protocol, and Executable Assertion Nodes as native format primitives. Empirical evaluation across five document classes and eight agent task types demonstrates up to 95.3 percent token reduction with no statistically significant degradation in task accuracy (p > 0.05). Transpiler fidelity reaches 98.7 percent content preservation on a held-out document benchmark.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159891176",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "5bf85b00c8b80f42709cf7e1ed6f19e9"
+    },
+    {
+      "title": "Recommendations for Efficient and Responsible LLM Adoption within Industrial Software Development",
+      "authors": [
+        "Krishna Ronanki",
+        "Beatriz Cabrero\u2010Daniel",
+        "Tomas Herda",
+        "Stefan Sitkovich",
+        "Jennifer Horkoff",
+        "Christian Berger"
+      ],
+      "abstract": "Context: Large language models (LLMs) are observed to have a significant positive impact on various software engineering (SE) activities. With improved accessibility, the adoption of powerful LLMs in industry has surged recently. However, there is a lack of actionable best practices for the efficient and responsible adoption of LLMs within industrial software settings. Objectives: We developed seven actionable recommendations to address this research gap. Methods: We conducted a multi-case study with three organisations that use LLMs within their SE activities and synthesised seven recommendations through qualitative thematic analysis. We conducted a complementary online survey with software practitioners from various industries to evaluate the perceived relevance of our recommendations. Results: Our results and recommendations focus on (i) users' preference to use LLMs as AI assistants, (ii) the importance of relevant stakeholders' satisfaction in the LLM-output evaluation, (iii) scoping the applicability of LLMs within SE tasks, (iv) the effect of LLMs on SE workflows, (v) the necessity and directions for developing human oversight mechanisms, and (vi) the necessary skills for practitioners for leveraging LLMs within SE. The online survey indicates a high level of agreement from the participants regarding the perceived relevance of the recommendations. Conclusion: We outline future research directions, including mapping the seven recommendations to the principles of the EU AI Act (AIA) in order to examine how they relate to the current regulatory compliance frameworks.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159734029",
+      "published_on": "2026-04-29",
+      "tier": 1,
+      "fingerprint": "c99310585670b7f896766a42fd4aae01"
+    },
+    {
+      "title": "How OpenAI delivers low-latency voice AI at scale",
+      "authors": [
+        "Sean-Der"
+      ],
+      "abstract": "Hacker News discussion with score 188 and 81 comments.",
+      "source": "Hacker News",
+      "url": "https://openai.com/index/delivering-low-latency-voice-ai-at-scale/",
+      "published_on": "2026-05-04",
+      "tier": 3,
+      "fingerprint": "cfd402b319a368ffc4df7b7396b3c110"
+    },
+    {
+      "title": "I am worried about Bun",
+      "authors": [
+        "remote-dev"
+      ],
+      "abstract": "Hacker News discussion with score 349 and 245 comments.",
+      "source": "Hacker News",
+      "url": "https://wwj.dev/posts/i-am-worried-about-bun/",
+      "published_on": "2026-05-04",
+      "tier": 3,
+      "fingerprint": "ae8887d968629af7676841372b31f370"
+    },
+    {
+      "title": "Talking to strangers at the gym",
+      "authors": [
+        "thitran"
+      ],
+      "abstract": "Hacker News discussion with score 1045 and 508 comments.",
+      "source": "Hacker News",
+      "url": "https://thienantran.com/talking-to-35-strangers-at-the-gym/",
+      "published_on": "2026-05-04",
+      "tier": 3,
+      "fingerprint": "6697ba4133bced3facda142deacb57d1"
+    },
+    {
+      "title": "Securing a DoD contractor: Finding a multi-tenant authorization vulnerability",
+      "authors": [
+        "bearsyankees"
+      ],
+      "abstract": "Hacker News discussion with score 148 and 68 comments.",
+      "source": "Hacker News",
+      "url": "https://www.strix.ai/blog/how-strix-found-zero-auth-vulnerability-dod-backed-startup",
+      "published_on": "2026-05-04",
+      "tier": 3,
+      "fingerprint": "494cd5c05c84ac2ca59e9b427df3b0ed"
+    },
+    {
+      "title": "Pulitzer Prize Winners 2026",
+      "authors": [
+        "brightbeige"
+      ],
+      "abstract": "Hacker News discussion with score 40 and 13 comments.",
+      "source": "Hacker News",
+      "url": "https://www.pulitzer.org/prize-winners-by-year/2026",
+      "published_on": "2026-05-04",
+      "tier": 3,
+      "fingerprint": "8aaba33eda619f5b19079a6b6aedc896"
+    }
+  ],
+  "top_papers": [
+    {
+      "title": "RunAgent: Interpreting Natural-Language Plans with Constraint-Guided Execution",
+      "authors": [
+        "Arunabh Srivastava",
+        "Mohammad A.",
+        "Khojastepour",
+        "Srimat Chakradhar",
+        "Sennur Ulukus"
+      ],
+      "abstract": "Humans solve problems by executing targeted plans, yet large language models (LLMs) remain unreliable for structured workflow execution. We propose RunAgent, a multi-agent plan execution platform that interprets natural-language plans while enforcing stepwise execution through constraints and rubrics. RunAgent bridges the expressiveness of natural language with the determinism of programming via an agentic language with explicit control constructs (e.g., \\texttt{IF}, \\texttt{GOTO}, \\texttt{FORALL}). Beyond verifying syntactic and semantic verification of the step output, which is performed based on the specific instruction of each step, RunAgent autonomously derives and validates constraints based on the description of the task and its instance at each step. RunAgent also dynamically selects among LLM-based reasoning, tool usage, and code generation and execution (e.g., in Python), and incorporates error correction mechanisms to ensure correctness. Finally, RunAgent filters the context history by retaining only relevant information during the execution of each step. Evaluations on Natural-plan and SciBench Datasets demonstrate that RunAgent outperforms baseline LLMs and state-of-the-art PlanGEN methods.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00798v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "babc08db9460388c52f5f5b656453b26"
+    },
+    {
+      "title": "ObjectGraph: From Document Injection to Knowledge Traversal -- A Native File Format for the Agentic Era",
+      "authors": [
+        "Mohit Dubey",
+        "Open Gigantic"
+      ],
+      "abstract": "Every document format in existence was designed for a human reader moving linearly through text. Autonomous LLM agents do not read - they retrieve. This fundamental mismatch forces agents to inject entire documents into their context window, wasting tokens on irrelevant content, compounding state across multi-turn loops, and broadcasting information indiscriminately across agent roles. We argue this is not a prompt engineering problem, not a retrieval problem, and not a compression problem: it is a format problem. We introduce OBJECTGRAPH (.og), a file format that reconceives the document as a typed, directed knowledge graph to be traversed rather than a string to be injected. OBJECTGRAPH is a strict superset of Markdown - every .md file is a valid .og file - requires no infrastructure beyond a two-primitive query protocol, and is readable by both humans and agents without tooling. We formalize the Document Consumption Problem, characterise six structural properties no existing format satisfies simultaneously, and prove OBJECTGRAPH satisfies all six. We further introduce the Progressive Disclosure Model, the Role-Scoped Access Protocol, and Executable Assertion Nodes as native format primitives. Empirical evaluation across five document classes and eight agent task types demonstrates up to 95.3 percent token reduction with no statistically significant degradation in task accuracy (p > 0.05). Transpiler fidelity reaches 98.7 percent content preservation on a held-out document benchmark.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159891176",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "5bf85b00c8b80f42709cf7e1ed6f19e9"
+    },
+    {
+      "title": "Recommendations for Efficient and Responsible LLM Adoption within Industrial Software Development",
+      "authors": [
+        "Krishna Ronanki",
+        "Beatriz Cabrero\u2010Daniel",
+        "Tomas Herda",
+        "Stefan Sitkovich",
+        "Jennifer Horkoff",
+        "Christian Berger"
+      ],
+      "abstract": "Context: Large language models (LLMs) are observed to have a significant positive impact on various software engineering (SE) activities. With improved accessibility, the adoption of powerful LLMs in industry has surged recently. However, there is a lack of actionable best practices for the efficient and responsible adoption of LLMs within industrial software settings. Objectives: We developed seven actionable recommendations to address this research gap. Methods: We conducted a multi-case study with three organisations that use LLMs within their SE activities and synthesised seven recommendations through qualitative thematic analysis. We conducted a complementary online survey with software practitioners from various industries to evaluate the perceived relevance of our recommendations. Results: Our results and recommendations focus on (i) users' preference to use LLMs as AI assistants, (ii) the importance of relevant stakeholders' satisfaction in the LLM-output evaluation, (iii) scoping the applicability of LLMs within SE tasks, (iv) the effect of LLMs on SE workflows, (v) the necessity and directions for developing human oversight mechanisms, and (vi) the necessary skills for practitioners for leveraging LLMs within SE. The online survey indicates a high level of agreement from the participants regarding the perceived relevance of the recommendations. Conclusion: We outline future research directions, including mapping the seven recommendations to the principles of the EU AI Act (AIA) in order to examine how they relate to the current regulatory compliance frameworks.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159734029",
+      "published_on": "2026-04-29",
+      "tier": 1,
+      "fingerprint": "c99310585670b7f896766a42fd4aae01"
+    },
+    {
+      "title": "When RAG Chatbots Expose Their Backend: An Anonymized Case Study of Privacy and Security Risks in Patient-Facing Medical AI",
+      "authors": [
+        "Alfredo Madrid-Garc\u00eda",
+        "Miguel Rujas"
+      ],
+      "abstract": "Background: Patient-facing medical chatbots based on retrieval-augmented generation (RAG) are increasingly promoted to deliver accessible, grounded health information. AI-assisted development lowers the barrier to building them, but they still demand rigorous security, privacy, and governance controls. Objective: To report an anonymized, non-destructive security assessment of a publicly accessible patient-facing medical RAG chatbot and identify governance lessons for safe deployment of generative AI in health. Methods: We used a two-stage strategy. First, Claude Opus 4.6 supported exploratory prompt-based testing and structured vulnerability hypotheses. Second, candidate findings were manually verified using Chrome Developer Tools, inspecting browser-visible network traffic, payloads, API schemas, configuration objects, and stored interaction data. Results: The LLM-assisted phase identified a critical vulnerability: sensitive system and RAG configuration appeared exposed through client-server communication rather than restricted server-side. Manual verification confirmed that ordinary browser inspection allowed collection of the system prompt, model and embedding configuration, retrieval parameters, backend endpoints, API schema, document and chunk metadata, knowledge-base content, and the 1,000 most recent patient-chatbot conversations. The deployment also contradicted its privacy assurances: full conversation records, including health-related queries, were retrievable without authentication. Conclusions: Serious privacy and security failures in patient-facing RAG chatbots can be identified with standard browser tools, without specialist skills or authentication; independent review should be a prerequisite for deployment. Commercial LLMs accelerated this assessment, including under a false developer persona; assistance available to auditors is equally available to adversaries.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00796v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "c829214174f0e783408346e5a234a368"
+    },
+    {
+      "title": "Simpson's paradox explains the ubiquity of nonlinear, threshold, and complex contagions",
+      "authors": [
+        "Laurent H\u00e9bert-Dufresne",
+        "Antoine Allard",
+        "Jean-Gabriel Young",
+        "William H. W. Thompson",
+        "Guillaume St-Onge"
+      ],
+      "abstract": "Complex contagions describe systems where the probability or rate of contagious transmission is a nonlinear function of the exposure to contagious agents. These models were first studied theoretically but have since been used to capture effects such as nonconformism, social reinforcement or peer pressure in empirical data. However, recent studies have shown that local correlations (e.g., group structure or temporal burstiness) and heterogeneity (e.g., diversity of parameters or covariates) can give the illusion of nonlinear effects even when the dynamics is actually linear. We briefly review these studies to inform a new model and explanation for these effective models of complex contagions. We find global threshold dynamics and superlinear complex contagions even in populations where agents are distributed across social groups described solely by linear or even sublinear contagions. This effect can be understood as a manifestation of Simpson's paradox. Incidence data from heterogeneous groups can look superlinear once averaged over all groups, since the sampling of groups represented at high incidence is biased towards those with stronger local transmission. We then define what we call a Simpson's contagion: a contagion process that looks superlinear when observed over an entire population, but is mechanistically linear or even sublinear in all of its subgroups. By exploring these Simpson's contagions over mathematical case studies, our work contributes to the growing body of literature on the ubiquity of threshold and complex contagions as effective models, and our results stress the pitfall of model selection that ignores correlations and heterogeneity in populations.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00791v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "d6506cd83f85660b1451814588acdc0a"
+    }
+  ],
+  "candidate_themes": [
+    {
+      "theme": "Shift from LLM-driven execution to constraint-guided execution in AI agents",
+      "why_selected": "This theme challenges the reliance on LLMs for executing plans, proposing a more structured and deterministic approach that could redefine how AI agents operate.",
+      "why_debatable": "The effectiveness of constraint-guided execution versus LLM-driven methods raises questions about flexibility, adaptability, and the potential loss of creative problem-solving capabilities.",
+      "supporting_papers": [
+        {
+          "title": "RunAgent: Interpreting Natural-Language Plans with Constraint-Guided Execution",
+          "authors": [
+            "Arunabh Srivastava",
+            "Mohammad A.",
+            "Khojastepour",
+            "Srimat Chakradhar",
+            "Sennur Ulukus"
+          ],
+          "abstract": "Humans solve problems by executing targeted plans, yet large language models (LLMs) remain unreliable for structured workflow execution. We propose RunAgent, a multi-agent plan execution platform that interprets natural-language plans while enforcing stepwise execution through constraints and rubrics. RunAgent bridges the expressiveness of natural language with the determinism of programming via an agentic language with explicit control constructs (e.g., \\texttt{IF}, \\texttt{GOTO}, \\texttt{FORALL}). Beyond verifying syntactic and semantic verification of the step output, which is performed based on the specific instruction of each step, RunAgent autonomously derives and validates constraints based on the description of the task and its instance at each step. RunAgent also dynamically selects among LLM-based reasoning, tool usage, and code generation and execution (e.g., in Python), and incorporates error correction mechanisms to ensure correctness. Finally, RunAgent filters the context history by retaining only relevant information during the execution of each step. Evaluations on Natural-plan and SciBench Datasets demonstrate that RunAgent outperforms baseline LLMs and state-of-the-art PlanGEN methods.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2605.00798v1",
+          "published_on": "2026-05-01",
+          "tier": 1,
+          "fingerprint": "babc08db9460388c52f5f5b656453b26"
+        }
+      ],
+      "common_belief": "LLMs are the best tools for interpreting and executing natural language plans due to their flexibility and expressiveness.",
+      "contrarian_view": "The real issue is that structured execution through constraints is necessary for reliable and predictable outcomes in AI agents, which LLMs alone cannot provide. This shift is essential to enhance the effectiveness of AI in complex environments.",
+      "why_wrong": "Current practice is fundamentally flawed as it overestimates the capabilities of LLMs in executing structured workflows. Relying solely on LLMs leads to unpredictable outcomes and a lack of reliability in critical applications, making it a broken approach to AI agent execution.",
+      "recommendation": "The correct architectural approach is to integrate constraint-guided execution frameworks alongside LLMs, creating a hybrid model that balances the reliability of structured execution with the flexibility of LLMs.",
+      "enterprise_implication": "Adopting this hybrid approach will significantly enhance the reliability of AI agents in critical applications, reducing errors and improving overall outcomes, which is essential for enterprise success.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 5,
+        "decisiveness": 4,
+        "tension": 5,
+        "specificity": 4,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Shift from traditional document formats to agent-centric knowledge graph formats",
+      "why_selected": "Current document formats are designed for linear human reading, which is incompatible with how autonomous agents operate. This theme challenges the fundamental assumptions about document consumption and representation.",
+      "why_debatable": "The introduction of a new file format for agents raises questions about compatibility, adoption, and the potential need for a complete overhaul of existing systems. It invites debate on whether the benefits outweigh the transition costs.",
+      "supporting_papers": [
+        {
+          "title": "ObjectGraph: From Document Injection to Knowledge Traversal -- A Native File Format for the Agentic Era",
+          "authors": [
+            "Mohit Dubey",
+            "Open Gigantic"
+          ],
+          "abstract": "Every document format in existence was designed for a human reader moving linearly through text. Autonomous LLM agents do not read - they retrieve. This fundamental mismatch forces agents to inject entire documents into their context window, wasting tokens on irrelevant content, compounding state across multi-turn loops, and broadcasting information indiscriminately across agent roles. We argue this is not a prompt engineering problem, not a retrieval problem, and not a compression problem: it is a format problem. We introduce OBJECTGRAPH (.og), a file format that reconceives the document as a typed, directed knowledge graph to be traversed rather than a string to be injected. OBJECTGRAPH is a strict superset of Markdown - every .md file is a valid .og file - requires no infrastructure beyond a two-primitive query protocol, and is readable by both humans and agents without tooling. We formalize the Document Consumption Problem, characterise six structural properties no existing format satisfies simultaneously, and prove OBJECTGRAPH satisfies all six. We further introduce the Progressive Disclosure Model, the Role-Scoped Access Protocol, and Executable Assertion Nodes as native format primitives. Empirical evaluation across five document classes and eight agent task types demonstrates up to 95.3 percent token reduction with no statistically significant degradation in task accuracy (p > 0.05). Transpiler fidelity reaches 98.7 percent content preservation on a held-out document benchmark.",
+          "source": "OpenAlex",
+          "url": "https://openalex.org/W7159891176",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "5bf85b00c8b80f42709cf7e1ed6f19e9"
+        }
+      ],
+      "common_belief": "Existing document formats are sufficient for both human and agent interactions.",
+      "contrarian_view": "The traditional formats can be adapted to better serve agent needs without creating entirely new systems.",
+      "why_wrong": "Adapting existing formats may not address the inherent inefficiencies and limitations faced by agents in processing information, which could lead to suboptimal performance.",
+      "recommendation": "Organizations should explore the adoption of OBJECTGRAPH for agent interactions to enhance efficiency and reduce token usage.",
+      "enterprise_implication": "Transitioning to a new format could streamline workflows for AI agents, potentially leading to significant performance improvements in information retrieval and processing.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 3,
+        "decisiveness": 4,
+        "tension": 5,
+        "specificity": 4,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "selected_theme": "Shift from LLM-driven execution to constraint-guided execution in AI agents",
+  "alternative_themes": [
+    {
+      "theme": "Shift from traditional document formats to agent-centric knowledge graph formats",
+      "why_selected": "Current document formats are designed for linear human reading, which is incompatible with how autonomous agents operate. This theme challenges the fundamental assumptions about document consumption and representation.",
+      "why_debatable": "The introduction of a new file format for agents raises questions about compatibility, adoption, and the potential need for a complete overhaul of existing systems. It invites debate on whether the benefits outweigh the transition costs.",
+      "supporting_papers": [
+        {
+          "title": "ObjectGraph: From Document Injection to Knowledge Traversal -- A Native File Format for the Agentic Era",
+          "authors": [
+            "Mohit Dubey",
+            "Open Gigantic"
+          ],
+          "abstract": "Every document format in existence was designed for a human reader moving linearly through text. Autonomous LLM agents do not read - they retrieve. This fundamental mismatch forces agents to inject entire documents into their context window, wasting tokens on irrelevant content, compounding state across multi-turn loops, and broadcasting information indiscriminately across agent roles. We argue this is not a prompt engineering problem, not a retrieval problem, and not a compression problem: it is a format problem. We introduce OBJECTGRAPH (.og), a file format that reconceives the document as a typed, directed knowledge graph to be traversed rather than a string to be injected. OBJECTGRAPH is a strict superset of Markdown - every .md file is a valid .og file - requires no infrastructure beyond a two-primitive query protocol, and is readable by both humans and agents without tooling. We formalize the Document Consumption Problem, characterise six structural properties no existing format satisfies simultaneously, and prove OBJECTGRAPH satisfies all six. We further introduce the Progressive Disclosure Model, the Role-Scoped Access Protocol, and Executable Assertion Nodes as native format primitives. Empirical evaluation across five document classes and eight agent task types demonstrates up to 95.3 percent token reduction with no statistically significant degradation in task accuracy (p > 0.05). Transpiler fidelity reaches 98.7 percent content preservation on a held-out document benchmark.",
+          "source": "OpenAlex",
+          "url": "https://openalex.org/W7159891176",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "5bf85b00c8b80f42709cf7e1ed6f19e9"
+        }
+      ],
+      "common_belief": "Existing document formats are sufficient for both human and agent interactions.",
+      "contrarian_view": "The traditional formats can be adapted to better serve agent needs without creating entirely new systems.",
+      "why_wrong": "Adapting existing formats may not address the inherent inefficiencies and limitations faced by agents in processing information, which could lead to suboptimal performance.",
+      "recommendation": "Organizations should explore the adoption of OBJECTGRAPH for agent interactions to enhance efficiency and reduce token usage.",
+      "enterprise_implication": "Transitioning to a new format could streamline workflows for AI agents, potentially leading to significant performance improvements in information retrieval and processing.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 3,
+        "decisiveness": 4,
+        "tension": 5,
+        "specificity": 4,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "rejected_themes": [],
+  "position": {
+    "common_belief": "LLMs are the best tools for interpreting and executing natural language plans due to their flexibility and expressiveness.",
+    "contrarian_view": "The real issue is that structured execution through constraints is necessary for reliable and predictable outcomes in AI agents, which LLMs alone cannot provide. This shift is essential to enhance the effectiveness of AI in complex environments.",
+    "why_wrong": "Current practice is fundamentally flawed as it overestimates the capabilities of LLMs in executing structured workflows. Relying solely on LLMs leads to unpredictable outcomes and a lack of reliability in critical applications, making it a broken approach to AI agent execution.",
+    "recommendation": "The correct architectural approach is to integrate constraint-guided execution frameworks alongside LLMs, creating a hybrid model that balances the reliability of structured execution with the flexibility of LLMs.",
+    "enterprise_implication": "Adopting this hybrid approach will significantly enhance the reliability of AI agents in critical applications, reducing errors and improving overall outcomes, which is essential for enterprise success."
+  },
+  "post": "The belief that LLMs are the ultimate solution for executing natural language plans is fundamentally wrong. Enterprises are making a critical mistake by relying solely on LLMs for structured workflows, leading to unpredictable outcomes and a lack of reliability in crucial applications. This approach is broken.\n\nThe real insight? We need to shift to constraint-guided execution. LLMs alone can't provide the structured reliability necessary for complex environments. Integrating constraint frameworks with LLMs creates a hybrid model that balances flexibility with the predictability required for success.\n\nThis architectural change is essential. By adopting a hybrid approach, enterprises can significantly enhance the reliability of their AI agents, reduce errors, and improve overall outcomes. It's time to correct this flaw in our AI strategies.",
+  "scores": {
+    "theme_selection": {
+      "novelty": 4,
+      "relevance": 4,
+      "debate": 5,
+      "contrarian": 5,
+      "decisiveness": 4,
+      "tension": 5,
+      "specificity": 4,
+      "typical_architect_agrees": false,
+      "strong_architect_debates": true
+    },
+    "position_strength": {
+      "contrarian": 4,
+      "decisiveness": 4,
+      "tension": 3,
+      "specificity": 3,
+      "passed": false,
+      "reasons": [
+        "Position is incremental instead of challenging the underlying approach."
+      ]
+    },
+    "evaluation": {
+      "novelty": 4,
+      "relevance": 4,
+      "insight": 4,
+      "position_strength": 3,
+      "clarity": 5,
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "meta": {
+    "used_on": "2026-05-05",
+    "recent_themes": [
+      "agents need deterministic boundaries, not more autonomy",
+      "enterprise memory is more governance problem than personalization feature",
+      "shift from appearance synthesis to intelligent visual generation",
+      "shift from llm-driven decision-making to deterministic governance in ai agents",
+      "shift from deterministic language model outputs to understanding refusal mechanisms",
+      "shift from deterministic language model outputs to understanding refusal mechanisms",
+      "shift from traditional ai governance to policy-aware memory architectures"
+    ],
+    "lead_paper_summary": {
+      "title": "RunAgent: Interpreting Natural-Language Plans with Constraint-Guided Execution",
+      "source": "arXiv",
+      "authors": [
+        "Arunabh Srivastava",
+        "Mohammad A.",
+        "Khojastepour",
+        "Srimat Chakradhar",
+        "Sennur Ulukus"
+      ],
+      "url": "http://arxiv.org/abs/2605.00798v1",
+      "summary": "Humans solve problems by executing targeted plans, yet large language models (LLMs) remain unreliable for structured workflow execution."
+    },
+    "synthesis_provenance": {
+      "engine_used": "openai",
+      "fallback_used": false,
+      "primary_engine": null,
+      "fallback_reason": null
+    },
+    "storage_path": "/Users/emilygao/LocalDocuments/Obsidian/research/2026-05-05-shift-from-llm-driven-execution-to-constraint-guided-execution-in-ai-agents.md",
+    "run_log_path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/runs/run_2026-05-05.json"
+  },
+  "deliveries": [
+    {
+      "channel": "email",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/email/2026-05-05-linkedin-draft.md",
+      "preview": "The belief that LLMs are the ultimate solution for executing natural language plans is fundamentally wrong. Enterprises ",
+      "target": "emsyd888@gmail.com",
+      "sent": true,
+      "status": "sent"
+    },
+    {
+      "channel": "discord",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/discord/2026-05-05-linkedin-draft.md",
+      "preview": "The belief that LLMs are the ultimate solution for executing natural language plans is fundamentally wrong. Enterprises ",
+      "target": "Weekflow",
+      "sent": true,
+      "status": "sent"
+    }
+  ]
+}

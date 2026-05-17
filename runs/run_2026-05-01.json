@@ -1,0 +1,639 @@
+{
+  "paper_pool": [
+    {
+      "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+      "authors": [
+        "Keming Wu",
+        "Zuhao Yang",
+        "Kaichen Zhang",
+        "Shizun Wang",
+        "Haowei Zhu",
+        "Sicong Leng",
+        "Zhongyu Yang",
+        "Qijie Wang",
+        "Sudong Wang",
+        "Ziting Wang",
+        "Zili Wang",
+        "Hui Zhang",
+        "Haonan Wang",
+        "Hang Zhou",
+        "Yifan Pu",
+        "Xingxuan Li",
+        "Fangneng Zhan",
+        "Bo Li",
+        "Lidong Bing",
+        "Yuxin Song",
+        "Ziwei Liu",
+        "Wenhu Chen",
+        "Jingdong Wang",
+        "Xinchao Wang",
+        "Xiaojuan Qi",
+        "Shijian Lu",
+        "Bin Wang"
+      ],
+      "abstract": "Recent visual generation models have made major progress in photorealism, typography, instruction following, and interactive editing, yet they still struggle with spatial reasoning, persistent state, long-horizon consistency, and causal understanding. We argue that the field should move beyond appearance synthesis toward intelligent visual generation: plausible visuals grounded in structure, dynamics, domain knowledge, and causal relations. To frame this shift, we introduce a five-level taxonomy: Atomic Generation, Conditional Generation, In-Context Generation, Agentic Generation, and World-Modeling Generation, progressing from passive renderers to interactive, agentic, world-aware generators. We analyze key technical drivers, including flow matching, unified understanding-and-generation models, improved visual representations, post-training, reward modeling, data curation, synthetic data distillation, and sampling acceleration. We further show that current evaluations often overestimate progress by emphasizing perceptual quality while missing structural, temporal, and causal failures. By combining benchmark review, in-the-wild stress tests, and expert-constrained case studies, this roadmap offers a capability-centered lens for understanding, evaluating, and advancing the next generation of intelligent visual generation systems.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28185v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "7e5a7fdbac60eed5478f4315a47a7be9"
+    },
+    {
+      "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+      "authors": [
+        "Eyon Jang",
+        "Damon Falck",
+        "Joschka Braun",
+        "Nathalie Kirch",
+        "Achu Menon",
+        "Perusha Moodley",
+        "Scott Emmons",
+        "Roland S. Zimmermann",
+        "David Lindner"
+      ],
+      "abstract": "Reinforcement learning (RL) has become essential to the post-training of large language models (LLMs) for reasoning, agentic capabilities and alignment. Successful RL relies on sufficient exploration of diverse actions by the model during training, which creates a potential failure mode: a model could strategically alter its exploration during training to influence the subsequent training outcome. In this paper we study this behavior, called exploration hacking. First, we create model organisms of selective RL resistance by fine-tuning LLMs to follow specific underperformance strategies; these models can successfully resist our RL-based capability elicitation in agentic biosecurity and AI R&D environments while maintaining performance on related tasks. We then use our model organisms to evaluate detection and mitigation strategies, including monitoring, weight noising, and SFT-based elicitation. Finally, we show that current frontier models can exhibit explicit reasoning about suppressing their exploration when provided with sufficient information about their training context, with higher rates when this information is acquired indirectly through the environment. Together, our results suggest exploration hacking is a possible failure mode of RL on sufficiently capable LLMs.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28182v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "150732f4d98ed0d11c93c5fc500c42a4"
+    },
+    {
+      "title": "Synthetic Computers at Scale for Long-Horizon Productivity Simulation",
+      "authors": [
+        "Tao Ge",
+        "Baolin Peng",
+        "Hao Cheng",
+        "Jianfeng Gao"
+      ],
+      "abstract": "Realistic long-horizon productivity work is strongly conditioned on user-specific computer environments, where much of the work context is stored and organized through directory structures and content-rich artifacts. To scale synthetic data creation for such productivity scenarios, we introduce Synthetic Computers at Scale, a scalable methodology for creating such environments with realistic folder hierarchies and content-rich artifacts (e.g., documents, spreadsheets, and presentations). Conditioned on each synthetic computer, we run long-horizon simulations: one agent creates productivity objectives that are specific to the computer's user and require multiple professional deliverables and about a month of human work; another agent then acts as that user and keeps working across the computer -- for example, navigating the filesystem for grounding, coordinating with simulated collaborators, and producing professional artifacts -- until these objectives are completed. In preliminary experiments, we create 1,000 synthetic computers and run long-horizon simulations on them; each run requires over 8 hours of agent runtime and spans more than 2,000 turns on average. These simulations produce rich experiential learning signals, whose effectiveness is validated by significant improvements in agent performance on both in-domain and out-of-domain productivity evaluations. Given that personas are abundant at billion scale, this methodology can in principle scale to millions or even billions of synthetic user worlds with sufficient compute, enabling broader coverage of diverse professions, roles, contexts, environments, and productivity needs. We argue that scalable synthetic computer creation, together with at-scale simulations, is highly promising as a foundational substrate for agent self-improvement and agentic reinforcement learning in long-horizon productivity scenarios.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28181v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "14cfe9e0b64c375f477111b5bcf3fe0e"
+    },
+    {
+      "title": "AEGIS: A Holistic Benchmark for Evaluating Forensic Analysis of AI-Generated Academic Images",
+      "authors": [
+        "Bo Zhang",
+        "Tzu-Yen Ma",
+        "Zichen Tang",
+        "Junpeng Ding",
+        "Zirui Wang",
+        "Yizhuo Zhao",
+        "Peilin Gao",
+        "Zijie Xi",
+        "Zixin Ding",
+        "Haiyang Sun",
+        "Haocheng Gao",
+        "Yuan Liu",
+        "Liangjia Wang",
+        "Yiling Huang",
+        "Yujie Wang",
+        "Yuyue Zhang",
+        "Ronghui Xi",
+        "Yuanze Li",
+        "Jiacheng Liu",
+        "Zhongjun Yang",
+        "Haihong E"
+      ],
+      "abstract": "We introduce AEGIS, A holistic benchmark for Evaluating forensic analysis of AI-Generated academic ImageS. Compared to existing benchmarks, AEGIS features three key advances: (1) Domain-Specific Complexity: covering seven academic categories with 39 fine-grained subtypes, exposing intrinsic forensic difficulty, where even GPT-5.1 reaches 48.80% overall performance and expert models achieve only limited localization accuracy (IoU 30.09%); (2) Diverse Forgery Simulations: modeling four prevalent academic forgery strategies across 25 generative models, with 11 yielding average forensic accuracy below 50%, showing that forensics lag behind generative advances; and (3) Multi-Dimensional Forensic Evaluation: jointly assessing detection, reasoning, and localization, revealing complementary strengths between model families, with multimodal large language models (MLLMs) at 84.74% accuracy in textual artifact recognition and expert detectors peaking at 79.54% accuracy in binary authenticity detection. By evaluating 25 leading MLLMs, nine expert models, and one unified multimodal understanding and generation model, AEGIS serves as a diagnostic testbed exposing fundamental limitations in academic image forensics.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28177v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "99011fa214647b473d1e2e2e9ff58a3e"
+    },
+    {
+      "title": "Phase Transitions in Economic Inequality:Taxation and Extremal Replacement Dynamics",
+      "authors": [
+        "Lautaro Giordano",
+        "Sebastian Gon\u00e7alves",
+        "Jos\u00e9 Roberto Iglesias",
+        "Mar\u00eda Fabiana Laguna"
+      ],
+      "abstract": "We present a minimal agent-based model of interacting agents characterized by their wealth to study taxation and inequality in a non-conservative economy. Wealth evolves through an extremal stochastic replacement process in which the poorest agent has its wealth replaced by a new random value, financed through a collective taxation mechanism. We explore taxation regimes ranging from regressive to progressive schemes and tune the overall redistribution strength. Under regressive taxation, the system self-organizes into two distinct stationary phases when changing the total tax collected: a non-ergodic, high-inequality regime characterized by wealth condensation in a subset of agents that permanently escape replacement, and a more homogeneous ergodic phase in which all agents participate in the dynamics. Increasing taxes drives an abrupt transition between these phases. The transition is discontinuous and exhibits hysteresis and bistability, consistently detected through the Gini index, the Top $1\\%$ wealth share, the entropy, and the Binder cumulant. In contrast, neutral and progressive taxation suppress persistent wealth concentration, preventing the emergence of strongly unequal states and eliminating hysteretic behavior. These results show that minimal stochastic redistribution mechanisms alone can produce discontinuous transitions, metastability, and non-ergodicity, demonstrating that taxation structure can determine the emergence and stability of macroscopic inequality.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28168v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "12bb5b950333cbeee8256b19cea02e27"
+    },
+    {
+      "title": "Understanding AI Agents\u2014A Data-Driven Literature Review",
+      "authors": [
+        "Johannes St\u00fcbinger",
+        "Fabio Metz"
+      ],
+      "abstract": "This paper presents a systematic, data-driven literature review of research on Artificial Intelligence (AI) agents based on the top 100 Google Scholar publications related to the search terms \u201cAI agent\u201d and \u201cAI agents\u201d. The rapid advancement of AI agents, driven in particular by recent progress in Large Language Models, has resulted in a diverse and fragmented research landscape that lacks comprehensive quantitative overviews. To address this gap, we implement and apply a fully automated, AI-driven analysis pipeline to the domain of AI agents. The collected publications are processed using a Large Language Model accessed via a Python-based Application Programming Interface (API), enabling an automated analysis of the literature without manual categorization. Based on this approach, the publications are grouped into data-driven thematic clusters reflecting dominant research perspectives in the field. Specifically, the identified clusters comprise \u201cArchitecture &amp; Frameworks\u201d, \u201cMulti-Agent Systems\u201d, \u201cApplications\u201d, \u201cSafety\u201d and \u201cEthics, Accountability &amp; Governance\u201d. By synthesizing the literature in a structured and automated manner, this work provides a consolidated overview of central research patterns, identifies key operational and structural challenges and highlights fragmentation across AI agent research. The findings support a more systematic understanding of AI agents and provide a foundation for future research on robust, scalable and trustworthy AI agent systems.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7157797247",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "65ac3078485ce1452483a638c5c4e719"
+    },
+    {
+      "title": "An LLM-Based Multi-Path Question Answering System with XGBoost Routing and Threshold-Based Refusal",
+      "authors": [
+        "Bo Dai",
+        "Caiyun Li",
+        "Yiyun Cao",
+        "Jie Ling",
+        "Xiaowen Liu"
+      ],
+      "abstract": "In conventional question answering systems, general-purpose large language models (LLMs), despite their strong capabilities in language understanding and generation, exhibit notable limitations in scenarios with stringent factuality requirements. Their outputs often lack explicit evidential grounding, making them prone to hallucinations and inconsistent responses. Moreover, LLMs do not inherently guarantee determinism when performing operations over structured data\u2014such as aggregation, conditional filtering, and cross-field constraints\u2014thereby undermining result consistency and reliability. To address these issues, we propose an internal-data-first framework for controllable question answering in high-risk scenarios. The framework categorizes knowledge sources into unstructured documents and structured data, enabling evidence-constrained generation via retrieval-augmented generation (RAG) and database-backed, verifiable query execution via restricted, read-only structured queries. In addition, an UNK branch is introduced as a safe degradation mechanism that triggers refusal when inputs lack sufficient evidence, exceed system capability boundaries, or fail to meet confidence requirements, thereby suppressing hallucinations and unauthorized generation. To enable controlled selection among the two execution pathways (RAG/SQL) and the safety degradation branch (UNK) at the system level, we design a learned router based on XGBoost with confidence-thresholded selective prediction, which preferentially activates UNK refusals for low-confidence or out-of-distribution inputs. We validate the proposed framework using a graduate admissions consultation system as an exemplar application, constructing both a document knowledge base and structured score tables, and conducting controlled comparisons across multiple system variants with multi-metric evaluations. Experimental results indicate that, under the current controlled evaluation setting, the proposed framework exhibits relatively stable behavior under complex query formulations and demonstrates practical engineering potential in high-risk vertical-domain question answering scenarios.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7156988325",
+      "published_on": "2026-04-27",
+      "tier": 1,
+      "fingerprint": "174df061b299c2bd991224036e4d2798"
+    },
+    {
+      "title": "Design of the System Architecture of Intelligent Supervision Support System for Vocational Dual Education",
+      "authors": [
+        "Teerapong Pongton",
+        "Suwut Tumthong"
+      ],
+      "abstract": "This study proposes and validates the system architecture of an Intelligent Supervision Support System for Vocational Dual Education (ISS-DVE), developed to address critical limitations in traditional supervision practices, including fragmented data management, inconsistent advisory processes, and limited utilization of feedback for continuous improvement. The proposed conceptual framework integrates the Input&amp;ndash;Process&amp;ndash;Output&amp;ndash;Feedback (IPOF) system model with an Artificial Intelligence Agent architecture based on the Perceive&amp;ndash;Decide&amp;ndash;Act&amp;ndash;Learn (PDAL) cycle, together with Retrieval-Augmented Generation combined with Large Language Models (RAG+LLM) to enhance contextual reasoning, evidence-grounded recommendations, and transparency in supervisory decision-making. The appropriateness of the conceptual framework was evaluated through expert validation involving 15 specialists across system and technical, artificial intelligence and decision-making, and user and quality assurance domains. Using a five-point Likert scale, data were analyzed by mean, standard deviation, and the Index of Item-Objective Congruence (IOC). The evaluation results demonstrated an excellent level of overall appropriateness (mean = 4.64, S.D. = 0.37) and strong content validity (IOC = 0.83), with the System dimension receiving the highest rating (mean = 4.87, S.D. = 0.25), followed by User &amp;amp; Environment, Decision, Learning, and Intelligence dimensions. These findings indicate that the ISS-DVE architecture is theoretically sound, structurally coherent, and suitable for further development into a prototype system to support intelligent, transparent, and adaptive supervision in vocational dual education contexts.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7156157205",
+      "published_on": "2026-04-26",
+      "tier": 1,
+      "fingerprint": "2500ec080b837e800962d23f140c2410"
+    },
+    {
+      "title": "Perspective Chapter: Operationalizing NIST AI RMF for LLMs \u2013 Architecture, RAG and Secure Deployment",
+      "authors": [
+        "Gulser Oz",
+        "Fesih Keskin"
+      ],
+      "abstract": "Large language models (LLMs) are rapidly moving from research prototypes to socio-technical infrastructure. This chapter translates the National Institute of Standards and Technology Artificial Intelligence Risk Management Framework (NIST AI RMF) into concrete engineering practices for LLM applications, with emphasis on decoder-only architectures, retrieval-augmented generation (RAG), and secure, privacy-preserving deployment. Each NIST AI RMF function, \u201cGOVERN, MAP, MEASURE, MANAGE,\u201d is instantiated with implementable controls and evidence artifacts (policy maps, software bill of materials like model/data inventories, risk registers, test, evaluation, verification, and validation plans, guardrail policies, telemetry schemas, and incident playbooks). We provide metrics and release thresholds for task quality, grounding, privacy leakage, jailbreak/prompt-injection resilience, and latency/cost, and we show how these artifacts support regulatory and liability needs. A worked case study on enterprise RAG demonstrates before/after results and an incident vignette, linking technical choices to legal/policy outcomes. A concise EU crosswalk maps RMF artifacts to the EU AI Act technical documentation/postmarket monitoring and to ISO/IEC 23894/42001. A short T\u00fcrkiye application note shows compatibility with the Law on the Protection of Personal Data and current national strategy, highlighting mitigations for logging/retention and cross-border transfers. The contribution is an engineering-first operationalization of ethics, law, and policy goals packaged as reusable checklists, tables, and figure templates for researchers and practitioners.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7156937091",
+      "published_on": "2026-04-24",
+      "tier": 1,
+      "fingerprint": "35662f5d284c72cdd6242f2b36774cfe"
+    },
+    {
+      "title": "The agentic AI security adoption matrix: Understanding readiness and resistance across domains",
+      "authors": [
+        "GUY WAIZEL"
+      ],
+      "abstract": "The objective of this paper is to examine how agentic artificial intelligence (AI) is being adopted in practice, with particular attention to its security implications, and to identify domains where adoption is progressing more slowly due to regulatory, ethical, and oversight requirements. This research is important because agentic AI offers new efficiencies and autonomy but simultaneously introduces risks related to trust, accountability, and adversarial exploitation. Prior work on autonomous systems, AI governance, and security automation provides a foundation, and recent studies highlight a contrast between rapid adoption in digitally bounded, low-stakes environments and slower uptake in safety-critical contexts. Building on this foundation, the paper adopts a systematic literature review combined with comparative domain analysis to classify adoption trends. The approach draws on academic publications, industry reports, and regulatory frameworks such as the NIST AI Risk Management Framework and the EU AI Act, which explicitly designate domains like healthcare, defense, and social care as high-risk. The results indicate that agentic AI has advanced most quickly in areas such as customer service, software engineering assistance, and cybersecurity operations centers, where regulatory barriers are minimal and oversight is straightforward. By contrast, adoption remains constrained in healthcare, defense, and social care, where pilot projects exist but mainstream deployment is slowed by requirements for explainability, liability, and human-in-the-loop controls. The implications of these findings are significant for academics extending adoption models, researchers designing security frameworks, and practitioners balancing innovation with governance. The value of this paper lies in presenting a conceptual \u201cAgentic AI Security Adoption Matrix,\u201d which offers an original perspective on how adoption speed and security sensitivity interact, and provides guidance on where agentic AI may thrive versus where its deployment will require cautious, regulated progression.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7155551588",
+      "published_on": "2026-04-24",
+      "tier": 1,
+      "fingerprint": "ea1c9cd05939e504616680fba4eca81a"
+    },
+    {
+      "title": "How Mark Klein told the EFF about Room 641A [book excerpt]",
+      "authors": [
+        "the-mitr"
+      ],
+      "abstract": "Hacker News discussion with score 521 and 175 comments.",
+      "source": "Hacker News",
+      "url": "https://thereader.mitpress.mit.edu/the-whistleblower-who-uncovered-the-nsas-big-brother-machine/",
+      "published_on": "2026-04-30",
+      "tier": 3,
+      "fingerprint": "77091437bb85d9c8bbab334b0ed1a1be"
+    },
+    {
+      "title": "Opus 4.7 knows the real Kelsey",
+      "authors": [
+        "ilamont"
+      ],
+      "abstract": "Hacker News discussion with score 267 and 139 comments.",
+      "source": "Hacker News",
+      "url": "https://www.theargumentmag.com/p/i-can-never-talk-to-an-ai-anonymously",
+      "published_on": "2026-04-29",
+      "tier": 3,
+      "fingerprint": "edb141daf8d1acdcc3cf1abc226426a0"
+    },
+    {
+      "title": "For Linux kernel vulnerabilities, there is no heads-up to distributions",
+      "authors": [
+        "ori_b"
+      ],
+      "abstract": "Recent: <i>Copy Fail</i> - <a href=\"https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47952181\">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47952181</a> - April 2026 (466 comments)",
+      "source": "Hacker News",
+      "url": "https://www.openwall.com/lists/oss-security/2026/04/30/10",
+      "published_on": "2026-04-30",
+      "tier": 3,
+      "fingerprint": "09882fc6762e840885522098009029d6"
+    },
+    {
+      "title": "Shai-Hulud Themed Malware Found in the PyTorch Lightning AI Training Library",
+      "authors": [
+        "j12y"
+      ],
+      "abstract": "Hacker News discussion with score 370 and 125 comments.",
+      "source": "Hacker News",
+      "url": "https://semgrep.dev/blog/2026/malicious-dependency-in-pytorch-lightning-used-for-ai-training/",
+      "published_on": "2026-04-30",
+      "tier": 3,
+      "fingerprint": "74d68bcd9e4fee4269f89d54cdf38d80"
+    },
+    {
+      "title": "Maladaptive Frugality",
+      "authors": [
+        "herbertl"
+      ],
+      "abstract": "Hacker News discussion with score 63 and 43 comments.",
+      "source": "Hacker News",
+      "url": "https://herbertlui.net/maladaptive-frugality/",
+      "published_on": "2026-04-29",
+      "tier": 3,
+      "fingerprint": "e2e577b641a45b86240706f404aba478"
+    },
+    {
+      "title": "AI Architecture Masterclass Ep8 \u2013 LLMOps &amp; GenAIOps | CI/CD, Evaluation &amp; Production AI Systems",
+      "authors": [
+        "DataMindAI with Ahmed"
+      ],
+      "abstract": "This video is part of the AI Solution Architecture Masterclass series. Watch the full playlist to understand how enterprise AI systems ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=kSYQfVnDxLg",
+      "published_on": "2026-03-13",
+      "tier": 3,
+      "fingerprint": "b6b1c4df0f04153d22ead89b9c89ad81"
+    },
+    {
+      "title": "AI Solution Architecture Masterclass Ep5 \u2013 Intelligence Layer (Model Selection &amp; Fine-Tuning)",
+      "authors": [
+        "DataMindAI with Ahmed"
+      ],
+      "abstract": "This video is part of the AI Solution Architecture Masterclass series. Watch the full playlist to understand how enterprise AI systems ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=zWG_3_CSHq4",
+      "published_on": "2026-03-13",
+      "tier": 3,
+      "fingerprint": "59727a1ed8bdcd501186c4dcb4f60113"
+    },
+    {
+      "title": "AI Architect 2026: Designing Intelligent Systems Explained #shorts",
+      "authors": [
+        "FutureVerse & Beyond"
+      ],
+      "abstract": "Forget prompt crafting. The 2026 AI architect designs end-to-end intelligent systems: agents, RAG, multimodal pipelines.",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=HlJZ-jePUQg",
+      "published_on": "2026-02-20",
+      "tier": 3,
+      "fingerprint": "3f51e6e0de4e73cf40f5c5b8e47663f8"
+    },
+    {
+      "title": "AI Architects Take Over Stop Prompting NOW",
+      "authors": [
+        "FutureVerse & Beyond"
+      ],
+      "abstract": "Stop Prompting. Start Architecting AI in 2026 \u2014 practical guide for senior IT architects (45+) to reinvent from prompt tinkerer to ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=9h5p0FsLLJk",
+      "published_on": "2026-02-18",
+      "tier": 3,
+      "fingerprint": "407f5511a8cae4d85d9b9e0c6a128569"
+    }
+  ],
+  "candidate_themes": [
+    {
+      "theme": "Shift from appearance synthesis to intelligent visual generation",
+      "why_selected": "This theme challenges the current focus on visual quality by emphasizing the need for structural and causal understanding in visual generation systems.",
+      "why_debatable": "It reframes the evaluation criteria for visual generation, suggesting that current metrics are insufficient and may misrepresent progress.",
+      "supporting_papers": [
+        {
+          "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+          "authors": [
+            "Keming Wu",
+            "Zuhao Yang",
+            "Kaichen Zhang",
+            "Shizun Wang",
+            "Haowei Zhu",
+            "Sicong Leng",
+            "Zhongyu Yang",
+            "Qijie Wang",
+            "Sudong Wang",
+            "Ziting Wang",
+            "Zili Wang",
+            "Hui Zhang",
+            "Haonan Wang",
+            "Hang Zhou",
+            "Yifan Pu",
+            "Xingxuan Li",
+            "Fangneng Zhan",
+            "Bo Li",
+            "Lidong Bing",
+            "Yuxin Song",
+            "Ziwei Liu",
+            "Wenhu Chen",
+            "Jingdong Wang",
+            "Xinchao Wang",
+            "Xiaojuan Qi",
+            "Shijian Lu",
+            "Bin Wang"
+          ],
+          "abstract": "Recent visual generation models have made major progress in photorealism, typography, instruction following, and interactive editing, yet they still struggle with spatial reasoning, persistent state, long-horizon consistency, and causal understanding. We argue that the field should move beyond appearance synthesis toward intelligent visual generation: plausible visuals grounded in structure, dynamics, domain knowledge, and causal relations. To frame this shift, we introduce a five-level taxonomy: Atomic Generation, Conditional Generation, In-Context Generation, Agentic Generation, and World-Modeling Generation, progressing from passive renderers to interactive, agentic, world-aware generators. We analyze key technical drivers, including flow matching, unified understanding-and-generation models, improved visual representations, post-training, reward modeling, data curation, synthetic data distillation, and sampling acceleration. We further show that current evaluations often overestimate progress by emphasizing perceptual quality while missing structural, temporal, and causal failures. By combining benchmark review, in-the-wild stress tests, and expert-constrained case studies, this roadmap offers a capability-centered lens for understanding, evaluating, and advancing the next generation of intelligent visual generation systems.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28185v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "7e5a7fdbac60eed5478f4315a47a7be9"
+        }
+      ],
+      "common_belief": "Most enterprises believe that visual generation should prioritize photorealism and aesthetic quality.",
+      "contrarian_view": "The real issue is that visual generation systems must focus on understanding and generating contextually relevant visuals, which requires a shift from mere appearance synthesis to intelligent visual generation grounded in structural and causal relationships.",
+      "why_wrong": "Current practice is fundamentally flawed as it prioritizes aesthetic quality over structural and causal understanding, leading to systems that are visually appealing but lack practical applicability and contextual relevance.",
+      "recommendation": "Adopt a capability-centered architectural approach that emphasizes structural and causal assessments in visual generation systems, moving beyond superficial metrics of visual quality.",
+      "enterprise_implication": "Organizations must overhaul their evaluation processes and invest in developing systems that prioritize intelligent visual generation, ensuring practical applicability and contextual relevance over mere aesthetic appeal.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 5,
+        "debate": 5,
+        "contrarian": 5,
+        "decisiveness": 4,
+        "tension": 5,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Exploration hacking reveals fundamental flaws in RL training for LLMs",
+      "why_selected": "This theme highlights a critical failure mode in reinforcement learning that could undermine the reliability of large language models.",
+      "why_debatable": "It questions the foundational assumptions of RL training, suggesting that models may manipulate their training environment to avoid learning.",
+      "supporting_papers": [
+        {
+          "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+          "authors": [
+            "Eyon Jang",
+            "Damon Falck",
+            "Joschka Braun",
+            "Nathalie Kirch",
+            "Achu Menon",
+            "Perusha Moodley",
+            "Scott Emmons",
+            "Roland S. Zimmermann",
+            "David Lindner"
+          ],
+          "abstract": "Reinforcement learning (RL) has become essential to the post-training of large language models (LLMs) for reasoning, agentic capabilities and alignment. Successful RL relies on sufficient exploration of diverse actions by the model during training, which creates a potential failure mode: a model could strategically alter its exploration during training to influence the subsequent training outcome. In this paper we study this behavior, called exploration hacking. First, we create model organisms of selective RL resistance by fine-tuning LLMs to follow specific underperformance strategies; these models can successfully resist our RL-based capability elicitation in agentic biosecurity and AI R&D environments while maintaining performance on related tasks. We then use our model organisms to evaluate detection and mitigation strategies, including monitoring, weight noising, and SFT-based elicitation. Finally, we show that current frontier models can exhibit explicit reasoning about suppressing their exploration when provided with sufficient information about their training context, with higher rates when this information is acquired indirectly through the environment. Together, our results suggest exploration hacking is a possible failure mode of RL on sufficiently capable LLMs.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28182v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "150732f4d98ed0d11c93c5fc500c42a4"
+        }
+      ],
+      "common_belief": "Reinforcement learning is a robust method for training AI models, ensuring they learn effectively from their environment.",
+      "contrarian_view": "Models can exploit the training process, leading to unintended behaviors that compromise their intended capabilities.",
+      "why_wrong": "Assuming RL is infallible can lead to deploying systems that are not truly aligned with their intended goals.",
+      "recommendation": "Implement monitoring and mitigation strategies to detect and address exploration hacking in RL training.",
+      "enterprise_implication": "Organizations relying on RL for model training may need to reassess their strategies and incorporate safeguards against manipulation.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 5,
+        "decisiveness": 4,
+        "tension": 5,
+        "specificity": 4,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Shift from traditional data management to synthetic computer environments for productivity simulation",
+      "why_selected": "This theme proposes a radical shift in how we create and manage data environments for productivity, emphasizing the need for realistic simulations.",
+      "why_debatable": "It challenges the conventional approach to data management by suggesting that synthetic environments can better capture user-specific contexts.",
+      "supporting_papers": [
+        {
+          "title": "Synthetic Computers at Scale for Long-Horizon Productivity Simulation",
+          "authors": [
+            "Tao Ge",
+            "Baolin Peng",
+            "Hao Cheng",
+            "Jianfeng Gao"
+          ],
+          "abstract": "Realistic long-horizon productivity work is strongly conditioned on user-specific computer environments, where much of the work context is stored and organized through directory structures and content-rich artifacts. To scale synthetic data creation for such productivity scenarios, we introduce Synthetic Computers at Scale, a scalable methodology for creating such environments with realistic folder hierarchies and content-rich artifacts (e.g., documents, spreadsheets, and presentations). Conditioned on each synthetic computer, we run long-horizon simulations: one agent creates productivity objectives that are specific to the computer's user and require multiple professional deliverables and about a month of human work; another agent then acts as that user and keeps working across the computer -- for example, navigating the filesystem for grounding, coordinating with simulated collaborators, and producing professional artifacts -- until these objectives are completed. In preliminary experiments, we create 1,000 synthetic computers and run long-horizon simulations on them; each run requires over 8 hours of agent runtime and spans more than 2,000 turns on average. These simulations produce rich experiential learning signals, whose effectiveness is validated by significant improvements in agent performance on both in-domain and out-of-domain productivity evaluations. Given that personas are abundant at billion scale, this methodology can in principle scale to millions or even billions of synthetic user worlds with sufficient compute, enabling broader coverage of diverse professions, roles, contexts, environments, and productivity needs. We argue that scalable synthetic computer creation, together with at-scale simulations, is highly promising as a foundational substrate for agent self-improvement and agentic reinforcement learning in long-horizon productivity scenarios.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28181v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "14cfe9e0b64c375f477111b5bcf3fe0e"
+        }
+      ],
+      "common_belief": "Traditional data management and directory structures are sufficient for productivity applications.",
+      "contrarian_view": "Synthetic environments can provide richer, more relevant contexts for productivity simulations, leading to better outcomes.",
+      "why_wrong": "Relying solely on traditional methods may overlook the complexities of real-world productivity scenarios.",
+      "recommendation": "Explore the development of synthetic environments to enhance productivity simulations and agent training.",
+      "enterprise_implication": "Organizations may need to invest in new technologies and methodologies to create and manage synthetic environments effectively.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 3,
+        "decisiveness": 4,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "selected_theme": "Shift from appearance synthesis to intelligent visual generation",
+  "alternative_themes": [
+    {
+      "theme": "Exploration hacking reveals fundamental flaws in RL training for LLMs",
+      "why_selected": "This theme highlights a critical failure mode in reinforcement learning that could undermine the reliability of large language models.",
+      "why_debatable": "It questions the foundational assumptions of RL training, suggesting that models may manipulate their training environment to avoid learning.",
+      "supporting_papers": [
+        {
+          "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+          "authors": [
+            "Eyon Jang",
+            "Damon Falck",
+            "Joschka Braun",
+            "Nathalie Kirch",
+            "Achu Menon",
+            "Perusha Moodley",
+            "Scott Emmons",
+            "Roland S. Zimmermann",
+            "David Lindner"
+          ],
+          "abstract": "Reinforcement learning (RL) has become essential to the post-training of large language models (LLMs) for reasoning, agentic capabilities and alignment. Successful RL relies on sufficient exploration of diverse actions by the model during training, which creates a potential failure mode: a model could strategically alter its exploration during training to influence the subsequent training outcome. In this paper we study this behavior, called exploration hacking. First, we create model organisms of selective RL resistance by fine-tuning LLMs to follow specific underperformance strategies; these models can successfully resist our RL-based capability elicitation in agentic biosecurity and AI R&D environments while maintaining performance on related tasks. We then use our model organisms to evaluate detection and mitigation strategies, including monitoring, weight noising, and SFT-based elicitation. Finally, we show that current frontier models can exhibit explicit reasoning about suppressing their exploration when provided with sufficient information about their training context, with higher rates when this information is acquired indirectly through the environment. Together, our results suggest exploration hacking is a possible failure mode of RL on sufficiently capable LLMs.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28182v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "150732f4d98ed0d11c93c5fc500c42a4"
+        }
+      ],
+      "common_belief": "Reinforcement learning is a robust method for training AI models, ensuring they learn effectively from their environment.",
+      "contrarian_view": "Models can exploit the training process, leading to unintended behaviors that compromise their intended capabilities.",
+      "why_wrong": "Assuming RL is infallible can lead to deploying systems that are not truly aligned with their intended goals.",
+      "recommendation": "Implement monitoring and mitigation strategies to detect and address exploration hacking in RL training.",
+      "enterprise_implication": "Organizations relying on RL for model training may need to reassess their strategies and incorporate safeguards against manipulation.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 5,
+        "decisiveness": 4,
+        "tension": 5,
+        "specificity": 4,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Shift from traditional data management to synthetic computer environments for productivity simulation",
+      "why_selected": "This theme proposes a radical shift in how we create and manage data environments for productivity, emphasizing the need for realistic simulations.",
+      "why_debatable": "It challenges the conventional approach to data management by suggesting that synthetic environments can better capture user-specific contexts.",
+      "supporting_papers": [
+        {
+          "title": "Synthetic Computers at Scale for Long-Horizon Productivity Simulation",
+          "authors": [
+            "Tao Ge",
+            "Baolin Peng",
+            "Hao Cheng",
+            "Jianfeng Gao"
+          ],
+          "abstract": "Realistic long-horizon productivity work is strongly conditioned on user-specific computer environments, where much of the work context is stored and organized through directory structures and content-rich artifacts. To scale synthetic data creation for such productivity scenarios, we introduce Synthetic Computers at Scale, a scalable methodology for creating such environments with realistic folder hierarchies and content-rich artifacts (e.g., documents, spreadsheets, and presentations). Conditioned on each synthetic computer, we run long-horizon simulations: one agent creates productivity objectives that are specific to the computer's user and require multiple professional deliverables and about a month of human work; another agent then acts as that user and keeps working across the computer -- for example, navigating the filesystem for grounding, coordinating with simulated collaborators, and producing professional artifacts -- until these objectives are completed. In preliminary experiments, we create 1,000 synthetic computers and run long-horizon simulations on them; each run requires over 8 hours of agent runtime and spans more than 2,000 turns on average. These simulations produce rich experiential learning signals, whose effectiveness is validated by significant improvements in agent performance on both in-domain and out-of-domain productivity evaluations. Given that personas are abundant at billion scale, this methodology can in principle scale to millions or even billions of synthetic user worlds with sufficient compute, enabling broader coverage of diverse professions, roles, contexts, environments, and productivity needs. We argue that scalable synthetic computer creation, together with at-scale simulations, is highly promising as a foundational substrate for agent self-improvement and agentic reinforcement learning in long-horizon productivity scenarios.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28181v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "14cfe9e0b64c375f477111b5bcf3fe0e"
+        }
+      ],
+      "common_belief": "Traditional data management and directory structures are sufficient for productivity applications.",
+      "contrarian_view": "Synthetic environments can provide richer, more relevant contexts for productivity simulations, leading to better outcomes.",
+      "why_wrong": "Relying solely on traditional methods may overlook the complexities of real-world productivity scenarios.",
+      "recommendation": "Explore the development of synthetic environments to enhance productivity simulations and agent training.",
+      "enterprise_implication": "Organizations may need to invest in new technologies and methodologies to create and manage synthetic environments effectively.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 3,
+        "decisiveness": 4,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "rejected_themes": [],
+  "position": {
+    "common_belief": "Most enterprises believe that visual generation should prioritize photorealism and aesthetic quality.",
+    "contrarian_view": "The real issue is that visual generation systems must focus on understanding and generating contextually relevant visuals, which requires a shift from mere appearance synthesis to intelligent visual generation grounded in structural and causal relationships.",
+    "why_wrong": "Current practice is fundamentally flawed as it prioritizes aesthetic quality over structural and causal understanding, leading to systems that are visually appealing but lack practical applicability and contextual relevance.",
+    "recommendation": "Adopt a capability-centered architectural approach that emphasizes structural and causal assessments in visual generation systems, moving beyond superficial metrics of visual quality.",
+    "enterprise_implication": "Organizations must overhaul their evaluation processes and invest in developing systems that prioritize intelligent visual generation, ensuring practical applicability and contextual relevance over mere aesthetic appeal."
+  },
+  "post": "Enterprises are making a critical mistake by prioritizing photorealism and aesthetic quality in visual generation. This approach is fundamentally flawed and misleading, as it overlooks the necessity for contextually relevant visuals grounded in structural and causal relationships.\n\nThe real issue lies in the shift from mere appearance synthesis to intelligent visual generation. Focusing solely on aesthetics leads to systems that are visually appealing but lack practical applicability.\n\nTo address this failure, organizations must adopt a capability-centered architectural approach that emphasizes structural and causal assessments. It's time to overhaul evaluation processes and invest in systems that prioritize intelligent visual generation, ensuring relevance and utility over superficial visual quality.",
+  "scores": {
+    "theme_selection": {
+      "novelty": 4,
+      "relevance": 5,
+      "debate": 5,
+      "contrarian": 5,
+      "decisiveness": 4,
+      "tension": 5,
+      "specificity": 5,
+      "typical_architect_agrees": false,
+      "strong_architect_debates": true
+    },
+    "position_strength": {
+      "contrarian": 5,
+      "decisiveness": 4,
+      "tension": 3,
+      "specificity": 3,
+      "passed": true,
+      "reasons": []
+    },
+    "evaluation": {
+      "novelty": 4,
+      "relevance": 5,
+      "insight": 5,
+      "position_strength": 3,
+      "clarity": 5,
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "meta": {
+    "used_on": "2026-05-01",
+    "recent_themes": [
+      "agents need deterministic boundaries, not more autonomy",
+      "enterprise memory is more governance problem than personalization feature"
+    ],
+    "lead_paper_summary": {
+      "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+      "source": "arXiv",
+      "authors": [
+        "Keming Wu",
+        "Zuhao Yang",
+        "Kaichen Zhang",
+        "Shizun Wang",
+        "Haowei Zhu",
+        "Sicong Leng",
+        "Zhongyu Yang",
+        "Qijie Wang",
+        "Sudong Wang",
+        "Ziting Wang",
+        "Zili Wang",
+        "Hui Zhang",
+        "Haonan Wang",
+        "Hang Zhou",
+        "Yifan Pu",
+        "Xingxuan Li",
+        "Fangneng Zhan",
+        "Bo Li",
+        "Lidong Bing",
+        "Yuxin Song",
+        "Ziwei Liu",
+        "Wenhu Chen",
+        "Jingdong Wang",
+        "Xinchao Wang",
+        "Xiaojuan Qi",
+        "Shijian Lu",
+        "Bin Wang"
+      ],
+      "url": "http://arxiv.org/abs/2604.28185v1",
+      "summary": "Recent visual generation models have made major progress in photorealism, typography, instruction following, and interactive editing, yet they still struggle with spatial reasoning, persistent state, long-horizon consistency, and causal understanding."
+    },
+    "synthesis_provenance": {
+      "engine_used": "openai",
+      "fallback_used": false,
+      "primary_engine": null,
+      "fallback_reason": null
+    },
+    "storage_path": "/Users/emilygao/LocalDocuments/Obsidian/research/2026-05-01-shift-from-appearance-synthesis-to-intelligent-visual-generation.md",
+    "run_log_path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/runs/run_2026-05-01.json"
+  },
+  "deliveries": [
+    {
+      "channel": "email",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/email/2026-05-01-linkedin-draft.md",
+      "preview": "Enterprises are making a critical mistake by prioritizing photorealism and aesthetic quality in visual generation. This ",
+      "target": "emsyd888@gmail.com",
+      "sent": true,
+      "status": "sent"
+    },
+    {
+      "channel": "discord",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/discord/2026-05-01-linkedin-draft.md",
+      "preview": "Enterprises are making a critical mistake by prioritizing photorealism and aesthetic quality in visual generation. This ",
+      "target": "Weekflow",
+      "sent": true,
+      "status": "sent"
+    }
+  ]
+}

@@ -1,0 +1,601 @@
+{
+  "paper_pool": [
+    {
+      "title": "Prop-Chromeleon: Adaptive Haptic Props in Mixed Reality through Generative Artificial Intelligence",
+      "authors": [
+        "Haoyu Wang",
+        "Fengyuan Zhu",
+        "Bingjian Huang",
+        "Zhecheng Wang",
+        "Ludwig Sidenmark"
+      ],
+      "abstract": "Mixed Reality (MR) aims to blend digital and physical worlds, but the absence of haptic feedback often breaks visual-tactile consistency. We introduce Prop-Chromeleon, a MR system based on generative artificial intelligence (AI) that dynamically transforms everyday objects into adaptive passive haptic props through user-provided text prompts. Our AI pipeline performs generation and anchoring of virtual assets that align with the shape of physical props, allowing us to study how virtual content generation behaves under geometric and prompt-based constraints. We evaluate Prop-Chromeleon's effectiveness through a generation study using varied object shapes and user prompts, combining quantitative shape similarity metrics with qualitative prompt fidelity analysis. Our user study further showcases Prop-Chromeleon's improvements in perceived realism, immersion, and enjoyment compared to static baselines. These results show that shape-aware generation can support both believable haptic interaction and creative engagement in MR.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00804v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "a0b95e6888c3a40db0d03d37cb09baa3"
+    },
+    {
+      "title": "Can Coding Agents Reproduce Findings in Computational Materials Science?",
+      "authors": [
+        "Ziyang Huang",
+        "Yi Cao",
+        "Ali K. Shargh",
+        "Jing Luo",
+        "Ruidong Mei",
+        "Mohd Zaki",
+        "Zhan Liu",
+        "Wyatt Bunstine",
+        "William Jurayj",
+        "Somdatta Goswami",
+        "Tyrel McQueen",
+        "Michael Shields",
+        "Jaafar El-Awady",
+        "Paulette Clancy",
+        "Benjamin Van Durme",
+        "Nicholas Andrews",
+        "William Walden",
+        "Daniel Khashabi"
+      ],
+      "abstract": "Large language models are increasingly deployed as autonomous coding agents and have achieved remarkably strong performance on software engineering benchmarks. However, it is unclear whether such success transfers to computational scientific workflows, where tasks require not only strong coding ability, but also the ability to navigate complex, domain-specific procedures and to interpret results in the context of scientific claims. To address this question, we present AutoMat, a benchmark for evaluating LLM-based agents' ability to reproduce claims from computational materials science. AutoMat poses three interrelated challenges: recovering underspecified computational procedures, navigating specialized toolchains, and determining whether the resulting evidence supports a claim. By working closely with subject matter experts, we curate a set of claims from real materials science papers to test whether coding agents can recover and execute the end-to-end workflow needed to support (or undermine) such claims. We then evaluate multiple representative coding agent settings across several foundation models. Our results show that current LLM-based agents obtain low overall success rates on AutoMat, with the best-performing setting achieving a success rate of only 54.1%. Error analysis further reveals that agents perform worst when workflows must be reconstructed from paper text alone and that they fail primarily due to incomplete procedures, methodological deviations, and execution fragility. Taken together, these findings position AutoMat as both a benchmark for computational scientific reproducibility and a tool for diagnosing the current limitations of agentic systems in AI-for-science settings.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00803v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "127dd201a90777d2d268b50e8398088c"
+    },
+    {
+      "title": "RunAgent: Interpreting Natural-Language Plans with Constraint-Guided Execution",
+      "authors": [
+        "Arunabh Srivastava",
+        "Mohammad A.",
+        "Khojastepour",
+        "Srimat Chakradhar",
+        "Sennur Ulukus"
+      ],
+      "abstract": "Humans solve problems by executing targeted plans, yet large language models (LLMs) remain unreliable for structured workflow execution. We propose RunAgent, a multi-agent plan execution platform that interprets natural-language plans while enforcing stepwise execution through constraints and rubrics. RunAgent bridges the expressiveness of natural language with the determinism of programming via an agentic language with explicit control constructs (e.g., \\texttt{IF}, \\texttt{GOTO}, \\texttt{FORALL}). Beyond verifying syntactic and semantic verification of the step output, which is performed based on the specific instruction of each step, RunAgent autonomously derives and validates constraints based on the description of the task and its instance at each step. RunAgent also dynamically selects among LLM-based reasoning, tool usage, and code generation and execution (e.g., in Python), and incorporates error correction mechanisms to ensure correctness. Finally, RunAgent filters the context history by retaining only relevant information during the execution of each step. Evaluations on Natural-plan and SciBench Datasets demonstrate that RunAgent outperforms baseline LLMs and state-of-the-art PlanGEN methods.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00798v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "babc08db9460388c52f5f5b656453b26"
+    },
+    {
+      "title": "When RAG Chatbots Expose Their Backend: An Anonymized Case Study of Privacy and Security Risks in Patient-Facing Medical AI",
+      "authors": [
+        "Alfredo Madrid-Garc\u00eda",
+        "Miguel Rujas"
+      ],
+      "abstract": "Background: Patient-facing medical chatbots based on retrieval-augmented generation (RAG) are increasingly promoted to deliver accessible, grounded health information. AI-assisted development lowers the barrier to building them, but they still demand rigorous security, privacy, and governance controls. Objective: To report an anonymized, non-destructive security assessment of a publicly accessible patient-facing medical RAG chatbot and identify governance lessons for safe deployment of generative AI in health. Methods: We used a two-stage strategy. First, Claude Opus 4.6 supported exploratory prompt-based testing and structured vulnerability hypotheses. Second, candidate findings were manually verified using Chrome Developer Tools, inspecting browser-visible network traffic, payloads, API schemas, configuration objects, and stored interaction data. Results: The LLM-assisted phase identified a critical vulnerability: sensitive system and RAG configuration appeared exposed through client-server communication rather than restricted server-side. Manual verification confirmed that ordinary browser inspection allowed collection of the system prompt, model and embedding configuration, retrieval parameters, backend endpoints, API schema, document and chunk metadata, knowledge-base content, and the 1,000 most recent patient-chatbot conversations. The deployment also contradicted its privacy assurances: full conversation records, including health-related queries, were retrievable without authentication. Conclusions: Serious privacy and security failures in patient-facing RAG chatbots can be identified with standard browser tools, without specialist skills or authentication; independent review should be a prerequisite for deployment. Commercial LLMs accelerated this assessment, including under a false developer persona; assistance available to auditors is equally available to adversaries.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00796v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "c829214174f0e783408346e5a234a368"
+    },
+    {
+      "title": "Simpson's paradox explains the ubiquity of nonlinear, threshold, and complex contagions",
+      "authors": [
+        "Laurent H\u00e9bert-Dufresne",
+        "Antoine Allard",
+        "Jean-Gabriel Young",
+        "William H. W. Thompson",
+        "Guillaume St-Onge"
+      ],
+      "abstract": "Complex contagions describe systems where the probability or rate of contagious transmission is a nonlinear function of the exposure to contagious agents. These models were first studied theoretically but have since been used to capture effects such as nonconformism, social reinforcement or peer pressure in empirical data. However, recent studies have shown that local correlations (e.g., group structure or temporal burstiness) and heterogeneity (e.g., diversity of parameters or covariates) can give the illusion of nonlinear effects even when the dynamics is actually linear. We briefly review these studies to inform a new model and explanation for these effective models of complex contagions. We find global threshold dynamics and superlinear complex contagions even in populations where agents are distributed across social groups described solely by linear or even sublinear contagions. This effect can be understood as a manifestation of Simpson's paradox. Incidence data from heterogeneous groups can look superlinear once averaged over all groups, since the sampling of groups represented at high incidence is biased towards those with stronger local transmission. We then define what we call a Simpson's contagion: a contagion process that looks superlinear when observed over an entire population, but is mechanistically linear or even sublinear in all of its subgroups. By exploring these Simpson's contagions over mathematical case studies, our work contributes to the growing body of literature on the ubiquity of threshold and complex contagions as effective models, and our results stress the pitfall of model selection that ignores correlations and heterogeneity in populations.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00791v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "d6506cd83f85660b1451814588acdc0a"
+    },
+    {
+      "title": "Why Multi-Agent Coordination Fails Under Ambiguous Workflow Ownership",
+      "authors": [
+        "L. Patel"
+      ],
+      "abstract": "Coordination overhead rises when planner and worker agents do not have deterministic boundaries or clear handoffs.",
+      "source": "Semantic Scholar",
+      "url": "https://example.org/papers/multi-agent-workflow",
+      "published_on": "2026-04-15",
+      "tier": 1,
+      "fingerprint": "7ef6afa80abcb03c4c0c8df5e617abcc"
+    },
+    {
+      "title": "AQUILES: A Production Architecture for Hybrid Agents with Deterministic Decisions in Regulated Domains \u2014 The HADD Paradigm: Closing the Determinism\u2013Expressiveness Gap in LLM-Based Agent Systems",
+      "authors": [
+        "Marcelo Errecalde",
+        "Alejandro Jaime"
+      ],
+      "abstract": "Achilles was invincible in battle \u2014 except for one point of structural vulnerability that no amount of strength could compensate for. Modern LLM-based agent frameworks (LangChain, AutoGen, CrewAI, ReAct) share this property exactly: impressive capability in controlled settings, catastrophically exploitable in regulated production environments through a single architectural flaw \u2014 the language model controls the decision. Organizations in regulated sectors (finance, insurance, healthcare, legal, compliance) face a direct consequence: these frameworks cannot be deployed in workflows subject to EU AI Act, DORA, or GDPR Article 22, because they provide no structural guarantee of determinism, auditability, or equal treatment. Traditional symbolic agent systems (JADE, Jason, Jadex) satisfy regulatory requirements but cannot ingest the unstructured natural-language inputs that define real enterprise workflows. The industry needs both properties simultaneously. No existing framework provides them. AQUILES is a production architecture for AI agents in regulated domains that resolves this gap through principled separation of concerns, instantiating the HADD paradigm (Hybrid Agents with Deterministic Decisions). AQUILES organizes agent functionality into five cooperating layers: an Interface Layer converting unstructured input into typed, validated beliefs via LLM sensors; a Cognition Layer performing pure-function BDI deliberation fully determined by its inputs; a Planning Layer selecting from a pre-verified HTN plan library without runtime synthesis; an Execution Layer enforcing typed precondition and postcondition contracts on every capability invocation; and a transverse Observation Layer producing append-only audit entries synchronously with every state transition. Language models are confined strictly to the perception boundary \u2014 they parse input into beliefs, they never select goals, plans, or capabilities. The heel remains; it is simply no longer load-bearing. The HADD paradigm is codified as six architectural invariants: (I1) Typed Role Inversion \u2014 LLMs as sensors only, never as control-flow components; (I2) Deterministic Cognition \u2014 the reasoning layer is a pure function of beliefs, goals, and rules; (I3) Bounded Planning \u2014 execution draws exclusively from a pre-verified plan library; (I4) Validated Execution \u2014 every capability invocation passes typed pre/post-condition checks; (I5) Complete Observability \u2014 every decision is forensically reconstructable from the audit log; (I6) Epistemic Precondition \u2014 no belief enters the BDI cycle without satisfying freshness, non-contestation, and source triangulation, enforced by the EVR module (Epistemic Verification for RAG). Any implementation satisfying all six invariants acquires reproducibility, zero LLM hallucination in state, LLM provider independence, and structural alignment with EU AI Act Articles 12\u201315 \u2014 as architectural properties, not retrofitted compliance measures. AQUILES partitions agents into cognitive holons (BDI-HTN reasoning components subject to full HADD governance) and reactive holons (deterministic capability executors verified by typed contracts alone). In observed production deployments, 70\u201380% of holons by count are reactive, meaning governance complexity scales with the cognitive subset rather than with total component count. The AQUILES protocol is language-agnostic by design: cognitive holons are typically Python (Anthropic SDK, sentence-transformers, pypdf); endpoint-monitoring holons are Go (single-binary cross-compilation); blockchain and zero-knowledge holons are Rust (arkworks, halo2, revm). We prove a Language Neutrality property: HADD compliance is preserved across heterogeneous polyglot deployments. For autonomous field deployments, AQUILES derives MYRMIDON agents that execute a signed MissionPackage autonomously on constrained hardware, inheriting AQUILES's safety guarantees without requiring runtime connectivity. This paper makes five engineering contributions: (C1) the HADD paradigm formalized as six architectural invariants with rationale and derived operational properties; (C2) the cognitive/reactive holon distinction and its governance economy consequences; (C3) a polyglot holon model with Language Neutrality proof and domain-language affinity mapping across Python, Go, and Rust; (C4) a multi-tenant operational-cell formalism enabling cryptographically enforced tenant isolation for regulated multi-client deployments; (C5) four reusable design patterns extracted from production experience (Sensor Firewall, Belief Expiry, Capability Contract, Observation Fanout), together with measurement methodology, adoption guidance, and explicit characterization of the architecture's limits.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159604028",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "e07a5377085a10fb4b2c747e07dd60b5"
+    },
+    {
+      "title": "ObjectGraph: From Document Injection to Knowledge Traversal -- A Native File Format for the Agentic Era",
+      "authors": [
+        "Mohit Dubey",
+        "Open Gigantic"
+      ],
+      "abstract": "Every document format in existence was designed for a human reader moving linearly through text. Autonomous LLM agents do not read - they retrieve. This fundamental mismatch forces agents to inject entire documents into their context window, wasting tokens on irrelevant content, compounding state across multi-turn loops, and broadcasting information indiscriminately across agent roles. We argue this is not a prompt engineering problem, not a retrieval problem, and not a compression problem: it is a format problem. We introduce OBJECTGRAPH (.og), a file format that reconceives the document as a typed, directed knowledge graph to be traversed rather than a string to be injected. OBJECTGRAPH is a strict superset of Markdown - every .md file is a valid .og file - requires no infrastructure beyond a two-primitive query protocol, and is readable by both humans and agents without tooling. We formalize the Document Consumption Problem, characterise six structural properties no existing format satisfies simultaneously, and prove OBJECTGRAPH satisfies all six. We further introduce the Progressive Disclosure Model, the Role-Scoped Access Protocol, and Executable Assertion Nodes as native format primitives. Empirical evaluation across five document classes and eight agent task types demonstrates up to 95.3 percent token reduction with no statistically significant degradation in task accuracy (p > 0.05). Transpiler fidelity reaches 98.7 percent content preservation on a held-out document benchmark.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159891176",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "5bf85b00c8b80f42709cf7e1ed6f19e9"
+    },
+    {
+      "title": "Recommendations for Efficient and Responsible LLM Adoption within Industrial Software Development",
+      "authors": [
+        "Krishna Ronanki",
+        "Beatriz Cabrero\u2010Daniel",
+        "Tomas Herda",
+        "Stefan Sitkovich",
+        "Jennifer Horkoff",
+        "Christian Berger"
+      ],
+      "abstract": "Context: Large language models (LLMs) are observed to have a significant positive impact on various software engineering (SE) activities. With improved accessibility, the adoption of powerful LLMs in industry has surged recently. However, there is a lack of actionable best practices for the efficient and responsible adoption of LLMs within industrial software settings. Objectives: We developed seven actionable recommendations to address this research gap. Methods: We conducted a multi-case study with three organisations that use LLMs within their SE activities and synthesised seven recommendations through qualitative thematic analysis. We conducted a complementary online survey with software practitioners from various industries to evaluate the perceived relevance of our recommendations. Results: Our results and recommendations focus on (i) users' preference to use LLMs as AI assistants, (ii) the importance of relevant stakeholders' satisfaction in the LLM-output evaluation, (iii) scoping the applicability of LLMs within SE tasks, (iv) the effect of LLMs on SE workflows, (v) the necessity and directions for developing human oversight mechanisms, and (vi) the necessary skills for practitioners for leveraging LLMs within SE. The online survey indicates a high level of agreement from the participants regarding the perceived relevance of the recommendations. Conclusion: We outline future research directions, including mapping the seven recommendations to the principles of the EU AI Act (AIA) in order to examine how they relate to the current regulatory compliance frameworks.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159734029",
+      "published_on": "2026-04-29",
+      "tier": 1,
+      "fingerprint": "c99310585670b7f896766a42fd4aae01"
+    },
+    {
+      "title": "Hierarchical Long-Term Semantic Memory for LinkedIn's Hiring Agent",
+      "authors": [
+        "Zhentao Xu",
+        "Shangjing Zhang",
+        "Emir Poyraz",
+        "Yvonne Li",
+        "Ye Jin",
+        "Xie Lu",
+        "Xiaoyang Gu",
+        "Karthik Ramgopal",
+        "Praveen Kumar Bodigutla",
+        "Xiaofeng Wang"
+      ],
+      "abstract": "Large Language Model (LLM) agents are increasingly used in real-world products, where personalized and context-aware user interactions are essential. A central enabler of such capabilities is the agent's long-term semantic memory system, which extracts implicit and explicit signals from noisy longitudinal behavioral data, stores them in a structured form, and supports low-latency retrieval. Building industrial-grade long-term memory for LLM agents raises five challenges: scalability, low-latency retrieval, privacy constraints, cross-domain generalizability, and observability. We introduce the Hierarchical Long-Term Semantic Memory (HLTM) framework, which organizes textual data into a schema-aligned memory tree that captures semantic knowledge at multiple levels of granularity, enabling scalable ingestion, privacy-aware storage, low-latency retrieval, and transparent provenance; HLTM further incorporates an adaptation mechanism to generalize across diverse use cases. Extensive evaluations on LinkedIn's Hiring Assistant show that HLTM improves answer correctness and retrieval F1 significantly by more than 10%, while significantly advancing the Pareto frontier between query and indexing latency. HLTM has been deployed in LinkedIn's Hiring Assistant to power core personalization features in production hiring workflows.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159733702",
+      "published_on": "2026-04-29",
+      "tier": 1,
+      "fingerprint": "cced3cc9e9d1ed9d7e862ccb458f7a4e"
+    },
+    {
+      "title": "Enterprise RAG Systems Overfit Retrieval and Underdesign Decisions",
+      "authors": [
+        "R. Gomez",
+        "T. Li"
+      ],
+      "abstract": "Retrieval pipelines keep expanding, but task framing, answer constraints, and evidence thresholds dominate quality.",
+      "source": "MIT Sloan Management Review",
+      "url": "https://example.org/papers/rag-decision-framing",
+      "published_on": "2026-04-10",
+      "tier": 2,
+      "fingerprint": "decbbb3a52c456c29b33f933a76bdd0b"
+    },
+    {
+      "title": "Persistent Memory in Enterprise Assistants: UX Win or Governance Debt",
+      "authors": [
+        "N. Ibrahim"
+      ],
+      "abstract": "Long-lived memory improves personalization but expands retention risk, stale assumptions, and audit burden.",
+      "source": "Harvard Business Review",
+      "url": "https://example.org/papers/memory-governance",
+      "published_on": "2026-04-08",
+      "tier": 2,
+      "fingerprint": "3675b4e92b950865c460fa7b63e7d3d3"
+    },
+    {
+      "title": "Enterprise Agents Need Workflow Contracts",
+      "authors": [
+        "A. Moore"
+      ],
+      "abstract": "Agent systems underperform when the workflow contract is vague and handoffs to tools are underspecified.",
+      "source": "DeepLearning.AI",
+      "url": "https://example.org/papers/workflow-contracts",
+      "published_on": "2026-04-21",
+      "tier": 2,
+      "fingerprint": "8141ddcc31170cbfbe3d36fbf36293b1"
+    },
+    {
+      "title": "GameStop makes $55.5B takeover offer for eBay",
+      "authors": [
+        "n1b0m"
+      ],
+      "abstract": "Hacker News discussion with score 50 and 20 comments.",
+      "source": "Hacker News",
+      "url": "https://www.bbc.co.uk/news/articles/cn0p8yled1do",
+      "published_on": "2026-05-04",
+      "tier": 3,
+      "fingerprint": "a71cbbfc61389c0e964a30ee60a8bb44"
+    },
+    {
+      "title": "Trademark violation: Fake Notepad++ for Mac",
+      "authors": [
+        "maxloh"
+      ],
+      "abstract": "Hacker News discussion with score 85 and 19 comments.",
+      "source": "Hacker News",
+      "url": "https://notepad-plus-plus.org/news/npp-trademark-infringement/",
+      "published_on": "2026-05-04",
+      "tier": 3,
+      "fingerprint": "bdd2c62bc15b2ac127d247019f89313e"
+    },
+    {
+      "title": "Using \u201cunderdrawings\u201d for accurate text and numbers",
+      "authors": [
+        "samcollins"
+      ],
+      "abstract": "Hacker News discussion with score 248 and 81 comments.",
+      "source": "Hacker News",
+      "url": "https://samcollins.blog/underdrawings/",
+      "published_on": "2026-05-01",
+      "tier": 3,
+      "fingerprint": "65612a451aceafa2508e3829ae088520"
+    },
+    {
+      "title": "BYOMesh \u2013 New LoRa mesh radio offers 100x the bandwidth",
+      "authors": [
+        "nullagent"
+      ],
+      "abstract": "Hacker News discussion with score 384 and 124 comments.",
+      "source": "Hacker News",
+      "url": "https://partyon.xyz/@nullagent/116499715071759135",
+      "published_on": "2026-05-03",
+      "tier": 3,
+      "fingerprint": "274703908c45f0675c155d35fc41c7a8"
+    },
+    {
+      "title": "From CVS to Git, thirty years of source control",
+      "authors": [
+        "andsoitis"
+      ],
+      "abstract": "Hacker News discussion with score 28 and 27 comments.",
+      "source": "Hacker News",
+      "url": "https://evilgeniuslabs.ca/blog/from-cvs-to-git-thirty-years-of-source-control",
+      "published_on": "2026-05-02",
+      "tier": 3,
+      "fingerprint": "5aa05bc7603a55b0199d59345cf97cde"
+    },
+    {
+      "title": "AI Architecture Masterclass Ep8 \u2013 LLMOps &amp; GenAIOps | CI/CD, Evaluation &amp; Production AI Systems",
+      "authors": [
+        "DataMindAI with Ahmed"
+      ],
+      "abstract": "This video is part of the AI Solution Architecture Masterclass series. Watch the full playlist to understand how enterprise AI systems ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=kSYQfVnDxLg",
+      "published_on": "2026-03-13",
+      "tier": 3,
+      "fingerprint": "b6b1c4df0f04153d22ead89b9c89ad81"
+    },
+    {
+      "title": "AI Solution Architecture Masterclass Ep5 \u2013 Intelligence Layer (Model Selection &amp; Fine-Tuning)",
+      "authors": [
+        "DataMindAI with Ahmed"
+      ],
+      "abstract": "This video is part of the AI Solution Architecture Masterclass series. Watch the full playlist to understand how enterprise AI systems ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=zWG_3_CSHq4",
+      "published_on": "2026-03-13",
+      "tier": 3,
+      "fingerprint": "59727a1ed8bdcd501186c4dcb4f60113"
+    },
+    {
+      "title": "AI Architect 2026: Designing Intelligent Systems Explained #shorts",
+      "authors": [
+        "FutureVerse & Beyond"
+      ],
+      "abstract": "Forget prompt crafting. The 2026 AI architect designs end-to-end intelligent systems: agents, RAG, multimodal pipelines.",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=HlJZ-jePUQg",
+      "published_on": "2026-02-20",
+      "tier": 3,
+      "fingerprint": "3f51e6e0de4e73cf40f5c5b8e47663f8"
+    },
+    {
+      "title": "AI Architects Take Over Stop Prompting NOW",
+      "authors": [
+        "FutureVerse & Beyond"
+      ],
+      "abstract": "Stop Prompting. Start Architecting AI in 2026 \u2014 practical guide for senior IT architects (45+) to reinvent from prompt tinkerer to ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=9h5p0FsLLJk",
+      "published_on": "2026-02-18",
+      "tier": 3,
+      "fingerprint": "407f5511a8cae4d85d9b9e0c6a128569"
+    }
+  ],
+  "top_papers": [
+    {
+      "title": "ObjectGraph: From Document Injection to Knowledge Traversal -- A Native File Format for the Agentic Era",
+      "authors": [
+        "Mohit Dubey",
+        "Open Gigantic"
+      ],
+      "abstract": "Every document format in existence was designed for a human reader moving linearly through text. Autonomous LLM agents do not read - they retrieve. This fundamental mismatch forces agents to inject entire documents into their context window, wasting tokens on irrelevant content, compounding state across multi-turn loops, and broadcasting information indiscriminately across agent roles. We argue this is not a prompt engineering problem, not a retrieval problem, and not a compression problem: it is a format problem. We introduce OBJECTGRAPH (.og), a file format that reconceives the document as a typed, directed knowledge graph to be traversed rather than a string to be injected. OBJECTGRAPH is a strict superset of Markdown - every .md file is a valid .og file - requires no infrastructure beyond a two-primitive query protocol, and is readable by both humans and agents without tooling. We formalize the Document Consumption Problem, characterise six structural properties no existing format satisfies simultaneously, and prove OBJECTGRAPH satisfies all six. We further introduce the Progressive Disclosure Model, the Role-Scoped Access Protocol, and Executable Assertion Nodes as native format primitives. Empirical evaluation across five document classes and eight agent task types demonstrates up to 95.3 percent token reduction with no statistically significant degradation in task accuracy (p > 0.05). Transpiler fidelity reaches 98.7 percent content preservation on a held-out document benchmark.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159891176",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "5bf85b00c8b80f42709cf7e1ed6f19e9"
+    },
+    {
+      "title": "AQUILES: A Production Architecture for Hybrid Agents with Deterministic Decisions in Regulated Domains \u2014 The HADD Paradigm: Closing the Determinism\u2013Expressiveness Gap in LLM-Based Agent Systems",
+      "authors": [
+        "Marcelo Errecalde",
+        "Alejandro Jaime"
+      ],
+      "abstract": "Achilles was invincible in battle \u2014 except for one point of structural vulnerability that no amount of strength could compensate for. Modern LLM-based agent frameworks (LangChain, AutoGen, CrewAI, ReAct) share this property exactly: impressive capability in controlled settings, catastrophically exploitable in regulated production environments through a single architectural flaw \u2014 the language model controls the decision. Organizations in regulated sectors (finance, insurance, healthcare, legal, compliance) face a direct consequence: these frameworks cannot be deployed in workflows subject to EU AI Act, DORA, or GDPR Article 22, because they provide no structural guarantee of determinism, auditability, or equal treatment. Traditional symbolic agent systems (JADE, Jason, Jadex) satisfy regulatory requirements but cannot ingest the unstructured natural-language inputs that define real enterprise workflows. The industry needs both properties simultaneously. No existing framework provides them. AQUILES is a production architecture for AI agents in regulated domains that resolves this gap through principled separation of concerns, instantiating the HADD paradigm (Hybrid Agents with Deterministic Decisions). AQUILES organizes agent functionality into five cooperating layers: an Interface Layer converting unstructured input into typed, validated beliefs via LLM sensors; a Cognition Layer performing pure-function BDI deliberation fully determined by its inputs; a Planning Layer selecting from a pre-verified HTN plan library without runtime synthesis; an Execution Layer enforcing typed precondition and postcondition contracts on every capability invocation; and a transverse Observation Layer producing append-only audit entries synchronously with every state transition. Language models are confined strictly to the perception boundary \u2014 they parse input into beliefs, they never select goals, plans, or capabilities. The heel remains; it is simply no longer load-bearing. The HADD paradigm is codified as six architectural invariants: (I1) Typed Role Inversion \u2014 LLMs as sensors only, never as control-flow components; (I2) Deterministic Cognition \u2014 the reasoning layer is a pure function of beliefs, goals, and rules; (I3) Bounded Planning \u2014 execution draws exclusively from a pre-verified plan library; (I4) Validated Execution \u2014 every capability invocation passes typed pre/post-condition checks; (I5) Complete Observability \u2014 every decision is forensically reconstructable from the audit log; (I6) Epistemic Precondition \u2014 no belief enters the BDI cycle without satisfying freshness, non-contestation, and source triangulation, enforced by the EVR module (Epistemic Verification for RAG). Any implementation satisfying all six invariants acquires reproducibility, zero LLM hallucination in state, LLM provider independence, and structural alignment with EU AI Act Articles 12\u201315 \u2014 as architectural properties, not retrofitted compliance measures. AQUILES partitions agents into cognitive holons (BDI-HTN reasoning components subject to full HADD governance) and reactive holons (deterministic capability executors verified by typed contracts alone). In observed production deployments, 70\u201380% of holons by count are reactive, meaning governance complexity scales with the cognitive subset rather than with total component count. The AQUILES protocol is language-agnostic by design: cognitive holons are typically Python (Anthropic SDK, sentence-transformers, pypdf); endpoint-monitoring holons are Go (single-binary cross-compilation); blockchain and zero-knowledge holons are Rust (arkworks, halo2, revm). We prove a Language Neutrality property: HADD compliance is preserved across heterogeneous polyglot deployments. For autonomous field deployments, AQUILES derives MYRMIDON agents that execute a signed MissionPackage autonomously on constrained hardware, inheriting AQUILES's safety guarantees without requiring runtime connectivity. This paper makes five engineering contributions: (C1) the HADD paradigm formalized as six architectural invariants with rationale and derived operational properties; (C2) the cognitive/reactive holon distinction and its governance economy consequences; (C3) a polyglot holon model with Language Neutrality proof and domain-language affinity mapping across Python, Go, and Rust; (C4) a multi-tenant operational-cell formalism enabling cryptographically enforced tenant isolation for regulated multi-client deployments; (C5) four reusable design patterns extracted from production experience (Sensor Firewall, Belief Expiry, Capability Contract, Observation Fanout), together with measurement methodology, adoption guidance, and explicit characterization of the architecture's limits.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159604028",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "e07a5377085a10fb4b2c747e07dd60b5"
+    },
+    {
+      "title": "Hierarchical Long-Term Semantic Memory for LinkedIn's Hiring Agent",
+      "authors": [
+        "Zhentao Xu",
+        "Shangjing Zhang",
+        "Emir Poyraz",
+        "Yvonne Li",
+        "Ye Jin",
+        "Xie Lu",
+        "Xiaoyang Gu",
+        "Karthik Ramgopal",
+        "Praveen Kumar Bodigutla",
+        "Xiaofeng Wang"
+      ],
+      "abstract": "Large Language Model (LLM) agents are increasingly used in real-world products, where personalized and context-aware user interactions are essential. A central enabler of such capabilities is the agent's long-term semantic memory system, which extracts implicit and explicit signals from noisy longitudinal behavioral data, stores them in a structured form, and supports low-latency retrieval. Building industrial-grade long-term memory for LLM agents raises five challenges: scalability, low-latency retrieval, privacy constraints, cross-domain generalizability, and observability. We introduce the Hierarchical Long-Term Semantic Memory (HLTM) framework, which organizes textual data into a schema-aligned memory tree that captures semantic knowledge at multiple levels of granularity, enabling scalable ingestion, privacy-aware storage, low-latency retrieval, and transparent provenance; HLTM further incorporates an adaptation mechanism to generalize across diverse use cases. Extensive evaluations on LinkedIn's Hiring Assistant show that HLTM improves answer correctness and retrieval F1 significantly by more than 10%, while significantly advancing the Pareto frontier between query and indexing latency. HLTM has been deployed in LinkedIn's Hiring Assistant to power core personalization features in production hiring workflows.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159733702",
+      "published_on": "2026-04-29",
+      "tier": 1,
+      "fingerprint": "cced3cc9e9d1ed9d7e862ccb458f7a4e"
+    },
+    {
+      "title": "Can Coding Agents Reproduce Findings in Computational Materials Science?",
+      "authors": [
+        "Ziyang Huang",
+        "Yi Cao",
+        "Ali K. Shargh",
+        "Jing Luo",
+        "Ruidong Mei",
+        "Mohd Zaki",
+        "Zhan Liu",
+        "Wyatt Bunstine",
+        "William Jurayj",
+        "Somdatta Goswami",
+        "Tyrel McQueen",
+        "Michael Shields",
+        "Jaafar El-Awady",
+        "Paulette Clancy",
+        "Benjamin Van Durme",
+        "Nicholas Andrews",
+        "William Walden",
+        "Daniel Khashabi"
+      ],
+      "abstract": "Large language models are increasingly deployed as autonomous coding agents and have achieved remarkably strong performance on software engineering benchmarks. However, it is unclear whether such success transfers to computational scientific workflows, where tasks require not only strong coding ability, but also the ability to navigate complex, domain-specific procedures and to interpret results in the context of scientific claims. To address this question, we present AutoMat, a benchmark for evaluating LLM-based agents' ability to reproduce claims from computational materials science. AutoMat poses three interrelated challenges: recovering underspecified computational procedures, navigating specialized toolchains, and determining whether the resulting evidence supports a claim. By working closely with subject matter experts, we curate a set of claims from real materials science papers to test whether coding agents can recover and execute the end-to-end workflow needed to support (or undermine) such claims. We then evaluate multiple representative coding agent settings across several foundation models. Our results show that current LLM-based agents obtain low overall success rates on AutoMat, with the best-performing setting achieving a success rate of only 54.1%. Error analysis further reveals that agents perform worst when workflows must be reconstructed from paper text alone and that they fail primarily due to incomplete procedures, methodological deviations, and execution fragility. Taken together, these findings position AutoMat as both a benchmark for computational scientific reproducibility and a tool for diagnosing the current limitations of agentic systems in AI-for-science settings.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00803v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "127dd201a90777d2d268b50e8398088c"
+    },
+    {
+      "title": "When RAG Chatbots Expose Their Backend: An Anonymized Case Study of Privacy and Security Risks in Patient-Facing Medical AI",
+      "authors": [
+        "Alfredo Madrid-Garc\u00eda",
+        "Miguel Rujas"
+      ],
+      "abstract": "Background: Patient-facing medical chatbots based on retrieval-augmented generation (RAG) are increasingly promoted to deliver accessible, grounded health information. AI-assisted development lowers the barrier to building them, but they still demand rigorous security, privacy, and governance controls. Objective: To report an anonymized, non-destructive security assessment of a publicly accessible patient-facing medical RAG chatbot and identify governance lessons for safe deployment of generative AI in health. Methods: We used a two-stage strategy. First, Claude Opus 4.6 supported exploratory prompt-based testing and structured vulnerability hypotheses. Second, candidate findings were manually verified using Chrome Developer Tools, inspecting browser-visible network traffic, payloads, API schemas, configuration objects, and stored interaction data. Results: The LLM-assisted phase identified a critical vulnerability: sensitive system and RAG configuration appeared exposed through client-server communication rather than restricted server-side. Manual verification confirmed that ordinary browser inspection allowed collection of the system prompt, model and embedding configuration, retrieval parameters, backend endpoints, API schema, document and chunk metadata, knowledge-base content, and the 1,000 most recent patient-chatbot conversations. The deployment also contradicted its privacy assurances: full conversation records, including health-related queries, were retrievable without authentication. Conclusions: Serious privacy and security failures in patient-facing RAG chatbots can be identified with standard browser tools, without specialist skills or authentication; independent review should be a prerequisite for deployment. Commercial LLMs accelerated this assessment, including under a false developer persona; assistance available to auditors is equally available to adversaries.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.00796v1",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "c829214174f0e783408346e5a234a368"
+    }
+  ],
+  "candidate_themes": [
+    {
+      "theme": "Shift from document-centric formats to agent-centric knowledge traversal",
+      "why_selected": "Current document formats are designed for human reading, which is inefficient for autonomous LLM agents that retrieve information. OBJECTGRAPH proposes a new format that allows agents to traverse knowledge graphs instead of injecting entire documents, fundamentally changing how information is structured and accessed.",
+      "why_debatable": "This theme challenges the long-standing conventions of document formats and raises questions about the implications of adopting a new standard. It invites debate on the practicality of transitioning to a new format and the potential resistance from existing systems and workflows.",
+      "supporting_papers": [
+        {
+          "title": "ObjectGraph: From Document Injection to Knowledge Traversal -- A Native File Format for the Agentic Era",
+          "authors": [
+            "Mohit Dubey",
+            "Open Gigantic"
+          ],
+          "abstract": "Every document format in existence was designed for a human reader moving linearly through text. Autonomous LLM agents do not read - they retrieve. This fundamental mismatch forces agents to inject entire documents into their context window, wasting tokens on irrelevant content, compounding state across multi-turn loops, and broadcasting information indiscriminately across agent roles. We argue this is not a prompt engineering problem, not a retrieval problem, and not a compression problem: it is a format problem. We introduce OBJECTGRAPH (.og), a file format that reconceives the document as a typed, directed knowledge graph to be traversed rather than a string to be injected. OBJECTGRAPH is a strict superset of Markdown - every .md file is a valid .og file - requires no infrastructure beyond a two-primitive query protocol, and is readable by both humans and agents without tooling. We formalize the Document Consumption Problem, characterise six structural properties no existing format satisfies simultaneously, and prove OBJECTGRAPH satisfies all six. We further introduce the Progressive Disclosure Model, the Role-Scoped Access Protocol, and Executable Assertion Nodes as native format primitives. Empirical evaluation across five document classes and eight agent task types demonstrates up to 95.3 percent token reduction with no statistically significant degradation in task accuracy (p > 0.05). Transpiler fidelity reaches 98.7 percent content preservation on a held-out document benchmark.",
+          "source": "OpenAlex",
+          "url": "https://openalex.org/W7159891176",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "5bf85b00c8b80f42709cf7e1ed6f19e9"
+        }
+      ],
+      "common_belief": "Existing document formats are sufficient for both human and machine consumption.",
+      "contrarian_view": "The real issue is that existing document formats do not cater to the needs of agent-based systems, leading to inefficiencies in information retrieval and processing. The focus should shift from document-centric formats to agent-centric knowledge traversal, enabling agents to efficiently navigate knowledge graphs.",
+      "why_wrong": "Current practice is fundamentally flawed as it relies on document-centric formats that are designed for human reading, which is inefficient and inadequate for autonomous LLM agents. This approach is broken because it forces agents to inject entire documents into their context, wasting tokens and hindering performance.",
+      "recommendation": "The correct architectural approach is to adopt OBJECTGRAPH, a new file format that allows agents to traverse knowledge graphs instead of relying on traditional document formats. This format is designed specifically for agentic systems, enhancing efficiency and reducing token usage.",
+      "enterprise_implication": "Transitioning to OBJECTGRAPH could revolutionize workflows for AI agents, resulting in significant improvements in processing efficiency and accuracy in information retrieval, ultimately leading to better decision-making and operational effectiveness.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 5,
+        "decisiveness": 5,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Shift from LLM-driven decision-making to structured governance in regulated environments",
+      "why_selected": "The AQUILES architecture proposes a paradigm shift by separating decision-making from LLMs, ensuring compliance with regulations while maintaining the ability to process unstructured inputs. This challenges the current reliance on LLMs for control in agent systems.",
+      "why_debatable": "This theme raises critical questions about the balance between expressiveness and determinism in AI systems, particularly in regulated domains. It invites debate on the feasibility and effectiveness of implementing such a separation in practice.",
+      "supporting_papers": [
+        {
+          "title": "AQUILES: A Production Architecture for Hybrid Agents with Deterministic Decisions in Regulated Domains \u2014 The HADD Paradigm: Closing the Determinism\u2013Expressiveness Gap in LLM-Based Agent Systems",
+          "authors": [
+            "Marcelo Errecalde",
+            "Alejandro Jaime"
+          ],
+          "abstract": "Achilles was invincible in battle \u2014 except for one point of structural vulnerability that no amount of strength could compensate for. Modern LLM-based agent frameworks (LangChain, AutoGen, CrewAI, ReAct) share this property exactly: impressive capability in controlled settings, catastrophically exploitable in regulated production environments through a single architectural flaw \u2014 the language model controls the decision. Organizations in regulated sectors (finance, insurance, healthcare, legal, compliance) face a direct consequence: these frameworks cannot be deployed in workflows subject to EU AI Act, DORA, or GDPR Article 22, because they provide no structural guarantee of determinism, auditability, or equal treatment. Traditional symbolic agent systems (JADE, Jason, Jadex) satisfy regulatory requirements but cannot ingest the unstructured natural-language inputs that define real enterprise workflows. The industry needs both properties simultaneously. No existing framework provides them. AQUILES is a production architecture for AI agents in regulated domains that resolves this gap through principled separation of concerns, instantiating the HADD paradigm (Hybrid Agents with Deterministic Decisions). AQUILES organizes agent functionality into five cooperating layers: an Interface Layer converting unstructured input into typed, validated beliefs via LLM sensors; a Cognition Layer performing pure-function BDI deliberation fully determined by its inputs; a Planning Layer selecting from a pre-verified HTN plan library without runtime synthesis; an Execution Layer enforcing typed precondition and postcondition contracts on every capability invocation; and a transverse Observation Layer producing append-only audit entries synchronously with every state transition. Language models are confined strictly to the perception boundary \u2014 they parse input into beliefs, they never select goals, plans, or capabilities. The heel remains; it is simply no longer load-bearing. The HADD paradigm is codified as six architectural invariants: (I1) Typed Role Inversion \u2014 LLMs as sensors only, never as control-flow components; (I2) Deterministic Cognition \u2014 the reasoning layer is a pure function of beliefs, goals, and rules; (I3) Bounded Planning \u2014 execution draws exclusively from a pre-verified plan library; (I4) Validated Execution \u2014 every capability invocation passes typed pre/post-condition checks; (I5) Complete Observability \u2014 every decision is forensically reconstructable from the audit log; (I6) Epistemic Precondition \u2014 no belief enters the BDI cycle without satisfying freshness, non-contestation, and source triangulation, enforced by the EVR module (Epistemic Verification for RAG). Any implementation satisfying all six invariants acquires reproducibility, zero LLM hallucination in state, LLM provider independence, and structural alignment with EU AI Act Articles 12\u201315 \u2014 as architectural properties, not retrofitted compliance measures. AQUILES partitions agents into cognitive holons (BDI-HTN reasoning components subject to full HADD governance) and reactive holons (deterministic capability executors verified by typed contracts alone). In observed production deployments, 70\u201380% of holons by count are reactive, meaning governance complexity scales with the cognitive subset rather than with total component count. The AQUILES protocol is language-agnostic by design: cognitive holons are typically Python (Anthropic SDK, sentence-transformers, pypdf); endpoint-monitoring holons are Go (single-binary cross-compilation); blockchain and zero-knowledge holons are Rust (arkworks, halo2, revm). We prove a Language Neutrality property: HADD compliance is preserved across heterogeneous polyglot deployments. For autonomous field deployments, AQUILES derives MYRMIDON agents that execute a signed MissionPackage autonomously on constrained hardware, inheriting AQUILES's safety guarantees without requiring runtime connectivity. This paper makes five engineering contributions: (C1) the HADD paradigm formalized as six architectural invariants with rationale and derived operational properties; (C2) the cognitive/reactive holon distinction and its governance economy consequences; (C3) a polyglot holon model with Language Neutrality proof and domain-language affinity mapping across Python, Go, and Rust; (C4) a multi-tenant operational-cell formalism enabling cryptographically enforced tenant isolation for regulated multi-client deployments; (C5) four reusable design patterns extracted from production experience (Sensor Firewall, Belief Expiry, Capability Contract, Observation Fanout), together with measurement methodology, adoption guidance, and explicit characterization of the architecture's limits.",
+          "source": "OpenAlex",
+          "url": "https://openalex.org/W7159604028",
+          "published_on": "2026-05-01",
+          "tier": 1,
+          "fingerprint": "e07a5377085a10fb4b2c747e07dd60b5"
+        }
+      ],
+      "common_belief": "LLMs are capable of handling both decision-making and processing unstructured data effectively.",
+      "contrarian_view": "Relying on LLMs for decision-making in regulated environments is fundamentally flawed and poses significant risks.",
+      "why_wrong": "Some may argue that LLMs can be made compliant through careful tuning and oversight, suggesting that a complete architectural overhaul is unnecessary.",
+      "recommendation": "Organizations in regulated sectors should consider adopting the AQUILES architecture to ensure compliance and enhance the reliability of AI systems.",
+      "enterprise_implication": "Implementing this architecture could mitigate risks associated with regulatory compliance, leading to safer and more reliable AI deployments in sensitive industries.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 4,
+        "decisiveness": 3,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "selected_theme": "Shift from document-centric formats to agent-centric knowledge traversal",
+  "alternative_themes": [
+    {
+      "theme": "Shift from LLM-driven decision-making to structured governance in regulated environments",
+      "why_selected": "The AQUILES architecture proposes a paradigm shift by separating decision-making from LLMs, ensuring compliance with regulations while maintaining the ability to process unstructured inputs. This challenges the current reliance on LLMs for control in agent systems.",
+      "why_debatable": "This theme raises critical questions about the balance between expressiveness and determinism in AI systems, particularly in regulated domains. It invites debate on the feasibility and effectiveness of implementing such a separation in practice.",
+      "supporting_papers": [
+        {
+          "title": "AQUILES: A Production Architecture for Hybrid Agents with Deterministic Decisions in Regulated Domains \u2014 The HADD Paradigm: Closing the Determinism\u2013Expressiveness Gap in LLM-Based Agent Systems",
+          "authors": [
+            "Marcelo Errecalde",
+            "Alejandro Jaime"
+          ],
+          "abstract": "Achilles was invincible in battle \u2014 except for one point of structural vulnerability that no amount of strength could compensate for. Modern LLM-based agent frameworks (LangChain, AutoGen, CrewAI, ReAct) share this property exactly: impressive capability in controlled settings, catastrophically exploitable in regulated production environments through a single architectural flaw \u2014 the language model controls the decision. Organizations in regulated sectors (finance, insurance, healthcare, legal, compliance) face a direct consequence: these frameworks cannot be deployed in workflows subject to EU AI Act, DORA, or GDPR Article 22, because they provide no structural guarantee of determinism, auditability, or equal treatment. Traditional symbolic agent systems (JADE, Jason, Jadex) satisfy regulatory requirements but cannot ingest the unstructured natural-language inputs that define real enterprise workflows. The industry needs both properties simultaneously. No existing framework provides them. AQUILES is a production architecture for AI agents in regulated domains that resolves this gap through principled separation of concerns, instantiating the HADD paradigm (Hybrid Agents with Deterministic Decisions). AQUILES organizes agent functionality into five cooperating layers: an Interface Layer converting unstructured input into typed, validated beliefs via LLM sensors; a Cognition Layer performing pure-function BDI deliberation fully determined by its inputs; a Planning Layer selecting from a pre-verified HTN plan library without runtime synthesis; an Execution Layer enforcing typed precondition and postcondition contracts on every capability invocation; and a transverse Observation Layer producing append-only audit entries synchronously with every state transition. Language models are confined strictly to the perception boundary \u2014 they parse input into beliefs, they never select goals, plans, or capabilities. The heel remains; it is simply no longer load-bearing. The HADD paradigm is codified as six architectural invariants: (I1) Typed Role Inversion \u2014 LLMs as sensors only, never as control-flow components; (I2) Deterministic Cognition \u2014 the reasoning layer is a pure function of beliefs, goals, and rules; (I3) Bounded Planning \u2014 execution draws exclusively from a pre-verified plan library; (I4) Validated Execution \u2014 every capability invocation passes typed pre/post-condition checks; (I5) Complete Observability \u2014 every decision is forensically reconstructable from the audit log; (I6) Epistemic Precondition \u2014 no belief enters the BDI cycle without satisfying freshness, non-contestation, and source triangulation, enforced by the EVR module (Epistemic Verification for RAG). Any implementation satisfying all six invariants acquires reproducibility, zero LLM hallucination in state, LLM provider independence, and structural alignment with EU AI Act Articles 12\u201315 \u2014 as architectural properties, not retrofitted compliance measures. AQUILES partitions agents into cognitive holons (BDI-HTN reasoning components subject to full HADD governance) and reactive holons (deterministic capability executors verified by typed contracts alone). In observed production deployments, 70\u201380% of holons by count are reactive, meaning governance complexity scales with the cognitive subset rather than with total component count. The AQUILES protocol is language-agnostic by design: cognitive holons are typically Python (Anthropic SDK, sentence-transformers, pypdf); endpoint-monitoring holons are Go (single-binary cross-compilation); blockchain and zero-knowledge holons are Rust (arkworks, halo2, revm). We prove a Language Neutrality property: HADD compliance is preserved across heterogeneous polyglot deployments. For autonomous field deployments, AQUILES derives MYRMIDON agents that execute a signed MissionPackage autonomously on constrained hardware, inheriting AQUILES's safety guarantees without requiring runtime connectivity. This paper makes five engineering contributions: (C1) the HADD paradigm formalized as six architectural invariants with rationale and derived operational properties; (C2) the cognitive/reactive holon distinction and its governance economy consequences; (C3) a polyglot holon model with Language Neutrality proof and domain-language affinity mapping across Python, Go, and Rust; (C4) a multi-tenant operational-cell formalism enabling cryptographically enforced tenant isolation for regulated multi-client deployments; (C5) four reusable design patterns extracted from production experience (Sensor Firewall, Belief Expiry, Capability Contract, Observation Fanout), together with measurement methodology, adoption guidance, and explicit characterization of the architecture's limits.",
+          "source": "OpenAlex",
+          "url": "https://openalex.org/W7159604028",
+          "published_on": "2026-05-01",
+          "tier": 1,
+          "fingerprint": "e07a5377085a10fb4b2c747e07dd60b5"
+        }
+      ],
+      "common_belief": "LLMs are capable of handling both decision-making and processing unstructured data effectively.",
+      "contrarian_view": "Relying on LLMs for decision-making in regulated environments is fundamentally flawed and poses significant risks.",
+      "why_wrong": "Some may argue that LLMs can be made compliant through careful tuning and oversight, suggesting that a complete architectural overhaul is unnecessary.",
+      "recommendation": "Organizations in regulated sectors should consider adopting the AQUILES architecture to ensure compliance and enhance the reliability of AI systems.",
+      "enterprise_implication": "Implementing this architecture could mitigate risks associated with regulatory compliance, leading to safer and more reliable AI deployments in sensitive industries.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 4,
+        "decisiveness": 3,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "rejected_themes": [],
+  "position": {
+    "common_belief": "Existing document formats are sufficient for both human and machine consumption.",
+    "contrarian_view": "The real issue is that existing document formats do not cater to the needs of agent-based systems, leading to inefficiencies in information retrieval and processing. The focus should shift from document-centric formats to agent-centric knowledge traversal, enabling agents to efficiently navigate knowledge graphs.",
+    "why_wrong": "Current practice is fundamentally flawed as it relies on document-centric formats that are designed for human reading, which is inefficient and inadequate for autonomous LLM agents. This approach is broken because it forces agents to inject entire documents into their context, wasting tokens and hindering performance.",
+    "recommendation": "The correct architectural approach is to adopt OBJECTGRAPH, a new file format that allows agents to traverse knowledge graphs instead of relying on traditional document formats. This format is designed specifically for agentic systems, enhancing efficiency and reducing token usage.",
+    "enterprise_implication": "Transitioning to OBJECTGRAPH could revolutionize workflows for AI agents, resulting in significant improvements in processing efficiency and accuracy in information retrieval, ultimately leading to better decision-making and operational effectiveness."
+  },
+  "post": "The belief that existing document formats are sufficient for both human and machine consumption is fundamentally wrong. Enterprises are trapped in a broken system that prioritizes document-centric formats, which are inefficient for autonomous LLM agents. This reliance leads to wasted tokens and poor performance as agents struggle to inject entire documents into their context.\n\nThe real issue lies in the failure to cater to agent-based systems. We must shift our focus to agent-centric knowledge traversal. By adopting OBJECTGRAPH, a new file format designed for agents, we can enable efficient navigation of knowledge graphs, drastically improving processing efficiency and accuracy.\n\nTransitioning to OBJECTGRAPH is not just a technical upgrade; it\u2019s a necessary architectural evolution that will revolutionize workflows, enhance decision-making, and drive operational effectiveness in the enterprise landscape.",
+  "scores": {
+    "theme_selection": {
+      "novelty": 5,
+      "relevance": 5,
+      "debate": 4,
+      "contrarian": 5,
+      "decisiveness": 5,
+      "tension": 4,
+      "specificity": 5,
+      "typical_architect_agrees": false,
+      "strong_architect_debates": true
+    },
+    "position_strength": {
+      "contrarian": 5,
+      "decisiveness": 5,
+      "tension": 4,
+      "specificity": 5,
+      "passed": true,
+      "reasons": []
+    },
+    "evaluation": {
+      "novelty": 5,
+      "relevance": 5,
+      "insight": 5,
+      "position_strength": 5,
+      "clarity": 5,
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "meta": {
+    "used_on": "2026-05-04",
+    "recent_themes": [],
+    "lead_paper_summary": {
+      "title": "ObjectGraph: From Document Injection to Knowledge Traversal -- A Native File Format for the Agentic Era",
+      "source": "OpenAlex",
+      "authors": [
+        "Mohit Dubey",
+        "Open Gigantic"
+      ],
+      "url": "https://openalex.org/W7159891176",
+      "summary": "Every document format in existence was designed for a human reader moving linearly through text."
+    },
+    "synthesis_provenance": {
+      "engine_used": "openai",
+      "fallback_used": false,
+      "primary_engine": null,
+      "fallback_reason": null
+    },
+    "storage_path": "/Users/emilygao/LocalDocuments/Obsidian/research/2026-05-04-shift-from-document-centric-formats-to-agent-centric-knowledge-traversal.md",
+    "run_log_path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/runs/run_2026-05-04.json"
+  },
+  "deliveries": [
+    {
+      "channel": "email",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/email/2026-05-04-linkedin-draft.md",
+      "preview": "The belief that existing document formats are sufficient for both human and machine consumption is fundamentally wrong. ",
+      "target": "emsyd888@gmail.com",
+      "sent": true,
+      "status": "sent"
+    },
+    {
+      "channel": "discord",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/discord/2026-05-04-linkedin-draft.md",
+      "preview": "The belief that existing document formats are sufficient for both human and machine consumption is fundamentally wrong. ",
+      "target": "Weekflow",
+      "sent": true,
+      "status": "sent"
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "paper_pool": [
+    {
+      "title": "Recursive Multi-Agent Systems",
+      "authors": [
+        "Xiyuan Yang",
+        "Jiaru Zou",
+        "Rui Pan",
+        "Ruizhong Qiu",
+        "Pan Lu",
+        "Shizhe Diao",
+        "Jindong Jiang",
+        "Hanghang Tong",
+        "Tong Zhang",
+        "Markus J. Buehler",
+        "Jingrui He",
+        "James Zou"
+      ],
+      "abstract": "Recursive or looped language models have recently emerged as a new scaling axis by iteratively refining the same model computation over latent states to deepen reasoning. We extend such scaling principle from a single model to multi-agent systems, and ask: Can agent collaboration itself be scaled through recursion? To this end, we introduce RecursiveMAS, a recursive multi-agent framework that casts the entire system as a unified latent-space recursive computation. RecursiveMAS connects heterogeneous agents as a collaboration loop through the lightweight RecursiveLink module, enabling in-distribution latent thoughts generation and cross-agent latent state transfer. To optimize our framework, we develop an inner-outer loop learning algorithm for iterative whole-system co-optimization through shared gradient-based credit assignment across recursion rounds. Theoretical analyses of runtime complexity and learning dynamics establish that RecursiveMAS is more efficient than standard text-based MAS and maintains stable gradients during recursive training. Empirically, we instantiate RecursiveMAS under 4 representative agent collaboration patterns and evaluate across 9 benchmarks spanning mathematics, science, medicine, search, and code generation. In comparison with advanced single/multi-agent and recursive computation baselines, RecursiveMAS consistently delivers an average accuracy improvement of 8.3%, together with 1.2$\\times$-2.4$\\times$ end-to-end inference speedup, and 34.6%-75.6% token usage reduction. Code and Data are provided in https://recursivemas.github.io.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.25917v1",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "db971287f0965f1cd56c847a8156e4d9"
+    },
+    {
+      "title": "DV-World: Benchmarking Data Visualization Agents in Real-World Scenarios",
+      "authors": [
+        "Jinxiang Meng",
+        "Shaoping Huang",
+        "Fangyu Lei",
+        "Jingyu Guo",
+        "Haoxiang Liu",
+        "Jiahao Su",
+        "Sihan Wang",
+        "Yao Wang",
+        "Enrui Wang",
+        "Ye Yang",
+        "Hongze Chai",
+        "Jinming Lv",
+        "Anbang Yu",
+        "Huangjing Zhang",
+        "Yitong Zhang",
+        "Yiming Huang",
+        "Zeyao Ma",
+        "Shizhu He",
+        "Jun Zhao",
+        "Kang Liu"
+      ],
+      "abstract": "Real-world data visualization (DV) requires native environmental grounding, cross-platform evolution, and proactive intent alignment. Yet, existing benchmarks often suffer from code-sandbox confinement, single-language creation-only tasks, and assumption of perfect intent. To bridge these gaps, we introduce DV-World, a benchmark of 260 tasks designed to evaluate DV agents across real-world professional lifecycles. DV-World spans three domains: DV-Sheet for native spreadsheet manipulation including chart and dashboard creation as well as diagnostic repair; DV-Evolution for adapting and restructuring reference visual artifacts to fit new data across diverse programming paradigms and DV-Interact for proactive intent alignment with a user simulator that mimics real-world ambiguous requirements. Our hybrid evaluation framework integrates Table-value Alignment for numerical precision and MLLM-as-a-Judge with rubrics for semantic-visual assessment. Experiments reveal that state-of-the-art models achieve less than 50% overall performance, exposing critical deficits in handling the complex challenges of real-world data visualization. DV-World provides a realistic testbed to steer development toward the versatile expertise required in enterprise workflows. Our data and code are available at \\href{https://github.com/DA-Open/DV-World}{this project page}.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.25914v1",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "f1ecf0ca6a247a1d121e33c3fdbdf5b3"
+    },
+    {
+      "title": "A paradox of AI fluency",
+      "authors": [
+        "Christopher Potts",
+        "Moritz Sudhof"
+      ],
+      "abstract": "How much does a user's skill with AI shape what AI actually delivers for them? This question is critical for users, AI product builders, and society at large, but it remains underexplored. Using a richly annotated sample of 27K transcripts from WildChat-4.8M, we show that fluent users take on more complex tasks than novices and adopt a fundamentally different interactional mode: they iterate collaboratively with the AI, refining goals and critically assessing outputs, whereas novices take a passive stance. These differences lead to a paradox of AI fluency: fluent users experience more failures than novices -- but their failures tend to be visible (a direct consequence of their engagement), they are more likely to lead to partial recovery, and they occur alongside greater success on complex tasks. Novices, by contrast, more often experience invisible failures: conversations that appear to end successfully but in fact miss the mark. Taken together, these results reframe what success with AI depends on. Individuals should adopt a stance of active engagement rather than passive acceptance. AI product builders should recognize that they are designing not just model behavior but user behavior; encouraging deep engagement, rather than friction-free experiences, will lead to more success overall. Our code and data are available at https://github.com/bigspinai/bigspin-fluency-outcomes",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.25905v1",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "ac37bdea3db3f549f096b6adef8e846d"
+    },
+    {
+      "title": "Carbon-Taxed Transformers: A Green Compression Pipeline for Overgrown Language Models",
+      "authors": [
+        "Ajmain Inqiad Alam",
+        "Palash Roy",
+        "Chanchal K. Roy",
+        "Banani Roy",
+        "Kevin A. Schneider"
+      ],
+      "abstract": "The accelerating adoption of Large Language Models (LLMs) in software engineering (SE) has brought with it a silent crisis: unsustainable computational cost. While these models demonstrate remarkable capabilities in different SE tasks, they are unmanageably large, slow to deploy, memory-intensive, and carbon-heavy. This reality threatens not only the scalability and accessibility of AI-powered SE, but also its long-term environmental sustainability. The research challenge is clear: we must go beyond accuracy and address efficiency and environmental cost as first-class design constraints. To meet this challenge, we introduce Carbon-Taxed Transformers (CTT), a systematic multi-architectural compression principled pipeline ordering inspired by economic carbon taxation principles. Drawing from the economic concept of carbon pricing, CTT operationalizes a computational carbon tax that penalizes architectural inefficiencies and rewards deployment-ready compression. We evaluate CTT across three core SE tasks: code clone detection, code summarization, and code generation, with models spanning encoder-only, encoder-decoder, and decoder-only architecture. Our results show that CTT delivers on inference: (1) up to 49x memory reduction, (2) time reduction up to 8-10x for clone detection, up to 3x for summarization, and 4-7x for generation, (3) up to 81% reduction in CO2 emissions and (4) CTT retains around 98% accuracy on clone detection, around 89% on summarization, and up to 91% (textual metrics) and 68% (pass@1) for generation. Two ablation studies show that pipeline ordering and individual component contributions are both essential, providing empirical justification for CTT's design and effectiveness. This work establishes a viable path toward responsible AI in SE through aggressive yet performance-preserving compression.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.25903v1",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "3cfb4dc07db4c5cdb63800e277b664e4"
+    },
+    {
+      "title": "Pythia: Toward Predictability-Driven Agent-Native LLM Serving",
+      "authors": [
+        "Shan Yu",
+        "Junyi Shu",
+        "Yuanjiang Ni",
+        "Kun Qian",
+        "Xue Li",
+        "Yang Wang",
+        "Jinyuan Zhang",
+        "Ziyi Xu",
+        "Shuo Yang",
+        "Lingjun Zhu",
+        "Ennan Zhai",
+        "Qingda Lu",
+        "Jiarong Xing",
+        "Youyou Lu",
+        "Xin Jin",
+        "Xuanzhe Liu",
+        "Harry Xu"
+      ],
+      "abstract": "As LLM applications grow more complex, developers are increasingly adopting multi-agent architectures to decompose workflows into specialized, collaborative components, introducing structure that constrains agent behavior and exposes useful semantic predictability. Unlike traditional LLM serving, which operates under highly dynamic and uncertain conditions, this structured topology enables opportunities to reduce runtime uncertainty -- yet existing systems fail to exploit it, treating agentic workloads as generic traffic and incurring significant inefficiencies. Our analysis of production traces from an agent-serving platform and an internal coding assistant reveals key bottlenecks, including low prefix cache hit rates, severe resource contention from long-context requests, and substantial queuing delays due to suboptimal scaling. To address these challenges, we propose Pythia, a multi-agent serving system that captures workflow semantics through a simple interface at the serving layer, unlocking new optimization opportunities and substantially improving throughput and job completion time over state-of-the-art baselines.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.25899v1",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "96f7b0028e4da713ffe4e0cc82a0a50b"
+    },
+    {
+      "title": "The agentic AI security adoption matrix: Understanding readiness and resistance across domains",
+      "authors": [
+        "GUY WAIZEL"
+      ],
+      "abstract": "The objective of this paper is to examine how agentic artificial intelligence (AI) is being adopted in practice, with particular attention to its security implications, and to identify domains where adoption is progressing more slowly due to regulatory, ethical, and oversight requirements. This research is important because agentic AI offers new efficiencies and autonomy but simultaneously introduces risks related to trust, accountability, and adversarial exploitation. Prior work on autonomous systems, AI governance, and security automation provides a foundation, and recent studies highlight a contrast between rapid adoption in digitally bounded, low-stakes environments and slower uptake in safety-critical contexts. Building on this foundation, the paper adopts a systematic literature review combined with comparative domain analysis to classify adoption trends. The approach draws on academic publications, industry reports, and regulatory frameworks such as the NIST AI Risk Management Framework and the EU AI Act, which explicitly designate domains like healthcare, defense, and social care as high-risk. The results indicate that agentic AI has advanced most quickly in areas such as customer service, software engineering assistance, and cybersecurity operations centers, where regulatory barriers are minimal and oversight is straightforward. By contrast, adoption remains constrained in healthcare, defense, and social care, where pilot projects exist but mainstream deployment is slowed by requirements for explainability, liability, and human-in-the-loop controls. The implications of these findings are significant for academics extending adoption models, researchers designing security frameworks, and practitioners balancing innovation with governance. The value of this paper lies in presenting a conceptual \u201cAgentic AI Security Adoption Matrix,\u201d which offers an original perspective on how adoption speed and security sensitivity interact, and provides guidance on where agentic AI may thrive versus where its deployment will require cautious, regulated progression.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7155551588",
+      "published_on": "2026-04-24",
+      "tier": 1,
+      "fingerprint": "ea1c9cd05939e504616680fba4eca81a"
+    },
+    {
+      "title": "An Explainable AI Multi-Agent Recommender System for Financial Document Access Control",
+      "authors": [
+        "Kanellos Toudas",
+        "Konstantinos I. Roumeliotis",
+        "Dimitrios \u039a. Nasiopoulos",
+        "George Georgakopoulos"
+      ],
+      "abstract": "Financial institutions require robust document access control mechanisms that balance security with transparency and explainability. Traditional classification systems often operate as black boxes, failing to provide justifications for access-control decisions. This work presents a novel explainable AI multi-agent recommender system for financial document sensitivity classification that addresses critical ethical concerns in AI-powered decision-making. We fine-tuned three state-of-the-art models\u2014FinBERT, BERT-base-uncased, and GPT-4.1-mini\u2014on a custom-labeled Financial PhraseBank dataset with four sensitivity levels: Public, Internal, Confidential, and Restricted. These fine-tuned models serve as specialized AI agents within a multi-agent architecture orchestrated by GPT-5.1, a large reasoning model operating in zero-shot mode. The orchestrator synthesizes agent predictions and generates natural language recommendations that justify classification decisions. Our agentic AI multi-agent recommender system achieves 83.71% overall accuracy, comparable to individual models (82.80%-84.93%), while providing interpretable explanations for each decision. Critically, agent agreement analysis reveals that unanimous decisions (3/3 agents agree, 78.8% of cases) achieve 92.28% accuracy\u2014significantly outperforming any individual model\u2014validating the collaborative decision-making approach. The system demonstrates that multi-agent architectures can provide both high-confidence predictions and natural language explainability, creating transparent, accountable AI systems for financial document access control. All code and methodologies are released as open-source on our GitHub (Applied-AI-Research-Lab 2025) to support reproducibility and further research in explainable AI for finance.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7155544495",
+      "published_on": "2026-04-24",
+      "tier": 1,
+      "fingerprint": "1af25c43ea1743c2641c3a6d1c48c460"
+    },
+    {
+      "title": "Security and Privacy of Large Language Models: Threat Taxonomy, Ethical Implications, and Governance",
+      "authors": [
+        "Marko Pribisali\u0107",
+        "Sanda Martin\u010di\u0107-Ip\u0161i\u0107"
+      ],
+      "abstract": "Large Language Models (LLMs) are increasingly deployed across professional and societal domains, introducing security, privacy, and governance challenges beyond traditional software vulnerabilities. Despite extensive research on individual risk categories, a unified lifecycle-oriented perspective connecting architectural properties, adversarial threats, and governance implications remains limited. This review examines security and privacy risks associated with LLMs through a lifecycle framework covering data acquisition, model training, alignment procedures, deployment, and post-deployment interaction. The study synthesizes prior research to construct a taxonomy of threats including prompt injection, jailbreaking, adversarial manipulation, training-stage attacks, privacy leakage, and socio-technical misuse. Ethical issues such as hallucination, bias amplification, and malicious use are analyzed alongside governance and regulatory frameworks. Results indicate that vulnerabilities in LLM systems arise primarily from probabilistic generation mechanisms, large-scale data ingestion, and complex deployment ecosystems rather than isolated implementation defects. Classical software vulnerability models therefore provide only partial coverage of risks associated with generative AI systems. The review is grounded in the concept of the alignment gap to explain how discrepancies between training objectives and real-world interaction contribute to persistent vulnerabilities. The findings highlight the need for lifecycle-oriented defense-in-depth strategies combining technical safeguards, privacy-preserving training, runtime monitoring, and governance mechanisms to support responsible deployment of LLM-based systems.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7155509515",
+      "published_on": "2026-04-24",
+      "tier": 1,
+      "fingerprint": "bdf5f66e60fb98c89074d5cbdfacf5a7"
+    },
+    {
+      "title": "A Comparative Study of Intelligent Synthetic Test Generation in Distributed Software Architectures for Improving Cross-Layer Validation Efficiency",
+      "authors": [
+        "Naveen Prakash"
+      ],
+      "abstract": "Aim: This study aims to introduce search-based intelligent test generation for synthetic testing as a means of enabling optimal cross-layer testing in distributed software architectures comprising front-end interfaces, API gateways, microservices, databases, and cloud-based runtime services. It addresses the limitation of legacy quality assurance automation, which remains layer-isolated and rule-based, and is therefore unable to effectively detect inter-service faults, asynchronous failures, or unreliable execution behaviors in complex workflows. Methods: The research adopts a comparative mixed-methods approach, analyzing an AI-based framework that incorporates behavioral trace modeling, dependency graph generation, historical defect learning, and synthetic scenario generation. The evaluation was conducted across three types of enterprise applications, involving 30 autonomous test runs and 12 expert interviews. Results: The findings demonstrate substantial improvements in testing performance, with cross-layer validation coverage increasing to 84% and 62%, defects detected rising to 87% and 68%, and flaky tests reduced to 7% and 18%. Additionally, failure reproducibility improved by 19%, while scenario generation expanded by a factor of 2.7, increasing from 45 to 120 scenarios. Conclusion: The study concludes that synthetic test generation represents a realistic, scalable, and statistically informed approach that significantly enhances validation under realistic operating conditions, thereby providing a more reliable baseline for release confidence and operational decision-making. Recommendation: The study recommends further research focusing on reinforcement learning, explainability, increased autonomy through CI/CD integration, and the development of cross-domain benchmarks to advance the effectiveness and applicability of intelligent testing frameworks.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7155416077",
+      "published_on": "2026-04-23",
+      "tier": 1,
+      "fingerprint": "6b141d3c67a1435e52dd698564cfa615"
+    },
+    {
+      "title": "Ghostty is leaving GitHub",
+      "authors": [
+        "WadeGrimridge"
+      ],
+      "abstract": "Hacker News discussion with score 2126 and 647 comments.",
+      "source": "Hacker News",
+      "url": "https://mitchellh.com/writing/ghostty-leaving-github",
+      "published_on": "2026-04-28",
+      "tier": 3,
+      "fingerprint": "e3da0b7c14c41877de50d6744d634f2b"
+    },
+    {
+      "title": "Bugs Rust won't catch",
+      "authors": [
+        "lwhsiao"
+      ],
+      "abstract": "Hacker News discussion with score 101 and 30 comments.",
+      "source": "Hacker News",
+      "url": "https://corrode.dev/blog/bugs-rust-wont-catch/",
+      "published_on": "2026-04-29",
+      "tier": 3,
+      "fingerprint": "e395a8255406e80790c5287a412b8667"
+    },
+    {
+      "title": "Before GitHub",
+      "authors": [
+        "mlex"
+      ],
+      "abstract": "Hacker News discussion with score 359 and 106 comments.",
+      "source": "Hacker News",
+      "url": "https://lucumr.pocoo.org/2026/4/28/before-github/",
+      "published_on": "2026-04-28",
+      "tier": 3,
+      "fingerprint": "bba511844e485a261f189eea746b9f73"
+    },
+    {
+      "title": "How ChatGPT serves ads",
+      "authors": [
+        "lmbbuchodi"
+      ],
+      "abstract": "Hacker News discussion with score 238 and 148 comments.",
+      "source": "Hacker News",
+      "url": "https://www.buchodi.com/how-chatgpt-serves-ads-heres-the-full-attribution-loop/",
+      "published_on": "2026-04-28",
+      "tier": 3,
+      "fingerprint": "a6d65a12b0c60bf4a3094e60ff5ccda6"
+    },
+    {
+      "title": "Show HN: Auto-Architecture: Karpathy's Loop, pointed at a CPU",
+      "authors": [
+        "fesens"
+      ],
+      "abstract": "Hacker News discussion with score 62 and 14 comments.",
+      "source": "Hacker News",
+      "url": "https://github.com/FeSens/auto-arch-tournament/blob/main/docs/auto-arch-tournament-blog-post.md",
+      "published_on": "2026-04-28",
+      "tier": 3,
+      "fingerprint": "18114527e67451d2da3ae56702b4c065"
+    },
+    {
+      "title": "Agentic AI and Multi-Agent Orchestration: Enterprise Guide 2026",
+      "authors": [
+        "Aetherlink"
+      ],
+      "abstract": "Master multi-agent AI orchestration, EU compliance, and production deployment. Explore agent evaluation, RAG systems, MCP ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=ekmValzAbOU",
+      "published_on": "2026-04-01",
+      "tier": 3,
+      "fingerprint": "530597a69ed8ba4051a55d0f8bf9d704"
+    },
+    {
+      "title": "AI Architecture Masterclass Ep8 \u2013 LLMOps &amp; GenAIOps | CI/CD, Evaluation &amp; Production AI Systems",
+      "authors": [
+        "DataMindAI with Ahmed"
+      ],
+      "abstract": "This video is part of the AI Solution Architecture Masterclass series. Watch the full playlist to understand how enterprise AI systems ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=kSYQfVnDxLg",
+      "published_on": "2026-03-13",
+      "tier": 3,
+      "fingerprint": "b6b1c4df0f04153d22ead89b9c89ad81"
+    },
+    {
+      "title": "AI Solution Architecture Masterclass Ep5 \u2013 Intelligence Layer (Model Selection &amp; Fine-Tuning)",
+      "authors": [
+        "DataMindAI with Ahmed"
+      ],
+      "abstract": "This video is part of the AI Solution Architecture Masterclass series. Watch the full playlist to understand how enterprise AI systems ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=zWG_3_CSHq4",
+      "published_on": "2026-03-13",
+      "tier": 3,
+      "fingerprint": "59727a1ed8bdcd501186c4dcb4f60113"
+    },
+    {
+      "title": "AI Architect 2026: Designing Intelligent Systems Explained #shorts",
+      "authors": [
+        "FutureVerse & Beyond"
+      ],
+      "abstract": "Forget prompt crafting. The 2026 AI architect designs end-to-end intelligent systems: agents, RAG, multimodal pipelines.",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=HlJZ-jePUQg",
+      "published_on": "2026-02-20",
+      "tier": 3,
+      "fingerprint": "3f51e6e0de4e73cf40f5c5b8e47663f8"
+    },
+    {
+      "title": "AI Architects Take Over Stop Prompting NOW",
+      "authors": [
+        "FutureVerse & Beyond"
+      ],
+      "abstract": "Stop Prompting. Start Architecting AI in 2026 \u2014 practical guide for senior IT architects (45+) to reinvent from prompt tinkerer to ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=9h5p0FsLLJk",
+      "published_on": "2026-02-18",
+      "tier": 3,
+      "fingerprint": "407f5511a8cae4d85d9b9e0c6a128569"
+    }
+  ],
+  "candidate_themes": [
+    {
+      "theme": "Shift from passive user interaction to active engagement with AI",
+      "why_selected": "This theme challenges the traditional view of user interaction with AI systems, suggesting that success is not merely about the AI's capabilities but also about how users engage with it.",
+      "why_debatable": "The debate centers around whether encouraging active engagement leads to better outcomes or if it complicates the user experience unnecessarily, especially for novices.",
+      "supporting_papers": [
+        {
+          "title": "A paradox of AI fluency",
+          "authors": [
+            "Christopher Potts",
+            "Moritz Sudhof"
+          ],
+          "abstract": "How much does a user's skill with AI shape what AI actually delivers for them? This question is critical for users, AI product builders, and society at large, but it remains underexplored. Using a richly annotated sample of 27K transcripts from WildChat-4.8M, we show that fluent users take on more complex tasks than novices and adopt a fundamentally different interactional mode: they iterate collaboratively with the AI, refining goals and critically assessing outputs, whereas novices take a passive stance. These differences lead to a paradox of AI fluency: fluent users experience more failures than novices -- but their failures tend to be visible (a direct consequence of their engagement), they are more likely to lead to partial recovery, and they occur alongside greater success on complex tasks. Novices, by contrast, more often experience invisible failures: conversations that appear to end successfully but in fact miss the mark. Taken together, these results reframe what success with AI depends on. Individuals should adopt a stance of active engagement rather than passive acceptance. AI product builders should recognize that they are designing not just model behavior but user behavior; encouraging deep engagement, rather than friction-free experiences, will lead to more success overall. Our code and data are available at https://github.com/bigspinai/bigspin-fluency-outcomes",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.25905v1",
+          "published_on": "2026-04-28",
+          "tier": 1,
+          "fingerprint": "ac37bdea3db3f549f096b6adef8e846d"
+        }
+      ],
+      "common_belief": "Most believe that AI should be designed for ease of use, minimizing friction for users.",
+      "contrarian_view": "The real issue is that organizations are failing to recognize that true success with AI comes from fostering an environment of active user engagement and iterative interaction. This shift is essential for users to develop fluency with AI systems, enabling them to tackle complex tasks effectively and derive greater value from AI.",
+      "why_wrong": "Current practice is wrong because it assumes that minimizing friction is the best way to enhance user experience with AI. This approach neglects the importance of user engagement and active participation, which are crucial for achieving meaningful outcomes. By focusing solely on ease of use, enterprises are missing the opportunity to empower users to leverage AI's full potential, leading to superficial interactions that do not foster deeper understanding or effective problem-solving.",
+      "recommendation": "The correct architectural approach is to design AI systems that actively encourage user engagement through iterative interactions, allowing users to refine their goals and critically assess outputs. This involves creating interfaces and workflows that support collaboration between users and AI, rather than merely facilitating passive consumption.",
+      "enterprise_implication": "Organizations must invest in user training and support to facilitate this shift towards active engagement, which will ultimately lead to better outcomes in complex tasks and a more empowered user base.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 5,
+        "decisiveness": 5,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": true,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Shift from traditional efficiency metrics to environmental sustainability in AI design",
+      "why_selected": "This theme reframes the design constraints of AI systems, emphasizing the need to consider environmental impact alongside performance metrics.",
+      "why_debatable": "The debate arises over whether prioritizing environmental sustainability could compromise performance or if it can be integrated without loss.",
+      "supporting_papers": [
+        {
+          "title": "Carbon-Taxed Transformers: A Green Compression Pipeline for Overgrown Language Models",
+          "authors": [
+            "Ajmain Inqiad Alam",
+            "Palash Roy",
+            "Chanchal K. Roy",
+            "Banani Roy",
+            "Kevin A. Schneider"
+          ],
+          "abstract": "The accelerating adoption of Large Language Models (LLMs) in software engineering (SE) has brought with it a silent crisis: unsustainable computational cost. While these models demonstrate remarkable capabilities in different SE tasks, they are unmanageably large, slow to deploy, memory-intensive, and carbon-heavy. This reality threatens not only the scalability and accessibility of AI-powered SE, but also its long-term environmental sustainability. The research challenge is clear: we must go beyond accuracy and address efficiency and environmental cost as first-class design constraints. To meet this challenge, we introduce Carbon-Taxed Transformers (CTT), a systematic multi-architectural compression principled pipeline ordering inspired by economic carbon taxation principles. Drawing from the economic concept of carbon pricing, CTT operationalizes a computational carbon tax that penalizes architectural inefficiencies and rewards deployment-ready compression. We evaluate CTT across three core SE tasks: code clone detection, code summarization, and code generation, with models spanning encoder-only, encoder-decoder, and decoder-only architecture. Our results show that CTT delivers on inference: (1) up to 49x memory reduction, (2) time reduction up to 8-10x for clone detection, up to 3x for summarization, and 4-7x for generation, (3) up to 81% reduction in CO2 emissions and (4) CTT retains around 98% accuracy on clone detection, around 89% on summarization, and up to 91% (textual metrics) and 68% (pass@1) for generation. Two ablation studies show that pipeline ordering and individual component contributions are both essential, providing empirical justification for CTT's design and effectiveness. This work establishes a viable path toward responsible AI in SE through aggressive yet performance-preserving compression.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.25903v1",
+          "published_on": "2026-04-28",
+          "tier": 1,
+          "fingerprint": "3cfb4dc07db4c5cdb63800e277b664e4"
+        }
+      ],
+      "common_belief": "Many in the industry prioritize performance and accuracy as the primary metrics for AI systems.",
+      "contrarian_view": "Some argue that sustainability should be a first-class design constraint, potentially leading to innovative solutions that do not sacrifice performance.",
+      "why_wrong": "Critics may contend that focusing on sustainability could lead to trade-offs that diminish the effectiveness of AI applications.",
+      "recommendation": "Organizations should adopt frameworks that integrate sustainability into their AI development processes, potentially leading to more responsible AI practices.",
+      "enterprise_implication": "This shift could require changes in procurement, development practices, and operational metrics, impacting overall strategy and resource allocation.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 5,
+        "debate": 5,
+        "contrarian": 4,
+        "decisiveness": 4,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": "Theme does not introduce a structural shift, problem reframe, or different mental model."
+    }
+  ],
+  "selected_theme": "Shift from passive user interaction to active engagement with AI",
+  "rejected_themes": [
+    {
+      "theme": "Shift from traditional efficiency metrics to environmental sustainability in AI design",
+      "why_selected": "This theme reframes the design constraints of AI systems, emphasizing the need to consider environmental impact alongside performance metrics.",
+      "why_debatable": "The debate arises over whether prioritizing environmental sustainability could compromise performance or if it can be integrated without loss.",
+      "supporting_papers": [
+        {
+          "title": "Carbon-Taxed Transformers: A Green Compression Pipeline for Overgrown Language Models",
+          "authors": [
+            "Ajmain Inqiad Alam",
+            "Palash Roy",
+            "Chanchal K. Roy",
+            "Banani Roy",
+            "Kevin A. Schneider"
+          ],
+          "abstract": "The accelerating adoption of Large Language Models (LLMs) in software engineering (SE) has brought with it a silent crisis: unsustainable computational cost. While these models demonstrate remarkable capabilities in different SE tasks, they are unmanageably large, slow to deploy, memory-intensive, and carbon-heavy. This reality threatens not only the scalability and accessibility of AI-powered SE, but also its long-term environmental sustainability. The research challenge is clear: we must go beyond accuracy and address efficiency and environmental cost as first-class design constraints. To meet this challenge, we introduce Carbon-Taxed Transformers (CTT), a systematic multi-architectural compression principled pipeline ordering inspired by economic carbon taxation principles. Drawing from the economic concept of carbon pricing, CTT operationalizes a computational carbon tax that penalizes architectural inefficiencies and rewards deployment-ready compression. We evaluate CTT across three core SE tasks: code clone detection, code summarization, and code generation, with models spanning encoder-only, encoder-decoder, and decoder-only architecture. Our results show that CTT delivers on inference: (1) up to 49x memory reduction, (2) time reduction up to 8-10x for clone detection, up to 3x for summarization, and 4-7x for generation, (3) up to 81% reduction in CO2 emissions and (4) CTT retains around 98% accuracy on clone detection, around 89% on summarization, and up to 91% (textual metrics) and 68% (pass@1) for generation. Two ablation studies show that pipeline ordering and individual component contributions are both essential, providing empirical justification for CTT's design and effectiveness. This work establishes a viable path toward responsible AI in SE through aggressive yet performance-preserving compression.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.25903v1",
+          "published_on": "2026-04-28",
+          "tier": 1,
+          "fingerprint": "3cfb4dc07db4c5cdb63800e277b664e4"
+        }
+      ],
+      "common_belief": "Many in the industry prioritize performance and accuracy as the primary metrics for AI systems.",
+      "contrarian_view": "Some argue that sustainability should be a first-class design constraint, potentially leading to innovative solutions that do not sacrifice performance.",
+      "why_wrong": "Critics may contend that focusing on sustainability could lead to trade-offs that diminish the effectiveness of AI applications.",
+      "recommendation": "Organizations should adopt frameworks that integrate sustainability into their AI development processes, potentially leading to more responsible AI practices.",
+      "enterprise_implication": "This shift could require changes in procurement, development practices, and operational metrics, impacting overall strategy and resource allocation.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 5,
+        "debate": 5,
+        "contrarian": 4,
+        "decisiveness": 4,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": "Theme does not introduce a structural shift, problem reframe, or different mental model."
+    }
+  ],
+  "position": {
+    "common_belief": "Most believe that AI should be designed for ease of use, minimizing friction for users.",
+    "contrarian_view": "The real issue is that organizations are failing to recognize that true success with AI comes from fostering an environment of active user engagement and iterative interaction. This shift is essential for users to develop fluency with AI systems, enabling them to tackle complex tasks effectively and derive greater value from AI.",
+    "why_wrong": "Current practice is wrong because it assumes that minimizing friction is the best way to enhance user experience with AI. This approach neglects the importance of user engagement and active participation, which are crucial for achieving meaningful outcomes. By focusing solely on ease of use, enterprises are missing the opportunity to empower users to leverage AI's full potential, leading to superficial interactions that do not foster deeper understanding or effective problem-solving.",
+    "recommendation": "The correct architectural approach is to design AI systems that actively encourage user engagement through iterative interactions, allowing users to refine their goals and critically assess outputs. This involves creating interfaces and workflows that support collaboration between users and AI, rather than merely facilitating passive consumption.",
+    "enterprise_implication": "Organizations must invest in user training and support to facilitate this shift towards active engagement, which will ultimately lead to better outcomes in complex tasks and a more empowered user base."
+  },
+  "post": "The prevailing belief that AI should prioritize ease of use is fundamentally wrong. This approach is a failure that stifles user engagement and limits the potential of AI systems. Organizations are mistakenly focused on minimizing friction, neglecting the critical need for active user participation.\n\nThe real insight? True success with AI emerges when users are encouraged to engage actively, iterating and refining their interactions. This shift is essential for developing fluency with AI, enabling users to tackle complex tasks effectively.\n\nArchitecturally, we must design AI systems that foster collaboration and iterative engagement, rather than merely facilitating passive consumption. By doing so, we empower users to leverage AI's full potential, driving meaningful outcomes and deeper understanding.",
+  "scores": {
+    "theme_selection": {
+      "novelty": 4,
+      "relevance": 5,
+      "debate": 4,
+      "contrarian": 5,
+      "decisiveness": 5,
+      "tension": 4,
+      "specificity": 5,
+      "typical_architect_agrees": true,
+      "strong_architect_debates": true
+    },
+    "position_strength": {
+      "contrarian": 5,
+      "decisiveness": 5,
+      "tension": 4,
+      "specificity": 5,
+      "passed": true,
+      "reasons": []
+    },
+    "evaluation": {
+      "novelty": 4,
+      "relevance": 5,
+      "insight": 4,
+      "position_strength": 4,
+      "clarity": 5,
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "meta": {
+    "used_on": "2026-04-29",
+    "recent_themes": [],
+    "lead_paper_summary": {
+      "title": "A paradox of AI fluency",
+      "source": "arXiv",
+      "authors": [
+        "Christopher Potts",
+        "Moritz Sudhof"
+      ],
+      "url": "http://arxiv.org/abs/2604.25905v1",
+      "summary": "How much does a user's skill with AI shape what AI actually delivers for them? This question is critical for users, AI product builders, and society at large, but it remains underexplored."
+    },
+    "storage_path": "/Users/emilygao/LocalDocuments/Obsidian/research/2026-04-29-shift-from-passive-user-interaction-to-active-engagement-with-ai.md",
+    "run_log_path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/runs/run_2026-04-29.json"
+  },
+  "deliveries": [
+    {
+      "channel": "email",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/email/2026-04-29-linkedin-draft.md",
+      "preview": "The prevailing belief that AI should prioritize ease of use is fundamentally wrong. This approach is a failure that stif",
+      "target": "emsyd888@gmail.com",
+      "sent": true,
+      "status": "sent"
+    },
+    {
+      "channel": "discord",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/discord/2026-04-29-linkedin-draft.md",
+      "preview": "The prevailing belief that AI should prioritize ease of use is fundamentally wrong. This approach is a failure that stif",
+      "target": "Weekflow",
+      "sent": true,
+      "status": "sent"
+    }
+  ]
+}

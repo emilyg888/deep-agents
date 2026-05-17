@@ -1,0 +1,779 @@
+{
+  "paper_pool": [
+    {
+      "title": "Covering Human Action Space for Computer Use: Data Synthesis and Benchmark",
+      "authors": [
+        "Miaosen Zhang",
+        "Xiaohan Zhao",
+        "Zhihong Tan",
+        "Zhou Huoshen",
+        "Yijia Fan",
+        "Yifan Yang",
+        "Kai Qiu",
+        "Bei Liu",
+        "Justin Wagle",
+        "Chenzhong Yin",
+        "Mingxi Cheng",
+        "Ji Li",
+        "Qi Dai",
+        "Chong Luo",
+        "Xu Yang",
+        "Xin Geng",
+        "Baining Guo"
+      ],
+      "abstract": "Computer-use agents (CUAs) automate on-screen work, as illustrated by GPT-5.4 and Claude. Yet their reliability on complex, low-frequency interactions is still poor, limiting user trust. Our analysis of failure cases from advanced models suggests a long-tail pattern in GUI operations, where a relatively small fraction of complex and diverse interactions accounts for a disproportionate share of task failures. We hypothesize that this issue largely stems from the scarcity of data for complex interactions. To address this problem, we propose a new benchmark CUActSpot for evaluating models' capabilities on complex interactions across five modalities: GUI, text, table, canvas, and natural image, as well as a variety of actions (click, drag, draw, etc.), covering a broader range of interaction types than prior click-centric benchmarks that focus mainly on GUI widgets. We also design a renderer-based data-synthesis pipeline: scenes are automatically generated for each modality, screenshots and element coordinates are recorded, and an LLM produces matching instructions and action traces. After training on this corpus, our Phi-Ground-Any-4B outperforms open-source models with fewer than 32B parameters. We will release our benchmark, data, code, and models at https://github.com/microsoft/Phi-Ground.git",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12501v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "b9d36b054927001c166b221bd49c4544"
+    },
+    {
+      "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
+      "authors": [
+        "Haiwen Diao",
+        "Penghao Wu",
+        "Hanming Deng",
+        "Jiahao Wang",
+        "Shihao Bai",
+        "Silei Wu",
+        "Weichen Fan",
+        "Wenjie Ye",
+        "Wenwen Tong",
+        "Xiangyu Fan",
+        "Yan Li",
+        "Yubo Wang",
+        "Zhijie Cao",
+        "Zhiqian Lin",
+        "Zhitao Yang",
+        "Zhongang Cai",
+        "Yuwei Niu",
+        "Yue Zhu",
+        "Bo Liu",
+        "Chengguang Lv",
+        "Haojia Yu",
+        "Haozhe Xie",
+        "Hongli Wang",
+        "Jianan Fan",
+        "Jiaqi Li",
+        "Jiefan Lu",
+        "Jingcheng Ni",
+        "Junxiang Xu",
+        "Kaihuan Liang",
+        "Lianqiang Shi",
+        "Linjun Dai",
+        "Linyan Wang",
+        "Oscar Qian",
+        "Peng Gao",
+        "Pengfei Liu",
+        "Qingping Sun",
+        "Rui Shen",
+        "Ruisi Wang",
+        "Shengnan Ma",
+        "Shuang Yang",
+        "Siyi Xie",
+        "Siying Li",
+        "Tianbo Zhong",
+        "Xiangli Kong",
+        "Xuanke Shi",
+        "Yang Gao",
+        "Yongqiang Yao",
+        "Yves Wang",
+        "Zhengqi Bai",
+        "Zhengyu Lin",
+        "Zixin Yin",
+        "Wenxiu Sun",
+        "Ruihao Gong",
+        "Quan Wang",
+        "Lewei Lu",
+        "Lei Yang",
+        "Ziwei Liu",
+        "Dahua Lin"
+      ],
+      "abstract": "Recent large vision-language models (VLMs) remain fundamentally constrained by a persistent dichotomy: understanding and generation are treated as distinct problems, leading to fragmented architectures, cascaded pipelines, and misaligned representation spaces. We argue that this divide is not merely an engineering artifact, but a structural limitation that hinders the emergence of native multimodal intelligence. Hence, we introduce SenseNova-U1, a native unified multimodal paradigm built upon NEO-unify, in which understanding and generation evolve as synergistic views of a single underlying process. We launch two native unified variants, SenseNova-U1-8B-MoT and SenseNova-U1-A3B-MoT, built on dense (8B) and mixture-of-experts (30B-A3B) understanding baselines, respectively. Designed from first principles, they rival top-tier understanding-only VLMs across text understanding, vision-language perception, knowledge reasoning, agentic decision-making, and spatial intelligence. Meanwhile, they deliver strong semantic consistency and visual fidelity, excelling in conventional or knowledge-intensive any-to-image (X2I) synthesis, complex text-rich infographic generation, and interleaved vision-language generation, with or without think patterns. Beyond performance, we show detailed model design, data preprocessing, pre-/post-training, and inference strategies to support community research. Last but not least, preliminary evidence demonstrates that our models extend beyond perception and generation, performing strongly in vision-language-action (VLA) and world model (WM) scenarios. This points toward a broader roadmap where models do not translate between modalities, but think and act across them in a native manner. Multimodal AI is no longer about connecting separate systems, but about building a unified one and trusting the necessary capabilities to emerge from within.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12500v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "93495ecf9ae3fcf83bdd0ea797cf6d32"
+    },
+    {
+      "title": "From Web to Pixels: Bringing Agentic Search into Visual Perception",
+      "authors": [
+        "Bokang Yang",
+        "Xinyi Sun",
+        "Kaituo Feng",
+        "Xingping Dong",
+        "Dongming Wu",
+        "Xiangyu Yue"
+      ],
+      "abstract": "Visual perception connects high-level semantic understanding to pixel-level perception, but most existing settings assume that the decisive evidence for identifying a target is already in the image or frozen model knowledge. We study a more practical yet harder open-world case where a visible object must first be resolved from external facts, recent events, long-tail entities, or multi-hop relations before it can be localized. We formalize this challenge as Perception Deep Research and introduce WebEye, an object-anchored benchmark with verifiable evidence, knowledge-intensive queries, precise box/mask annotations, and three task views: Search-based Grounding, Search-based Segmentation, and Search-based VQA. WebEyes contains 120 images, 473 annotated object instances, 645 unique QA pairs, and 1,927 task samples. We further propose Pixel-Searcher, an agentic search-to-pixel workflow that resolves hidden target identities and binds them to boxes, masks, or grounded answers. Experiments show that Pixel-Searcher achieves the strongest open-source performance across all three task views, while failures mainly arise from evidence acquisition, identity resolution, and visual instance binding.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12497v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "05757aab02d7ba3242d9c7a3d87c34bf"
+    },
+    {
+      "title": "LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues",
+      "authors": [
+        "Di Wu",
+        "Zixiang Ji",
+        "Asmi Kawatkar",
+        "Bryan Kwan",
+        "Jia-Chen Gu",
+        "Nanyun Peng",
+        "Kai-Wei Chang"
+      ],
+      "abstract": "Long-term memory is crucial for agents in specialized web environments, where success depends on recalling interface affordances, state dynamics, workflows, and recurring failure modes. However, existing memory benchmarks for agents mostly focus on user histories, short traces, or downstream task success, leaving open how to directly evaluate whether memory systems effectively internalize environment-specific experience. To address this gap, we introduce LongMemEval-V2 (LME-V2), a benchmark for evaluating whether memory systems can help agents acquire the experience needed to become knowledgeable colleagues in customized environments. LME-V2 contains 451 manually curated questions covering five core memory abilities for web agents: static state recall, dynamic state tracking, workflow knowledge, environment gotchas, and premise awareness. Questions are paired with history trajectories containing up to 500 trajectories and 115M tokens. We use a context gathering formulation: memory systems consume history trajectories and return compact evidence for downstream question answering. We propose a suite of two memory methods: AgentRunbook-R, an efficient RAG-based memory with knowledge pools for raw state observations, events, and strategy notes, and AgentRunbook-C, which stores trajectories as files and invokes a coding agent to gather evidence in an augmented sandbox. Experiments show that AgentRunbook-C achieves the best performance with 72.5% average accuracy, outperforming the strongest RAG baseline (48.5%) and the off-the-shelf coding agent baseline (69.3%). Despite the strong performance gains, coding agent based methods have high latency costs. While AgentRunbook-C advances the accuracy-latency Pareto frontier, substantial room for improvement remains. Together, these results establish LME-V2 as a challenging testbed for developing long-term memory systems for environment experience.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12493v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "d693d465a1867fe14dda913e47437db5"
+    },
+    {
+      "title": "Letting the neural code speak: Automated characterization of monkey visual neurons through human language",
+      "authors": [
+        "Vedang Lad",
+        "Katrin Franke",
+        "Tamar Rott Shaham",
+        "Surya Ganguli",
+        "Andreas S. Tolias",
+        "Sophia Sanborn",
+        "Nikos Karantzas"
+      ],
+      "abstract": "Understanding what individual neurons encode is a core question in neuroscience. In primary visual cortex (V1), mathematical models (e.g., Gabor functions) capture neural selectivity, but no comparable framework exists for higher areas. We show that natural language can fill this role: across macaque V1 and V4, the selectivity of most neurons is captured by concise, verifiable semantic descriptions. Using digital twins of V1 and V4, we develop a closed-loop framework that translates each neuron's high- and low-activating images into dense captions, generates a semantic hypothesis and synthesized images, and verifies the hypothesis in silico. Descriptions range from oriented edges and spatial frequency in V1 to conjunctions of form, color, and texture in V4. In V4, images generated from activating and suppressing hypotheses drove 96.1% of neurons above the 95th and 97.6% below the 5th percentile of natural-image responses, respectively (vs. ~10\\% for random images); V1 activation results matched V4, while V1 suppression was less describable in language. Representational similarity analysis reveals partial alignment between neural activity, vision embeddings, and language embeddings, with vision most aligned to neural activity; alignment lost in the text bottleneck is recovered when hypotheses are rendered back into images, showing that linguistic compression is lossy yet semantically faithful. Together, these results show that combining generative models with neural digital twins enables interpretable, testable descriptions of neural function at scale, toward agentic scientific discovery.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12485v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "6a402c8e7255b2e0b18767aa863a83ec"
+    },
+    {
+      "title": "Assessing the Impact of AI-Augmented DevSecOps on Lead Time in Agile Release Management",
+      "authors": [
+        "Jimmy Agung Gunawan",
+        "Moses Laksono Singgih",
+        "Ginardi Raden Venantius Hari"
+      ],
+      "abstract": "<ns3:p>Background Despite increasing interest in generative artificial intelligence (AI) within DevSecOps environments, empirical evidence quantifying its impact on software delivery performance remains limited, particularly in regulated enterprise contexts. Lead time for changes is a core DevSecOps performance indicator, yet controlled evaluations of AI-augmented pipelines remain scarce. This study investigates whether on-premises generative AI integration can measurably reduce release lead time while preserving governance and quality controls. Methods A quasi-experimental within-team design was conducted across two consecutive two-week Scrum sprints in an enterprise environment developing internal sales, human resource, and biometric absence systems. Sprint 1 served as the baseline using a conventional DevSecOps pipeline. Sprint 2 introduced an AI-augmented pipeline integrating Retrieval-Augmented Generation (RAG) and Reinforcement Learning from Human Feedback (RLHF) within a GitLab\u2013Docker CI/CD infrastructure. The primary outcome was lead time for changes. Secondary metrics included deployment frequency and change failure rate. Statistical analysis employed Welch\u2019s t-test, effect size estimation (Cohen\u2019s d), and confidence interval analysis. Results A total of 42 distinct changes (21 per sprint) were analyzed. Mean lead time decreased by 39.2% during the intervention sprint (Welch\u2019s t(32.4) = 4.28, p = 0.00014), with a large effect size (Cohen\u2019s d = 1.32) and a 95% confidence interval indicating a reduction of 15.8\u201337.4 hours. Security scanning time decreased by 64.6%, and approval latency decreased by 48.5%. Deployment frequency increased by 61.9%, while change failure rate declined from 14.3% to 8.7%. AI recommendation acceptance improved from 62.4% in Week 1 to 78.6% in Week 2 and was positively correlated with lead-time reduction (r = 0.73, p &lt; 0.05). Conclusions On-premises human-in-the-loop generative AI significantly reduced DevSecOps lead time without compromising reliability or governance. The findings challenge the traditional speed\u2013security tradeoff by demonstrating that AI-assisted security validation and release evaluation can simultaneously enhance delivery efficiency and operational stability in regulated enterprise environments. This study examines the influence of on-premises generative AI augmentation on DevSecOps release lead time within agile software development settings. Despite increasing interest in generative artificial intelligence (AI) within Development-Security-Operations (DevSecOps) environments, empirical evidence quantifying its impact on software delivery performance remains limited, particularly in regulated enterprise contexts. Lead time for changes is a core DevSecOps performance indicator, yet controlled evaluations of AI-augmented pipelines remain scarce. This study investigates whether on-premises generative AI integration can measurably reduce release lead time while preserving governance and quality controls. A quasi-experimental within-team design was conducted across two consecutive two-week Scrum sprints in an enterprise environment developing internal sales, human resource, and biometric absence systems. Sprint 1 served as the baseline using a conventional DevSecOps pipeline. Sprint 2 introduced an AI-augmented pipeline integrating Retrieval-Augmented Generation (RAG) and Reinforcement Learning from Human Feedback (RLHF) within a GitLab\u2013Docker CI/CD infrastructure. The primary outcome was lead time for changes. Secondary metrics included deployment frequency and change failure rate. Statistical analysis employed Welch\u2019s t-test, effect size estimation (Cohen\u2019s d), and confidence interval analysis. A total of 42 distinct changes (21 per sprint) were analyzed. Mean lead time decreased by 39.2% during the intervention sprint (Welch\u2019s t(32.4) = 4.28, p = 0.00014), with a large effect size (Cohen\u2019s d = 1.32) and a 95% confidence interval indicating a reduction of 15.8\u201337.4 hours. Security scanning time decreased by 64.6%, and approval latency decreased by 48.5%. Deployment frequency increased by 61.9%, while change failure rate declined from 14.3% to 8.7%. AI recommendation acceptance improved from 62.4% in Week 1 to 78.6% in Week 2 and was positively correlated with lead-time reduction (r = 0.73, p &lt; 0.05). On-premises human-in-the-loop generative AI significantly reduced DevSecOps lead time without compromising reliability or governance. The findings challenge the traditional speed\u2013security tradeoff by demonstrating that AI-assisted DevSecOps validation and release evaluation can simultaneously enhance delivery efficiency and operational stability in regulated enterprise environments.</ns3:p>",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7160834532",
+      "published_on": "2026-05-11",
+      "tier": 1,
+      "fingerprint": "5bd5e4948ec56e83b568a367de0b6f38"
+    },
+    {
+      "title": "A Framework for Securing Agentic AI Workflows and Quantum-Resistant Communication in U.S. Critical Infrastructure Networks",
+      "authors": [
+        "Md Humayun Kabir",
+        "Md Al Mamun Siddike",
+        "Md Riyad Uddin",
+        "MD RAZIB"
+      ],
+      "abstract": "For artificial intelligence (AI) systems designed to learn and act without human intervention, the events of this rapid integration into U.S. critical infrastructure networks and the rapid pace of approach to cryptographically relevant quantum computers (CRQCs) create a dual convergence of threat that is not adequately met by current frameworks. Agentic AI systems have additional attack surfaces, such as prompt injection, non-human identity (NHI) exploitation, and cascading multi-agent failures, due to their ability to operate autonomously, take multiple steps, and coordinate with other agents. At the same time, existing public-key cryptographic standards, such as RSA and elliptic curve cryptography (ECC), are under attack with harvest-now-decrypt-later (HNDL) attacks to hack encrypted communications in operational technology (OT) and industrial control system (ICS) environments. This article suggests security in both threat domains by leveraging three layers of security: Layer 1: Security of the agentic AI workflow through identity management, prompt sanitization and behavior monitoring; Layer 2: Quantum resistant communication with migration to NIST standardized post-quantum cryptographic (PQC) algorithms (FIPS 203, 204, 205); and Layer 3: Governance and compliance integration with CISA, NERC CIP and the NIST AI Risk Management Framework. Compliance is verified with a cross-walk analysis to current standards, and the framework is tested in scenarios of representative critical infrastructure in the energy, water, and financial sectors. Results suggest that this framework offers a roadmap for RTOs to use in preparing for the deployment of agentic AI and the migration to post-quantum cryptographic algorithms.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7160762949",
+      "published_on": "2026-05-10",
+      "tier": 1,
+      "fingerprint": "c849889cd324c2b68c556c06992de2eb"
+    },
+    {
+      "title": "Agentic Implementation in Business Processes with Guardrails",
+      "authors": [
+        "Kunal Kumar"
+      ],
+      "abstract": "Enterprises are increasingly adopting Large Language Models (LLMs) to enhance automation in document driven workflows. However, their probabilistic behavior raises challenges related to governance, auditability, and regulatory compliance. This work proposes an agentic automation framework that integrates LLM-based cognitive services with Robotic Process Automation (RPA) to enable intelligent document processing while preserving determinism and traceability. The architecture separates probabilistic interpretation from deterministic execution, using LLMs for bounded information extraction and RPA for rule-based orchestration, validation, and audit logging. To mitigate risks associated with nondeterministic AI behavior, the framework incorporates guardrails such as structured prompting, confidence thresholds, human-in-the-loop review, and comprehensive audit trails. The approach is demonstrated through an enterprise use case involving automated case creation for unbilled invoices, showing reduced manual effort, improved processing accuracy, and end-to-end auditability. This work provides practical architectural guidance for deploying agentic AI systems responsibly within regulated environments",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7160227283",
+      "published_on": "2026-05-09",
+      "tier": 1,
+      "fingerprint": "72b69dbc6d719593b66adb4aca84191c"
+    },
+    {
+      "title": "Hierarchical Multi-Level LLM Agent Swarms for Financial Research Synthesis and Trading Decision Support in Multi Strategy Hedge Funds",
+      "authors": [
+        "Puneet Gandhi",
+        "Rishab Gulati"
+      ],
+      "abstract": "\"There will be no software in the future that's not agentic. And so, it is absolutely true that every software company will become an agentic company.\u201d- Nvidia\u2019s Jensen Huang. As various companies grapple with agentic architectures suitable to their firm environments, we present a hierarchical agentic architecture geared towards Multi Strategy hedge funds. Multi-strategy hedge funds operate within highly complex and rapidly evolving information environments. Trading decisions emerge from layered organizational structures in which sector specific teams continuously consume heterogeneous data sources. Sr. Portfolio Managers synthesize information to allocate capital towards high-conviction opportunities. As the volume and diversity of financial information increases, traditional human-centered research workflows increasingly struggle to scale. General-purpose AI tools have not been architected for environments in which structured quantitative data and unstructured qualitative research must be processed jointly, where workflows span multiple coordinated agents, or where every decision must satisfy institutional compliance requirements. Existing implementations within the industry have largely focused on delivering configurable, single-purpose AI services to individual trading teams. This paper proposes and discusses the benefits of a fully hierarchical model in which specialized agents operate at every organizational tier, synthesize outputs upward through the hierarchy, and replicate the distributed cognition of the institution as a whole.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7160225173",
+      "published_on": "2026-05-09",
+      "tier": 1,
+      "fingerprint": "4797cfbb6d3a19ca76a562e02907576f"
+    },
+    {
+      "title": "Autonomous Redteam Pentesing Using Agentic AI",
+      "authors": [
+        "A C Arul Prasanth",
+        "Kamalesh T G K",
+        "Manoj Babu P",
+        "K N Ambili",
+        "Sunanda Das"
+      ],
+      "abstract": "Traditional penetration testing relies heavily on manual expertise, rule-based tools, and linear workflows that limit scalability, adaptability, and continuous learning. Existing offensive security systems- including standard vulnerability scanners, automated recon tools, and semi-autonomous frameworks- operate in isolation, lack long-term memory, and require constant human supervision. These tools function on predefined signatures, static exploit databases, and deterministic logic, making them less effective against evolving attack surfaces, zero-day vulnerabilities, and dynamic enterprise environments. Although some AI-assisted tools and script-based automation exist, they do not integrate deep reasoning, agent collaboration, or reinforcement-learning capabilities. Likewise, blue-team defensive systems mainly focus on detection rather than intelligent exploit simulation, leaving a gap in adversarial modelling. The proposed system introduces a fully autonomous, agentic AI-driven penetration testing architecture that overcomes these limitations by integrating a centralized custom-tuned LLM with multi-agent collaboration, reinforcement learning, long-term memory storage, and tool-augmented reasoning. Each agent performs a specialized task such as reconnaissance, scanning, exploitation, vulnerability triage, and post-exploitation analysis, with decisions validated through an internal agent-to-agent verification pipeline. The system continuously learns from previous scans, real-world datasets, exploit outputs, and user customization, enabling adaptive threat reasoning and persistent target understanding. By combining offline RL-based training, internet-assisted research, dynamic tool invocation, and storage of historical attack patterns, the framework delivers more accurate vulnerability detection, faster exploitation workflows, and enhanced ability to uncover high-impact bugs compared to traditional methods.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7160649955",
+      "published_on": "2026-05-08",
+      "tier": 1,
+      "fingerprint": "18af9a01a92c0262a07e975afb1069ee"
+    },
+    {
+      "title": "Deterministic Fully-Static Whole-Binary Translation Without Heuristics",
+      "authors": [
+        "matt_d"
+      ],
+      "abstract": "Hacker News discussion with score 136 and 27 comments.",
+      "source": "Hacker News",
+      "url": "https://arxiv.org/abs/2605.08419",
+      "published_on": "2026-05-13",
+      "tier": 3,
+      "fingerprint": "2ce66a2eb9ee4f6b32a64f894dfef3fe"
+    },
+    {
+      "title": "European governments: 3.000 tracking sites, 1.000 phpMyAdmins, and 99% poorly",
+      "authors": [
+        "aequitas"
+      ],
+      "abstract": "Hacker News discussion with score 21 and 3 comments.",
+      "source": "Hacker News",
+      "url": "https://internetcleanup.foundation/2026/05/european-governments-3000-tracking-sites-1000-phpmyadmins-and-99pct-poorly-encrypted-email-introducing-securitybaseline-eu/",
+      "published_on": "2026-05-13",
+      "tier": 3,
+      "fingerprint": "2a014c25780b3222b5bfb402c45d3453"
+    },
+    {
+      "title": "Restore full BambuNetwork support for Bambu Lab printers",
+      "authors": [
+        "Murfalo"
+      ],
+      "abstract": "Hacker News discussion with score 384 and 167 comments.",
+      "source": "Hacker News",
+      "url": "https://github.com/FULU-Foundation/OrcaSlicer-bambulab",
+      "published_on": "2026-05-12",
+      "tier": 3,
+      "fingerprint": "eec791178ab2843361e2d26bf50da558"
+    },
+    {
+      "title": "The vi family",
+      "authors": [
+        "hggh"
+      ],
+      "abstract": "Hacker News discussion with score 126 and 61 comments.",
+      "source": "Hacker News",
+      "url": "https://lpar.ATH0.com/posts/2026/05/the-vi-family/",
+      "published_on": "2026-05-06",
+      "tier": 3,
+      "fingerprint": "bf5ec3042bed4640a73a87dc60ee47ba"
+    },
+    {
+      "title": "Googlebook",
+      "authors": [
+        "tambourine_man"
+      ],
+      "abstract": "<a href=\"https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;Android&#x2F;comments&#x2F;1tb8xls&#x2F;introducing_googlebook_a_new_category_of_laptops&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;Android&#x2F;comments&#x2F;1tb8xls&#x2F;introducin...</a>",
+      "source": "Hacker News",
+      "url": "https://googlebook.google/",
+      "published_on": "2026-05-12",
+      "tier": 3,
+      "fingerprint": "a018acd4c7948202968f90800296df0c"
+    },
+    {
+      "title": "Why Your RAG Architecture Will Break Production AI | #NEWIT",
+      "authors": [
+        "GilliLab IT Professional Engineeri Logic Salt"
+      ],
+      "abstract": "Most teams discover their RAG system fails not during testing \u2014 but when a financial compliance query returns a hallucinated ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=cewZcj9WM0E",
+      "published_on": "2026-04-21",
+      "tier": 3,
+      "fingerprint": "9029bda93912c954921c9da2c913a0a0"
+    },
+    {
+      "title": "Agentic AI for Legal &amp; Compliance (Production Blueprint)",
+      "authors": [
+        "AIinovateHUB"
+      ],
+      "abstract": "Technical Whitepaper (Zenodo): COMING SOON Cite this Work (Zenodo ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=yg_2u1eij10",
+      "published_on": "2026-04-15",
+      "tier": 3,
+      "fingerprint": "44d049ceee8434c547bf78b9413b0041"
+    },
+    {
+      "title": "RAG Explained in 12 Minutes",
+      "authors": [
+        "Aishwarya Srinivasan"
+      ],
+      "abstract": "If you've been wondering what RAG (Retrieval-Augmented Generation) is and why everyone in AI is talking about it, this video is ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=v0ynfDPpe4E",
+      "published_on": "2026-03-22",
+      "tier": 3,
+      "fingerprint": "d750a78e5ff40d9cd9481b09ad5acd19"
+    }
+  ],
+  "top_papers": [
+    {
+      "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
+      "authors": [
+        "Haiwen Diao",
+        "Penghao Wu",
+        "Hanming Deng",
+        "Jiahao Wang",
+        "Shihao Bai",
+        "Silei Wu",
+        "Weichen Fan",
+        "Wenjie Ye",
+        "Wenwen Tong",
+        "Xiangyu Fan",
+        "Yan Li",
+        "Yubo Wang",
+        "Zhijie Cao",
+        "Zhiqian Lin",
+        "Zhitao Yang",
+        "Zhongang Cai",
+        "Yuwei Niu",
+        "Yue Zhu",
+        "Bo Liu",
+        "Chengguang Lv",
+        "Haojia Yu",
+        "Haozhe Xie",
+        "Hongli Wang",
+        "Jianan Fan",
+        "Jiaqi Li",
+        "Jiefan Lu",
+        "Jingcheng Ni",
+        "Junxiang Xu",
+        "Kaihuan Liang",
+        "Lianqiang Shi",
+        "Linjun Dai",
+        "Linyan Wang",
+        "Oscar Qian",
+        "Peng Gao",
+        "Pengfei Liu",
+        "Qingping Sun",
+        "Rui Shen",
+        "Ruisi Wang",
+        "Shengnan Ma",
+        "Shuang Yang",
+        "Siyi Xie",
+        "Siying Li",
+        "Tianbo Zhong",
+        "Xiangli Kong",
+        "Xuanke Shi",
+        "Yang Gao",
+        "Yongqiang Yao",
+        "Yves Wang",
+        "Zhengqi Bai",
+        "Zhengyu Lin",
+        "Zixin Yin",
+        "Wenxiu Sun",
+        "Ruihao Gong",
+        "Quan Wang",
+        "Lewei Lu",
+        "Lei Yang",
+        "Ziwei Liu",
+        "Dahua Lin"
+      ],
+      "abstract": "Recent large vision-language models (VLMs) remain fundamentally constrained by a persistent dichotomy: understanding and generation are treated as distinct problems, leading to fragmented architectures, cascaded pipelines, and misaligned representation spaces. We argue that this divide is not merely an engineering artifact, but a structural limitation that hinders the emergence of native multimodal intelligence. Hence, we introduce SenseNova-U1, a native unified multimodal paradigm built upon NEO-unify, in which understanding and generation evolve as synergistic views of a single underlying process. We launch two native unified variants, SenseNova-U1-8B-MoT and SenseNova-U1-A3B-MoT, built on dense (8B) and mixture-of-experts (30B-A3B) understanding baselines, respectively. Designed from first principles, they rival top-tier understanding-only VLMs across text understanding, vision-language perception, knowledge reasoning, agentic decision-making, and spatial intelligence. Meanwhile, they deliver strong semantic consistency and visual fidelity, excelling in conventional or knowledge-intensive any-to-image (X2I) synthesis, complex text-rich infographic generation, and interleaved vision-language generation, with or without think patterns. Beyond performance, we show detailed model design, data preprocessing, pre-/post-training, and inference strategies to support community research. Last but not least, preliminary evidence demonstrates that our models extend beyond perception and generation, performing strongly in vision-language-action (VLA) and world model (WM) scenarios. This points toward a broader roadmap where models do not translate between modalities, but think and act across them in a native manner. Multimodal AI is no longer about connecting separate systems, but about building a unified one and trusting the necessary capabilities to emerge from within.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12500v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "93495ecf9ae3fcf83bdd0ea797cf6d32"
+    },
+    {
+      "title": "Assessing the Impact of AI-Augmented DevSecOps on Lead Time in Agile Release Management",
+      "authors": [
+        "Jimmy Agung Gunawan",
+        "Moses Laksono Singgih",
+        "Ginardi Raden Venantius Hari"
+      ],
+      "abstract": "<ns3:p>Background Despite increasing interest in generative artificial intelligence (AI) within DevSecOps environments, empirical evidence quantifying its impact on software delivery performance remains limited, particularly in regulated enterprise contexts. Lead time for changes is a core DevSecOps performance indicator, yet controlled evaluations of AI-augmented pipelines remain scarce. This study investigates whether on-premises generative AI integration can measurably reduce release lead time while preserving governance and quality controls. Methods A quasi-experimental within-team design was conducted across two consecutive two-week Scrum sprints in an enterprise environment developing internal sales, human resource, and biometric absence systems. Sprint 1 served as the baseline using a conventional DevSecOps pipeline. Sprint 2 introduced an AI-augmented pipeline integrating Retrieval-Augmented Generation (RAG) and Reinforcement Learning from Human Feedback (RLHF) within a GitLab\u2013Docker CI/CD infrastructure. The primary outcome was lead time for changes. Secondary metrics included deployment frequency and change failure rate. Statistical analysis employed Welch\u2019s t-test, effect size estimation (Cohen\u2019s d), and confidence interval analysis. Results A total of 42 distinct changes (21 per sprint) were analyzed. Mean lead time decreased by 39.2% during the intervention sprint (Welch\u2019s t(32.4) = 4.28, p = 0.00014), with a large effect size (Cohen\u2019s d = 1.32) and a 95% confidence interval indicating a reduction of 15.8\u201337.4 hours. Security scanning time decreased by 64.6%, and approval latency decreased by 48.5%. Deployment frequency increased by 61.9%, while change failure rate declined from 14.3% to 8.7%. AI recommendation acceptance improved from 62.4% in Week 1 to 78.6% in Week 2 and was positively correlated with lead-time reduction (r = 0.73, p &lt; 0.05). Conclusions On-premises human-in-the-loop generative AI significantly reduced DevSecOps lead time without compromising reliability or governance. The findings challenge the traditional speed\u2013security tradeoff by demonstrating that AI-assisted security validation and release evaluation can simultaneously enhance delivery efficiency and operational stability in regulated enterprise environments. This study examines the influence of on-premises generative AI augmentation on DevSecOps release lead time within agile software development settings. Despite increasing interest in generative artificial intelligence (AI) within Development-Security-Operations (DevSecOps) environments, empirical evidence quantifying its impact on software delivery performance remains limited, particularly in regulated enterprise contexts. Lead time for changes is a core DevSecOps performance indicator, yet controlled evaluations of AI-augmented pipelines remain scarce. This study investigates whether on-premises generative AI integration can measurably reduce release lead time while preserving governance and quality controls. A quasi-experimental within-team design was conducted across two consecutive two-week Scrum sprints in an enterprise environment developing internal sales, human resource, and biometric absence systems. Sprint 1 served as the baseline using a conventional DevSecOps pipeline. Sprint 2 introduced an AI-augmented pipeline integrating Retrieval-Augmented Generation (RAG) and Reinforcement Learning from Human Feedback (RLHF) within a GitLab\u2013Docker CI/CD infrastructure. The primary outcome was lead time for changes. Secondary metrics included deployment frequency and change failure rate. Statistical analysis employed Welch\u2019s t-test, effect size estimation (Cohen\u2019s d), and confidence interval analysis. A total of 42 distinct changes (21 per sprint) were analyzed. Mean lead time decreased by 39.2% during the intervention sprint (Welch\u2019s t(32.4) = 4.28, p = 0.00014), with a large effect size (Cohen\u2019s d = 1.32) and a 95% confidence interval indicating a reduction of 15.8\u201337.4 hours. Security scanning time decreased by 64.6%, and approval latency decreased by 48.5%. Deployment frequency increased by 61.9%, while change failure rate declined from 14.3% to 8.7%. AI recommendation acceptance improved from 62.4% in Week 1 to 78.6% in Week 2 and was positively correlated with lead-time reduction (r = 0.73, p &lt; 0.05). On-premises human-in-the-loop generative AI significantly reduced DevSecOps lead time without compromising reliability or governance. The findings challenge the traditional speed\u2013security tradeoff by demonstrating that AI-assisted DevSecOps validation and release evaluation can simultaneously enhance delivery efficiency and operational stability in regulated enterprise environments.</ns3:p>",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7160834532",
+      "published_on": "2026-05-11",
+      "tier": 1,
+      "fingerprint": "5bd5e4948ec56e83b568a367de0b6f38"
+    },
+    {
+      "title": "LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues",
+      "authors": [
+        "Di Wu",
+        "Zixiang Ji",
+        "Asmi Kawatkar",
+        "Bryan Kwan",
+        "Jia-Chen Gu",
+        "Nanyun Peng",
+        "Kai-Wei Chang"
+      ],
+      "abstract": "Long-term memory is crucial for agents in specialized web environments, where success depends on recalling interface affordances, state dynamics, workflows, and recurring failure modes. However, existing memory benchmarks for agents mostly focus on user histories, short traces, or downstream task success, leaving open how to directly evaluate whether memory systems effectively internalize environment-specific experience. To address this gap, we introduce LongMemEval-V2 (LME-V2), a benchmark for evaluating whether memory systems can help agents acquire the experience needed to become knowledgeable colleagues in customized environments. LME-V2 contains 451 manually curated questions covering five core memory abilities for web agents: static state recall, dynamic state tracking, workflow knowledge, environment gotchas, and premise awareness. Questions are paired with history trajectories containing up to 500 trajectories and 115M tokens. We use a context gathering formulation: memory systems consume history trajectories and return compact evidence for downstream question answering. We propose a suite of two memory methods: AgentRunbook-R, an efficient RAG-based memory with knowledge pools for raw state observations, events, and strategy notes, and AgentRunbook-C, which stores trajectories as files and invokes a coding agent to gather evidence in an augmented sandbox. Experiments show that AgentRunbook-C achieves the best performance with 72.5% average accuracy, outperforming the strongest RAG baseline (48.5%) and the off-the-shelf coding agent baseline (69.3%). Despite the strong performance gains, coding agent based methods have high latency costs. While AgentRunbook-C advances the accuracy-latency Pareto frontier, substantial room for improvement remains. Together, these results establish LME-V2 as a challenging testbed for developing long-term memory systems for environment experience.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12493v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "d693d465a1867fe14dda913e47437db5"
+    },
+    {
+      "title": "A Framework for Securing Agentic AI Workflows and Quantum-Resistant Communication in U.S. Critical Infrastructure Networks",
+      "authors": [
+        "Md Humayun Kabir",
+        "Md Al Mamun Siddike",
+        "Md Riyad Uddin",
+        "MD RAZIB"
+      ],
+      "abstract": "For artificial intelligence (AI) systems designed to learn and act without human intervention, the events of this rapid integration into U.S. critical infrastructure networks and the rapid pace of approach to cryptographically relevant quantum computers (CRQCs) create a dual convergence of threat that is not adequately met by current frameworks. Agentic AI systems have additional attack surfaces, such as prompt injection, non-human identity (NHI) exploitation, and cascading multi-agent failures, due to their ability to operate autonomously, take multiple steps, and coordinate with other agents. At the same time, existing public-key cryptographic standards, such as RSA and elliptic curve cryptography (ECC), are under attack with harvest-now-decrypt-later (HNDL) attacks to hack encrypted communications in operational technology (OT) and industrial control system (ICS) environments. This article suggests security in both threat domains by leveraging three layers of security: Layer 1: Security of the agentic AI workflow through identity management, prompt sanitization and behavior monitoring; Layer 2: Quantum resistant communication with migration to NIST standardized post-quantum cryptographic (PQC) algorithms (FIPS 203, 204, 205); and Layer 3: Governance and compliance integration with CISA, NERC CIP and the NIST AI Risk Management Framework. Compliance is verified with a cross-walk analysis to current standards, and the framework is tested in scenarios of representative critical infrastructure in the energy, water, and financial sectors. Results suggest that this framework offers a roadmap for RTOs to use in preparing for the deployment of agentic AI and the migration to post-quantum cryptographic algorithms.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7160762949",
+      "published_on": "2026-05-10",
+      "tier": 1,
+      "fingerprint": "c849889cd324c2b68c556c06992de2eb"
+    },
+    {
+      "title": "Hierarchical Multi-Level LLM Agent Swarms for Financial Research Synthesis and Trading Decision Support in Multi Strategy Hedge Funds",
+      "authors": [
+        "Puneet Gandhi",
+        "Rishab Gulati"
+      ],
+      "abstract": "\"There will be no software in the future that's not agentic. And so, it is absolutely true that every software company will become an agentic company.\u201d- Nvidia\u2019s Jensen Huang. As various companies grapple with agentic architectures suitable to their firm environments, we present a hierarchical agentic architecture geared towards Multi Strategy hedge funds. Multi-strategy hedge funds operate within highly complex and rapidly evolving information environments. Trading decisions emerge from layered organizational structures in which sector specific teams continuously consume heterogeneous data sources. Sr. Portfolio Managers synthesize information to allocate capital towards high-conviction opportunities. As the volume and diversity of financial information increases, traditional human-centered research workflows increasingly struggle to scale. General-purpose AI tools have not been architected for environments in which structured quantitative data and unstructured qualitative research must be processed jointly, where workflows span multiple coordinated agents, or where every decision must satisfy institutional compliance requirements. Existing implementations within the industry have largely focused on delivering configurable, single-purpose AI services to individual trading teams. This paper proposes and discusses the benefits of a fully hierarchical model in which specialized agents operate at every organizational tier, synthesize outputs upward through the hierarchy, and replicate the distributed cognition of the institution as a whole.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7160225173",
+      "published_on": "2026-05-09",
+      "tier": 1,
+      "fingerprint": "4797cfbb6d3a19ca76a562e02907576f"
+    }
+  ],
+  "candidate_themes": [
+    {
+      "theme": "Shift from fragmented multimodal architectures to unified multimodal intelligence",
+      "why_selected": "This theme challenges the traditional separation of understanding and generation in multimodal AI, proposing a unified approach that could fundamentally change how we design AI systems.",
+      "why_debatable": "The debate centers around whether a unified architecture can truly outperform specialized systems and whether the integration of understanding and generation can lead to unforeseen complexities.",
+      "supporting_papers": [
+        {
+          "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
+          "authors": [
+            "Haiwen Diao",
+            "Penghao Wu",
+            "Hanming Deng",
+            "Jiahao Wang",
+            "Shihao Bai",
+            "Silei Wu",
+            "Weichen Fan",
+            "Wenjie Ye",
+            "Wenwen Tong",
+            "Xiangyu Fan",
+            "Yan Li",
+            "Yubo Wang",
+            "Zhijie Cao",
+            "Zhiqian Lin",
+            "Zhitao Yang",
+            "Zhongang Cai",
+            "Yuwei Niu",
+            "Yue Zhu",
+            "Bo Liu",
+            "Chengguang Lv",
+            "Haojia Yu",
+            "Haozhe Xie",
+            "Hongli Wang",
+            "Jianan Fan",
+            "Jiaqi Li",
+            "Jiefan Lu",
+            "Jingcheng Ni",
+            "Junxiang Xu",
+            "Kaihuan Liang",
+            "Lianqiang Shi",
+            "Linjun Dai",
+            "Linyan Wang",
+            "Oscar Qian",
+            "Peng Gao",
+            "Pengfei Liu",
+            "Qingping Sun",
+            "Rui Shen",
+            "Ruisi Wang",
+            "Shengnan Ma",
+            "Shuang Yang",
+            "Siyi Xie",
+            "Siying Li",
+            "Tianbo Zhong",
+            "Xiangli Kong",
+            "Xuanke Shi",
+            "Yang Gao",
+            "Yongqiang Yao",
+            "Yves Wang",
+            "Zhengqi Bai",
+            "Zhengyu Lin",
+            "Zixin Yin",
+            "Wenxiu Sun",
+            "Ruihao Gong",
+            "Quan Wang",
+            "Lewei Lu",
+            "Lei Yang",
+            "Ziwei Liu",
+            "Dahua Lin"
+          ],
+          "abstract": "Recent large vision-language models (VLMs) remain fundamentally constrained by a persistent dichotomy: understanding and generation are treated as distinct problems, leading to fragmented architectures, cascaded pipelines, and misaligned representation spaces. We argue that this divide is not merely an engineering artifact, but a structural limitation that hinders the emergence of native multimodal intelligence. Hence, we introduce SenseNova-U1, a native unified multimodal paradigm built upon NEO-unify, in which understanding and generation evolve as synergistic views of a single underlying process. We launch two native unified variants, SenseNova-U1-8B-MoT and SenseNova-U1-A3B-MoT, built on dense (8B) and mixture-of-experts (30B-A3B) understanding baselines, respectively. Designed from first principles, they rival top-tier understanding-only VLMs across text understanding, vision-language perception, knowledge reasoning, agentic decision-making, and spatial intelligence. Meanwhile, they deliver strong semantic consistency and visual fidelity, excelling in conventional or knowledge-intensive any-to-image (X2I) synthesis, complex text-rich infographic generation, and interleaved vision-language generation, with or without think patterns. Beyond performance, we show detailed model design, data preprocessing, pre-/post-training, and inference strategies to support community research. Last but not least, preliminary evidence demonstrates that our models extend beyond perception and generation, performing strongly in vision-language-action (VLA) and world model (WM) scenarios. This points toward a broader roadmap where models do not translate between modalities, but think and act across them in a native manner. Multimodal AI is no longer about connecting separate systems, but about building a unified one and trusting the necessary capabilities to emerge from within.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2605.12500v1",
+          "published_on": "2026-05-12",
+          "tier": 1,
+          "fingerprint": "93495ecf9ae3fcf83bdd0ea797cf6d32"
+        }
+      ],
+      "common_belief": "Current architectures benefit from specialization, leading to better performance in specific tasks.",
+      "contrarian_view": "The real issue is the need for a unified multimodal architecture that integrates understanding and generation, enabling emergent capabilities and a more holistic approach to AI that can adapt and perform across diverse tasks without the constraints of specialization.",
+      "why_wrong": "Current practice is fundamentally flawed as it perpetuates a fragmented approach to multimodal AI, treating understanding and generation as separate entities. This separation not only limits the potential for true multimodal intelligence but also leads to inefficiencies and misaligned systems that fail to leverage the synergies between understanding and generation.",
+      "recommendation": "Adopt a unified multimodal architecture that integrates understanding and generation into a single framework, allowing for the emergence of capabilities that can outperform specialized systems and streamline development processes.",
+      "enterprise_implication": "Transitioning to a unified approach will simplify the management of AI systems, reduce operational complexity, and enhance the overall performance of AI applications, but it requires a significant shift in design philosophy and investment in new architectures.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 5,
+        "decisiveness": 5,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Shift from traditional AI governance to policy-aware memory architectures",
+      "why_selected": "This theme reframes the governance of AI systems by emphasizing the importance of memory in shaping agent behavior, which is often overlooked in current frameworks.",
+      "why_debatable": "The debate arises from whether focusing on memory as a governance mechanism can effectively address the complexities of AI behavior in dynamic environments.",
+      "supporting_papers": [
+        {
+          "title": "LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues",
+          "authors": [
+            "Di Wu",
+            "Zixiang Ji",
+            "Asmi Kawatkar",
+            "Bryan Kwan",
+            "Jia-Chen Gu",
+            "Nanyun Peng",
+            "Kai-Wei Chang"
+          ],
+          "abstract": "Long-term memory is crucial for agents in specialized web environments, where success depends on recalling interface affordances, state dynamics, workflows, and recurring failure modes. However, existing memory benchmarks for agents mostly focus on user histories, short traces, or downstream task success, leaving open how to directly evaluate whether memory systems effectively internalize environment-specific experience. To address this gap, we introduce LongMemEval-V2 (LME-V2), a benchmark for evaluating whether memory systems can help agents acquire the experience needed to become knowledgeable colleagues in customized environments. LME-V2 contains 451 manually curated questions covering five core memory abilities for web agents: static state recall, dynamic state tracking, workflow knowledge, environment gotchas, and premise awareness. Questions are paired with history trajectories containing up to 500 trajectories and 115M tokens. We use a context gathering formulation: memory systems consume history trajectories and return compact evidence for downstream question answering. We propose a suite of two memory methods: AgentRunbook-R, an efficient RAG-based memory with knowledge pools for raw state observations, events, and strategy notes, and AgentRunbook-C, which stores trajectories as files and invokes a coding agent to gather evidence in an augmented sandbox. Experiments show that AgentRunbook-C achieves the best performance with 72.5% average accuracy, outperforming the strongest RAG baseline (48.5%) and the off-the-shelf coding agent baseline (69.3%). Despite the strong performance gains, coding agent based methods have high latency costs. While AgentRunbook-C advances the accuracy-latency Pareto frontier, substantial room for improvement remains. Together, these results establish LME-V2 as a challenging testbed for developing long-term memory systems for environment experience.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2605.12493v1",
+          "published_on": "2026-05-12",
+          "tier": 1,
+          "fingerprint": "d693d465a1867fe14dda913e47437db5"
+        }
+      ],
+      "common_belief": "Governance frameworks primarily focus on compliance and risk management without considering the role of memory.",
+      "contrarian_view": "Memory should be viewed as a critical component of governance, influencing how agents learn and adapt over time.",
+      "why_wrong": "Opponents may argue that emphasizing memory could complicate governance without providing clear benefits.",
+      "recommendation": "Investigate the integration of memory systems into existing governance frameworks to evaluate their effectiveness in improving AI behavior.",
+      "enterprise_implication": "A shift towards policy-aware memory architectures could enhance the adaptability and compliance of AI systems, but it requires a reevaluation of current governance practices.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 3,
+        "decisiveness": 4,
+        "tension": 3,
+        "specificity": 4,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "selected_theme": "Shift from fragmented multimodal architectures to unified multimodal intelligence",
+  "alternative_themes": [
+    {
+      "theme": "Shift from traditional AI governance to policy-aware memory architectures",
+      "why_selected": "This theme reframes the governance of AI systems by emphasizing the importance of memory in shaping agent behavior, which is often overlooked in current frameworks.",
+      "why_debatable": "The debate arises from whether focusing on memory as a governance mechanism can effectively address the complexities of AI behavior in dynamic environments.",
+      "supporting_papers": [
+        {
+          "title": "LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues",
+          "authors": [
+            "Di Wu",
+            "Zixiang Ji",
+            "Asmi Kawatkar",
+            "Bryan Kwan",
+            "Jia-Chen Gu",
+            "Nanyun Peng",
+            "Kai-Wei Chang"
+          ],
+          "abstract": "Long-term memory is crucial for agents in specialized web environments, where success depends on recalling interface affordances, state dynamics, workflows, and recurring failure modes. However, existing memory benchmarks for agents mostly focus on user histories, short traces, or downstream task success, leaving open how to directly evaluate whether memory systems effectively internalize environment-specific experience. To address this gap, we introduce LongMemEval-V2 (LME-V2), a benchmark for evaluating whether memory systems can help agents acquire the experience needed to become knowledgeable colleagues in customized environments. LME-V2 contains 451 manually curated questions covering five core memory abilities for web agents: static state recall, dynamic state tracking, workflow knowledge, environment gotchas, and premise awareness. Questions are paired with history trajectories containing up to 500 trajectories and 115M tokens. We use a context gathering formulation: memory systems consume history trajectories and return compact evidence for downstream question answering. We propose a suite of two memory methods: AgentRunbook-R, an efficient RAG-based memory with knowledge pools for raw state observations, events, and strategy notes, and AgentRunbook-C, which stores trajectories as files and invokes a coding agent to gather evidence in an augmented sandbox. Experiments show that AgentRunbook-C achieves the best performance with 72.5% average accuracy, outperforming the strongest RAG baseline (48.5%) and the off-the-shelf coding agent baseline (69.3%). Despite the strong performance gains, coding agent based methods have high latency costs. While AgentRunbook-C advances the accuracy-latency Pareto frontier, substantial room for improvement remains. Together, these results establish LME-V2 as a challenging testbed for developing long-term memory systems for environment experience.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2605.12493v1",
+          "published_on": "2026-05-12",
+          "tier": 1,
+          "fingerprint": "d693d465a1867fe14dda913e47437db5"
+        }
+      ],
+      "common_belief": "Governance frameworks primarily focus on compliance and risk management without considering the role of memory.",
+      "contrarian_view": "Memory should be viewed as a critical component of governance, influencing how agents learn and adapt over time.",
+      "why_wrong": "Opponents may argue that emphasizing memory could complicate governance without providing clear benefits.",
+      "recommendation": "Investigate the integration of memory systems into existing governance frameworks to evaluate their effectiveness in improving AI behavior.",
+      "enterprise_implication": "A shift towards policy-aware memory architectures could enhance the adaptability and compliance of AI systems, but it requires a reevaluation of current governance practices.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 3,
+        "decisiveness": 4,
+        "tension": 3,
+        "specificity": 4,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "rejected_themes": [],
+  "position": {
+    "common_belief": "Current architectures benefit from specialization, leading to better performance in specific tasks.",
+    "contrarian_view": "The real issue is the need for a unified multimodal architecture that integrates understanding and generation, enabling emergent capabilities and a more holistic approach to AI that can adapt and perform across diverse tasks without the constraints of specialization.",
+    "why_wrong": "Current practice is fundamentally flawed as it perpetuates a fragmented approach to multimodal AI, treating understanding and generation as separate entities. This separation not only limits the potential for true multimodal intelligence but also leads to inefficiencies and misaligned systems that fail to leverage the synergies between understanding and generation.",
+    "recommendation": "Adopt a unified multimodal architecture that integrates understanding and generation into a single framework, allowing for the emergence of capabilities that can outperform specialized systems and streamline development processes.",
+    "enterprise_implication": "Transitioning to a unified approach will simplify the management of AI systems, reduce operational complexity, and enhance the overall performance of AI applications, but it requires a significant shift in design philosophy and investment in new architectures."
+  },
+  "post": "Current multimodal architectures are fundamentally broken. They thrive on specialization, but this approach is a glaring mistake. By treating understanding and generation as separate entities, we create inefficiencies and misaligned systems that fail to harness the true potential of AI.\n\nThe real issue lies in the need for a unified multimodal architecture. This integration allows for emergent capabilities that can adapt and excel across diverse tasks, outperforming specialized systems. It's time to abandon the flawed notion that fragmentation leads to better performance.\n\nEnterprises must embrace a unified framework that merges understanding and generation. This shift will simplify AI management, reduce operational complexity, and enhance overall performance. The future of AI demands a holistic approach, not a fragmented one.",
+  "scores": {
+    "theme_selection": {
+      "novelty": 5,
+      "relevance": 4,
+      "debate": 5,
+      "contrarian": 5,
+      "decisiveness": 5,
+      "tension": 4,
+      "specificity": 5,
+      "typical_architect_agrees": false,
+      "strong_architect_debates": true
+    },
+    "position_strength": {
+      "contrarian": 4,
+      "decisiveness": 5,
+      "tension": 3,
+      "specificity": 3,
+      "passed": false,
+      "reasons": [
+        "Position is incremental instead of challenging the underlying approach."
+      ]
+    },
+    "evaluation": {
+      "novelty": 5,
+      "relevance": 4,
+      "insight": 5,
+      "position_strength": 3,
+      "clarity": 5,
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "meta": {
+    "used_on": "2026-05-13",
+    "recent_themes": [
+      "agents need deterministic boundaries, not more autonomy",
+      "enterprise memory is more governance problem than personalization feature",
+      "shift from appearance synthesis to intelligent visual generation",
+      "shift from llm-driven decision-making to deterministic governance in ai agents",
+      "shift from deterministic language model outputs to understanding refusal mechanisms",
+      "shift from deterministic language model outputs to understanding refusal mechanisms",
+      "shift from traditional ai governance to policy-aware memory architectures",
+      "shift from llm-driven execution to constraint-guided execution in ai agents"
+    ],
+    "lead_paper_summary": {
+      "title": "SenseNova-U1: Unifying Multimodal Understanding and Generation with NEO-unify Architecture",
+      "source": "arXiv",
+      "authors": [
+        "Haiwen Diao",
+        "Penghao Wu",
+        "Hanming Deng",
+        "Jiahao Wang",
+        "Shihao Bai",
+        "Silei Wu",
+        "Weichen Fan",
+        "Wenjie Ye",
+        "Wenwen Tong",
+        "Xiangyu Fan",
+        "Yan Li",
+        "Yubo Wang",
+        "Zhijie Cao",
+        "Zhiqian Lin",
+        "Zhitao Yang",
+        "Zhongang Cai",
+        "Yuwei Niu",
+        "Yue Zhu",
+        "Bo Liu",
+        "Chengguang Lv",
+        "Haojia Yu",
+        "Haozhe Xie",
+        "Hongli Wang",
+        "Jianan Fan",
+        "Jiaqi Li",
+        "Jiefan Lu",
+        "Jingcheng Ni",
+        "Junxiang Xu",
+        "Kaihuan Liang",
+        "Lianqiang Shi",
+        "Linjun Dai",
+        "Linyan Wang",
+        "Oscar Qian",
+        "Peng Gao",
+        "Pengfei Liu",
+        "Qingping Sun",
+        "Rui Shen",
+        "Ruisi Wang",
+        "Shengnan Ma",
+        "Shuang Yang",
+        "Siyi Xie",
+        "Siying Li",
+        "Tianbo Zhong",
+        "Xiangli Kong",
+        "Xuanke Shi",
+        "Yang Gao",
+        "Yongqiang Yao",
+        "Yves Wang",
+        "Zhengqi Bai",
+        "Zhengyu Lin",
+        "Zixin Yin",
+        "Wenxiu Sun",
+        "Ruihao Gong",
+        "Quan Wang",
+        "Lewei Lu",
+        "Lei Yang",
+        "Ziwei Liu",
+        "Dahua Lin"
+      ],
+      "url": "http://arxiv.org/abs/2605.12500v1",
+      "summary": "Recent large vision-language models (VLMs) remain fundamentally constrained by a persistent dichotomy: understanding and generation are treated as distinct problems, leading to fragmented architectures, cascaded pipelines, and misaligned representation spaces."
+    },
+    "synthesis_provenance": {
+      "engine_used": "openai",
+      "fallback_used": false,
+      "primary_engine": null,
+      "fallback_reason": null
+    },
+    "storage_path": "/Users/emilygao/LocalDocuments/Obsidian/research/2026-05-13-shift-from-fragmented-multimodal-architectures-to-unified-multimodal-intelligence.md",
+    "run_log_path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/runs/run_2026-05-13.json"
+  },
+  "deliveries": [
+    {
+      "channel": "email",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/email/2026-05-13-linkedin-draft.md",
+      "preview": "Current multimodal architectures are fundamentally broken. They thrive on specialization, but this approach is a glaring",
+      "target": "emsyd888@gmail.com",
+      "sent": true,
+      "status": "sent"
+    },
+    {
+      "channel": "discord",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/discord/2026-05-13-linkedin-draft.md",
+      "preview": "Current multimodal architectures are fundamentally broken. They thrive on specialization, but this approach is a glaring",
+      "target": "Weekflow",
+      "sent": true,
+      "status": "sent"
+    }
+  ]
+}

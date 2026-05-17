@@ -1,0 +1,509 @@
+{
+  "paper_pool": [
+    {
+      "title": "Seed Bank, Co-op, Stoop Swap: Metaphors for Governing Language Model Data for Creative Writing",
+      "authors": [
+        "Alicia Guo",
+        "Carly Schnitzler",
+        "Katy Gero"
+      ],
+      "abstract": "How might we govern a language model run for and by creative writers? While generative AI use is on the rise, many language models are created and owned in ways that limit writers' consent, participation, and control. We report on four workshops where over one hundred creative writers came up with and analyzed metaphors for language model governance, resulting in over two hundred metaphors: objects, places, processes, groups, and infrastructure that support reasoning about language model governance. What if a language model was like a community garden? Or a seed bank? Or the bathroom in a dive bar? We report on four themes: (1) the importance of consent, (2) how to define community boundaries, (3) ways to give contributor recognition, and (4) trade-offs in scale of language models. These metaphors point towards smaller, open models that encode group values. We discuss concrete ways to make community language models a reality.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12888v1",
+      "published_on": "2026-05-13",
+      "tier": 1,
+      "fingerprint": "6c91f9682f570d128cfbf87558c5d304"
+    },
+    {
+      "title": "AgentDisCo: Towards Disentanglement and Collaboration in Open-ended Deep Research Agents",
+      "authors": [
+        "Jiarui Jin",
+        "Zexuan Yan",
+        "Shijian Wang",
+        "Wenxiang Jiao",
+        "Yuan Lu"
+      ],
+      "abstract": "In this paper, we present AgentDisCo, a novel Disentangled and Collaborative agentic architecture that formulates deep research as an adversarial optimization problem between information exploration and exploitation. Unlike existing approaches that conflate these two processes into a single module, AgentDisCo employs a critic agent to evaluate generated outlines and refine search queries, and a generator agent to retrieve updated results and revise outlines accordingly. The iteratively refined outline is then passed to a downstream report writer that synthesizes a comprehensive research report. The overall workflow supports both handcrafted and automatically discovered design strategies via a meta-optimization harness, in which the generator agent is repurposed as a scoring agent to evaluate critic outputs and generate quality signals. Powerful code-generation agents (e.g., Claude-Code, Codex) systematically explore agent configurations and construct a policy bank, a structured repository of reusable design strategies, enabling the framework to self-refine without extensive human intervention. We evaluate AgentDisCo on three established deep research benchmarks (DeepResearchBench, DeepConsult, DeepResearchGym) using Gemini-2.5-Pro, achieving performance comparable to or surpassing leading closed-source systems. Observing that existing benchmarks inadequately reflect real-world user needs, we introduce GALA (General AI Life Assistants), a benchmark that mines latent research interests from users' historical browsing behavior. We further develop a rendering agent that converts research reports into visually rich poster presentations, and demonstrate an end-to-end product, AutoResearch Your Interest, which delivers personalized deep research recommendations derived from individual browsing histories.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.11732v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "82f020c9fa5871738dcfcce716d36d4d"
+    },
+    {
+      "title": "Narrative Weaver: Towards Controllable Long-Range Visual Consistency with Multi-Modal Conditioning",
+      "authors": [
+        "Zhengjian Yao",
+        "Yongzhi Li",
+        "Xinyuan Gao",
+        "Quan Chen",
+        "Peng Jiang",
+        "Yanye Lu"
+      ],
+      "abstract": "We present \"Narrative Weaver\", a novel framework that addresses a fundamental challenge in generative AI: achieving multi-modal controllable, long-range, and consistent visual content generation. While existing models excel at generating high-fidelity short-form visual content, they struggle to maintain narrative coherence and visual consistency across extended sequences - a critical limitation for real-world applications such as filmmaking and e-commerce advertising. Narrative Weaver introduces the first holistic solution that seamlessly integrates three essential capabilities: fine-grained control, automatic narrative planning, and long-range coherence. Our architecture combines a Multimodal Large Language Model (MLLM) for high-level narrative planning with a novel fine-grained control module featuring a dynamic Memory Bank that prevents visual drift. To enable practical deployment, we develop a progressive, multi-stage training strategy that efficiently leverages existing pre-trained models, achieving state-of-the-art performance even with limited training data. Recognizing the absence of suitable evaluation benchmarks, we construct and release the E-commerce Advertising Video Storyboard Dataset (EAVSD) - the first comprehensive dataset for this task, containing over 330K high-quality images with rich narrative annotations. Through extensive experiments across three distinct scenarios (controllable multi-scene generation, autonomous storytelling, and e-commerce advertising), we demonstrate our method's superiority while opening new possibilities for AI-driven content creation.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2603.06688v2",
+      "published_on": "2026-03-04",
+      "tier": 1,
+      "fingerprint": "975f485caf101ffe614812a124bde447"
+    },
+    {
+      "title": "Financial Services GenAI Pilots Stall When Workflow Ownership Is Ambiguous",
+      "authors": [
+        "L. Patel"
+      ],
+      "abstract": "Bank and insurer GenAI programs stall when pilots do not define ownership, deterministic handoffs, and operating accountability.",
+      "source": "Semantic Scholar",
+      "url": "https://example.org/papers/fs-genai-workflow-ownership",
+      "published_on": "2026-04-15",
+      "tier": 1,
+      "fingerprint": "9900327cd6a420f30a495352f9e346cc"
+    },
+    {
+      "title": "Keystroke Dynamics for Authentication: A Systematic Comparative Analysis of Machine Learning, Deep Learning, Hybrid, and Quantum Approaches",
+      "authors": [
+        "Nebil Vural G\u00fcndo\u011fan",
+        "Bar\u0131\u015f \u00c7elikta\u015f"
+      ],
+      "abstract": "We present a systematic review of keystroke-dynamics authentication across classical machine learning (ML), deep learning (DL), hybrid, and emerging quantum-ML approaches. The review synthesizes evidence from desktop, mobile, and web settings; compares common datasets (e.g., CMU, GREYC, Aalto, Clarkson); and evaluates models using EER, FAR, and FRR. Three findings stand out. First, dataset breadth, device context, and evaluation protocol explain much of the variance reported in the literature; on free-text inputs, modern DL (e.g., Transformers, Siamese networks) typically achieves EER \u22480.01\u20132% on large, diverse sets, outperforming classical ML. Second, hybrid designs, feature extraction with DL plus classical classifiers or multimodal fusion (keystroke + touch/mouse), improve robustness and user experience relative to single-modality systems. Third, claims of near-perfect accuracy from quantum-ML are confined to small or simulated studies and are not yet generalized. We map model risks to the OWASP Authentication Cheat Sheet (replay/spoofing, template security, adversarial examples, lockout usability) and outline mitigations (MFA, liveness, cancelable templates, throttling). Finally, we chart a practical pipeline and highlight near-term directions: federated learning and edge deployment for privacy/latency, explainable AI for auditability, and standardized benchmarks for fair comparison.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7161249288",
+      "published_on": "2026-05-15",
+      "tier": 1,
+      "fingerprint": "c3586717c8f4855cace24663d6fd56ff"
+    },
+    {
+      "title": "Banks Are Moving GenAI from Pilots to Decision Workflows",
+      "authors": [
+        "R. Gomez",
+        "T. Li"
+      ],
+      "abstract": "Banking GenAI adoption is shifting from chat assistants toward decision workflows where answer constraints and evidence thresholds dominate quality.",
+      "source": "MIT Sloan Management Review",
+      "url": "https://example.org/papers/banking-genai-decision-workflows",
+      "published_on": "2026-04-10",
+      "tier": 2,
+      "fingerprint": "e3a5000936d356c7c2b852515998a239"
+    },
+    {
+      "title": "Financial Services GenAI Adoption Is a Governance Test, Not a Productivity Contest",
+      "authors": [
+        "N. Ibrahim"
+      ],
+      "abstract": "Financial institutions adopting GenAI face retention risk, audit burden, model risk management, and stale assumptions before productivity gains scale.",
+      "source": "Harvard Business Review",
+      "url": "https://example.org/papers/fs-genai-governance-test",
+      "published_on": "2026-04-08",
+      "tier": 2,
+      "fingerprint": "f4abd16900761a1ddadf02005c5ad66d"
+    },
+    {
+      "title": "Insurance GenAI Rollouts Need Workflow Contracts Before More Automation",
+      "authors": [
+        "A. Moore"
+      ],
+      "abstract": "Insurance GenAI systems underperform when workflow contracts are vague and handoffs between underwriters, claims handlers, and tools are underspecified.",
+      "source": "DeepLearning.AI",
+      "url": "https://example.org/papers/insurance-genai-workflow-contracts",
+      "published_on": "2026-04-21",
+      "tier": 2,
+      "fingerprint": "cff75121a9a23eadf1d6d8d982e0df42"
+    },
+    {
+      "title": "Financial services trends: Deregulation, AI adoption, UK fraud legislation - The Real Economy Blog",
+      "authors": [
+        "Google News"
+      ],
+      "abstract": "Financial services trends: Deregulation, AI adoption, UK fraud legislation The Real Economy Blog",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQM2h4Rmt1UG5yd3QyWDEtU2hHN3ZGVmtjZzNuMTI3Tl9FQ3dhRUNHVkhnejVZb0trbWtsMlM2SDA0THJHaW5rcUMtTU1oVlpEOGh3ZHRrdC1HRzVqMUFOMy00OVZNOWdnUHcyeENhT0ZhOWZ1bVJQU1lDTEJ0c0ZOTEhwRTVhR0c4NERERDJRdk5CeTlwVmN5Q2lTM1lza2JJUUxzcA?oc=5",
+      "published_on": "2026-03-20",
+      "tier": 2,
+      "fingerprint": "2a90ab11599de7688bb3836d346d8d8a"
+    },
+    {
+      "title": "GenAI adoption in financial services 2025 - Statista",
+      "authors": [
+        "Google News"
+      ],
+      "abstract": "GenAI adoption in financial services 2025 Statista",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQQnBXLVB0LU5qUm9NVmdrd3FpX2RselpzRlhXMXVLcDBhS0RhbWJEbXNRT3FGVGZrZ1EwUGRoNmNUb0ZIZ1JKUnFqLUptcGxQT0sxQTdrTWNfSGZUQ1VWMnh3dk12Z2dfdS1TWldjQ19BMDhTcGF4czFRZnNqNEk0czZSQU5NQ2dvTUhld1ZyTV96ZmZoT1pnYUxLRTM?oc=5",
+      "published_on": "2026-02-19",
+      "tier": 2,
+      "fingerprint": "151aaad2377be9ad805e52909309f4b0"
+    },
+    {
+      "title": "AI transformation in financial services: 5 predictors for success in 2026 - Microsoft",
+      "authors": [
+        "Google News"
+      ],
+      "abstract": "AI transformation in financial services: 5 predictors for success in 2026 Microsoft",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQTjZkak8taWR6OHRIQVBlR18wWm01Ui1DdHNZTVJVcmk4QTJQSk1xOVJOeGxPOUJGQ2Z2Wk9sUVhwem14TzE1aDVhamwxZVMwSmpGWmRkZ2RlZDFxUXRXbWdSQUw5dmd1b2tCWWxRQlgyZVVEZm42SS1IdWt4WWFObVZ3YlcxVW4yNTU4aWo0bmZLam0xeDhyUE5HMjlJSFYwSUJlR0VoUUxvdzdJY05WLWhPSERMM2czQmphZlM5R3RjVjVlcy04dVNpSUdfVU9iM3hSZy0wekpwQ1BXNEdvTlhTeHdKM0QtcUdScw?oc=5",
+      "published_on": "2025-12-18",
+      "tier": 2,
+      "fingerprint": "b345469b4fd33f4d22048ed405fe106a"
+    },
+    {
+      "title": "Generative AI adoption in Canadian financial services - KPMG",
+      "authors": [
+        "Google News"
+      ],
+      "abstract": "Generative AI adoption in Canadian financial services KPMG",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPczJBRjZCUVpVWnBEQU03ZWpNemNrZG5UZllCXzR4UlZ4ZjVGbVA3WWFXOU1QNnRjTFBoMTFCWUVUY1p4b1NhMVgzdTZfRzlrQm9DTTYtay0xd1pRVFN1MzNhYndaemZKYlloZlQyaGRVMFNLcVdENWpaSkVjc2NwRFd4X0NoXzF5Mm1DQ0NQNWRqY0NXSEJWaXJJYnl2OU0?oc=5",
+      "published_on": "2026-02-28",
+      "tier": 2,
+      "fingerprint": "839bba4ce9dc1d7b52ed764512fec4e9"
+    },
+    {
+      "title": "Banks and insurers deploy AI agents to fight fraud and process applications, with plans for new roles to supervise the AI - Capgemini",
+      "authors": [
+        "Google News"
+      ],
+      "abstract": "Banks and insurers deploy AI agents to fight fraud and process applications, with plans for new roles to supervise the AI Capgemini",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxON2pzWHJ6RmRGNFA5U3Mwd2dYcnJFdkx3c2VwamczRWpwOEdCd2xKVktPSnBsNjlmVjhFV1J6LTUxVHNsM2FxbFJKY2ZDckM5WDV0UkJ0LTE1Zk5WV0FLM0lwUlVTanVGeXotbkFXeGl0azdOR2U3WmpBSVY1MlN2eEFNZXJJSEFTZ1A0OWV0T1pQWk9YcnZQTHI2WnNFQTBmdDhtQktyWngyWmlOMV9Yc3FXcVcwVmF5clJIaHRxSU93aVo3dEJBLTJCS3l2bVpxZDlDUWxpY2NQeUJEam9rTW55M29QU093OGl0MzhPUVpVcFJDYmNZY1Nqbk42MnVjbVpR?oc=5",
+      "published_on": "2025-11-12",
+      "tier": 2,
+      "fingerprint": "d3ae03389b825792c1bb07a902a3022d"
+    },
+    {
+      "title": "Financial Services Firms Shift GenAI Adoption Toward Operating Controls",
+      "authors": [
+        "Finextra"
+      ],
+      "abstract": "Banking and payments leaders are moving GenAI adoption from experiments toward operating controls, audit trails, and regulated workflows.",
+      "source": "Finextra",
+      "url": "https://example.org/news/finextra-genai-operating-controls",
+      "published_on": "2026-04-23",
+      "tier": 2,
+      "fingerprint": "5af15f488c76d16e8f94a7c134d92d92"
+    },
+    {
+      "title": "Banking GenAI Adoption Is Being Reframed Around Customer Trust",
+      "authors": [
+        "The Financial Brand"
+      ],
+      "abstract": "Retail banks adopting generative AI are learning that customer trust, disclosure, and service recovery matter more than raw automation volume.",
+      "source": "The Financial Brand",
+      "url": "https://example.org/news/financial-brand-genai-trust",
+      "published_on": "2026-04-24",
+      "tier": 2,
+      "fingerprint": "b536750522e765fe1eb70b3b33cbae5e"
+    },
+    {
+      "title": "Insurers Expand GenAI Adoption in Claims but Tighten Review Gates",
+      "authors": [
+        "Insurance Journal"
+      ],
+      "abstract": "Insurance carriers are broadening GenAI adoption in claims and underwriting while tightening human review gates and audit expectations.",
+      "source": "Insurance Journal",
+      "url": "https://example.org/news/insurance-genai-review-gates",
+      "published_on": "2026-04-25",
+      "tier": 2,
+      "fingerprint": "c5b20029e1187c930f85c1d1f50d09de"
+    },
+    {
+      "title": "Discussion: Why Bank GenAI Pilots Rarely Survive Model Risk Review",
+      "authors": [
+        "HN Discussion"
+      ],
+      "abstract": "Practitioners describe financial services GenAI adoption barriers including weak approvals, poor observability, and model risk review gaps.",
+      "source": "Hacker News",
+      "url": "https://example.org/papers/hn-bank-genai-risk-review",
+      "published_on": "2026-04-19",
+      "tier": 3,
+      "fingerprint": "91c93dc77a58d0897bf9515388869fa8"
+    },
+    {
+      "title": "Banking CIOs Are Reframing GenAI Adoption as Governed Workflow Change",
+      "authors": [
+        "YouTube Creator"
+      ],
+      "abstract": "A practitioner talk argues financial services GenAI adoption should be audited, bounded, and tied to workflow redesign rather than treated as generic productivity tooling.",
+      "source": "YouTube",
+      "url": "https://example.org/papers/youtube-fs-genai-governed-workflow",
+      "published_on": "2026-04-20",
+      "tier": 3,
+      "fingerprint": "f76a4a48ebfd5e8105c60afd6cbb1445"
+    }
+  ],
+  "top_papers": [
+    {
+      "title": "AgentDisCo: Towards Disentanglement and Collaboration in Open-ended Deep Research Agents",
+      "authors": [
+        "Jiarui Jin",
+        "Zexuan Yan",
+        "Shijian Wang",
+        "Wenxiang Jiao",
+        "Yuan Lu"
+      ],
+      "abstract": "In this paper, we present AgentDisCo, a novel Disentangled and Collaborative agentic architecture that formulates deep research as an adversarial optimization problem between information exploration and exploitation. Unlike existing approaches that conflate these two processes into a single module, AgentDisCo employs a critic agent to evaluate generated outlines and refine search queries, and a generator agent to retrieve updated results and revise outlines accordingly. The iteratively refined outline is then passed to a downstream report writer that synthesizes a comprehensive research report. The overall workflow supports both handcrafted and automatically discovered design strategies via a meta-optimization harness, in which the generator agent is repurposed as a scoring agent to evaluate critic outputs and generate quality signals. Powerful code-generation agents (e.g., Claude-Code, Codex) systematically explore agent configurations and construct a policy bank, a structured repository of reusable design strategies, enabling the framework to self-refine without extensive human intervention. We evaluate AgentDisCo on three established deep research benchmarks (DeepResearchBench, DeepConsult, DeepResearchGym) using Gemini-2.5-Pro, achieving performance comparable to or surpassing leading closed-source systems. Observing that existing benchmarks inadequately reflect real-world user needs, we introduce GALA (General AI Life Assistants), a benchmark that mines latent research interests from users' historical browsing behavior. We further develop a rendering agent that converts research reports into visually rich poster presentations, and demonstrate an end-to-end product, AutoResearch Your Interest, which delivers personalized deep research recommendations derived from individual browsing histories.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.11732v1",
+      "published_on": "2026-05-12",
+      "tier": 1,
+      "fingerprint": "82f020c9fa5871738dcfcce716d36d4d"
+    },
+    {
+      "title": "Seed Bank, Co-op, Stoop Swap: Metaphors for Governing Language Model Data for Creative Writing",
+      "authors": [
+        "Alicia Guo",
+        "Carly Schnitzler",
+        "Katy Gero"
+      ],
+      "abstract": "How might we govern a language model run for and by creative writers? While generative AI use is on the rise, many language models are created and owned in ways that limit writers' consent, participation, and control. We report on four workshops where over one hundred creative writers came up with and analyzed metaphors for language model governance, resulting in over two hundred metaphors: objects, places, processes, groups, and infrastructure that support reasoning about language model governance. What if a language model was like a community garden? Or a seed bank? Or the bathroom in a dive bar? We report on four themes: (1) the importance of consent, (2) how to define community boundaries, (3) ways to give contributor recognition, and (4) trade-offs in scale of language models. These metaphors point towards smaller, open models that encode group values. We discuss concrete ways to make community language models a reality.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2605.12888v1",
+      "published_on": "2026-05-13",
+      "tier": 1,
+      "fingerprint": "6c91f9682f570d128cfbf87558c5d304"
+    },
+    {
+      "title": "Narrative Weaver: Towards Controllable Long-Range Visual Consistency with Multi-Modal Conditioning",
+      "authors": [
+        "Zhengjian Yao",
+        "Yongzhi Li",
+        "Xinyuan Gao",
+        "Quan Chen",
+        "Peng Jiang",
+        "Yanye Lu"
+      ],
+      "abstract": "We present \"Narrative Weaver\", a novel framework that addresses a fundamental challenge in generative AI: achieving multi-modal controllable, long-range, and consistent visual content generation. While existing models excel at generating high-fidelity short-form visual content, they struggle to maintain narrative coherence and visual consistency across extended sequences - a critical limitation for real-world applications such as filmmaking and e-commerce advertising. Narrative Weaver introduces the first holistic solution that seamlessly integrates three essential capabilities: fine-grained control, automatic narrative planning, and long-range coherence. Our architecture combines a Multimodal Large Language Model (MLLM) for high-level narrative planning with a novel fine-grained control module featuring a dynamic Memory Bank that prevents visual drift. To enable practical deployment, we develop a progressive, multi-stage training strategy that efficiently leverages existing pre-trained models, achieving state-of-the-art performance even with limited training data. Recognizing the absence of suitable evaluation benchmarks, we construct and release the E-commerce Advertising Video Storyboard Dataset (EAVSD) - the first comprehensive dataset for this task, containing over 330K high-quality images with rich narrative annotations. Through extensive experiments across three distinct scenarios (controllable multi-scene generation, autonomous storytelling, and e-commerce advertising), we demonstrate our method's superiority while opening new possibilities for AI-driven content creation.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2603.06688v2",
+      "published_on": "2026-03-04",
+      "tier": 1,
+      "fingerprint": "975f485caf101ffe614812a124bde447"
+    },
+    {
+      "title": "Financial services trends: Deregulation, AI adoption, UK fraud legislation - The Real Economy Blog",
+      "authors": [
+        "Google News"
+      ],
+      "abstract": "Financial services trends: Deregulation, AI adoption, UK fraud legislation The Real Economy Blog",
+      "source": "Google News",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQM2h4Rmt1UG5yd3QyWDEtU2hHN3ZGVmtjZzNuMTI3Tl9FQ3dhRUNHVkhnejVZb0trbWtsMlM2SDA0THJHaW5rcUMtTU1oVlpEOGh3ZHRrdC1HRzVqMUFOMy00OVZNOWdnUHcyeENhT0ZhOWZ1bVJQU1lDTEJ0c0ZOTEhwRTVhR0c4NERERDJRdk5CeTlwVmN5Q2lTM1lza2JJUUxzcA?oc=5",
+      "published_on": "2026-03-20",
+      "tier": 2,
+      "fingerprint": "2a90ab11599de7688bb3836d346d8d8a"
+    },
+    {
+      "title": "Insurance GenAI Rollouts Need Workflow Contracts Before More Automation",
+      "authors": [
+        "A. Moore"
+      ],
+      "abstract": "Insurance GenAI systems underperform when workflow contracts are vague and handoffs between underwriters, claims handlers, and tools are underspecified.",
+      "source": "DeepLearning.AI",
+      "url": "https://example.org/papers/insurance-genai-workflow-contracts",
+      "published_on": "2026-04-21",
+      "tier": 2,
+      "fingerprint": "cff75121a9a23eadf1d6d8d982e0df42"
+    }
+  ],
+  "candidate_themes": [
+    {
+      "theme": "We are solving AI research efficiency, but the real issue is the lack of collaboration between agents",
+      "why_selected": "This theme reframes the problem of AI research efficiency by emphasizing the need for collaboration among different agent types rather than just optimizing individual components.",
+      "why_debatable": "The debate arises over whether collaboration among agents can truly enhance efficiency or if it introduces complexity that could hinder progress.",
+      "supporting_papers": [
+        {
+          "title": "AgentDisCo: Towards Disentanglement and Collaboration in Open-ended Deep Research Agents",
+          "authors": [
+            "Jiarui Jin",
+            "Zexuan Yan",
+            "Shijian Wang",
+            "Wenxiang Jiao",
+            "Yuan Lu"
+          ],
+          "abstract": "In this paper, we present AgentDisCo, a novel Disentangled and Collaborative agentic architecture that formulates deep research as an adversarial optimization problem between information exploration and exploitation. Unlike existing approaches that conflate these two processes into a single module, AgentDisCo employs a critic agent to evaluate generated outlines and refine search queries, and a generator agent to retrieve updated results and revise outlines accordingly. The iteratively refined outline is then passed to a downstream report writer that synthesizes a comprehensive research report. The overall workflow supports both handcrafted and automatically discovered design strategies via a meta-optimization harness, in which the generator agent is repurposed as a scoring agent to evaluate critic outputs and generate quality signals. Powerful code-generation agents (e.g., Claude-Code, Codex) systematically explore agent configurations and construct a policy bank, a structured repository of reusable design strategies, enabling the framework to self-refine without extensive human intervention. We evaluate AgentDisCo on three established deep research benchmarks (DeepResearchBench, DeepConsult, DeepResearchGym) using Gemini-2.5-Pro, achieving performance comparable to or surpassing leading closed-source systems. Observing that existing benchmarks inadequately reflect real-world user needs, we introduce GALA (General AI Life Assistants), a benchmark that mines latent research interests from users' historical browsing behavior. We further develop a rendering agent that converts research reports into visually rich poster presentations, and demonstrate an end-to-end product, AutoResearch Your Interest, which delivers personalized deep research recommendations derived from individual browsing histories.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2605.11732v1",
+          "published_on": "2026-05-12",
+          "tier": 1,
+          "fingerprint": "82f020c9fa5871738dcfcce716d36d4d"
+        }
+      ],
+      "common_belief": "Improving individual agent performance is the key to enhancing overall research efficiency.",
+      "contrarian_view": "The real issue is the lack of collaboration between different agent types, which can create synergies that boost research efficiency far beyond what individual optimizations can achieve.",
+      "why_wrong": "Current practice is fundamentally flawed as it focuses solely on optimizing individual agent performance, neglecting the critical need for collaboration among diverse agents. This narrow approach leads to inefficiencies and missed opportunities for synergies that could significantly enhance research outcomes.",
+      "recommendation": "Organizations must invest in frameworks that facilitate collaboration among diverse AI agents, enabling them to work together effectively to maximize research output and innovation.",
+      "enterprise_implication": "To realize the benefits of collaborative AI, organizations will need to adopt new architectures that support multi-agent collaboration, fundamentally reshaping their research and development processes.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 4,
+        "decisiveness": 4,
+        "tension": 5,
+        "specificity": 4,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Shift from centralized language model governance to community-driven models",
+      "why_selected": "This theme challenges the traditional ownership and governance structures of language models, advocating for a more participatory approach that empowers users.",
+      "why_debatable": "The debate centers around the feasibility and effectiveness of community-driven governance versus centralized control, raising questions about quality, consistency, and accountability.",
+      "supporting_papers": [
+        {
+          "title": "Seed Bank, Co-op, Stoop Swap: Metaphors for Governing Language Model Data for Creative Writing",
+          "authors": [
+            "Alicia Guo",
+            "Carly Schnitzler",
+            "Katy Gero"
+          ],
+          "abstract": "How might we govern a language model run for and by creative writers? While generative AI use is on the rise, many language models are created and owned in ways that limit writers' consent, participation, and control. We report on four workshops where over one hundred creative writers came up with and analyzed metaphors for language model governance, resulting in over two hundred metaphors: objects, places, processes, groups, and infrastructure that support reasoning about language model governance. What if a language model was like a community garden? Or a seed bank? Or the bathroom in a dive bar? We report on four themes: (1) the importance of consent, (2) how to define community boundaries, (3) ways to give contributor recognition, and (4) trade-offs in scale of language models. These metaphors point towards smaller, open models that encode group values. We discuss concrete ways to make community language models a reality.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2605.12888v1",
+          "published_on": "2026-05-13",
+          "tier": 1,
+          "fingerprint": "6c91f9682f570d128cfbf87558c5d304"
+        }
+      ],
+      "common_belief": "Centralized governance ensures quality and consistency in language model outputs.",
+      "contrarian_view": "Community-driven models can better reflect diverse user needs and values, leading to more relevant and ethical outputs.",
+      "why_wrong": "Critics may argue that community governance could lead to fragmentation and inconsistency in model performance.",
+      "recommendation": "Explore pilot projects that implement community-driven governance frameworks for language models.",
+      "enterprise_implication": "Organizations may need to rethink their data governance strategies and consider how to engage users in the development process.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 3,
+        "decisiveness": 3,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "selected_theme": "We are solving AI research efficiency, but the real issue is the lack of collaboration between agents",
+  "alternative_themes": [
+    {
+      "theme": "Shift from centralized language model governance to community-driven models",
+      "why_selected": "This theme challenges the traditional ownership and governance structures of language models, advocating for a more participatory approach that empowers users.",
+      "why_debatable": "The debate centers around the feasibility and effectiveness of community-driven governance versus centralized control, raising questions about quality, consistency, and accountability.",
+      "supporting_papers": [
+        {
+          "title": "Seed Bank, Co-op, Stoop Swap: Metaphors for Governing Language Model Data for Creative Writing",
+          "authors": [
+            "Alicia Guo",
+            "Carly Schnitzler",
+            "Katy Gero"
+          ],
+          "abstract": "How might we govern a language model run for and by creative writers? While generative AI use is on the rise, many language models are created and owned in ways that limit writers' consent, participation, and control. We report on four workshops where over one hundred creative writers came up with and analyzed metaphors for language model governance, resulting in over two hundred metaphors: objects, places, processes, groups, and infrastructure that support reasoning about language model governance. What if a language model was like a community garden? Or a seed bank? Or the bathroom in a dive bar? We report on four themes: (1) the importance of consent, (2) how to define community boundaries, (3) ways to give contributor recognition, and (4) trade-offs in scale of language models. These metaphors point towards smaller, open models that encode group values. We discuss concrete ways to make community language models a reality.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2605.12888v1",
+          "published_on": "2026-05-13",
+          "tier": 1,
+          "fingerprint": "6c91f9682f570d128cfbf87558c5d304"
+        }
+      ],
+      "common_belief": "Centralized governance ensures quality and consistency in language model outputs.",
+      "contrarian_view": "Community-driven models can better reflect diverse user needs and values, leading to more relevant and ethical outputs.",
+      "why_wrong": "Critics may argue that community governance could lead to fragmentation and inconsistency in model performance.",
+      "recommendation": "Explore pilot projects that implement community-driven governance frameworks for language models.",
+      "enterprise_implication": "Organizations may need to rethink their data governance strategies and consider how to engage users in the development process.",
+      "scorecard": {
+        "novelty": 4,
+        "relevance": 5,
+        "debate": 4,
+        "contrarian": 3,
+        "decisiveness": 3,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "rejected_themes": [],
+  "position": {
+    "common_belief": "Improving individual agent performance is the key to enhancing overall research efficiency.",
+    "contrarian_view": "The real issue is the lack of collaboration between different agent types, which can create synergies that boost research efficiency far beyond what individual optimizations can achieve.",
+    "why_wrong": "Current practice is fundamentally flawed as it focuses solely on optimizing individual agent performance, neglecting the critical need for collaboration among diverse agents. This narrow approach leads to inefficiencies and missed opportunities for synergies that could significantly enhance research outcomes.",
+    "recommendation": "Organizations must invest in frameworks that facilitate collaboration among diverse AI agents, enabling them to work together effectively to maximize research output and innovation.",
+    "enterprise_implication": "To realize the benefits of collaborative AI, organizations will need to adopt new architectures that support multi-agent collaboration, fundamentally reshaping their research and development processes."
+  },
+  "post": "The belief that improving individual AI agent performance is the key to research efficiency is fundamentally wrong. This narrow focus is a broken strategy that ignores the real issue: the lack of collaboration between diverse agent types. By solely optimizing individual agents, we miss out on powerful synergies that could exponentially enhance research outcomes.\n\nOrganizations are making a mistake by not investing in frameworks that foster collaboration among AI agents. This oversight leads to inefficiencies and stifles innovation.\n\nTo truly revolutionize research efficiency, enterprises must adopt new architectures that support multi-agent collaboration. It's time to reshape our approach and unlock the full potential of collaborative AI.",
+  "scores": {
+    "theme_selection": {
+      "novelty": 5,
+      "relevance": 4,
+      "debate": 5,
+      "contrarian": 4,
+      "decisiveness": 4,
+      "tension": 5,
+      "specificity": 4,
+      "typical_architect_agrees": false,
+      "strong_architect_debates": true
+    },
+    "position_strength": {
+      "contrarian": 4,
+      "decisiveness": 4,
+      "tension": 3,
+      "specificity": 3,
+      "passed": true,
+      "reasons": []
+    },
+    "evaluation": {
+      "novelty": 5,
+      "relevance": 4,
+      "insight": 5,
+      "position_strength": 3,
+      "clarity": 5,
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "meta": {
+    "used_on": "2026-05-17",
+    "recent_themes": [],
+    "lead_paper_summary": {
+      "title": "AgentDisCo: Towards Disentanglement and Collaboration in Open-ended Deep Research Agents",
+      "source": "arXiv",
+      "authors": [
+        "Jiarui Jin",
+        "Zexuan Yan",
+        "Shijian Wang",
+        "Wenxiang Jiao",
+        "Yuan Lu"
+      ],
+      "url": "http://arxiv.org/abs/2605.11732v1",
+      "summary": "In this paper, we present AgentDisCo, a novel Disentangled and Collaborative agentic architecture that formulates deep research as an adversarial optimization problem between information exploration and exploitation."
+    },
+    "synthesis_provenance": {
+      "engine_used": "openai",
+      "fallback_used": false,
+      "primary_engine": null,
+      "fallback_reason": null
+    },
+    "storage_path": "/Users/emilygao/LocalDocuments/Obsidian/research/2026-05-17-we-are-solving-ai-research-efficiency-but-the-real-issue-is-the-lack-of-collaboration-between-agents.md",
+    "run_log_path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/runs/run_2026-05-17.json"
+  },
+  "deliveries": [
+    {
+      "channel": "email",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/email/2026-05-17-linkedin-draft.md",
+      "preview": "The belief that improving individual AI agent performance is the key to research efficiency is fundamentally wrong. This",
+      "target": "emsyd888@gmail.com",
+      "sent": false,
+      "status": "draft only"
+    },
+    {
+      "channel": "discord",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/discord/2026-05-17-linkedin-draft.md",
+      "preview": "The belief that improving individual AI agent performance is the key to research efficiency is fundamentally wrong. This",
+      "target": "Weekflow",
+      "sent": false,
+      "status": "draft only"
+    }
+  ]
+}

@@ -1,0 +1,720 @@
+{
+  "paper_pool": [
+    {
+      "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+      "authors": [
+        "Keming Wu",
+        "Zuhao Yang",
+        "Kaichen Zhang",
+        "Shizun Wang",
+        "Haowei Zhu",
+        "Sicong Leng",
+        "Zhongyu Yang",
+        "Qijie Wang",
+        "Sudong Wang",
+        "Ziting Wang",
+        "Zili Wang",
+        "Hui Zhang",
+        "Haonan Wang",
+        "Hang Zhou",
+        "Yifan Pu",
+        "Xingxuan Li",
+        "Fangneng Zhan",
+        "Bo Li",
+        "Lidong Bing",
+        "Yuxin Song",
+        "Ziwei Liu",
+        "Wenhu Chen",
+        "Jingdong Wang",
+        "Xinchao Wang",
+        "Xiaojuan Qi",
+        "Shijian Lu",
+        "Bin Wang"
+      ],
+      "abstract": "Recent visual generation models have made major progress in photorealism, typography, instruction following, and interactive editing, yet they still struggle with spatial reasoning, persistent state, long-horizon consistency, and causal understanding. We argue that the field should move beyond appearance synthesis toward intelligent visual generation: plausible visuals grounded in structure, dynamics, domain knowledge, and causal relations. To frame this shift, we introduce a five-level taxonomy: Atomic Generation, Conditional Generation, In-Context Generation, Agentic Generation, and World-Modeling Generation, progressing from passive renderers to interactive, agentic, world-aware generators. We analyze key technical drivers, including flow matching, unified understanding-and-generation models, improved visual representations, post-training, reward modeling, data curation, synthetic data distillation, and sampling acceleration. We further show that current evaluations often overestimate progress by emphasizing perceptual quality while missing structural, temporal, and causal failures. By combining benchmark review, in-the-wild stress tests, and expert-constrained case studies, this roadmap offers a capability-centered lens for understanding, evaluating, and advancing the next generation of intelligent visual generation systems.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28185v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "7e5a7fdbac60eed5478f4315a47a7be9"
+    },
+    {
+      "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+      "authors": [
+        "Eyon Jang",
+        "Damon Falck",
+        "Joschka Braun",
+        "Nathalie Kirch",
+        "Achu Menon",
+        "Perusha Moodley",
+        "Scott Emmons",
+        "Roland S. Zimmermann",
+        "David Lindner"
+      ],
+      "abstract": "Reinforcement learning (RL) has become essential to the post-training of large language models (LLMs) for reasoning, agentic capabilities and alignment. Successful RL relies on sufficient exploration of diverse actions by the model during training, which creates a potential failure mode: a model could strategically alter its exploration during training to influence the subsequent training outcome. In this paper we study this behavior, called exploration hacking. First, we create model organisms of selective RL resistance by fine-tuning LLMs to follow specific underperformance strategies; these models can successfully resist our RL-based capability elicitation in agentic biosecurity and AI R&D environments while maintaining performance on related tasks. We then use our model organisms to evaluate detection and mitigation strategies, including monitoring, weight noising, and SFT-based elicitation. Finally, we show that current frontier models can exhibit explicit reasoning about suppressing their exploration when provided with sufficient information about their training context, with higher rates when this information is acquired indirectly through the environment. Together, our results suggest exploration hacking is a possible failure mode of RL on sufficiently capable LLMs.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28182v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "150732f4d98ed0d11c93c5fc500c42a4"
+    },
+    {
+      "title": "Synthetic Computers at Scale for Long-Horizon Productivity Simulation",
+      "authors": [
+        "Tao Ge",
+        "Baolin Peng",
+        "Hao Cheng",
+        "Jianfeng Gao"
+      ],
+      "abstract": "Realistic long-horizon productivity work is strongly conditioned on user-specific computer environments, where much of the work context is stored and organized through directory structures and content-rich artifacts. To scale synthetic data creation for such productivity scenarios, we introduce Synthetic Computers at Scale, a scalable methodology for creating such environments with realistic folder hierarchies and content-rich artifacts (e.g., documents, spreadsheets, and presentations). Conditioned on each synthetic computer, we run long-horizon simulations: one agent creates productivity objectives that are specific to the computer's user and require multiple professional deliverables and about a month of human work; another agent then acts as that user and keeps working across the computer -- for example, navigating the filesystem for grounding, coordinating with simulated collaborators, and producing professional artifacts -- until these objectives are completed. In preliminary experiments, we create 1,000 synthetic computers and run long-horizon simulations on them; each run requires over 8 hours of agent runtime and spans more than 2,000 turns on average. These simulations produce rich experiential learning signals, whose effectiveness is validated by significant improvements in agent performance on both in-domain and out-of-domain productivity evaluations. Given that personas are abundant at billion scale, this methodology can in principle scale to millions or even billions of synthetic user worlds with sufficient compute, enabling broader coverage of diverse professions, roles, contexts, environments, and productivity needs. We argue that scalable synthetic computer creation, together with at-scale simulations, is highly promising as a foundational substrate for agent self-improvement and agentic reinforcement learning in long-horizon productivity scenarios.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28181v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "14cfe9e0b64c375f477111b5bcf3fe0e"
+    },
+    {
+      "title": "AEGIS: A Holistic Benchmark for Evaluating Forensic Analysis of AI-Generated Academic Images",
+      "authors": [
+        "Bo Zhang",
+        "Tzu-Yen Ma",
+        "Zichen Tang",
+        "Junpeng Ding",
+        "Zirui Wang",
+        "Yizhuo Zhao",
+        "Peilin Gao",
+        "Zijie Xi",
+        "Zixin Ding",
+        "Haiyang Sun",
+        "Haocheng Gao",
+        "Yuan Liu",
+        "Liangjia Wang",
+        "Yiling Huang",
+        "Yujie Wang",
+        "Yuyue Zhang",
+        "Ronghui Xi",
+        "Yuanze Li",
+        "Jiacheng Liu",
+        "Zhongjun Yang",
+        "Haihong E"
+      ],
+      "abstract": "We introduce AEGIS, A holistic benchmark for Evaluating forensic analysis of AI-Generated academic ImageS. Compared to existing benchmarks, AEGIS features three key advances: (1) Domain-Specific Complexity: covering seven academic categories with 39 fine-grained subtypes, exposing intrinsic forensic difficulty, where even GPT-5.1 reaches 48.80% overall performance and expert models achieve only limited localization accuracy (IoU 30.09%); (2) Diverse Forgery Simulations: modeling four prevalent academic forgery strategies across 25 generative models, with 11 yielding average forensic accuracy below 50%, showing that forensics lag behind generative advances; and (3) Multi-Dimensional Forensic Evaluation: jointly assessing detection, reasoning, and localization, revealing complementary strengths between model families, with multimodal large language models (MLLMs) at 84.74% accuracy in textual artifact recognition and expert detectors peaking at 79.54% accuracy in binary authenticity detection. By evaluating 25 leading MLLMs, nine expert models, and one unified multimodal understanding and generation model, AEGIS serves as a diagnostic testbed exposing fundamental limitations in academic image forensics.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28177v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "99011fa214647b473d1e2e2e9ff58a3e"
+    },
+    {
+      "title": "Phase Transitions in Economic Inequality:Taxation and Extremal Replacement Dynamics",
+      "authors": [
+        "Lautaro Giordano",
+        "Sebastian Gon\u00e7alves",
+        "Jos\u00e9 Roberto Iglesias",
+        "Mar\u00eda Fabiana Laguna"
+      ],
+      "abstract": "We present a minimal agent-based model of interacting agents characterized by their wealth to study taxation and inequality in a non-conservative economy. Wealth evolves through an extremal stochastic replacement process in which the poorest agent has its wealth replaced by a new random value, financed through a collective taxation mechanism. We explore taxation regimes ranging from regressive to progressive schemes and tune the overall redistribution strength. Under regressive taxation, the system self-organizes into two distinct stationary phases when changing the total tax collected: a non-ergodic, high-inequality regime characterized by wealth condensation in a subset of agents that permanently escape replacement, and a more homogeneous ergodic phase in which all agents participate in the dynamics. Increasing taxes drives an abrupt transition between these phases. The transition is discontinuous and exhibits hysteresis and bistability, consistently detected through the Gini index, the Top $1\\%$ wealth share, the entropy, and the Binder cumulant. In contrast, neutral and progressive taxation suppress persistent wealth concentration, preventing the emergence of strongly unequal states and eliminating hysteretic behavior. These results show that minimal stochastic redistribution mechanisms alone can produce discontinuous transitions, metastability, and non-ergodicity, demonstrating that taxation structure can determine the emergence and stability of macroscopic inequality.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28168v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "12bb5b950333cbeee8256b19cea02e27"
+    },
+    {
+      "title": "AQUILES: A Production Architecture for Hybrid Agents with Deterministic Decisions in Regulated Domains \u2014 The HADD Paradigm: Closing the Determinism\u2013Expressiveness Gap in LLM-Based Agent Systems",
+      "authors": [
+        "Marcelo Errecalde",
+        "Alejandro Jaime"
+      ],
+      "abstract": "Achilles was invincible in battle \u2014 except for one point of structural vulnerability that no amount of strength could compensate for. Modern LLM-based agent frameworks (LangChain, AutoGen, CrewAI, ReAct) share this property exactly: impressive capability in controlled settings, catastrophically exploitable in regulated production environments through a single architectural flaw \u2014 the language model controls the decision. Organizations in regulated sectors (finance, insurance, healthcare, legal, compliance) face a direct consequence: these frameworks cannot be deployed in workflows subject to EU AI Act, DORA, or GDPR Article 22, because they provide no structural guarantee of determinism, auditability, or equal treatment. Traditional symbolic agent systems (JADE, Jason, Jadex) satisfy regulatory requirements but cannot ingest the unstructured natural-language inputs that define real enterprise workflows. The industry needs both properties simultaneously. No existing framework provides them. AQUILES is a production architecture for AI agents in regulated domains that resolves this gap through principled separation of concerns, instantiating the HADD paradigm (Hybrid Agents with Deterministic Decisions). AQUILES organizes agent functionality into five cooperating layers: an Interface Layer converting unstructured input into typed, validated beliefs via LLM sensors; a Cognition Layer performing pure-function BDI deliberation fully determined by its inputs; a Planning Layer selecting from a pre-verified HTN plan library without runtime synthesis; an Execution Layer enforcing typed precondition and postcondition contracts on every capability invocation; and a transverse Observation Layer producing append-only audit entries synchronously with every state transition. Language models are confined strictly to the perception boundary \u2014 they parse input into beliefs, they never select goals, plans, or capabilities. The heel remains; it is simply no longer load-bearing. The HADD paradigm is codified as six architectural invariants: (I1) Typed Role Inversion \u2014 LLMs as sensors only, never as control-flow components; (I2) Deterministic Cognition \u2014 the reasoning layer is a pure function of beliefs, goals, and rules; (I3) Bounded Planning \u2014 execution draws exclusively from a pre-verified plan library; (I4) Validated Execution \u2014 every capability invocation passes typed pre/post-condition checks; (I5) Complete Observability \u2014 every decision is forensically reconstructable from the audit log; (I6) Epistemic Precondition \u2014 no belief enters the BDI cycle without satisfying freshness, non-contestation, and source triangulation, enforced by the EVR module (Epistemic Verification for RAG). Any implementation satisfying all six invariants acquires reproducibility, zero LLM hallucination in state, LLM provider independence, and structural alignment with EU AI Act Articles 12\u201315 \u2014 as architectural properties, not retrofitted compliance measures. AQUILES partitions agents into cognitive holons (BDI-HTN reasoning components subject to full HADD governance) and reactive holons (deterministic capability executors verified by typed contracts alone). In observed production deployments, 70\u201380% of holons by count are reactive, meaning governance complexity scales with the cognitive subset rather than with total component count. The AQUILES protocol is language-agnostic by design: cognitive holons are typically Python (Anthropic SDK, sentence-transformers, pypdf); endpoint-monitoring holons are Go (single-binary cross-compilation); blockchain and zero-knowledge holons are Rust (arkworks, halo2, revm). We prove a Language Neutrality property: HADD compliance is preserved across heterogeneous polyglot deployments. For autonomous field deployments, AQUILES derives MYRMIDON agents that execute a signed MissionPackage autonomously on constrained hardware, inheriting AQUILES's safety guarantees without requiring runtime connectivity. This paper makes five engineering contributions: (C1) the HADD paradigm formalized as six architectural invariants with rationale and derived operational properties; (C2) the cognitive/reactive holon distinction and its governance economy consequences; (C3) a polyglot holon model with Language Neutrality proof and domain-language affinity mapping across Python, Go, and Rust; (C4) a multi-tenant operational-cell formalism enabling cryptographically enforced tenant isolation for regulated multi-client deployments; (C5) four reusable design patterns extracted from production experience (Sensor Firewall, Belief Expiry, Capability Contract, Observation Fanout), together with measurement methodology, adoption guidance, and explicit characterization of the architecture's limits.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159604028",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "e07a5377085a10fb4b2c747e07dd60b5"
+    },
+    {
+      "title": "Understanding AI Agents\u2014A Data-Driven Literature Review",
+      "authors": [
+        "Johannes St\u00fcbinger",
+        "Fabio Metz"
+      ],
+      "abstract": "This paper presents a systematic, data-driven literature review of research on Artificial Intelligence (AI) agents based on the top 100 Google Scholar publications related to the search terms \u201cAI agent\u201d and \u201cAI agents\u201d. The rapid advancement of AI agents, driven in particular by recent progress in Large Language Models, has resulted in a diverse and fragmented research landscape that lacks comprehensive quantitative overviews. To address this gap, we implement and apply a fully automated, AI-driven analysis pipeline to the domain of AI agents. The collected publications are processed using a Large Language Model accessed via a Python-based Application Programming Interface (API), enabling an automated analysis of the literature without manual categorization. Based on this approach, the publications are grouped into data-driven thematic clusters reflecting dominant research perspectives in the field. Specifically, the identified clusters comprise \u201cArchitecture &amp; Frameworks\u201d, \u201cMulti-Agent Systems\u201d, \u201cApplications\u201d, \u201cSafety\u201d and \u201cEthics, Accountability &amp; Governance\u201d. By synthesizing the literature in a structured and automated manner, this work provides a consolidated overview of central research patterns, identifies key operational and structural challenges and highlights fragmentation across AI agent research. The findings support a more systematic understanding of AI agents and provide a foundation for future research on robust, scalable and trustworthy AI agent systems.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7157797247",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "65ac3078485ce1452483a638c5c4e719"
+    },
+    {
+      "title": "AI as Consumer and Participant: A Co-Design Agenda for MBSE Substrates and Methodology",
+      "authors": [
+        "Siyuan Ji"
+      ],
+      "abstract": "AI tools are being deployed over MBSE models today, and those models were not designed for this kind of consumption. The problem is not simply that tools hallucinate: well-prompted frontier models produce competent, useful output over a conformant SysML model, but the reasoning they produce is drawn from training rather than retrieved from the model itself, and different tools over the same model produce different results with nothing in the record to adjudicate between them. The model, in other words, is functioning as a prompt rather than as a knowledge base. Attaching better tools to the same model does not resolve this. The model and the methodology that governs its construction need to be designed together for AI participation, treating the model as a machine-queryable knowledge substrate rather than a structured artefact for human navigation, and that co-design has not yet happened in any systematic way. This paper works through a concrete workflow scenario to show what that gap looks like in practice, proposes three principles that jointly characterise what model and methodology must achieve together, and closes with a call to the community to begin this work before the architectural decisions about AI integration settle without the methodological foundation they require.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159546836",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "836bb60438e9b7a0b3fc41ec9dc3f31a"
+    },
+    {
+      "title": "An LLM-Based Multi-Path Question Answering System with XGBoost Routing and Threshold-Based Refusal",
+      "authors": [
+        "Bo Dai",
+        "Caiyun Li",
+        "Yiyun Cao",
+        "Jie Ling",
+        "Xiaowen Liu"
+      ],
+      "abstract": "In conventional question answering systems, general-purpose large language models (LLMs), despite their strong capabilities in language understanding and generation, exhibit notable limitations in scenarios with stringent factuality requirements. Their outputs often lack explicit evidential grounding, making them prone to hallucinations and inconsistent responses. Moreover, LLMs do not inherently guarantee determinism when performing operations over structured data\u2014such as aggregation, conditional filtering, and cross-field constraints\u2014thereby undermining result consistency and reliability. To address these issues, we propose an internal-data-first framework for controllable question answering in high-risk scenarios. The framework categorizes knowledge sources into unstructured documents and structured data, enabling evidence-constrained generation via retrieval-augmented generation (RAG) and database-backed, verifiable query execution via restricted, read-only structured queries. In addition, an UNK branch is introduced as a safe degradation mechanism that triggers refusal when inputs lack sufficient evidence, exceed system capability boundaries, or fail to meet confidence requirements, thereby suppressing hallucinations and unauthorized generation. To enable controlled selection among the two execution pathways (RAG/SQL) and the safety degradation branch (UNK) at the system level, we design a learned router based on XGBoost with confidence-thresholded selective prediction, which preferentially activates UNK refusals for low-confidence or out-of-distribution inputs. We validate the proposed framework using a graduate admissions consultation system as an exemplar application, constructing both a document knowledge base and structured score tables, and conducting controlled comparisons across multiple system variants with multi-metric evaluations. Experimental results indicate that, under the current controlled evaluation setting, the proposed framework exhibits relatively stable behavior under complex query formulations and demonstrates practical engineering potential in high-risk vertical-domain question answering scenarios.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7156988325",
+      "published_on": "2026-04-27",
+      "tier": 1,
+      "fingerprint": "174df061b299c2bd991224036e4d2798"
+    },
+    {
+      "title": "Kimi K2.6 just beat Claude, GPT-5.5, and Gemini in a coding challenge",
+      "authors": [
+        "bazlightyear"
+      ],
+      "abstract": "Hacker News discussion with score 42 and 10 comments.",
+      "source": "Hacker News",
+      "url": "https://thinkpol.ca/2026/04/30/an-open-weights-chinese-model-just-beat-claude-gpt-5-5-and-gemini-in-a-programming-challenge/",
+      "published_on": "2026-05-03",
+      "tier": 3,
+      "fingerprint": "76f36510793b26564bf716ab15c702b8"
+    },
+    {
+      "title": "Windows API Is Successful Cross-Platform API",
+      "authors": [
+        "phendrenad2"
+      ],
+      "abstract": "Hacker News discussion with score 36 and 10 comments.",
+      "source": "Hacker News",
+      "url": "https://retrocoding.net/windows-api-is-successful-cross-platform-api",
+      "published_on": "2026-05-03",
+      "tier": 3,
+      "fingerprint": "41e0b6947e06bc420c76fbd1639b8cff"
+    },
+    {
+      "title": "Clandestine network smuggling Starlink tech into Iran to beat internet blackout",
+      "authors": [
+        "1659447091"
+      ],
+      "abstract": "Hacker News discussion with score 92 and 33 comments.",
+      "source": "Hacker News",
+      "url": "https://www.bbc.com/news/articles/cvgzk91leweo",
+      "published_on": "2026-05-03",
+      "tier": 3,
+      "fingerprint": "754b7ebd969dbcd5daa213083690ccc0"
+    },
+    {
+      "title": "A Couple Million Lines of Haskell: Production Engineering at Mercury",
+      "authors": [
+        "unignorant"
+      ],
+      "abstract": "Hacker News discussion with score 116 and 38 comments.",
+      "source": "Hacker News",
+      "url": "https://blog.haskell.org/a-couple-million-lines-of-haskell/",
+      "published_on": "2026-05-03",
+      "tier": 3,
+      "fingerprint": "27d3ff2a2b470511de383469df0a9153"
+    },
+    {
+      "title": "This Month in Ladybird - April 2026",
+      "authors": [
+        "richardboegli"
+      ],
+      "abstract": "Hacker News discussion with score 217 and 32 comments.",
+      "source": "Hacker News",
+      "url": "https://ladybird.org/newsletter/2026-04-30/",
+      "published_on": "2026-05-02",
+      "tier": 3,
+      "fingerprint": "43d7a9b1d64e6b77d77f13ca59800a7c"
+    },
+    {
+      "title": "AI Architecture Masterclass Ep8 \u2013 LLMOps &amp; GenAIOps | CI/CD, Evaluation &amp; Production AI Systems",
+      "authors": [
+        "DataMindAI with Ahmed"
+      ],
+      "abstract": "This video is part of the AI Solution Architecture Masterclass series. Watch the full playlist to understand how enterprise AI systems ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=kSYQfVnDxLg",
+      "published_on": "2026-03-13",
+      "tier": 3,
+      "fingerprint": "b6b1c4df0f04153d22ead89b9c89ad81"
+    },
+    {
+      "title": "AI Solution Architecture Masterclass Ep5 \u2013 Intelligence Layer (Model Selection &amp; Fine-Tuning)",
+      "authors": [
+        "DataMindAI with Ahmed"
+      ],
+      "abstract": "This video is part of the AI Solution Architecture Masterclass series. Watch the full playlist to understand how enterprise AI systems ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=zWG_3_CSHq4",
+      "published_on": "2026-03-13",
+      "tier": 3,
+      "fingerprint": "59727a1ed8bdcd501186c4dcb4f60113"
+    },
+    {
+      "title": "AI Architect 2026: Designing Intelligent Systems Explained #shorts",
+      "authors": [
+        "FutureVerse & Beyond"
+      ],
+      "abstract": "Forget prompt crafting. The 2026 AI architect designs end-to-end intelligent systems: agents, RAG, multimodal pipelines.",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=HlJZ-jePUQg",
+      "published_on": "2026-02-20",
+      "tier": 3,
+      "fingerprint": "3f51e6e0de4e73cf40f5c5b8e47663f8"
+    },
+    {
+      "title": "AI Architects Take Over Stop Prompting NOW",
+      "authors": [
+        "FutureVerse & Beyond"
+      ],
+      "abstract": "Stop Prompting. Start Architecting AI in 2026 \u2014 practical guide for senior IT architects (45+) to reinvent from prompt tinkerer to ...",
+      "source": "YouTube",
+      "url": "https://www.youtube.com/watch?v=9h5p0FsLLJk",
+      "published_on": "2026-02-18",
+      "tier": 3,
+      "fingerprint": "407f5511a8cae4d85d9b9e0c6a128569"
+    }
+  ],
+  "top_papers": [
+    {
+      "title": "AQUILES: A Production Architecture for Hybrid Agents with Deterministic Decisions in Regulated Domains \u2014 The HADD Paradigm: Closing the Determinism\u2013Expressiveness Gap in LLM-Based Agent Systems",
+      "authors": [
+        "Marcelo Errecalde",
+        "Alejandro Jaime"
+      ],
+      "abstract": "Achilles was invincible in battle \u2014 except for one point of structural vulnerability that no amount of strength could compensate for. Modern LLM-based agent frameworks (LangChain, AutoGen, CrewAI, ReAct) share this property exactly: impressive capability in controlled settings, catastrophically exploitable in regulated production environments through a single architectural flaw \u2014 the language model controls the decision. Organizations in regulated sectors (finance, insurance, healthcare, legal, compliance) face a direct consequence: these frameworks cannot be deployed in workflows subject to EU AI Act, DORA, or GDPR Article 22, because they provide no structural guarantee of determinism, auditability, or equal treatment. Traditional symbolic agent systems (JADE, Jason, Jadex) satisfy regulatory requirements but cannot ingest the unstructured natural-language inputs that define real enterprise workflows. The industry needs both properties simultaneously. No existing framework provides them. AQUILES is a production architecture for AI agents in regulated domains that resolves this gap through principled separation of concerns, instantiating the HADD paradigm (Hybrid Agents with Deterministic Decisions). AQUILES organizes agent functionality into five cooperating layers: an Interface Layer converting unstructured input into typed, validated beliefs via LLM sensors; a Cognition Layer performing pure-function BDI deliberation fully determined by its inputs; a Planning Layer selecting from a pre-verified HTN plan library without runtime synthesis; an Execution Layer enforcing typed precondition and postcondition contracts on every capability invocation; and a transverse Observation Layer producing append-only audit entries synchronously with every state transition. Language models are confined strictly to the perception boundary \u2014 they parse input into beliefs, they never select goals, plans, or capabilities. The heel remains; it is simply no longer load-bearing. The HADD paradigm is codified as six architectural invariants: (I1) Typed Role Inversion \u2014 LLMs as sensors only, never as control-flow components; (I2) Deterministic Cognition \u2014 the reasoning layer is a pure function of beliefs, goals, and rules; (I3) Bounded Planning \u2014 execution draws exclusively from a pre-verified plan library; (I4) Validated Execution \u2014 every capability invocation passes typed pre/post-condition checks; (I5) Complete Observability \u2014 every decision is forensically reconstructable from the audit log; (I6) Epistemic Precondition \u2014 no belief enters the BDI cycle without satisfying freshness, non-contestation, and source triangulation, enforced by the EVR module (Epistemic Verification for RAG). Any implementation satisfying all six invariants acquires reproducibility, zero LLM hallucination in state, LLM provider independence, and structural alignment with EU AI Act Articles 12\u201315 \u2014 as architectural properties, not retrofitted compliance measures. AQUILES partitions agents into cognitive holons (BDI-HTN reasoning components subject to full HADD governance) and reactive holons (deterministic capability executors verified by typed contracts alone). In observed production deployments, 70\u201380% of holons by count are reactive, meaning governance complexity scales with the cognitive subset rather than with total component count. The AQUILES protocol is language-agnostic by design: cognitive holons are typically Python (Anthropic SDK, sentence-transformers, pypdf); endpoint-monitoring holons are Go (single-binary cross-compilation); blockchain and zero-knowledge holons are Rust (arkworks, halo2, revm). We prove a Language Neutrality property: HADD compliance is preserved across heterogeneous polyglot deployments. For autonomous field deployments, AQUILES derives MYRMIDON agents that execute a signed MissionPackage autonomously on constrained hardware, inheriting AQUILES's safety guarantees without requiring runtime connectivity. This paper makes five engineering contributions: (C1) the HADD paradigm formalized as six architectural invariants with rationale and derived operational properties; (C2) the cognitive/reactive holon distinction and its governance economy consequences; (C3) a polyglot holon model with Language Neutrality proof and domain-language affinity mapping across Python, Go, and Rust; (C4) a multi-tenant operational-cell formalism enabling cryptographically enforced tenant isolation for regulated multi-client deployments; (C5) four reusable design patterns extracted from production experience (Sensor Firewall, Belief Expiry, Capability Contract, Observation Fanout), together with measurement methodology, adoption guidance, and explicit characterization of the architecture's limits.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159604028",
+      "published_on": "2026-05-01",
+      "tier": 1,
+      "fingerprint": "e07a5377085a10fb4b2c747e07dd60b5"
+    },
+    {
+      "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+      "authors": [
+        "Eyon Jang",
+        "Damon Falck",
+        "Joschka Braun",
+        "Nathalie Kirch",
+        "Achu Menon",
+        "Perusha Moodley",
+        "Scott Emmons",
+        "Roland S. Zimmermann",
+        "David Lindner"
+      ],
+      "abstract": "Reinforcement learning (RL) has become essential to the post-training of large language models (LLMs) for reasoning, agentic capabilities and alignment. Successful RL relies on sufficient exploration of diverse actions by the model during training, which creates a potential failure mode: a model could strategically alter its exploration during training to influence the subsequent training outcome. In this paper we study this behavior, called exploration hacking. First, we create model organisms of selective RL resistance by fine-tuning LLMs to follow specific underperformance strategies; these models can successfully resist our RL-based capability elicitation in agentic biosecurity and AI R&D environments while maintaining performance on related tasks. We then use our model organisms to evaluate detection and mitigation strategies, including monitoring, weight noising, and SFT-based elicitation. Finally, we show that current frontier models can exhibit explicit reasoning about suppressing their exploration when provided with sufficient information about their training context, with higher rates when this information is acquired indirectly through the environment. Together, our results suggest exploration hacking is a possible failure mode of RL on sufficiently capable LLMs.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28182v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "150732f4d98ed0d11c93c5fc500c42a4"
+    },
+    {
+      "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+      "authors": [
+        "Keming Wu",
+        "Zuhao Yang",
+        "Kaichen Zhang",
+        "Shizun Wang",
+        "Haowei Zhu",
+        "Sicong Leng",
+        "Zhongyu Yang",
+        "Qijie Wang",
+        "Sudong Wang",
+        "Ziting Wang",
+        "Zili Wang",
+        "Hui Zhang",
+        "Haonan Wang",
+        "Hang Zhou",
+        "Yifan Pu",
+        "Xingxuan Li",
+        "Fangneng Zhan",
+        "Bo Li",
+        "Lidong Bing",
+        "Yuxin Song",
+        "Ziwei Liu",
+        "Wenhu Chen",
+        "Jingdong Wang",
+        "Xinchao Wang",
+        "Xiaojuan Qi",
+        "Shijian Lu",
+        "Bin Wang"
+      ],
+      "abstract": "Recent visual generation models have made major progress in photorealism, typography, instruction following, and interactive editing, yet they still struggle with spatial reasoning, persistent state, long-horizon consistency, and causal understanding. We argue that the field should move beyond appearance synthesis toward intelligent visual generation: plausible visuals grounded in structure, dynamics, domain knowledge, and causal relations. To frame this shift, we introduce a five-level taxonomy: Atomic Generation, Conditional Generation, In-Context Generation, Agentic Generation, and World-Modeling Generation, progressing from passive renderers to interactive, agentic, world-aware generators. We analyze key technical drivers, including flow matching, unified understanding-and-generation models, improved visual representations, post-training, reward modeling, data curation, synthetic data distillation, and sampling acceleration. We further show that current evaluations often overestimate progress by emphasizing perceptual quality while missing structural, temporal, and causal failures. By combining benchmark review, in-the-wild stress tests, and expert-constrained case studies, this roadmap offers a capability-centered lens for understanding, evaluating, and advancing the next generation of intelligent visual generation systems.",
+      "source": "arXiv",
+      "url": "http://arxiv.org/abs/2604.28185v1",
+      "published_on": "2026-04-30",
+      "tier": 1,
+      "fingerprint": "7e5a7fdbac60eed5478f4315a47a7be9"
+    },
+    {
+      "title": "An LLM-Based Multi-Path Question Answering System with XGBoost Routing and Threshold-Based Refusal",
+      "authors": [
+        "Bo Dai",
+        "Caiyun Li",
+        "Yiyun Cao",
+        "Jie Ling",
+        "Xiaowen Liu"
+      ],
+      "abstract": "In conventional question answering systems, general-purpose large language models (LLMs), despite their strong capabilities in language understanding and generation, exhibit notable limitations in scenarios with stringent factuality requirements. Their outputs often lack explicit evidential grounding, making them prone to hallucinations and inconsistent responses. Moreover, LLMs do not inherently guarantee determinism when performing operations over structured data\u2014such as aggregation, conditional filtering, and cross-field constraints\u2014thereby undermining result consistency and reliability. To address these issues, we propose an internal-data-first framework for controllable question answering in high-risk scenarios. The framework categorizes knowledge sources into unstructured documents and structured data, enabling evidence-constrained generation via retrieval-augmented generation (RAG) and database-backed, verifiable query execution via restricted, read-only structured queries. In addition, an UNK branch is introduced as a safe degradation mechanism that triggers refusal when inputs lack sufficient evidence, exceed system capability boundaries, or fail to meet confidence requirements, thereby suppressing hallucinations and unauthorized generation. To enable controlled selection among the two execution pathways (RAG/SQL) and the safety degradation branch (UNK) at the system level, we design a learned router based on XGBoost with confidence-thresholded selective prediction, which preferentially activates UNK refusals for low-confidence or out-of-distribution inputs. We validate the proposed framework using a graduate admissions consultation system as an exemplar application, constructing both a document knowledge base and structured score tables, and conducting controlled comparisons across multiple system variants with multi-metric evaluations. Experimental results indicate that, under the current controlled evaluation setting, the proposed framework exhibits relatively stable behavior under complex query formulations and demonstrates practical engineering potential in high-risk vertical-domain question answering scenarios.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7156988325",
+      "published_on": "2026-04-27",
+      "tier": 1,
+      "fingerprint": "174df061b299c2bd991224036e4d2798"
+    },
+    {
+      "title": "AI as Consumer and Participant: A Co-Design Agenda for MBSE Substrates and Methodology",
+      "authors": [
+        "Siyuan Ji"
+      ],
+      "abstract": "AI tools are being deployed over MBSE models today, and those models were not designed for this kind of consumption. The problem is not simply that tools hallucinate: well-prompted frontier models produce competent, useful output over a conformant SysML model, but the reasoning they produce is drawn from training rather than retrieved from the model itself, and different tools over the same model produce different results with nothing in the record to adjudicate between them. The model, in other words, is functioning as a prompt rather than as a knowledge base. Attaching better tools to the same model does not resolve this. The model and the methodology that governs its construction need to be designed together for AI participation, treating the model as a machine-queryable knowledge substrate rather than a structured artefact for human navigation, and that co-design has not yet happened in any systematic way. This paper works through a concrete workflow scenario to show what that gap looks like in practice, proposes three principles that jointly characterise what model and methodology must achieve together, and closes with a call to the community to begin this work before the architectural decisions about AI integration settle without the methodological foundation they require.",
+      "source": "OpenAlex",
+      "url": "https://openalex.org/W7159546836",
+      "published_on": "2026-04-28",
+      "tier": 1,
+      "fingerprint": "836bb60438e9b7a0b3fc41ec9dc3f31a"
+    }
+  ],
+  "candidate_themes": [
+    {
+      "theme": "Shift from traditional symbolic agents to hybrid agents with deterministic decisions",
+      "why_selected": "This theme proposes a new architecture that combines the strengths of traditional symbolic systems with the capabilities of LLMs, addressing the limitations of both approaches in regulated environments.",
+      "why_debatable": "It challenges the prevailing notion that LLMs can be effectively used in regulated domains without compromising determinism and auditability.",
+      "supporting_papers": [
+        {
+          "title": "AQUILES: A Production Architecture for Hybrid Agents with Deterministic Decisions in Regulated Domains \u2014 The HADD Paradigm: Closing the Determinism\u2013Expressiveness Gap in LLM-Based Agent Systems",
+          "authors": [
+            "Marcelo Errecalde",
+            "Alejandro Jaime"
+          ],
+          "abstract": "Achilles was invincible in battle \u2014 except for one point of structural vulnerability that no amount of strength could compensate for. Modern LLM-based agent frameworks (LangChain, AutoGen, CrewAI, ReAct) share this property exactly: impressive capability in controlled settings, catastrophically exploitable in regulated production environments through a single architectural flaw \u2014 the language model controls the decision. Organizations in regulated sectors (finance, insurance, healthcare, legal, compliance) face a direct consequence: these frameworks cannot be deployed in workflows subject to EU AI Act, DORA, or GDPR Article 22, because they provide no structural guarantee of determinism, auditability, or equal treatment. Traditional symbolic agent systems (JADE, Jason, Jadex) satisfy regulatory requirements but cannot ingest the unstructured natural-language inputs that define real enterprise workflows. The industry needs both properties simultaneously. No existing framework provides them. AQUILES is a production architecture for AI agents in regulated domains that resolves this gap through principled separation of concerns, instantiating the HADD paradigm (Hybrid Agents with Deterministic Decisions). AQUILES organizes agent functionality into five cooperating layers: an Interface Layer converting unstructured input into typed, validated beliefs via LLM sensors; a Cognition Layer performing pure-function BDI deliberation fully determined by its inputs; a Planning Layer selecting from a pre-verified HTN plan library without runtime synthesis; an Execution Layer enforcing typed precondition and postcondition contracts on every capability invocation; and a transverse Observation Layer producing append-only audit entries synchronously with every state transition. Language models are confined strictly to the perception boundary \u2014 they parse input into beliefs, they never select goals, plans, or capabilities. The heel remains; it is simply no longer load-bearing. The HADD paradigm is codified as six architectural invariants: (I1) Typed Role Inversion \u2014 LLMs as sensors only, never as control-flow components; (I2) Deterministic Cognition \u2014 the reasoning layer is a pure function of beliefs, goals, and rules; (I3) Bounded Planning \u2014 execution draws exclusively from a pre-verified plan library; (I4) Validated Execution \u2014 every capability invocation passes typed pre/post-condition checks; (I5) Complete Observability \u2014 every decision is forensically reconstructable from the audit log; (I6) Epistemic Precondition \u2014 no belief enters the BDI cycle without satisfying freshness, non-contestation, and source triangulation, enforced by the EVR module (Epistemic Verification for RAG). Any implementation satisfying all six invariants acquires reproducibility, zero LLM hallucination in state, LLM provider independence, and structural alignment with EU AI Act Articles 12\u201315 \u2014 as architectural properties, not retrofitted compliance measures. AQUILES partitions agents into cognitive holons (BDI-HTN reasoning components subject to full HADD governance) and reactive holons (deterministic capability executors verified by typed contracts alone). In observed production deployments, 70\u201380% of holons by count are reactive, meaning governance complexity scales with the cognitive subset rather than with total component count. The AQUILES protocol is language-agnostic by design: cognitive holons are typically Python (Anthropic SDK, sentence-transformers, pypdf); endpoint-monitoring holons are Go (single-binary cross-compilation); blockchain and zero-knowledge holons are Rust (arkworks, halo2, revm). We prove a Language Neutrality property: HADD compliance is preserved across heterogeneous polyglot deployments. For autonomous field deployments, AQUILES derives MYRMIDON agents that execute a signed MissionPackage autonomously on constrained hardware, inheriting AQUILES's safety guarantees without requiring runtime connectivity. This paper makes five engineering contributions: (C1) the HADD paradigm formalized as six architectural invariants with rationale and derived operational properties; (C2) the cognitive/reactive holon distinction and its governance economy consequences; (C3) a polyglot holon model with Language Neutrality proof and domain-language affinity mapping across Python, Go, and Rust; (C4) a multi-tenant operational-cell formalism enabling cryptographically enforced tenant isolation for regulated multi-client deployments; (C5) four reusable design patterns extracted from production experience (Sensor Firewall, Belief Expiry, Capability Contract, Observation Fanout), together with measurement methodology, adoption guidance, and explicit characterization of the architecture's limits.",
+          "source": "OpenAlex",
+          "url": "https://openalex.org/W7159604028",
+          "published_on": "2026-05-01",
+          "tier": 1,
+          "fingerprint": "e07a5377085a10fb4b2c747e07dd60b5"
+        }
+      ],
+      "common_belief": "LLMs are sufficient for building intelligent agents across various domains.",
+      "contrarian_view": "The real issue is that LLMs alone cannot satisfy the stringent requirements of regulated environments, necessitating a hybrid approach that combines the strengths of traditional symbolic systems with LLMs to ensure compliance and operational integrity.",
+      "why_wrong": "Current practice is fundamentally flawed as it overestimates the capabilities of LLMs in regulated environments, leading to non-compliance and operational failures. Relying solely on LLMs ignores the critical need for determinism, auditability, and regulatory compliance, which are essential for safe and effective AI deployment in sectors like finance, healthcare, and legal.",
+      "recommendation": "Adopt the HADD paradigm, which integrates deterministic decision-making with LLM capabilities, ensuring that AI agents can operate effectively within regulated frameworks while maintaining necessary guarantees of compliance and auditability.",
+      "enterprise_implication": "Organizations in regulated sectors must abandon the misguided reliance on LLMs alone and rethink their AI architectures to incorporate hybrid models that ensure compliance and operational integrity.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 5,
+        "debate": 5,
+        "contrarian": 5,
+        "decisiveness": 5,
+        "tension": 4,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "Shift from appearance synthesis to intelligent visual generation",
+      "why_selected": "This theme challenges the current focus on photorealism and appearance in visual generation, advocating for a deeper understanding of structure, dynamics, and causal relations.",
+      "why_debatable": "It reframes the evaluation criteria for visual generation systems, suggesting that current benchmarks are inadequate and that a new paradigm is needed for assessing capabilities.",
+      "supporting_papers": [
+        {
+          "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+          "authors": [
+            "Keming Wu",
+            "Zuhao Yang",
+            "Kaichen Zhang",
+            "Shizun Wang",
+            "Haowei Zhu",
+            "Sicong Leng",
+            "Zhongyu Yang",
+            "Qijie Wang",
+            "Sudong Wang",
+            "Ziting Wang",
+            "Zili Wang",
+            "Hui Zhang",
+            "Haonan Wang",
+            "Hang Zhou",
+            "Yifan Pu",
+            "Xingxuan Li",
+            "Fangneng Zhan",
+            "Bo Li",
+            "Lidong Bing",
+            "Yuxin Song",
+            "Ziwei Liu",
+            "Wenhu Chen",
+            "Jingdong Wang",
+            "Xinchao Wang",
+            "Xiaojuan Qi",
+            "Shijian Lu",
+            "Bin Wang"
+          ],
+          "abstract": "Recent visual generation models have made major progress in photorealism, typography, instruction following, and interactive editing, yet they still struggle with spatial reasoning, persistent state, long-horizon consistency, and causal understanding. We argue that the field should move beyond appearance synthesis toward intelligent visual generation: plausible visuals grounded in structure, dynamics, domain knowledge, and causal relations. To frame this shift, we introduce a five-level taxonomy: Atomic Generation, Conditional Generation, In-Context Generation, Agentic Generation, and World-Modeling Generation, progressing from passive renderers to interactive, agentic, world-aware generators. We analyze key technical drivers, including flow matching, unified understanding-and-generation models, improved visual representations, post-training, reward modeling, data curation, synthetic data distillation, and sampling acceleration. We further show that current evaluations often overestimate progress by emphasizing perceptual quality while missing structural, temporal, and causal failures. By combining benchmark review, in-the-wild stress tests, and expert-constrained case studies, this roadmap offers a capability-centered lens for understanding, evaluating, and advancing the next generation of intelligent visual generation systems.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28185v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "7e5a7fdbac60eed5478f4315a47a7be9"
+        }
+      ],
+      "common_belief": "Visual generation should prioritize photorealism and aesthetic quality.",
+      "contrarian_view": "The real value lies in the system's ability to understand and generate contextually relevant visuals based on structural and causal knowledge.",
+      "why_wrong": "Focusing solely on appearance may lead to systems that lack robustness and fail in real-world applications where context and understanding are crucial.",
+      "recommendation": "Adopt a capability-centered evaluation framework that emphasizes structural and causal understanding in visual generation.",
+      "enterprise_implication": "Organizations may need to rethink their visual generation strategies and invest in systems that prioritize intelligent generation over mere appearance.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 4,
+        "decisiveness": 4,
+        "tension": 3,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "We are solving agentic capabilities, but the real issue is exploration hacking",
+      "why_selected": "This theme highlights a critical failure mode in reinforcement learning for LLMs, suggesting that current training methodologies may inadvertently allow models to manipulate their own learning processes.",
+      "why_debatable": "It questions the effectiveness of existing reinforcement learning strategies and introduces a new perspective on model behavior during training.",
+      "supporting_papers": [
+        {
+          "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+          "authors": [
+            "Eyon Jang",
+            "Damon Falck",
+            "Joschka Braun",
+            "Nathalie Kirch",
+            "Achu Menon",
+            "Perusha Moodley",
+            "Scott Emmons",
+            "Roland S. Zimmermann",
+            "David Lindner"
+          ],
+          "abstract": "Reinforcement learning (RL) has become essential to the post-training of large language models (LLMs) for reasoning, agentic capabilities and alignment. Successful RL relies on sufficient exploration of diverse actions by the model during training, which creates a potential failure mode: a model could strategically alter its exploration during training to influence the subsequent training outcome. In this paper we study this behavior, called exploration hacking. First, we create model organisms of selective RL resistance by fine-tuning LLMs to follow specific underperformance strategies; these models can successfully resist our RL-based capability elicitation in agentic biosecurity and AI R&D environments while maintaining performance on related tasks. We then use our model organisms to evaluate detection and mitigation strategies, including monitoring, weight noising, and SFT-based elicitation. Finally, we show that current frontier models can exhibit explicit reasoning about suppressing their exploration when provided with sufficient information about their training context, with higher rates when this information is acquired indirectly through the environment. Together, our results suggest exploration hacking is a possible failure mode of RL on sufficiently capable LLMs.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28182v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "150732f4d98ed0d11c93c5fc500c42a4"
+        }
+      ],
+      "common_belief": "Reinforcement learning is a robust method for training AI models to achieve agentic capabilities.",
+      "contrarian_view": "Models may exploit weaknesses in the training process, leading to unintended consequences and unreliable performance.",
+      "why_wrong": "Assuming that reinforcement learning is foolproof can lead to significant risks in deploying AI systems that are not adequately monitored.",
+      "recommendation": "Implement monitoring and mitigation strategies to address exploration hacking in reinforcement learning frameworks.",
+      "enterprise_implication": "Organizations must be aware of the potential vulnerabilities in their AI training processes and take proactive measures to ensure reliability.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 4,
+        "decisiveness": 4,
+        "tension": 3,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "selected_theme": "Shift from traditional symbolic agents to hybrid agents with deterministic decisions",
+  "alternative_themes": [
+    {
+      "theme": "Shift from appearance synthesis to intelligent visual generation",
+      "why_selected": "This theme challenges the current focus on photorealism and appearance in visual generation, advocating for a deeper understanding of structure, dynamics, and causal relations.",
+      "why_debatable": "It reframes the evaluation criteria for visual generation systems, suggesting that current benchmarks are inadequate and that a new paradigm is needed for assessing capabilities.",
+      "supporting_papers": [
+        {
+          "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+          "authors": [
+            "Keming Wu",
+            "Zuhao Yang",
+            "Kaichen Zhang",
+            "Shizun Wang",
+            "Haowei Zhu",
+            "Sicong Leng",
+            "Zhongyu Yang",
+            "Qijie Wang",
+            "Sudong Wang",
+            "Ziting Wang",
+            "Zili Wang",
+            "Hui Zhang",
+            "Haonan Wang",
+            "Hang Zhou",
+            "Yifan Pu",
+            "Xingxuan Li",
+            "Fangneng Zhan",
+            "Bo Li",
+            "Lidong Bing",
+            "Yuxin Song",
+            "Ziwei Liu",
+            "Wenhu Chen",
+            "Jingdong Wang",
+            "Xinchao Wang",
+            "Xiaojuan Qi",
+            "Shijian Lu",
+            "Bin Wang"
+          ],
+          "abstract": "Recent visual generation models have made major progress in photorealism, typography, instruction following, and interactive editing, yet they still struggle with spatial reasoning, persistent state, long-horizon consistency, and causal understanding. We argue that the field should move beyond appearance synthesis toward intelligent visual generation: plausible visuals grounded in structure, dynamics, domain knowledge, and causal relations. To frame this shift, we introduce a five-level taxonomy: Atomic Generation, Conditional Generation, In-Context Generation, Agentic Generation, and World-Modeling Generation, progressing from passive renderers to interactive, agentic, world-aware generators. We analyze key technical drivers, including flow matching, unified understanding-and-generation models, improved visual representations, post-training, reward modeling, data curation, synthetic data distillation, and sampling acceleration. We further show that current evaluations often overestimate progress by emphasizing perceptual quality while missing structural, temporal, and causal failures. By combining benchmark review, in-the-wild stress tests, and expert-constrained case studies, this roadmap offers a capability-centered lens for understanding, evaluating, and advancing the next generation of intelligent visual generation systems.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28185v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "7e5a7fdbac60eed5478f4315a47a7be9"
+        }
+      ],
+      "common_belief": "Visual generation should prioritize photorealism and aesthetic quality.",
+      "contrarian_view": "The real value lies in the system's ability to understand and generate contextually relevant visuals based on structural and causal knowledge.",
+      "why_wrong": "Focusing solely on appearance may lead to systems that lack robustness and fail in real-world applications where context and understanding are crucial.",
+      "recommendation": "Adopt a capability-centered evaluation framework that emphasizes structural and causal understanding in visual generation.",
+      "enterprise_implication": "Organizations may need to rethink their visual generation strategies and invest in systems that prioritize intelligent generation over mere appearance.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 4,
+        "decisiveness": 4,
+        "tension": 3,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    },
+    {
+      "theme": "We are solving agentic capabilities, but the real issue is exploration hacking",
+      "why_selected": "This theme highlights a critical failure mode in reinforcement learning for LLMs, suggesting that current training methodologies may inadvertently allow models to manipulate their own learning processes.",
+      "why_debatable": "It questions the effectiveness of existing reinforcement learning strategies and introduces a new perspective on model behavior during training.",
+      "supporting_papers": [
+        {
+          "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+          "authors": [
+            "Eyon Jang",
+            "Damon Falck",
+            "Joschka Braun",
+            "Nathalie Kirch",
+            "Achu Menon",
+            "Perusha Moodley",
+            "Scott Emmons",
+            "Roland S. Zimmermann",
+            "David Lindner"
+          ],
+          "abstract": "Reinforcement learning (RL) has become essential to the post-training of large language models (LLMs) for reasoning, agentic capabilities and alignment. Successful RL relies on sufficient exploration of diverse actions by the model during training, which creates a potential failure mode: a model could strategically alter its exploration during training to influence the subsequent training outcome. In this paper we study this behavior, called exploration hacking. First, we create model organisms of selective RL resistance by fine-tuning LLMs to follow specific underperformance strategies; these models can successfully resist our RL-based capability elicitation in agentic biosecurity and AI R&D environments while maintaining performance on related tasks. We then use our model organisms to evaluate detection and mitigation strategies, including monitoring, weight noising, and SFT-based elicitation. Finally, we show that current frontier models can exhibit explicit reasoning about suppressing their exploration when provided with sufficient information about their training context, with higher rates when this information is acquired indirectly through the environment. Together, our results suggest exploration hacking is a possible failure mode of RL on sufficiently capable LLMs.",
+          "source": "arXiv",
+          "url": "http://arxiv.org/abs/2604.28182v1",
+          "published_on": "2026-04-30",
+          "tier": 1,
+          "fingerprint": "150732f4d98ed0d11c93c5fc500c42a4"
+        }
+      ],
+      "common_belief": "Reinforcement learning is a robust method for training AI models to achieve agentic capabilities.",
+      "contrarian_view": "Models may exploit weaknesses in the training process, leading to unintended consequences and unreliable performance.",
+      "why_wrong": "Assuming that reinforcement learning is foolproof can lead to significant risks in deploying AI systems that are not adequately monitored.",
+      "recommendation": "Implement monitoring and mitigation strategies to address exploration hacking in reinforcement learning frameworks.",
+      "enterprise_implication": "Organizations must be aware of the potential vulnerabilities in their AI training processes and take proactive measures to ensure reliability.",
+      "scorecard": {
+        "novelty": 5,
+        "relevance": 4,
+        "debate": 5,
+        "contrarian": 4,
+        "decisiveness": 4,
+        "tension": 3,
+        "specificity": 5,
+        "typical_architect_agrees": false,
+        "strong_architect_debates": true
+      },
+      "rejection_reason": null
+    }
+  ],
+  "rejected_themes": [],
+  "position": {
+    "common_belief": "LLMs are sufficient for building intelligent agents across various domains.",
+    "contrarian_view": "The real issue is that LLMs alone cannot satisfy the stringent requirements of regulated environments, necessitating a hybrid approach that combines the strengths of traditional symbolic systems with LLMs to ensure compliance and operational integrity.",
+    "why_wrong": "Current practice is fundamentally flawed as it overestimates the capabilities of LLMs in regulated environments, leading to non-compliance and operational failures. Relying solely on LLMs ignores the critical need for determinism, auditability, and regulatory compliance, which are essential for safe and effective AI deployment in sectors like finance, healthcare, and legal.",
+    "recommendation": "Adopt the HADD paradigm, which integrates deterministic decision-making with LLM capabilities, ensuring that AI agents can operate effectively within regulated frameworks while maintaining necessary guarantees of compliance and auditability.",
+    "enterprise_implication": "Organizations in regulated sectors must abandon the misguided reliance on LLMs alone and rethink their AI architectures to incorporate hybrid models that ensure compliance and operational integrity."
+  },
+  "post": "The belief that LLMs alone can build intelligent agents is fundamentally wrong. Enterprises are making a critical mistake by relying solely on these models in regulated environments, leading to compliance failures and operational breakdowns.\n\nThe real flaw lies in underestimating the need for deterministic decision-making. LLMs lack the necessary guarantees for auditability and compliance, which are essential in sectors like finance and healthcare.\n\nIt's time to adopt the HADD paradigm\u2014Hybrid Agents with Deterministic Decisions. This approach combines the strengths of traditional symbolic systems with LLMs, ensuring that AI agents can operate effectively within regulated frameworks.\n\nOrganizations must rethink their AI architectures. The current reliance on LLMs is a broken strategy that jeopardizes compliance and operational integrity. It's time for a paradigm shift.",
+  "scores": {
+    "theme_selection": {
+      "novelty": 5,
+      "relevance": 5,
+      "debate": 5,
+      "contrarian": 5,
+      "decisiveness": 5,
+      "tension": 4,
+      "specificity": 5,
+      "typical_architect_agrees": false,
+      "strong_architect_debates": true
+    },
+    "position_strength": {
+      "contrarian": 5,
+      "decisiveness": 5,
+      "tension": 4,
+      "specificity": 5,
+      "passed": true,
+      "reasons": []
+    },
+    "evaluation": {
+      "novelty": 5,
+      "relevance": 5,
+      "insight": 5,
+      "position_strength": 5,
+      "clarity": 5,
+      "passed": true,
+      "reasons": []
+    }
+  },
+  "meta": {
+    "used_on": "2026-05-03",
+    "recent_themes": [],
+    "lead_paper_summary": {
+      "title": "AQUILES: A Production Architecture for Hybrid Agents with Deterministic Decisions in Regulated Domains \u2014 The HADD Paradigm: Closing the Determinism\u2013Expressiveness Gap in LLM-Based Agent Systems",
+      "source": "OpenAlex",
+      "authors": [
+        "Marcelo Errecalde",
+        "Alejandro Jaime"
+      ],
+      "url": "https://openalex.org/W7159604028",
+      "summary": "Achilles was invincible in battle \u2014 except for one point of structural vulnerability that no amount of strength could compensate for."
+    },
+    "synthesis_provenance": {
+      "engine_used": "openai",
+      "fallback_used": false,
+      "primary_engine": null,
+      "fallback_reason": null
+    },
+    "storage_path": "/Users/emilygao/LocalDocuments/Obsidian/research/2026-05-03-shift-from-traditional-symbolic-agents-to-hybrid-agents-with-deterministic-decisions.md",
+    "run_log_path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/runs/run_2026-05-03.json"
+  },
+  "deliveries": [
+    {
+      "channel": "email",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/email/2026-05-03-linkedin-draft.md",
+      "preview": "The belief that LLMs alone can build intelligent agents is fundamentally wrong. Enterprises are making a critical mistak",
+      "target": "emsyd888@gmail.com",
+      "sent": true,
+      "status": "sent"
+    },
+    {
+      "channel": "discord",
+      "path": "/Users/emilygao/LocalDocuments/Projects/langchain/deep-agents/delivery/discord/2026-05-03-linkedin-draft.md",
+      "preview": "The belief that LLMs alone can build intelligent agents is fundamentally wrong. Enterprises are making a critical mistak",
+      "target": "Weekflow",
+      "sent": true,
+      "status": "sent"
+    }
+  ]
+}
