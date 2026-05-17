@@ -50,7 +50,7 @@ live adapters behind the same `SourceCatalog` contract.
 Static source coverage:
 
 - Tier 1: `arXiv`, `Semantic Scholar`, `OpenAlex`
-- Tier 2: `MIT Sloan Management Review`, `Harvard Business Review`, `DeepLearning.AI`
+- Tier 2: `MIT Sloan Management Review`, `Harvard Business Review`, `DeepLearning.AI`, `Google News`, `Finextra`, `The Financial Brand`, `Insurance Journal`
 - Tier 3: `Hacker News`, `YouTube`
 
 Live source coverage:
@@ -58,6 +58,10 @@ Live source coverage:
 - `arXiv`: official API-backed adapter
 - `Semantic Scholar`: official API-backed adapter
 - `OpenAlex`: official API-backed adapter
+- `Google News`: RSS search adapter
+- `Finextra`: default RSS adapter
+- `The Financial Brand`: default RSS adapter
+- `Insurance Journal`: default RSS adapter
 - `Hacker News`: official API-backed adapter
 - `MIT Sloan Management Review`: configurable RSS feed URL
 - `Harvard Business Review`: configurable RSS feed URL
@@ -162,6 +166,10 @@ Current live adapters:
 - `arXiv`: live API
 - `Semantic Scholar`: live API
 - `OpenAlex`: live API
+- `Google News`: RSS search
+- `Finextra`: RSS
+- `The Financial Brand`: RSS
+- `Insurance Journal`: RSS
 - `Hacker News`: live official API
 - `MIT Sloan Management Review`: RSS URL via `DEEP_AGENTS_MIT_SLOAN_RSS_URL`
 - `Harvard Business Review`: RSS URL via `DEEP_AGENTS_HBR_RSS_URL`
@@ -182,13 +190,32 @@ Optional live-source environment variables:
 - `DEEP_AGENTS_OPENALEX_QUERY`
 - `DEEP_AGENTS_OPENALEX_LIMIT`
 - `DEEP_AGENTS_OPENALEX_FROM_PUBLICATION_DATE`
+- `DEEP_AGENTS_GOOGLE_NEWS_QUERY`
+- `DEEP_AGENTS_GOOGLE_NEWS_LIMIT`
+- `DEEP_AGENTS_GOOGLE_NEWS_REGION`
+- `DEEP_AGENTS_GOOGLE_NEWS_LANGUAGE`
 - `DEEP_AGENTS_MIT_SLOAN_RSS_URL`
 - `DEEP_AGENTS_HBR_RSS_URL`
 - `DEEP_AGENTS_DEEPLEARNINGAI_RSS_URL`
+- `DEEP_AGENTS_FINEXTRA_RSS_URL`
+- `DEEP_AGENTS_FINEXTRA_LIMIT`
+- `DEEP_AGENTS_FINANCIAL_BRAND_RSS_URL`
+- `DEEP_AGENTS_FINANCIAL_BRAND_LIMIT`
+- `DEEP_AGENTS_INSURANCE_JOURNAL_RSS_URL`
+- `DEEP_AGENTS_INSURANCE_JOURNAL_LIMIT`
 - `YOUTUBE_API_KEY`
 - `DEEP_AGENTS_YOUTUBE_QUERY`
 - `DEEP_AGENTS_YOUTUBE_PUBLISHED_AFTER`
 - `DEEP_AGENTS_HN_LIMIT`
+
+Default live queries are narrowed to GenAI adoption trends in financial
+services, banking, and insurance. Override the query variables above if you
+want to temporarily broaden or redirect a run.
+
+Live and hybrid runs also apply a hard topic filter before synthesis. A paper
+must match AI terminology, a financial-services/banking/insurance term, and an
+adoption/rollout/workflow term. In `hybrid` mode, a live source that returns no
+topic-matching items falls back to the matching static sample source.
 
 ## Pluggable Synthesis
 

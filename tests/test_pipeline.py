@@ -10,12 +10,14 @@ import main as cli_main
 from deep_agents.memory import PaperMemoryStore, ThemeMemoryStore
 from deep_agents.models import Paper, Position, PositionStrengthResult, PostDraft, ThemeCandidate
 from deep_agents.pipeline import PipelineRunner, rank_papers
-from deep_agents.samples import sample_source_catalog
+from deep_agents.samples import GENAI_FS_QUERY, build_default_source_catalog, sample_source_catalog
 from deep_agents.sources import (
     FallbackPaperSource,
+    GoogleNewsPaperSource,
     OpenAlexPaperSource,
     SourceCatalog,
     StaticPaperSource,
+    TopicFilteredPaperSource,
     YouTubePaperSource,
 )
 from deep_agents.evaluation import (
@@ -102,10 +104,70 @@ class SourceCatalogTests(unittest.TestCase):
     def test_default_source_catalog_covers_all_design_tiers(self) -> None:
         catalog = sample_source_catalog()
         fetched = catalog.fetch_all()
-        self.assertGreaterEqual(len(catalog.sources), 8)
+        self.assertGreaterEqual(len(catalog.sources), 12)
         self.assertTrue(any(paper.tier == 1 for paper in fetched))
         self.assertTrue(any(paper.tier == 2 for paper in fetched))
         self.assertTrue(any(paper.tier == 3 for paper in fetched))
+        self.assertTrue(
+            any("financial services" in paper.abstract.lower() for paper in fetched)
+        )
+
+    @patch.dict("os.environ", {"DEEP_AGENTS_SOURCE_MODE": "live"}, clear=True)
+    def test_default_live_catalog_targets_financial_services_genai(self) -> None:
+        catalog = build_default_source_catalog()
+        source_by_name = {source.name: source for source in catalog.sources}
+
+        self.assertEqual(source_by_name["Semantic Scholar"].primary.query, GENAI_FS_QUERY)
+        self.assertEqual(source_by_name["OpenAlex"].primary.query, GENAI_FS_QUERY)
+        self.assertEqual(source_by_name["Google News"].primary.query, GENAI_FS_QUERY)
+        self.assertEqual(source_by_name["YouTube"].primary.query, GENAI_FS_QUERY)
+        self.assertIn("financial services", source_by_name["arXiv"].primary.query)
+        self.assertIn(
+            "financial services",
+            source_by_name["Hacker News"].primary.topic_keywords,
+        )
+        self.assertTrue(
+            all(isinstance(source, TopicFilteredPaperSource) for source in catalog.sources)
+        )
+
+    def test_topic_filtered_source_requires_ai_domain_and_adoption_terms(self) -> None:
+        source = TopicFilteredPaperSource(
+            name="Scenario",
+            tier=2,
+            keyword_groups=(
+                ("genai", "generative ai", "ai "),
+                ("financial services", "banking", "insurance"),
+                ("adoption", "pilot", "workflow"),
+            ),
+            primary=StaticPaperSource(
+                name="Scenario",
+                tier=2,
+                papers=[
+                    Paper(
+                        title="Banking GenAI adoption moves into claims workflows",
+                        authors=["A. Analyst"],
+                        abstract="Financial services teams are widening GenAI adoption.",
+                        source="Scenario",
+                        url="https://example.org/relevant",
+                        published_on=date(2026, 5, 17),
+                        tier=2,
+                    ),
+                    Paper(
+                        title="Agent benchmark improves user-centered evaluation",
+                        authors=["B. Researcher"],
+                        abstract="A general AI benchmark paper about research evaluation methods.",
+                        source="Scenario",
+                        url="https://example.org/off-topic",
+                        published_on=date(2026, 5, 17),
+                        tier=2,
+                    ),
+                ],
+            ),
+        )
+
+        papers = source.fetch()
+
+        self.assertEqual([paper.url for paper in papers], ["https://example.org/relevant"])
 
     def test_fallback_source_uses_static_when_primary_fails(self) -> None:
         class FailingSource:
@@ -176,6 +238,31 @@ class SourceCatalogTests(unittest.TestCase):
         self.assertEqual(papers[0].source, "YouTube")
         self.assertEqual(papers[0].url, "https://www.youtube.com/watch?v=abc123")
         self.assertEqual(papers[0].authors, ["AI Architecture Weekly"])
+
+    @patch("deep_agents.sources._fetch_text")
+    def test_google_news_source_parses_rss_results(self, mock_fetch_text) -> None:
+        mock_fetch_text.return_value = """
+        <rss>
+          <channel>
+            <item>
+              <title>Banks expand GenAI adoption</title>
+              <link>https://example.org/news/banks-genai</link>
+              <description>&lt;p&gt;Financial services firms widen generative AI use.&lt;/p&gt;</description>
+              <pubDate>Mon, 04 May 2026 10:00:00 GMT</pubDate>
+              <author>News Desk</author>
+            </item>
+          </channel>
+        </rss>
+        """
+
+        papers = GoogleNewsPaperSource(limit=1).fetch()
+
+        self.assertEqual(len(papers), 1)
+        self.assertEqual(papers[0].source, "Google News")
+        self.assertEqual(papers[0].authors, ["News Desk"])
+        self.assertEqual(papers[0].abstract, "Financial services firms widen generative AI use.")
+        requested_url = mock_fetch_text.call_args.args[0]
+        self.assertIn("generative+AI+adoption", requested_url)
 
 
 class SynthesisEngineTests(unittest.TestCase):
@@ -450,7 +537,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": null,
-                              "supporting_paper_urls": ["https://example.org/papers/agent-reliability"]
+                              "supporting_paper_urls": ["https://example.org/papers/banking-genai-controls"]
                             },
                             {
                               "theme": "Evaluation before scale",
@@ -471,7 +558,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Another theme had stronger debate and novelty scores.",
-                              "supporting_paper_urls": ["https://example.org/papers/evaluation-gates"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-evaluation-gates"]
                             },
                             {
                               "theme": "Memory as governance",
@@ -492,7 +579,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Theme used recently.",
-                              "supporting_paper_urls": ["https://example.org/papers/memory-governance"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-governance-test"]
                             }
                           ]
                         }
@@ -572,7 +659,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": null,
-                              "supporting_paper_urls": ["https://example.org/papers/agent-reliability"]
+                              "supporting_paper_urls": ["https://example.org/papers/banking-genai-controls"]
                             },
                             {
                               "theme": "Evaluation before scale",
@@ -593,7 +680,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Another theme had stronger debate and novelty scores.",
-                              "supporting_paper_urls": ["https://example.org/papers/evaluation-gates"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-evaluation-gates"]
                             },
                             {
                               "theme": "Memory as governance",
@@ -614,7 +701,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Theme used recently.",
-                              "supporting_paper_urls": ["https://example.org/papers/memory-governance"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-governance-test"]
                             }
                           ]
                         }
@@ -708,7 +795,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Rejected",
-                              "supporting_paper_urls": ["https://example.org/papers/agent-reliability"]
+                              "supporting_paper_urls": ["https://example.org/papers/banking-genai-controls"]
                             },
                             {
                               "theme": "Theme B",
@@ -729,7 +816,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Rejected",
-                              "supporting_paper_urls": ["https://example.org/papers/evaluation-gates"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-evaluation-gates"]
                             },
                             {
                               "theme": "Theme C",
@@ -750,7 +837,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Rejected",
-                              "supporting_paper_urls": ["https://example.org/papers/memory-governance"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-governance-test"]
                             }
                           ]
                         }
@@ -780,7 +867,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": null,
-                              "supporting_paper_urls": ["https://example.org/papers/agent-reliability"]
+                              "supporting_paper_urls": ["https://example.org/papers/banking-genai-controls"]
                             },
                             {
                               "theme": "Evaluation before scale",
@@ -801,7 +888,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Another theme had stronger debate and novelty scores.",
-                              "supporting_paper_urls": ["https://example.org/papers/evaluation-gates"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-evaluation-gates"]
                             },
                             {
                               "theme": "Memory as governance",
@@ -822,7 +909,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Theme used recently.",
-                              "supporting_paper_urls": ["https://example.org/papers/memory-governance"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-governance-test"]
                             }
                           ]
                         }
@@ -901,7 +988,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": true,
                               "strong_architect_debates": false,
                               "rejection_reason": "incremental",
-                              "supporting_paper_urls": ["https://example.org/papers/agent-reliability"]
+                              "supporting_paper_urls": ["https://example.org/papers/banking-genai-controls"]
                             }
                           ]
                         }
@@ -941,7 +1028,7 @@ class SynthesisEngineTests(unittest.TestCase):
                 authors=["A. Researcher"],
                 abstract="Clinical AI teams are shifting toward case-specific evaluation.",
                 source="Scenario",
-                url="https://example.org/papers/agent-reliability",
+                url="https://example.org/papers/banking-genai-controls",
                 published_on=date(2026, 4, 20),
                 tier=1,
             ),
@@ -950,7 +1037,7 @@ class SynthesisEngineTests(unittest.TestCase):
                 authors=["B. Researcher"],
                 abstract="Researchers propose richer clinician-authored metrics.",
                 source="Scenario",
-                url="https://example.org/papers/evaluation-gates",
+                url="https://example.org/papers/fs-genai-evaluation-gates",
                 published_on=date(2026, 4, 21),
                 tier=1,
             ),
@@ -959,7 +1046,7 @@ class SynthesisEngineTests(unittest.TestCase):
                 authors=["C. Researcher"],
                 abstract="Case-level evaluation identifies workflow-specific failures.",
                 source="Scenario",
-                url="https://example.org/papers/memory-governance",
+                url="https://example.org/papers/fs-genai-governance-test",
                 published_on=date(2026, 4, 22),
                 tier=1,
             ),
@@ -1012,7 +1099,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": null,
-                              "supporting_paper_urls": ["https://example.org/papers/agent-reliability"]
+                              "supporting_paper_urls": ["https://example.org/papers/banking-genai-controls"]
                             },
                             {
                               "theme": "Evaluation before scale",
@@ -1033,7 +1120,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "LLM thought this theme was too familiar.",
-                              "supporting_paper_urls": ["https://example.org/papers/evaluation-gates"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-evaluation-gates"]
                             },
                             {
                               "theme": "Memory as governance",
@@ -1054,7 +1141,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "Theme used recently.",
-                              "supporting_paper_urls": ["https://example.org/papers/memory-governance"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-governance-test"]
                             }
                           ]
                         }
@@ -1140,7 +1227,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": null,
-                              "supporting_paper_urls": ["https://example.org/papers/agent-reliability"]
+                              "supporting_paper_urls": ["https://example.org/papers/banking-genai-controls"]
                             },
                             {
                               "theme": "Case-specific rubrics still miss workflow control",
@@ -1161,7 +1248,7 @@ class SynthesisEngineTests(unittest.TestCase):
                               "typical_architect_agrees": false,
                               "strong_architect_debates": true,
                               "rejection_reason": "weak",
-                              "supporting_paper_urls": ["https://example.org/papers/evaluation-gates"]
+                              "supporting_paper_urls": ["https://example.org/papers/fs-genai-evaluation-gates"]
                             }
                           ]
                         }
@@ -1201,7 +1288,7 @@ class SynthesisEngineTests(unittest.TestCase):
                 authors=["A. Researcher"],
                 abstract="Clinical AI teams are shifting toward case-specific evaluation.",
                 source="Scenario",
-                url="https://example.org/papers/agent-reliability",
+                url="https://example.org/papers/banking-genai-controls",
                 published_on=date(2026, 4, 20),
                 tier=1,
             ),
@@ -1210,7 +1297,7 @@ class SynthesisEngineTests(unittest.TestCase):
                 authors=["B. Researcher"],
                 abstract="Researchers propose richer clinician-authored metrics.",
                 source="Scenario",
-                url="https://example.org/papers/evaluation-gates",
+                url="https://example.org/papers/fs-genai-evaluation-gates",
                 published_on=date(2026, 4, 21),
                 tier=1,
             ),
@@ -1219,7 +1306,7 @@ class SynthesisEngineTests(unittest.TestCase):
                 authors=["C. Researcher"],
                 abstract="Case-level evaluation identifies workflow-specific failures.",
                 source="Scenario",
-                url="https://example.org/papers/memory-governance",
+                url="https://example.org/papers/fs-genai-governance-test",
                 published_on=date(2026, 4, 22),
                 tier=1,
             ),

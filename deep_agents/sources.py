@@ -9,6 +9,8 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import UTC, date, datetime
 from email.utils import parsedate_to_datetime
+from html import unescape
+from html.parser import HTMLParser
 from typing import Protocol
 
 from .models import Paper
@@ -19,7 +21,17 @@ SEMANTIC_SCHOLAR_API_URL = "https://api.semanticscholar.org/graph/v1/paper/searc
 HACKER_NEWS_TOP_STORIES_URL = "https://hacker-news.firebaseio.com/v0/topstories.json"
 HACKER_NEWS_ITEM_URL = "https://hacker-news.firebaseio.com/v0/item/{item_id}.json"
 YOUTUBE_SEARCH_API_URL = "https://www.googleapis.com/youtube/v3/search"
+GOOGLE_NEWS_RSS_URL = "https://news.google.com/rss/search"
 ATOM_NS = {"atom": "http://www.w3.org/2005/Atom"}
+
+
+class _HTMLTextExtractor(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.parts: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        self.parts.append(data)
 
 
 class PaperSource(Protocol):
@@ -44,6 +56,12 @@ def _fetch_text(url: str, headers: dict[str, str] | None = None) -> str:
 
 def _normalize_whitespace(value: str) -> str:
     return " ".join(value.split())
+
+
+def _strip_markup(value: str) -> str:
+    parser = _HTMLTextExtractor()
+    parser.feed(unescape(value))
+    return _normalize_whitespace(" ".join(parser.parts) or value)
 
 
 def _safe_date(value: str | None, *, fallback: date | None = None) -> date:
@@ -243,6 +261,7 @@ class HackerNewsPaperSource:
     name: str = "Hacker News"
     tier: int = 3
     limit: int = 5
+    topic_keywords: tuple[str, ...] = ()
 
     def fetch(self) -> list[Paper]:
         story_ids = _fetch_json(HACKER_NEWS_TOP_STORIES_URL)
@@ -259,8 +278,12 @@ class HackerNewsPaperSource:
             body = _normalize_whitespace(str(item.get("text") or ""))
             score = int(item.get("score") or 0)
             descendants = int(item.get("descendants") or 0)
+            if self.topic_keywords:
+                searchable = f"{title} {body}".lower()
+                if not any(keyword.lower() in searchable for keyword in self.topic_keywords):
+                    continue
             abstract = (
-                body
+                _strip_markup(body)
                 or f"Hacker News discussion with score {score} and {descendants} comments."
             )
             published = datetime.fromtimestamp(int(item.get("time") or 0), tz=UTC).date()
@@ -330,6 +353,31 @@ class YouTubePaperSource:
 
 
 @dataclass(frozen=True)
+class GoogleNewsPaperSource:
+    name: str = "Google News"
+    tier: int = 2
+    query: str = "generative AI adoption financial services banking insurance"
+    limit: int = 10
+    region: str = "US"
+    language: str = "en"
+
+    def fetch(self) -> list[Paper]:
+        query_params = {
+            "q": self.query,
+            "hl": f"{self.language}-{self.region}",
+            "gl": self.region,
+            "ceid": f"{self.region}:{self.language}",
+        }
+        source = RSSPaperSource(
+            name=self.name,
+            tier=self.tier,
+            feed_url=f"{GOOGLE_NEWS_RSS_URL}?{urllib.parse.urlencode(query_params)}",
+            limit=self.limit,
+        )
+        return source.fetch()
+
+
+@dataclass(frozen=True)
 class RSSPaperSource:
     name: str
     tier: int
@@ -361,6 +409,7 @@ class RSSPaperSource:
                 or item.findtext("summary", default="")
                 or item.findtext("{http://www.w3.org/2005/Atom}summary", default="")
             )
+            abstract = _strip_markup(abstract)
             author = _normalize_whitespace(
                 item.findtext("author", default="")
                 or item.findtext("{http://purl.org/dc/elements/1.1/}creator", default="")
@@ -405,6 +454,21 @@ class FallbackPaperSource:
         return self.fallback.fetch()
 
 
+@dataclass(frozen=True)
+class TopicFilteredPaperSource:
+    name: str
+    tier: int
+    primary: PaperSource
+    keyword_groups: tuple[tuple[str, ...], ...]
+
+    def fetch(self) -> list[Paper]:
+        return [
+            paper
+            for paper in self.primary.fetch()
+            if _paper_matches_keyword_groups(paper, self.keyword_groups)
+        ]
+
+
 class SourceCatalog:
     def __init__(self, sources: list[PaperSource]) -> None:
         self.sources = sources
@@ -433,3 +497,14 @@ def _openalex_abstract_from_inverted_index(payload: dict) -> str:
         return ""
     pairs.sort(key=lambda item: item[0])
     return " ".join(token for _, token in pairs)
+
+
+def _paper_matches_keyword_groups(
+    paper: Paper,
+    keyword_groups: tuple[tuple[str, ...], ...],
+) -> bool:
+    text = f"{paper.title} {paper.abstract} {paper.source}".lower()
+    return all(
+        any(keyword.lower() in text for keyword in keyword_group)
+        for keyword_group in keyword_groups
+    )
